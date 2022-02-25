@@ -60,6 +60,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 K-MK formulated the model that follows in a much more general work
 
 Really worth taking a look at this series of papers!
+- Kermack & McKendrick. [A contribution to the mathematical theory of epidemics](https://doi.org/10.1098/rspa.1927.0118) (1927)
 
 ---
 
@@ -202,6 +203,15 @@ $$
 1-S(\infty)+\frac{\ln[S(\infty)/S_0]}{\mathcal{R}_0}=0
 $$
 </div>
+
+---
+
+# Extensions of the KMK model
+
+Many many works (especially since COVID-19) have used KMK-type models
+
+- Brauer. [The Kermack–McKendrick epidemic model revisited](https://doi.org/10.1016/j.mbs.2005.07.006) (2005)
+
 
 ---
 
