@@ -930,8 +930,8 @@ Then compute the Jacobian matrices of vectors $\mathcal{F}$ and $\mathcal{V}$
 $$
 F=\left(
 \begin{matrix}
-\frac{\partial\bar f}{\partial L}
-& \frac{\partial\bar f}{\partial I} \\
+\frac{\partial\overline{f}}{\partial L}
+& \frac{\partial\overline{f}}{\partial I} \\
 0 & 0
 \end{matrix}
 \right),\quad
@@ -944,10 +944,10 @@ V=\left(
 $$
 where
 $$
-\frac{\partial\bar f}{\partial I}:=
+\frac{\partial\overline{f}}{\partial I}:=
 \frac{\partial f}{\partial I}(\bar
 S,\bar I,\bar N)\quad\quad 
-\frac{\partial\bar f}{\partial L}:=
+\frac{\partial\overline{f}}{\partial L}:=
 \frac{\partial f}{\partial L}(\bar
 S,\bar I,\bar N)
 $$
@@ -968,7 +968,7 @@ $$
 Also, when $N$ constant, $\partial f/\partial
 L=0$, then
 $$
-FV^{-1}=\frac{{\partial\bar f}/{\partial I}}
+FV^{-1}=\frac{{\partial\overline{f}}/{\partial I}}
 {(d+\varepsilon)(d+\gamma)}
 \left(
 \begin{matrix}
@@ -981,7 +981,7 @@ $$
 and thus,
 $$
 \mathcal{R}_0=\varepsilon
-\frac{{\partial\bar f}/{\partial I}}
+\frac{{\partial\overline{f}}/{\partial I}}
 {(d+\varepsilon)(d+\gamma)}
 $$
 
@@ -996,7 +996,7 @@ box-shadow: 0px 1px 5px #999;">
 Let
 $$
 \mathcal{R}_0=
-\frac{\varepsilon\frac{\partial\bar f}{\partial I}}
+\frac{\varepsilon\frac{\partial\overline{f}}{\partial I}}
 {(d+\varepsilon)(d+\gamma)}
 $$
 
@@ -1018,12 +1018,12 @@ $$
  
 - Frequency-dependent contacts (mass action incidence)
 $$
-\frac{\partial\bar f}{\partial I}=\beta\bar S \Rightarrow\mathcal{R}_0 =
+\frac{\partial\overline{f}}{\partial I}=\beta\bar S \Rightarrow\mathcal{R}_0 =
 \frac{\varepsilon\beta N}{(\varepsilon+d)(\gamma+d)} 
 $$
 - Proportion-dependent contacts (standard incidence)
 $$
-\frac{\partial\bar f}{\partial I}=\frac{\beta\bar S}{N}
+\frac{\partial\overline{f}}{\partial I}=\frac{\beta\bar S}{N}
 \Rightarrow\mathcal{R}_0 = \frac{\varepsilon\beta}{(\varepsilon+d)(\gamma+d)}
 $$
 
@@ -1062,19 +1062,19 @@ SI is SIS where $\nu=0$
 
 # Expressions of $\mathcal{R}_0$
 
-$(\bar S,\bar I)$ the DFE, denote $\bar f_I=\partial f/\partial I(\bar
+$(\bar S,\bar I)$ the DFE, denote $\overline{f}_I=\partial f/\partial I(\bar
 S,\bar I)$
 
 | Model | $\mathcal{R}_0$ |
 |:---|:---:|
-| SLIRS | $\frac{\varepsilon\bar f_I}{(d+\varepsilon)(d+\gamma)}$ |
-| SLIR | $\frac{\varepsilon\bar f_I}{(d+\varepsilon)(d+\gamma)}$ |
-| SLIS | $\frac{\varepsilon\bar f_I}{(d+\varepsilon)(d+\gamma)}$ |
-| SLI | $\frac{\varepsilon\bar f_I}{(d+\varepsilon)(d+\gamma)}$ |
-| SIRS | $\frac{\varepsilon\bar f_I}{d+\gamma}$ |
-| SIR | $\frac{\bar f_I}{d+\gamma}$ |
-| SIS | $\frac{\bar f_I}{d+\gamma}$ |
-| SI | $\frac{\bar f_I}{d+\gamma}$ |
+| SLIRS | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ |
+| SLIR | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ |
+| SLIS | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ |
+| SLI | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ |
+| SIRS | $\frac{\varepsilon\overline{f}_I}{d+\gamma}$ |
+| SIR | $\frac{\overline{f}_I}{d+\gamma}$ |
+| SIS | $\frac{\overline{f}_I}{d+\gamma}$ |
+| SI | $\frac{\overline{f}_I}{d+\gamma}$ |
 
 ---
 
@@ -1206,7 +1206,7 @@ They normalise the total population, so $S+L+I+R=1$. They make an additional hyp
 
 We have
 $$
-\frac{\partial\bar f}{\partial I}=\beta\frac{\partial\bar g}{\partial I}
+\frac{\partial\overline{f}}{\partial I}=\beta\frac{\partial\bar g}{\partial I}
 $$
 Since $\frac{\partial\bar g}{\partial I}=\lim_{I\to 0^+}
 \frac{g(I)}{I}=c$, 
