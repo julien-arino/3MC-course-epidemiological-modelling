@@ -1062,19 +1062,14 @@ SI is SIS where $\nu=0$
 
 # Expressions of $\mathcal{R}_0$
 
-$(\bar S,\bar I)$ the DFE, denote $\overline{f}_I=\partial f/\partial I(\bar
-S,\bar I)$
+$(\bar S,\bar I)$ the DFE, denote $\overline{f}_I=\partial f/\partial I(\bar S,\bar I)$
 
-| Model | $\mathcal{R}_0$ |
-|:---|:---:|
-| SLIRS | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ |
-| SLIR | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ |
-| SLIS | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ |
-| SLI | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ |
-| SIRS | $\frac{\varepsilon\overline{f}_I}{d+\gamma}$ |
-| SIR | $\frac{\overline{f}_I}{d+\gamma}$ |
-| SIS | $\frac{\overline{f}_I}{d+\gamma}$ |
-| SI | $\frac{\overline{f}_I}{d+\gamma}$ |
+| Model | $\mathcal{R}_0$ | Model | $\mathcal{R}_0$ |
+|:---|:---:|:---|:---:|
+| SLIRS | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SIRS | $\frac{\varepsilon\overline{f}_I}{d+\gamma}$ |
+| SLIR | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SIR | $\frac{\overline{f}_I}{d+\gamma}$ |
+| SLIS | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SIS | $\frac{\overline{f}_I}{d+\gamma}$ |
+| SLI | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SI | $\frac{\overline{f}_I}{d+\gamma}$ |
 
 ---
 
@@ -1206,9 +1201,9 @@ They normalise the total population, so $S+L+I+R=1$. They make an additional hyp
 
 We have
 $$
-\frac{\partial\overline{f}}{\partial I}=\beta\frac{\partial\bar g}{\partial I}
+\frac{\partial\overline{f}}{\partial I}=\beta\frac{\partial\overline{g}}{\partial I}
 $$
-Since $\frac{\partial\bar g}{\partial I}=\lim_{I\to 0^+}
+Since $\frac{\partial\overline{g}}{\partial I}=\lim_{I\to 0^+}
 \frac{g(I)}{I}=c$, 
 $$
 \mathcal{R}_0=\frac{c\beta\varepsilon}
