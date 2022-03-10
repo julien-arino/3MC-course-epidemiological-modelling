@@ -26,3 +26,57 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 * The University of Manitoba campuses are located on original lands of Anishinaabeg, Cree, Oji-Cree, Dakota and Dene peoples, and on the homeland of the Métis Nation.</div>
 
 ---
+
+<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
+# Outline
+
+- Formulating group models
+- Analysing group models
+- Simulating group models
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Formulating group models
+
+---
+
+# Groups can be used for many things
+
+Groups allow to introduce structure in a population without using PDEs
+- Age structure
+- Social structure
+- Pathogen heterogeneity
+
+In this lecture, we do not consider *spatial heterogeity*; this is done in Lecture 5
+
+Let us start by considering a few examples
+
+---
+
+# Age-structured model
+
+---
+
+# Model incorporating social structure
+
+---
+
+# Model with pathogen heterogeity
+
+---
+
+# Model with immunological component
+
+Global dynamics of a general class of multistage models for infectious diseases. Guo, Li & Shuai. [SIAM Journal on Applied Mathematics](https://doi.org/10.1137/110827028) **72** (2012)
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Analysing group models
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Simulating group models
+
