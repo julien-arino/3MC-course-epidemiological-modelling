@@ -33,6 +33,17 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
+![bg right:40%](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS//epidemio/FredBrauer_2007-05-13.jpg)
+# In Memoriam - Fred Brauer
+
+Fred Brauer (died 2021-10-17) was a friend and mentor to many worldwide and a driving force in Mathematical Epidemiology in Canada
+
+I was priviledged to learn from him and teach math epi with him in a wide variety of settings
+
+This course is dedicated to his memory!
+
+---
+
 # Course objectives
 
 Introduction to Mathematical Epidemiology
@@ -53,15 +64,15 @@ It is important to do the 4 interactively
 
 L1: History of epidemics and Historical epidemics
 L2: Basic concepts of Mathematical Epidemiology. Models in one population
-P1: Introduction to R. Collecting data. Solving ODEs in `R`
+P1: Introduction to R. Collecting data. Solving ODEs in R
 L3: Epidemics spreading among groups. Epidemics spreading in space and time                                     
 L4: Group models
 L5: Metapopulation models
-P2: Model analysis, studying large-scale models in `R`
+P2: Model analysis, studying large-scale models in R
 L6: Stochastic aspects in the spread of epidemics
 L7: Stochastic epidemic models
 L8: Agent-based models
-P3: Analysis, studying stochastic models in `R`. Simulating agent-based models                   
+P3: Analysis, studying stochastic models in R. Simulating agent-based models                   
 L9: Some recent mathematical models for COVID-19, HIV/AIDS, TB, Malaria, etc.
 
 ---
@@ -91,13 +102,14 @@ For convenience, `pdf` versions of the slides are also available in the GitHub r
 
 # Code
 
-I use `R`
-
-Instructions on setting up `R` for the course can be found in the GitHub repo
+- I use `R`
+- Instructions on setting up `R` for the course can be found in the GitHub repo
+- Some code is in the repo
+- For the epi side of things, a very useful open reference: [R for applied epidemiology and public health](https://epirhandbook.com/en/index.html)
 
 ---
 
-# Reading recommendations
+# Reading recommendations (math epi)
 
 The following are *my* favourite references:
 
@@ -108,6 +120,7 @@ The following are *my* favourite references:
 - Brauer, PvdD & Wu. [Mathematical Epidemiology](https://doi.org/10.1007/978-3-540-78911-6) (2008)
 - Brauer & C$^3$. [Mathematical Models in Population Biology and Epidemiology](https://doi.org/10.1007/978-1-4614-1686-9) (2012)
 - Brauer, C$^3$ & Feng. [Mathematical Models in Epidemiology](https://doi.org/10.1007/978-1-4939-9828-9) (2019)
+
 
 ---
 
@@ -123,9 +136,9 @@ The following are *my* favourite references:
 
 # Definition
 
-From *Wikipedia*: **Epidemiology** is the study and analysis of the distribution (who, when, and where), patterns and determinants of health and disease conditions in defined populations
+> **Epidemiology** is the study and analysis of the distribution (who, when, and where), patterns and determinants of health and disease conditions in defined populations [[Wikipedia](https://en.wikipedia.org/wiki/Epidemiology)]
 
-Another definition ([BMJ](https://www.bmj.com/about-bmj/resources-readers/publications/epidemiology-uninitiated/1-what-epidemiology)): Epidemiology is the study of how often diseases occur in different groups of people and why. Epidemiological information is used to plan and evaluate strategies to prevent illness and as a guide to the management of patients in whom disease has already developed
+> Epidemiology is the study of how often diseases occur in different groups of people and why. Epidemiological information is used to plan and evaluate strategies to prevent illness and as a guide to the management of patients in whom disease has already developed [[BMJ](https://www.bmj.com/about-bmj/resources-readers/publications/epidemiology-uninitiated/1-what-epidemiology)]
 
 Etymology: *the study of what is upon the people*, derived from the Greek $\epsilon\pi\iota$ (*upon, among*), $\delta\epsilon\mu\omega\sigma$ (*people, district*) and $\lambda\omega\gamma\omega\sigma$ (*study, word, discourse*)
 
@@ -189,11 +202,71 @@ Second plague pandemic 1346-1835
 
 ---
 
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Who, when and where
+
+---
+
+# Who, when and where
+
+Recall part of the definition on Wikipedia
+> **Epidemiology** is the study and analysis of the distribution (who, when, and where)
+
+---
+
+Domain is terminologically heavy. A few pointers:
+- Milwid et al. [Toward standardizing a lexicon of infectious disease modeling terms](https://doi.org/10.3389/fpubh.2016.00213). Frontiers in Public Health 2016
+- Moghadas and Laskowski. [Review of terms used in modelling influenza infection](https://nccid.ca/wp-content/uploads/sites/2/2015/03/ReviewTermsFluWEB.pdf). NCCID 2014
+
+---
+
+# Incidence & Prevalence
+
+**Incidence**: number of new cases in a population generated within a certain time period
+
+**Prevalence**: number of cases of a disease at a single time point in a population
+
+---
+
+# Epidemic curves
+
+---
+
+![bg left:50%](https://upload.wikimedia.org/wikipedia/commons/c/c7/Snow-cholera-map.jpg)
+
+# <!--fit--> Where: [1854 Broad Street cholera outbreak](https://en.wikipedia.org/wiki/1854_Broad_Street_cholera_outbreak)
+
+Cholera outbreak in London (UK)
+
+Studied by [John Snow](https://en.wikipedia.org/wiki/John_Snow)
+
+> I found that nearly all the deaths had taken place within a short distance of the [Broad Street] pump
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Fighting against infections
+
+---
+
+# Fighting against infections
+
+> Epidemiological information is used to plan and evaluate **strategies to prevent illness** and as a guide to the **management of patients** in whom disease has already developed
+
+- Preventing illness
+    - Prophylactic measures
+    - Vaccination
+- Managing illness
+    - Prevention of further spread (e.g., in hospital)
+    - Treatment
+
+---
+
 <div style = "position: relative; top: -55%; padding-bottom:60px; font-size:40px">
 Measles cases in the USA
 </div>
 
-![bg contain](https://julien-arino.github.io/assets_pics/measles_US_1944_2019.png)
+![bg contain](https://julien-arino.github.io/assets/img/measles_US_1944_2019.png)
 
 --- 
 
@@ -202,7 +275,6 @@ Measles cases in the USA
 
 ---
 
-Domain is terminologically heavy. A few pointers:
-- Milwid et al. [Toward standardizing a lexicon of infectious disease modeling terms](https://doi.org/10.3389/fpubh.2016.00213). Frontiers in Public Health 2016
-- Moghadas and Laskowski. [Review of terms used in modelling influenza infection](https://nccid.ca/wp-content/uploads/sites/2/2015/03/ReviewTermsFluWEB.pdf). NCCID 2014
+# Domain almost as old as epidemiology ..
 
+.. but has only become a thing in recent years!
