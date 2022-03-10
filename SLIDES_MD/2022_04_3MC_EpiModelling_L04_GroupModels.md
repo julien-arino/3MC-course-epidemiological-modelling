@@ -43,7 +43,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 # Limitations of single population ODE models
 
-- As discussed in [Lecture 03]()
+- As discussed in [Lecture 03](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_L03_SpreadInGroups_SpreadInSpace.html)
 
 ---
 
@@ -55,7 +55,7 @@ Groups allow to introduce structure in a population without using PDEs
 - Social structure
 - Pathogen heterogeneity
 
-In this lecture, we do not consider *spatial heterogeity*; this is done in Lecture 5
+In this lecture, we do not consider *spatial heterogeity*; this is done in [Lecture 05](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_L05_MetapopulationModels.html)
 
 Let us start by considering a few examples
 

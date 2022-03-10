@@ -1,5 +1,5 @@
 # 3MC Course on Epidemiological Modelling
-You will find here material for the [3MC Course on Epidemiological Modelling](http://natural-sciences.nwu.ac.za/paa/3MC-Course-EM) that is to be held in South Africa in April 2022. Most of the material is arranged in 5 main subdirectories. Note that you can also access a web version of this site by following [this link](). In that version, the slides will open properly in a browser.
+You will find here material for the [3MC Course on Epidemiological Modelling](http://natural-sciences.nwu.ac.za/paa/3MC-Course-EM) that is to be held in South Africa in April 2022. Most of the material is arranged in 5 main subdirectories. Note that you can also access a web version of this site by following [this link](https://julien-arino.github.io/3MC-course-epidemiological-modelling/). In that version, the slides will open properly in a browser.
 
 - `CODE` contains the `R` code that will be used during the School as well as some additional code that might prove useful. 
 - `DATA` contains a few datasets that will be used. These datasets will also be available online directly, but for the convenience of participants, they are collected here.
