@@ -1,13 +1,13 @@
 ---
 marp: true
 title: Group models
-description: 3MC Course Epidemiological Modelling - Julien Arino - Course 04 - Group models
+description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 04 - Group models
 theme: default
 paginate: false
 size: 4K
 ---
 
-# Course 04 - Group models
+# Lecture 04 - Group models
 
 April 2022 
 
@@ -41,9 +41,16 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
+# Limitations of single population ODE models
+
+- As discussed in [Lecture 03]()
+
+---
+
 # Groups can be used for many things
 
 Groups allow to introduce structure in a population without using PDEs
+
 - Age structure
 - Social structure
 - Pathogen heterogeneity
