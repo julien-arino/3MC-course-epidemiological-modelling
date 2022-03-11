@@ -142,7 +142,7 @@ The following are *my* favourite references:
 
 > Epidemiology is the study of how often diseases occur in different groups of people and why. Epidemiological information is used to plan and evaluate strategies to prevent illness and as a guide to the management of patients in whom disease has already developed [[BMJ](https://www.bmj.com/about-bmj/resources-readers/publications/epidemiology-uninitiated/1-what-epidemiology)]
 
-Etymology: *the study of what is upon the people*, derived from the Greek $\epsilon\pi\iota$ (*upon, among*), $\delta\epsilon\mu\omega\sigma$ (*people, district*) and $\lambda\omega\gamma\omega\sigma$ (*study, word, discourse*)
+Etymology: *the study of what is upon the people*, derived from the Greek $\varepsilon\pi\iota$ (*upon, among*), $\delta\varepsilon\mu\omega\sigma$ (*people, district*) and $\lambda\omega\gamma\omega\sigma$ (*study, word, discourse*)
 
 
 ---
@@ -280,3 +280,11 @@ Measles cases in the USA
 # Domain almost as old as epidemiology ..
 
 .. but has only become a thing in recent years!
+
+---
+
+# Daniel Bernoulli's model
+
+Probably the first epidemic model:
+
+See Daniel Bernoulli’s epidemiological model revisited. Dietz & Heesterbeek. [Mathematical Biosciences](https://doi.org/10.1016/S0025-5564(02)00122-0)
