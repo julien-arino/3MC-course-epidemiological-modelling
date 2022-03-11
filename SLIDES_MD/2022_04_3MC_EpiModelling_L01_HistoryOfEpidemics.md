@@ -277,7 +277,7 @@ Measles cases in the USA
 
 ---
 
-# Domain almost as old as epidemiology ..
+# Domain is quite old ..
 
 .. but has only become a thing in recent years!
 
@@ -285,9 +285,10 @@ Measles cases in the USA
 
 ![bg right:40%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Bernoulli-1760-first_page.jpg)
 
-# <!--fit-->Daniel Bernoulli's model (1766)
+# <!--fit-->Daniel Bernoulli's model (1760)
 
-[Essai d’une nouvelle analyse de la mortalité causée par la petite vérole](https://gallica.bnf.fr/ark:/12148/bpt6k3558n/f220.item). Mem. Math. Phys. Acad. Roy. Sci., Paris (1766)
+- [BNF scan](https://gallica.bnf.fr/ark:/12148/bpt6k3558n/f220.item) or [pdf](https://julien-arino.github.io/assets/pdf/Bernoulli-1760.pdf)
+- About petite vérole (smallpox) inoculation
+- Probably the first epidemic model
 
-Probably the first epidemic model
 
