@@ -36,11 +36,13 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 ![bg right:40%](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS//epidemio/FredBrauer_2007-05-13.jpg)
 # In Memoriam - Fred Brauer
 
-Fred Brauer (died 2021-10-17) was a friend and mentor to many worldwide and a driving force in Mathematical Epidemiology in Canada
+Fred Brauer (dec. 2021-10-17) was a friend and mentor to many worldwide and a driving force in Mathematical Epidemiology in Canada
 
 I was priviledged to learn from him and teach math epi with him in a wide variety of settings
 
 This course is dedicated to his memory!
+
+> When you learn to use a hammer, everything looks like a nail
 
 ---
 
