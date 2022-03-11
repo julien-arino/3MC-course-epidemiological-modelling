@@ -88,13 +88,13 @@ This includes the slides, code and data samples
 
 This *does not* include bibliographic references, although there are links to articles and books. As much as possible, I link to Open Access sources
 
-One remark: I sometimes refer to Wikipedia. For the younger students here: this can be the beginning of your work, not what you cite in proper work
+One remark: I sometimes refer to Wikipedia. For the younger students here: this can be where you first look, not what you cite in proper work
 
 ---
 
 # Slides
 
-- The slides are written in `Markdown` and `LaTeX` and are rendered as `html` files using [Marp](https://marp.app/) running in the [Visual Studio Code](https://code.visualstudio.com/) editor
+- Slides are written in `Markdown` and `LaTeX` and are rendered as `html` files using [Marp](https://marp.app/) running in the [Visual Studio Code](https://code.visualstudio.com/) editor
 
 - Image files are not hosted locally and thus require internet access. As much as possible, I have left provenance information (by linking the file on the original website); when not possible, the file is saved with the name of the source indicated
 
@@ -147,13 +147,6 @@ Etymology: *the study of what is upon the people*, derived from the Greek $\vare
 
 ---
 
-# Some terminology
-
-- Epidemic: diseases that are *visited upon* a population
-- Endemic: diseases that *reside within* a population
-
----
-
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->History of epidemics / Historical epidemics
 
@@ -162,7 +155,7 @@ Etymology: *the study of what is upon the people*, derived from the Greek $\vare
 # Historical considerations
 
 - Epidemic outbreaks are among the earliest recorded events in history
-- Caveat: here, I barely discuss spatial aspects; there is another lecture devoted specifically to spatial aspects. Spatiality does play a very important role, though
+- Caveat: here, I barely discuss spatial aspects; this is done in [Lecture 03](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_L03_SpreadInGroups_SpreadInSpace.html) and [Lecture 05](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_L05_MetapopulationModels.html). Spatiality does play a very important role, though
 
 ---
 
@@ -217,7 +210,20 @@ Domain is terminologically heavy. A few pointers:
 
 ---
 
-# Incidence & Prevalence
+# Who
+
+- **Epidemiology** typically used when dealing with humans, but sometimes also generically when an easy description is sought; e.g., plant disease epidemiology
+- **Epizootic**: denoting or relating to a disease that is temporarily prevalent and widespread in an animal population
+- **Panzootic** is like a pandemic for animals
+- **One Health**: considers health of humans, animals and their environment (including plants)
+
+---
+
+![bg contain 55%](https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/f4abefee-9839-4a6c-8e19-57ce0e85c304/gr1_lrg.jpg "https://doi.org/10.1016/S0140-6736(20)31027-8")
+
+---
+
+# Incidence & Prevalence (when?)
 
 **Incidence**: number of new cases in a population generated within a certain time period
 
@@ -226,6 +232,27 @@ Domain is terminologically heavy. A few pointers:
 ---
 
 # Epidemic curves
+
+- Used to record the occurrence of new cases as a function of time
+- When not too many cases, usually "individualised" (bar plots)
+- When number of cases is large, continuous curve
+
+---
+
+![bg contain](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41591-020-1092-0/MediaObjects/41591_2020_1092_Fig1_HTML.png?as=webp "https://doi.org/10.1038/s41591-020-1092-0")
+
+---
+
+![bg contain](https://www.science.org/cms/10.1126/science.abf8832/asset/c20b60b8-4867-4cbb-80ba-a4e6a80135e1/assets/graphic/371_27_f1.jpeg "https://doi.org/10.1126/science.abf8832")
+
+---
+
+# Some terminology for "where"
+
+- **Epidemic**: diseases that are *visited upon* a population
+- **Pandemic**: (will revisit this later in the course) epidemic that has spread across a large region, e.g., multiple continents or worldwide
+- **Endemic**: diseases that *reside within* a population
+- We don't say "panendemic"
 
 ---
 
@@ -238,6 +265,39 @@ Cholera outbreak in Broad Street, London (UK)
 Studied by [John Snow](https://en.wikipedia.org/wiki/John_Snow)
 
 > I found that nearly all the deaths had taken place within a short distance of the [Broad Street] pump
+
+---
+
+# WHO pandemic (influenza) [phases](https://www.ncbi.nlm.nih.gov/books/NBK143061/)
+
+<style>
+    .heatMap {
+        overflow:scroll;
+    }
+    .heatMap th {
+        background: grey;
+    }
+    .heatMap tr:nth-child(1) { background: green;}
+    .heatMap tr:nth-child(2) { background: green;}
+    .heatMap tr:nth-child(3) { background: yellow;}
+    .heatMap tr:nth-child(4) { background: yellow;}
+    .heatMap tr:nth-child(5) { background: orange;}
+    .heatMap tr:nth-child(6) { background: red;}
+</style>
+
+<div class="heatMap">
+
+| Period | Phase | Description |
+|:---|:---:|:---|
+| Interpandemic | 1 | No animal influenza virus circulating among animals has been reported to cause infection in humans |
+| | 2 | Animal influenza virus circulating in domesticated or wild animals known to have caused infection in humans and therefore considered a specific potential pandemic threat |
+| Pandemic alert | 3 | Animal or human-animal influenza reassortant virus has caused sporadic cases or small clusters of disease in people, but has not resulted in H2H transmission sufficient to sustain community-level outbreaks |
+| | 4 | Human-to-human transmission of an animal or human-animal influenza reassortant virus able to sustain community-level outbreaks has been verified |
+| | 5 | Same identified virus has caused sustained community-level outbreaks in at least 2 countries in 1 WHO region |
+| Pandemic | 6 | In addition to criteria in Phase 5, same virus has caused sustained community-level outbreaks in at least 1 other country in another WHO region |
+
+</div>
+
 
 ---
 
@@ -305,8 +365,16 @@ Measles cases in the USA
 
 - On 20 August 1897, observed malaria parasites in the gut of a mosquito fed several days earlier on a malaria positive human
 - Nobel Prize for Medicine 1902
-- Started considering malaria eradication using mathematical models
+- Started considering malaria eradication using mathematical models; for some history, read [this 2012 paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3320609/pdf/ppat.1002588.pdf)
 
 ---
 
 # Kermack and McKendrick (1927+)
+
+- We spend a lot more time on this in [Lecture 02](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_L02_BasicMathEpi.html)
+- Groundbreaking set of papers starting in 1927
+  - We will see one particular case, the most well known, but I point out here and point out in Lecture 02 that this is just the tip of the iceberg of their work
+
+---
+
+# Some activity later, but not much until 1990s
