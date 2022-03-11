@@ -33,7 +33,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
-![bg right:40%](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS//epidemio/FredBrauer_2007-05-13.jpg)
+![bg right:40%](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/epidemio/FredBrauer_2007-05-13.jpg)
 # In Memoriam - Fred Brauer
 
 Fred Brauer (dec. 2021-10-17) was a friend and mentor to many worldwide and a driving force in Mathematical Epidemiology in Canada
@@ -283,8 +283,11 @@ Measles cases in the USA
 
 ---
 
-# Daniel Bernoulli's model
+![bg right:40%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Bernoulli-1760-first_page.jpg)
 
-Probably the first epidemic model:
+# <!--fit-->Daniel Bernoulli's model (1766)
 
-See Daniel Bernoulli’s epidemiological model revisited. Dietz & Heesterbeek. [Mathematical Biosciences](https://doi.org/10.1016/S0025-5564(02)00122-0)
+[Essai d’une nouvelle analyse de la mortalité causée par la petite vérole](https://gallica.bnf.fr/ark:/12148/bpt6k3558n/f220.item). Mem. Math. Phys. Acad. Roy. Sci., Paris (1766)
+
+Probably the first epidemic model
+
