@@ -36,11 +36,11 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 ![bg right:40%](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/epidemio/FredBrauer_2007-05-13.jpg)
 # In Memoriam - Fred Brauer
 
-Fred Brauer (dec. 2021-10-17) was a friend and mentor to many worldwide and a driving force in Mathematical Epidemiology in Canada
+Fred Brauer was a friend and mentor to many worldwide and a driving force of Mathematical Epidemiology in Canada
 
 I was priviledged to learn from him and teach math epi with him in a wide variety of settings
 
-This course is dedicated to his memory!
+Fred passed away 2021-10-17. This course is dedicated to his memory!
 
 > When you learn to use a hammer, everything looks like a nail
 
@@ -81,8 +81,8 @@ L9: Some recent mathematical models for COVID-19, HIV/AIDS, TB, Malaria, etc.
 
 # GitHub repository for the course
 
-Most course material is available from a GitHub repository I set up: 
-[https://github.com/julien-arino/3MC-course-epidemiological-modelling](https://github.com/julien-arino/3MC-course-epidemiological-modelling)
+Most course material is available from a GitHub repository/page I set up: 
+[https://julien-arino.github.io/3MC-course-epidemiological-modelling](https://julien-arino.github.io/3MC-course-epidemiological-modelling)
 
 This includes the slides, code and data samples
 
@@ -94,11 +94,11 @@ One remark: I sometimes refer to Wikipedia. For the younger students here: this 
 
 # Slides
 
-The slides are written in `Markdown` and `LaTeX` and are rendered as `html` files using [Marp](https://marp.app/) running in the [Visual Studio Code](https://code.visualstudio.com/) editor
+- The slides are written in `Markdown` and `LaTeX` and are rendered as `html` files using [Marp](https://marp.app/) running in the [Visual Studio Code](https://code.visualstudio.com/) editor
 
-Image files are not hosted locally and thus require internet access
+- Image files are not hosted locally and thus require internet access. As much as possible, I have left provenance information (by linking the file on the original website); when not possible, the file is saved with the name of the source indicated
 
-For convenience, `pdf` versions of the slides are also available in the GitHub repo; the `pdf` versions embed image files. However, movies and Shiny code do not function in the `pdf` version of the slides
+- For convenience, `pdf` versions of the slides are also available in the GitHub repo; the `pdf` versions embed image files. However, movies and Shiny code do not function in the `pdf` version of the slides
 
 ---
 
@@ -199,11 +199,6 @@ table {
 
 ---
 
-First plague pandemic 541–767
-Second plague pandemic 1346-1835
-
----
-
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Who, when and where
 
@@ -236,9 +231,9 @@ Domain is terminologically heavy. A few pointers:
 
 ![bg left:50%](https://upload.wikimedia.org/wikipedia/commons/c/c7/Snow-cholera-map.jpg)
 
-# <!--fit--> Where: [1854 Broad Street cholera outbreak](https://en.wikipedia.org/wiki/1854_Broad_Street_cholera_outbreak)
+# <!--fit--> Where: [1854 cholera outbreak](https://en.wikipedia.org/wiki/1854_Broad_Street_cholera_outbreak)
 
-Cholera outbreak in London (UK)
+Cholera outbreak in Broad Street, London (UK)
 
 Studied by [John Snow](https://en.wikipedia.org/wiki/John_Snow)
 
@@ -264,6 +259,18 @@ Studied by [John Snow](https://en.wikipedia.org/wiki/John_Snow)
 
 ---
 
+# Immunisation
+
+- Smallpox first disease for which it was known 
+- Mentioned in a 1549 Chinese book
+- China: powdered smallpox scabs blown up noses of the healthy; variolation-induced mortality not negligible (0.5-2%) but lower than normal (20%)
+- 1798:  Edward Jenner introduces safer inoculation with cowpox (vaccination)
+- 1880s: Pasteur extends vaccination to chicken cholera and anthrax in animals and human rabies
+
+At the time, *herd immunity* was not understood so this was for personal protection
+
+---
+
 <div style = "position: relative; top: -55%; padding-bottom:60px; font-size:40px">
 Measles cases in the USA
 </div>
@@ -285,10 +292,21 @@ Measles cases in the USA
 
 ![bg right:40%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Bernoulli-1760-first_page.jpg)
 
-# <!--fit-->Daniel Bernoulli's model (1760)
+# Daniel Bernoulli (1760)
 
 - [BNF scan](https://gallica.bnf.fr/ark:/12148/bpt6k3558n/f220.item) or [pdf](https://julien-arino.github.io/assets/pdf/Bernoulli-1760.pdf)
-- About petite vérole (smallpox) inoculation
 - Probably the first epidemic model
+- About petite vérole (smallpox) inoculation
 
+---
 
+![bg left:30%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/RonaldRoss_WellcomeCollection.jpg)
+# Ross (early 1900)
+
+- On 20 August 1897, observed malaria parasites in the gut of a mosquito fed several days earlier on a malaria positive human
+- Nobel Prize for Medicine 1902
+- Started considering malaria eradication using mathematical models
+
+---
+
+# Kermack and McKendrick (1927+)
