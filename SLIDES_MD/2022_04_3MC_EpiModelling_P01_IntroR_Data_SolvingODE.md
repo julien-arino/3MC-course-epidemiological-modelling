@@ -458,18 +458,17 @@ to_keep = 1:dim(tree_locs_orig)[1]
 to_keep = setdiff(to_keep,tree_pairs_roads_intersect)
 ```
 
-
 ---
 
 ![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/pairs_postproc.png)
 
 ---
 
-\maxFrameImageNoFrame{pairs_postproc_zoom}
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/pairs_postproc_zoom.png)
 
 ---
 
-\maxFrameImageNoFrame{selectedTrees}
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/selected_trees.png)
 
 ---
 

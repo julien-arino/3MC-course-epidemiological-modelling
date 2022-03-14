@@ -1,0 +1,296 @@
+---
+title: Epidémiologie mathématique 
+subtitle: à l'heure du ``Open Data''
+author: Julien Arino
+institute: | 
+  | Department of Mathematics
+  | Data Science Nexus
+  | Visual and Automatic Disease Analytics training program
+  | Centre for Disease Modelling (West)
+  |
+  | University of Manitoba
+  |
+  | `Julien.Arino@umanitoba.ca`
+date: 26 novembre 2019
+output:
+  beamer_presentation:
+    keep_tex: yes
+    theme: "Shanghai"
+    slide_level: 3
+    includes:
+      in_header: ~/Documents/Presentations/2019_11_Dakar/beamer_header.tex
+---
+
+```{r initial_setup, echo=FALSE, warning=FALSE}
+date = Sys.Date()
+library(knitr)
+library(formatR)
+library(XML)
+library(methods)
+library(htmltab)
+library(wbstats)
+library(maps)
+library(mapdata)
+library(countrycode)
+source("useful_functions.R")
+opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+### Remarques sur ce document
+Tous les liens devraient être clickables
+\vfill
+Le code sera fourni (sur demande)
+\vfill
+Le code est en  `R` .. j'aurais pu utiliser Python mais je hais ce language :)
+\vfill
+Une partie de ces transparents est dynamique: ils sont produits avec [Rmarkdown](https://rmarkdown.rstudio.com/index.html) en utilisant des données extraites du web et à jour au jour de compilation de ce document (`r date`)
+
+### Pour générer ces transparents
+Il vous faudra les programmes (gratuits) suivants
+
+- `R` (une version réecente $\geq 3.5$) ([lien](https://www.r-project.org/))
+- `RStudio` ([lien](https://www.rstudio.com/products/rstudio/download/))
+- Une distribution de \LaTeX ([MiKTeX](https://miktex.org/) sous Windows, TeX Live sous Linux \& Mac)
+- Plusieurs librairies `R`
+- Accès au web (une copie des pages/fichiers est fournie, quand même)
+
+
+### Principes directeurs
+Nous vivons dans un monde où les données (data) sont devenues une ressource très prisée
+\vfill
+Beaucoup de données sont accessibles librement
+\vfill	
+Un modélisateur n'est pas \emph{obligé} d'utiliser des données, mais quand des données sont disponibles, vous devriez au moins essayer de voir de quoi il retourne
+\vfill
+Si vous voulez ``avoir un impact'' (pouvoir influencer une politique de santé publique), oubliez la stabilité globale!
+
+
+# Les données sont partout
+
+### Données propriétaires versus données libres (open data)
+**Données propriétaires**
+
+- souvent générées par des compagnies, gouvernements ou laboratoires de recherche
+- quand elles sont disponibles, viennent avec multiples restrictions
+\vfill
+
+**Open data**
+
+- souvent générées par les mêmes entités (compagnies, labos) mais \emph{libérées} après une certaine période
+- de plus en plus fréquent pour les gouvernements/entités publiques
+- grande variété de licenses, donc attention
+- grande variété de qualités, donc attention
+
+### Initiatives Open Data 
+Mouvement récent (5-10 ans): governments (locaux ou plus haut) créent des portails où les données sont centralisées et publiées
+
+- [https://data.winnipeg.ca/](https://data.winnipeg.ca/)
+- [https://open.alberta.ca/opendata](https://open.alberta.ca/opendata)
+- [https://open.canada.ca/en/open-data](https://open.canada.ca/en/open-data)
+- [https://data.europa.eu/euodp/data/](https://data.europa.eu/euodp/data/)
+- [http://data.un.org/](http://data.un.org/)
+- [https://data.worldbank.org/](https://data.worldbank.org/)
+- [https://www.who.int/gho/database/en/](https://www.who.int/gho/database/en/)
+
+### Méthodes de récupération des données
+- A la main
+- En utilisant des programmes comme [Engauge Digitizer](http://markummitchell.github.io/engauge-digitizer/) ou [g3data](https://github.com/pn2200/g3data)
+- En utilisant des API
+- En utilisant des processeurs de langage naturel (web scraping)
+- En utilisant des packages (`R`, `Python` principalement)
+
+### Exemple: la population du Sénégal
+```{r getAndPlot_CTRY_from_WB, size="footnotesize"}
+if (FALSE) {
+  pop_data_CTRY <- wb(country = c("SEN"),
+                      indicator = "SP.POP.TOTL",
+                      mrv = 100)
+} else {
+  pop_data_CTRY = readRDS("DATA/pop_data_CTRY_downloaded.Rds")
+}
+y_range = range(pop_data_CTRY$value)
+y_axis <- make_y_axis(y_range)
+pdf(file = "FIGS/pop_SEN.pdf",
+    width = 11, height = 8.5)
+plot(pop_data_CTRY$date,pop_data_CTRY$value*y_axis$factor,
+     xlab = "Année", ylab = "Population",
+     type = "b", lwd = 2,
+     yaxt = "n")
+axis(2, at = y_axis$ticks, 
+     labels = y_axis$labels, 
+     las = 1, cex.axis=0.8)
+dave <- dev.off()
+```
+
+###
+\maxFrameImageNoFrame{FIGS/pop_SEN.pdf}
+
+# Exemple -- Graphiose de l'orme
+
+### Graphiose de l'orme
+- Maladie fongique de l'orme
+\vfill
+- Causée par le champignon \emph{Ophiostoma ulmi}
+\vfill
+- Transmise par le scolyte de l'orme (Scolytus scolytus) (coléoptère) 
+\vfill
+- A décimé les forêts urbaines en amérique du nord
+
+###
+\maxFrameImageNoFrame{WinnipegOpenDataPortal}
+
+###
+\maxFrameImageNoFrame{WODTreeMap}
+
+###
+\maxFrameImageNoFrame{WODTreeMapZoom}
+
+### Recuperation des données des arbres
+```{r grab_trees, size="footnotesize"}
+if (FALSE) {
+  allTrees = read.csv("https://data.winnipeg.ca/api/views/hfwk-jp4h/rows.csv?accessType=DOWNLOAD")
+} else {
+  allTrees = readRDS("DATA/allTrees.Rds")
+}
+```
+
+Voilà ce que cela retourne:
+
+```{r echo=TRUE}
+dim(allTrees)
+```
+
+### On nettoie un peu
+```{r get_elms, size="footnotesize"}
+elms_idx = grep("American Elm", 
+                allTrees$Common.Name,
+                ignore.case = TRUE)
+elms = allTrees[elms_idx,]
+```
+ce qui nous laisse `r dim(elms)[1]` ormes américains
+
+
+### 
+\maxFrameImageNoFrame{Recap_Diagram}
+
+### 
+\maxFrameImageNoFrame{temperaturePhase}
+
+### 
+\maxFrameImageNoFrame{flowDiagramBeetlesV4}
+### 
+\maxFrameImageNoFrame{flowDiagramTreesV2}
+
+
+### Calcul des interactions racinaires
+(Pas en temps réel ici, on a besoin d'une machine assez grosse -- environ 50GB de RAM)
+\vfill
+- Si les racines d'un arbre infecté touchent les racines d'un arbre sain, le champignon est transmis
+\vfill
+- Etendue système racinaire dépend de la hauteur de l'arbre (on a DBH)
+\vfill
+- La façon dont les routes sont construites empêche les contacts racinaires d'un côté de la route à l'autre
+
+### Distances entre tous les ormes
+```
+elms_xy = cbind(elms$X, elms$Y)
+D = dist(elms_xy)
+idx_D = which(D<50)
+```
+`indices_LT` est une grosse ($N(N-1)/2\times 2$) matrice avec les indices $(orig,dest)$ des arbres dans les paires d'ormes, donc `indices_LT[idx_D]` sont les paires considérées 
+\vfill
+On garde un peu plus..
+```
+indices_LT_kept = as.data.frame(cbind(indices_LT[idx_D,],
+                                D[idx_D]))
+colnames(indices_LT_kept) = c("i","j","dist")
+```
+
+
+### On crée des segments pour toutes les paires
+```
+tree_locs_orig = cbind(elms_latlon$lon[indices_LT_kept$i],
+                       elms_latlon$lat[indices_LT_kept$i])
+tree_locs_dest = cbind(elms_latlon$lon[indices_LT_kept$j],
+                       elms_latlon$lat[indices_LT_kept$j])
+tree_pairs = do.call(sf::st_sfc,
+                     lapply(
+                       1:nrow(tree_locs_orig),
+                       function(i){
+                         sf::st_linestring(
+                           matrix(
+                             c(tree_locs_orig[i,],
+                               tree_locs_dest[i,]), 
+                             ncol=2,
+                             byrow=TRUE)
+                         )
+                       }
+                     )
+)
+```
+
+### Un peu de cartographie
+```
+library("tidyverse")
+# Get bounding polygon for Winnipeg
+bb_poly = osmdata::getbb(place_name = "winnipeg", 
+                         format_out = "polygon")
+# Get roads
+roads <- osmdata::opq(bbox = bb_poly) %>%
+  osmdata::add_osm_feature(key = 'highway', 
+                           value = 'residential') %>%
+  osmdata::osmdata_sf () %>%
+  osmdata::trim_osmdata (bb_poly)
+# Get rivers
+rivers <- osmdata::opq(bbox = bb_poly) %>%
+  osmdata::add_osm_feature(key = 'waterway', 
+                           value = "river") %>%
+  osmdata::osmdata_sf () %>%
+  osmdata::trim_osmdata (bb_poly)
+```
+
+### Et on termine tranquille
+- On a les paires d'arbres potentiellement en contact
+- On a les routes et les rivieres de la ville (collection de segments de droite)
+\vfill
+- Si il y a une intersection entre une paire et une route/riviere, on oublie cette paire
+\vfill
+```{size="footnotesize"}
+st_crs(tree_pairs) = sf::st_crs(roads$osm_lines$geometry)
+iroads = sf::st_intersects(x = roads$osm_lines$geometry,
+                           y = tree_pairs)
+irivers = sf::st_intersects(x = rivers$osm_lines$geometry,
+                            y = tree_pairs)
+```
+
+### 
+```
+tree_pairs_roads_intersect = c()
+for (i in 1:length(iroads)) {
+  if (length(iroads[[i]])>0) {
+    tree_pairs_roads_intersect = c(tree_pairs_roads_intersect,
+                                   iroads[[i]])
+  }
+}
+tree_pairs_roads_intersect = sort(tree_pairs_roads_intersect)
+to_keep = 1:dim(tree_locs_orig)[1]
+to_keep = setdiff(to_keep,tree_pairs_roads_intersect)
+```
+
+
+### 
+\maxFrameImageNoFrame{pairs_postproc}
+
+### 
+\maxFrameImageNoFrame{pairs_postproc_zoom}
+
+### 
+\maxFrameImageNoFrame{selectedTrees}
+
+### 
+\maxFrameImageNoFrame{BMB_specialIssue}
