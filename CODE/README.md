@@ -1,0 +1,1 @@
+This directory contains various `R` code used in the course. Note that there is also an RStudio project file. This is so that some of the `R` code knows the current directory, for example if/when using here::here().

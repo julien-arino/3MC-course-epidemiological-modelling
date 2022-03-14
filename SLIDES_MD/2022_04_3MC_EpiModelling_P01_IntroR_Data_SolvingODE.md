@@ -262,23 +262,25 @@ Recent movement (5-10 years): governments (local or higher) create portals where
 
 ---
 
-# Example: population of Senegal
+# Example: population of South Africa
 
 ```
-pop_data_CTRY <- wb(country = c("SEN"), indicator = "SP.POP.TOTL",
-                      mrv = 100)
+pop_data_CTRY <- wb_data(country = "ZAF", indicator = "SP.POP.TOTL",
+                         mrv = 100, return_wide = FALSE)
 y_range = range(pop_data_CTRY$value)
 y_axis <- make_y_axis(y_range)
-pdf(file = "FIGS/pop_SEN.pdf", width = 11, height = 8.5)
+png(file = "../FIGS/pop_ZAF.png", width = 800, height = 400)
 plot(pop_data_CTRY$date, pop_data_CTRY$value * y_axis$factor,
-     xlab = "Année", ylab = "Population", type = "b", lwd = 2,
+     xlab = "Year", ylab = "Population", type = "b", lwd = 2,
      yaxt = "n")
-axis(2, at = y_axis$ticks, labels = y_axis$labels, las = 1, cex.axis = 0)
+axis(2, at = y_axis$ticks, labels = y_axis$labels, las = 1)
+dev.off()
+crop_figure("../FIGS/pop_ZAF.png")
 ```
 
 ---
 
-\maxFrameImageNoFrame{FIGS/pop_SEN.pdf}
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/pop_ZAF.png)
 
 ---
 
@@ -330,19 +332,19 @@ We are left with 54,036 American elms
 
 ---
 
-![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Recap_Diagram)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Recap_Diagram.png)
 
 ---
 
-![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/temperaturePhase)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/temperature_phase.png)
 
 ---
 
-![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flowDiagramBeetlesV4)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flow_diagram_DED_beetles.png)
 
 ---
 
-![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flowDiagramTreesV2)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flow_diagram_DED_trees.png)
 
 ---
 
