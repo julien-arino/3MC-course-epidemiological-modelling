@@ -215,7 +215,7 @@ Then `x+1` gives
 
 # It is important to be "data aware"
 
-- Using R, it is really easy to grab data from the web, e.g., from Open Data sources
+- Using R (or Python), it is really easy to grab data from the web, e.g., from Open Data sources
 - More and more locations have an open data policy
 - As a modeller, you do not need to have data everywhere, but you should be aware of the context
 - If you want your work to have an impact, for instance in public health, you cannot be completely disconnected from reality
@@ -461,7 +461,7 @@ to_keep = setdiff(to_keep,tree_pairs_roads_intersect)
 
 ---
 
-\maxFrameImageNoFrame{pairs_postproc}
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/pairs_postproc.png)
 
 ---
 

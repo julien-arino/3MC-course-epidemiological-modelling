@@ -14,3 +14,4 @@ plot(pop_data_CTRY$date, pop_data_CTRY$value * y_axis$factor,
 axis(2, at = y_axis$ticks, labels = y_axis$labels, las = 1)
 dev.off()
 crop_figure("../FIGS/pop_ZAF.png")
+
