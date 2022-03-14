@@ -1,7 +1,7 @@
 ---
 marp: true
 title: History of epidemics and Historical epidemics
-description: 3MC Course Epidemiological Modelling - Julien Arino - Course 01 - History of epidemics and Historical epidemics
+description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 01 - History of epidemics and Historical epidemics
 theme: default
 paginate: false
 size: 4K
@@ -9,7 +9,7 @@ size: 4K
 
 # History of epidemics and Historical epidemics
 
-April 2022 
+4 April 2022 
 
 Julien Arino [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/email-round.png)](mailto:Julien.Arino@umanitoba.ca) [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/world-wide-web.png)](https://server.math.umanitoba.ca/~jarino) [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/github-icon.png)](https://github.com/julien-arino)
 

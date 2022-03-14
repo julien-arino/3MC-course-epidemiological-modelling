@@ -1,15 +1,15 @@
 ---
 marp: true
 title: Metapopulation epidemic models
-description: 3MC Course Epidemiological Modelling - Julien Arino - Course 05 - Metapopulation models
+description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 05 - Metapopulation models
 theme: default
 paginate: false
 size: 4K
 ---
 
-# Metapopulation epidemic models
+# Lecture 05 - Metapopulation epidemic models
 
-April 2022 
+5 April 2022 
 
 Julien Arino [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/email-round.png)](mailto:Julien.Arino@umanitoba.ca) [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/world-wide-web.png)](https://server.math.umanitoba.ca/~jarino) [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/github-icon.png)](https://github.com/julien-arino)
 

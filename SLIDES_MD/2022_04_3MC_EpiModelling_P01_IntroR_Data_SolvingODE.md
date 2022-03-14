@@ -9,7 +9,7 @@ size: 4K
 
 # Practicum 01 - Introduction to R. Collecting data. Solving ODEs in R
 
-April 2022 
+4 April 2022
 
 Julien Arino [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/email-round.png)](mailto:Julien.Arino@umanitoba.ca) [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/world-wide-web.png)](https://server.math.umanitoba.ca/~jarino) [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/github-icon.png)](https://github.com/julien-arino)
 
@@ -26,6 +26,14 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 * The University of Manitoba campuses are located on original lands of Anishinaabeg, Cree, Oji-Cree, Dakota and Dene peoples, and on the homeland of the Métis Nation.</div>
 
 ---
+
+<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
+# Outline
+
+- Foreword: the R language
+- Programming in R
+- Dealing with data
+- Solving ODE numerically
 
 ---
 
@@ -200,6 +208,13 @@ Then `x+1` gives
 
 ---
 
+# For the matlab-ers here
+
+- R does not have the keyword `end` to access the last entry in a matrix/vector/list..
+- Use `length` (lists or vectors), `nchar` (character chains), `dim` (matrices.. careful, of course returns 2 values)
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Dealing with data
 
@@ -350,11 +365,11 @@ We are left with 54,036 American elms
 
 # Computation of root systems interactions
 
-(Pas en temps réel ici, on a besoin d'une machine assez grosse -- environ 50GB de RAM)
+(Needs a relatively large machine here - about 50GB RAM)
 
-- Si les racines d'un arbre infecté touchent les racines d'un arbre sain, le champignon est transmis
-- Etendue système racinaire dépend de la hauteur de l'arbre (on a DBH)
-- La façon dont les routes sont construites empêche les contacts racinaires d'un côté de la route à l'autre
+- If roots of an infected tree touch roots of a susceptible tree, fungus is transmitted
+- Spread of a tree's root system depends on its height (we have diametre at breast height, DBH, for all trees)
+- The way roadways are built, there cannot be contacts between root systems of trees on opposite sides of a street
 
 ---
 
@@ -366,40 +381,39 @@ D = dist(elms_xy)
 idx_D = which(D<50)
 ```
 
-`indices_LT` is a large $N(N-1)/2\times 2$ matrix with indices (orig,dest) of trees in the pairs of elms, so
-`indices_LT[idx_D]` are the pairs under consideration
+`indices_LT` is a large $N(N-1)/2\times 2$ matrix with indices (orig,dest) of trees in the pairs of elms, so `indices_LT[idx_D]` are the pairs under consideration
 
-On
-garde un peu plus..
+Keep a little more..
 
-\begin{verbatim}
+```
 indices_LT_kept = as.data.frame(cbind(indices_LT[idx_D,],
                                 D[idx_D]))
 colnames(indices_LT_kept) = c("i","j","dist")
-\end{verbatim}
+```
 
 ---
 
-# On crée des segments pour toutes les paires
+# Create line segments between all pairs of trees
 
 ```
 tree_locs_orig = cbind(elms_latlon$lon[indices_LT_kept$i],
                        elms_latlon$lat[indices_LT_kept$i])
 tree_locs_dest = cbind(elms_latlon$lon[indices_LT_kept$j],
                        elms_latlon$lat[indices_LT_kept$j])
-tree_pairs = do.call(sf::st_sfc,
-                     lapply(
-                       1:nrow(tree_locs_orig),
-                       function(i){
-                         sf::st_linestring(
-                           matrix(
-                             c(tree_locs_orig[i,],
-                               tree_locs_dest[i,]), 
-                             ncol=2,
-                             byrow=TRUE)
-                         )
-                       }
-                     )
+tree_pairs = do.call(
+  sf::st_sfc,
+  lapply(
+    1:nrow(tree_locs_orig),
+    function(i){
+      sf::st_linestring(
+        matrix(
+          c(tree_locs_orig[i,],
+            tree_locs_dest[i,]), 
+          ncol=2,
+          byrow=TRUE)
+      )
+    }
+  )
 )
 ```
 
@@ -428,12 +442,11 @@ rivers <- osmdata::opq(bbox = bb_poly) %>%
 
 ---
 
-# Et on termine tranquille
+# And we finish easily
 
-- On a les paires d'arbres potentiellement en contact
-- On a les routes et les rivieres de la ville (collection de segments de
-  droite)
-- Si il y a une intersection entre une paire et une route/riviere, on oublie cette paire
+- We have the pairs of trees potentially in contact with each other
+- We have the roads and rivers of the city, which is a collection of line segments
+- If there is an intersection between a tree pair and a road/river, then we can forget this tree pair as their root systems cannot come into contact
 
 ```
 st_crs(tree_pairs) = sf::st_crs(roads$osm_lines$geometry)
@@ -475,3 +488,70 @@ to_keep = setdiff(to_keep,tree_pairs_roads_intersect)
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Solving ODE numerically
 
+---
+
+# The deSolve library
+
+- As I have already pointed out, [`deSolve`](https://cran.r-project.org/web/packages/deSolve/index.html):
+> The functions provide an interface to the FORTRAN functions 'lsoda', 'lsodar', 'lsode', 'lsodes' of the 'ODEPACK' collection, to the FORTRAN functions 'dvode', 'zvode' and 'daspk' and a C-implementation of solvers of the 'Runge-Kutta' family with fixed or variable time steps
+
+- So you are benefiting from years and year of experience: [ODEPACK](https://computing.llnl.gov/projects/odepack) is a set of Fortran (77!) solvers developed at Lawrence Livermore National Laboratory (LLNL) starting in the late 70s
+
+- Other good solvers are also included, those written in C
+
+- Refer to the [package help](https://cran.r-project.org/web/packages/deSolve/deSolve.pdf) for details
+
+---
+
+# Using deSolve for simple ODEs
+
+As with more numerical solvers, you need to write a function returning the value of the right hand side of your equation (the vector field) at a given point in phase space, then call this function from the solver
+
+```
+library(deSolve)
+rhs_logistic <- function(t, x, p) {
+  with(as.list(x), {
+    dN <- p$r * N *(1-N/p$K)
+    return(list(dN))
+  })
+}
+params = list(r = 0.1, K = 100)
+IC = c(N = 50)
+times = seq(0, 100, 1)
+sol <- ode(IC, times, rhs_logistic, params)
+```
+
+---
+
+This also works: add `p` to arguments of `as.list` and thus use without `p$` prefix
+
+```
+library(deSolve)
+rhs_logistic <- function(t, x, p) {
+  with(as.list(c(x, p)), {
+    dN <- r * N *(1-N/K)
+    return(list(dN))
+  })
+}
+params = list(r = 0.1, K = 100)
+IC = c(N = 50)
+times = seq(0, 100, 1)
+sol <- ode(IC, times, rhs_logistic, params)
+```
+
+In this case, beware of not having a variable and a parameter with the same name..
+
+---
+
+# Default method: `lsoda`
+
+- `lsoda` switches automatically between stiff and nonstiff methods
+
+- You can also specify other methods: "lsode", "lsodes", "lsodar", "vode", "daspk", "euler", "rk4", "ode23", "ode45", "radau", "bdf", "bdf_d", "adams", "impAdams" or "impAdams_d" ,"iteration" (the latter for discrete-time systems)
+
+```
+ode(y, times, func, parms, 
+    method = "ode45")
+```
+
+- You can even implement your own integration method
