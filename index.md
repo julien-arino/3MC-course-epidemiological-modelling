@@ -1,4 +1,4 @@
-This is the web version of the course pages. It is used to access the presentation files in `html` format. To view files in other formats, to access the code, etc., please click the *View on GitHub* button above to access the repository content.
+This is the web version of the course pages for the [3MC course on Epidemiological Modelling](http://natural-sciences.nwu.ac.za/paa/3MC-Course-EM). It is used to access the presentation files in `html` format. To view files in other formats, to access the code, etc., please click the *View on GitHub* button above to access the repository content.
 
 List of lectures.
 - Monday 4 April 2022
@@ -17,4 +17,3 @@ List of lectures.
   - Practicum 03: [Analysis, studying stochastic models in R. Simulating agent-based models](2022_04_3MC_EpiModelling_P03_IntroR_Data_SolvingODE.html)
 - Thursday 7 April 2022
   - Lecture 09: [Some recent mathematical models for Covid-19, HIV/AIDS, TB, Hepatitis, Malaria](2022_04_3MC_EpiModelling_L09_RecentMathematicalModels.html)
-- 
