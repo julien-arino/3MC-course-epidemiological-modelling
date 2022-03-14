@@ -96,9 +96,11 @@ One remark: I sometimes refer to Wikipedia. For the younger students here: this 
 
 - Slides are written in `Markdown` and `LaTeX` and are rendered as `html` files using [Marp](https://marp.app/) running in the [Visual Studio Code](https://code.visualstudio.com/) editor
 
-- Image files are not hosted locally and thus require internet access. As much as possible, I have left provenance information (by linking the file on the original website); when not possible, the file is saved with the name of the source indicated
+- Image files are not hosted locally and thus require internet access
 
-- For convenience, `pdf` versions of the slides are also available in the GitHub repo; the `pdf` versions embed image files. However, movies and Shiny code do not function in the `pdf` version of the slides
+- As much as possible, I have left provenance information (by linking the file on the original website); when not possible, the file is saved with the name of the source indicated
+
+- For convenience, `pdf` versions of the slides are available in the GitHub repo; the `pdf` versions embed image files. However, movies and Shiny code do not function in the `pdf` version of the slides
 
 ---
 
@@ -127,7 +129,7 @@ The following are *my* favourite references:
 ---
 
 <!-- _backgroundImage: "radial-gradient(white,80%,#85110d)" -->
-# <!--fit-->On to the course!!
+# <!--fit-->On to the course !
 
 ---
 
@@ -378,3 +380,13 @@ Measles cases in the USA
 ---
 
 # Some activity later, but not much until 1990s
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Computational epidemiology
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Use of data in epidemiology

@@ -164,7 +164,7 @@ $$
 
 ---
 
-Trajectories in the phase plane $(S,I)$ corresponding to initial conditions $(S_0,1-S_0)$ (and $R_0=0$)
+Trajectories in phase plane $(S,I)$ corresponding to IC $(S_0,1-S_0)$ (and $R_0=0$)
 \begin{figure}[htbp]
   \begin{center}
     \includegraphics[width=\figfullwidth]{Simuls/SIR_simple}
@@ -175,9 +175,9 @@ Trajectories in the phase plane $(S,I)$ corresponding to initial conditions $(S_
 
 # The basic reproduction number $\mathcal{R}_0$
 
-Suppose the total population $N$ is normalised, i.e., $N=1$. Then $R=1-(S+I)$
+Suppose total population $N$ is normalised, i.e., $N=1$. Then $R=1-(S+I)$
 
-Let
+Define
 $$
 \mathcal{R}_0=\frac{\beta}{\gamma}
 $$
@@ -206,12 +206,31 @@ $$
 
 ---
 
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->SLIAR extension of the KMK model
+
+---
+
 # Extensions of the KMK model
 
 Many many works (especially since COVID-19) have used KMK-type models
 
 - Brauer. [The Kermack–McKendrick epidemic model revisited](https://doi.org/10.1016/j.mbs.2005.07.006) (2005)
+- Arino, Brauer, PvdD, Watmough & Wu. [Simple models for containment of a pandemic](http://dx.doi.org/10.1098/rsif.2006.0112) (2006), which we'll look into now
+- Arino & Portet. [A simple model for COVID-19](http://dx.doi.org/10.1016/j.idm.2020.04.002) (2020)
 
+---
+
+# An extension of KMK - SLIAR models
+
+SIR is a little too simple for many diseases:
+
+- No incubation period
+- A lot of infectious diseases (in particular respiratory) have mild and less mild forms depending on the patient
+
+$\implies$ model with SIR but also L(atent) and (A)symptomatic individuals, in which I are now symptomatic individuals
+
+Arino, Brauer, PvdD, Watmough & Wu. [Simple models for containment of a pandemic](http://dx.doi.org/10.1098/rsif.2006.0112) (2006)
 
 ---
 
@@ -606,7 +625,7 @@ Thus, $\mathcal{R}_0$ is also an indicator of the infectiousness of a pathogen
 
 ---
 
-# <!--fit-->Summary thus far
+# Summary thus far
 - An SIR *epidemic* model in which the presence or absence of an epidemic wave is characterised by the value of $\mathcal{R}_0$
 - An SIS *endemic* model in which the threshold $\mathcal{R}_0=1$ is such that when $\mathcal{R}_0<1$, the disease goes extinct, whereas when $\mathcal{R}_0>1$, the disease becomes established in the population
 - Both examples are integrable in some sense. **This is an exception!!!**
@@ -800,9 +819,8 @@ with $C(N)=N/(1-\varepsilon+\varepsilon N)$ the function describing the contact 
 # The basic reproduction number $\mathcal{R}_0$
 
 Indicator often used in epidemiology. Verbally
-``
-average number of new cases generated when an infectious individul is introduced in a completely susceptible population
-``
+
+> average number of new cases generated when an infectious individual is introduced in a completely susceptible population
  
 - If $\mathcal{R}_0<1$, then each infectious individual infects on average less than 1 person and the epidemic is quite likely to go extinct
 - If $\mathcal{R}_0>1$, then each infectious individual infects on average more than 1 person and an epidemic is quite likely to occur
@@ -813,9 +831,8 @@ average number of new cases generated when an infectious individul is introduced
 # Computation of $\mathcal{R}_0$
 
 Mathematically
-``
-bifurcation parametre aggregating system parameters, such that the DFE loses it *local* asymptotic stability as $\mathcal{R}_0$ crosses 1 from left to right
-``
+
+> bifurcation parameter aggregating system parameters, such that the DFE loses it *local* asymptotic stability as $\mathcal{R}_0$ crosses 1 from left to right
 
 - Obtained by considering the linearisation of the system at the DFE
 - Quickly becomes unmanageable (matrix size) and we get a non unique form
@@ -1074,6 +1091,287 @@ $(\bar S,\bar I)$ the DFE, denote $\overline{f}_I=\partial f/\partial I(\bar S,\
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Effect of vaccination - Herd immunity
+
+---
+
+Take the simple case of an SIR model but assume the following
+- Vaccination takes susceptible individuals and moves them directly into the recovered compartment, without them ever becoming infected/infectious
+- A fraction $p$ is vaccinated at birth
+- $f(S,I,N)=\beta SI$
+
+$$
+\begin{align}
+S' &= d((1-p)N-S)-\beta SI  \qquad\qquad\\
+I' &= \beta SI -(d+\gamma)I\\
+R' &= dpN+\gamma I-dR
+\end{align}
+$$
+
+---
+
+# Computation of $\mathcal{R}_0$
+ 
+- DFE, SIR: 
+$$
+(\bar S,\bar I,\bar R)=(N,0,0)
+$$
+- DFE, SIR with vaccination
+$$
+(\bar S,\bar I,\bar R)=
+\left((1-p)N,0,pN\right)
+$$
+
+Thus,
+- In SIR case
+$$
+\mathcal{R}_0=\frac{\beta N}{d+\gamma}
+$$
+- In SIR with vaccination case, denote $\mathcal{R}_0^\textrm{v}$ and
+$$
+\mathcal{R}_0^\textrm{v}=(1-p)\mathcal{R}_0
+$$
+
+---
+
+# Herd immunity
+
+Therefore 
+- $\mathcal{R}_0^\textrm{v}<\mathcal{R}_0$ if $p>0$
+- To control the disease, $\mathcal{R}_0^\text{v}$ must take a value less than 1, i.e.,
+$$
+\mathcal{R}_0^\text{v}<1 \iff p> 1-\frac{1}{\mathcal{R}_0}
+$$
+
+By vaccinating a fraction $p>1-1/\mathcal{R}_0$ of newborns, we thus are in a situation where the disease is eventually eradicated
+
+This is *herd immunity*
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Effect of vaccination - Bistable states
+
+---
+
+# Another SIRS model with vaccination
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=\figfullwidth]{Figures/SIRV_newborns}
+\end{center}
+\end{figure}
+
+---
+
+# SIRSV epidemic model
+
+$$
+\begin{align}
+S' &= (1-\alpha)dN-dS-\beta\frac{SI}{N}-\phi S+\theta
+V+\nu R \qquad\qquad\\
+I' &= \beta\frac{SI}{N}
++\sigma\beta\frac{VI}{N} -(d+\gamma)I \\
+R' &= \gamma I-(d+\nu)R \\
+V' &= \alpha dN+\phi S-(d+\theta)V
+-\sigma\beta\frac{VI}{N} 
+\end{align}
+$$
+
+- $\alpha$ proportion of newborns vaccinated
+- $\phi$ vaccination rate of susceptibles
+- $\theta$ rate of vaccine efficacy loss
+- $1-\sigma$ vaccine efficacy
+
+
+---
+
+Since the total population is constant, the system in proportions takes the form
+$$
+\begin{align}
+S' &= (1-\alpha)d-dS-\beta SI-\phi S+\theta
+(1-S-I-R)+\nu R \qquad\qquad \\
+I' &= \beta SI
++\sigma\beta(1-S-I-R)I -(d+\gamma)I \\
+R' &= \gamma I-(d+\nu)R \\
+V &= 1-(S+I+R) 
+\end{align}
+$$
+where $S$, $I$, $R$, $V$ are the proportions of individuals who are in the susceptible, infectious, recovered and vaccinated, respectively
+
+---
+
+# Equilibrium and bifurcations
+
+The system always has the DFE
+$$
+(S,I,R,V)=\left(
+\frac{\theta+d(1-\alpha)}{d+\theta+\phi},0,0,
+\frac{\phi+d\alpha}{d+\theta+\phi}
+\right)
+$$
+
+We now consider endemic equilibria with $I=I^\star >0$
+
+When $\sigma=0$ (vaccine 100% efficacious), there is at most one endemic equilibrium. From now on, assume (realistic) that $0<\sigma<1$, i.e., vaccine is not 100% efficacious
+
+---
+
+# Existence of endemic equilbria
+
+The existence of endemic equilibria is determined by the number of positive roots of the polynomial
+$$
+P(I)=AI^2+BI+C
+$$
+where
+$$
+A=-\sigma\beta^2\frac{d+\nu+\gamma}{d+\nu}<0
+$$
+$$
+B=\sigma\beta^2-\beta(d+\theta+\sigma(d+\gamma+\phi))
+-\frac{\beta\gamma}{d+\nu}(d+\theta+\sigma\phi)
+$$
+$$
+C=(d+\theta+\sigma\phi-d\alpha(1-\sigma))\beta
+-(d+\gamma)(d+\theta+\phi)
+$$
+
+---
+
+# Case of a forward bifurcation
+
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=\fighalfwidth]{Figures/PI_vs_I_forward}
+    \includegraphics[width=\fighalfwidth]{Figures/SIRV_bif_forward}
+  \end{center}
+\end{figure}
+
+---
+
+# Case of a backward bifurcation
+
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=\fighalfwidth]{Figures/PI_vs_I_backward}
+    \includegraphics[width=\fighalfwidth]{Figures/SIRV_bif_backward}
+  \end{center}
+\end{figure}
+
+---
+
+# Bistable region
+ 
+- Concavity of the curve is fixed (since $A<0$), so a necessary condition for existence of two endemic equilibria is: 
+  - $P'(0)=B>0$ and $P(0)=C<0$
+  - The roots of $P(I)$ must be real
+
+$\implies$ region of bistability is $\Delta=B^2-4AC\geq 0$, $B>0$ and $C<0$
+
+---
+
+# Bifurcation in the $(\sigma,\phi)$ plane
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=\figfullwidth]{Figures/bif_sigma_vs_phi}
+\end{center}
+\end{figure}
+
+---
+
+# EEP
+
+If there are such solutions $I^\star$ to $P(I)=0$ (potentielly a double root), EEP of \eqref{sys:SIR_vacc_AMV} are $(S,I,R,V)=$
+
+$$
+\left(
+\frac{(1-\alpha)d+\frac{(\nu-\theta)\gamma
+    I^\star }{d+\nu}+(1-I^\star )\theta}{d+\beta
+  I^\star +\phi+\theta},I^\star ,\frac{\gamma
+  I^\star }{d+\nu},1-S^\star -I^\star -R^\star  
+\right)
+$$
+
+---
+
+# $\mathcal{R}_0$
+
+Using the next generation method, the reproduction number (with vaccination) is
+
+$$
+\mathcal{R}_\phi=\mathcal{R}_0
+\frac{d+\theta+\sigma\phi-d\alpha(1-\sigma)}{d+\theta+\phi}
+$$
+where
+$$
+\mathcal{R}_0=\frac{\beta}{d+\gamma}
+$$
+and as a consequence
+$$
+\mathcal{R}
+(\alpha,\phi,1,\theta)=\mathcal{R}_0
+$$
+
+---
+
+# Stability - DFE
+ 
+- Using Th\'eor\`eme~\ref{th:R0_VdDW}, the DFE is
+  - locally asymptotically stable for $\mathcal{R}_\phi<1$
+  - unstable for $\mathcal{R}_\phi>1$
+- Furthermore, when $\mathcal{R}_0<1$, using $I$ as a Lyapunov function, it is easily shown the the DFE is globally asymptotically stable
+
+---
+
+# Local stability - EEP
+
+Linearising (\ref{sys3dS})-(\ref{sys3dR}) at the EEP
+ 
+- at the smaller $I$, Jacobian matrix has negative trace and positive determinant $\implies$ one of the eigenvalues is positive and the lower bifurcating branch is unstable
+- On the upper branch, conclude from linearisation that there is either one or three eigenvalues with nonpositive real part $\implies$ stability is undetermined. From numerical investigations, the upper branch seems locally stable
+
+---
+
+# Spectral abscissa at the EP
+
+Spectral abscissa $s(J)$ (maximum of real parts of eigenvalues of the Jacobian matrix $J$) of the linearisation at the DFE and the 2 EEP, when $\theta$ varies
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=\figfullwidth]{Figures/evalues_SIRbif}
+\end{center}
+\end{figure}
+
+
+---
+
+# Global behaviour
+
+<div align=justify 
+style="background-color:#16a085;
+border-radius:20px;
+padding:10px 20px 10px 20px;
+box-shadow: 0px 1px 5px #999;">
+
+Suppose that in the system \eqref{sys:SIR_vacc}, parameters satisfy
+$$
+\begin{aligned}
+  \theta &< d + 2 \nu                   \\
+2 \gamma &< d + \phi + \theta + \nu     \\
+  \gamma &< d + \phi + \nu
+\end{aligned}
+$$
+Then all positive semi-trajectories of \eqref{sys3dS}-\eqref{sys3dR} in $\bar D$, where
+$$
+D=\{(S,I,R): S,R\geq 0, I>0, S+I+R\leq 1\}
+$$
+limit to a unique equilibrium point
+</div>
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->SLIRS model - Global properties
 
 ---
@@ -1277,15 +1575,18 @@ Nous ne donnons pas la preuve de ce r\'esultat. Elle utilise la m\'ethode des ma
 
 ---
 
-{Liu, Levin et Iwasa}
-Mod\`ele SIRS de la forme
-\begin{subequations}\label{sys:SIRS_LLI}
-\begin{align}
+# Liu, Levin & Iwasa
+
+SIRS model of the form
+
+$$
+\begin{align*}
 S' &= B(N)-dS-f(S,I)I+\nu R \\
 I' &= f(S,I)I-(d+\gamma)I \\
 R' &= \gamma I-(d+\nu)R
-\end{align}
-\end{subequations}
+\end{align*}
+$$
+
 Les auteurs font quelques consid\'erations sur le cas g\'en\'eral d'une fonction $f$ diff\'erentiable, et telle que $f(0,I)=0$ pour tout $I$ et $\partial f/\partial S>0$. Ils supposent que la composante d\'emographique du syst\`eme, qui est r\'egie par l'\'equation
 $$
 N'=B(N)-dN
@@ -1306,284 +1607,6 @@ $$
 
 # Liu and van den Driessche
 Liu et van den Driessche traitent d'un mod\`ele SEIS et d'un mod\`ele SEIRS dans lesquels la population est non constante et la p\'eriode de latence est une fonction qui d\'epend du nombre d'infect\'es dans la population. Dans le cas d'un mod\`ele SEIS, le comportement n'est pas modifi\'e par cette fonction. Par contre, dans le cas d'une immunit\'e temporaire (SEIRS), les auteurs trouvent (num\'eriquement) une bifurcation de Hopf.
-
----
-
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->Effect of vaccination - Herd immunity
-
----
-
-Take the simple case of an SIR model but assume the following
-- Vaccination takes susceptible individuals and moves them directly into the recovered compartment, without them ever becoming infected/infectious
-- A fraction $p$ is vaccinated at birth
-- $f(S,I,N)=\beta SI$
-
-$$
-\begin{align}
-S' &= d((1-p)N-S)-\beta SI  \qquad\qquad\\
-I' &= \beta SI -(d+\gamma)I\\
-R' &= dpN+\gamma I-dR
-\end{align}
-$$
-
----
-
-# Computation of $\mathcal{R}_0$
- 
-- DFE, SIR: 
-$$
-(\bar S,\bar I,\bar R)=(N,0,0)
-$$
-- DFE, SIR with vaccination
-$$
-(\bar S,\bar I,\bar R)=
-\left((1-p)N,0,pN\right)
-$$
-
-Thus,
-- In SIR case
-$$
-\mathcal{R}_0=\frac{\beta N}{d+\gamma}
-$$
-- In SIR with vaccination case, denote $\mathcal{R}_0^\textrm{v}$ and
-$$
-\mathcal{R}_0^\textrm{v}=(1-p)\mathcal{R}_0
-$$
-
----
-
-# Herd immunity
-
-Therefore 
-- $\mathcal{R}_0^\textrm{v}<\mathcal{R}_0$ if $p>0$
-- To control the disease, $\mathcal{R}_0^\text{v}$ must take a value less than 1, i.e.,
-$$
-\mathcal{R}_0^\text{v}<1 \iff p> 1-\frac{1}{\mathcal{R}_0}
-$$
-
-By vaccinating a fraction $p>1-1/\mathcal{R}_0$ of newborns, we thus are in a situation where the disease is eventually eradicated
-
-This is *herd immunity*
-
----
-
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->Effect of vaccination - Bistable states
-
----
-
-# Another SIRS model with vaccination
-
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=\figfullwidth]{Figures/SIRV_newborns}
-\end{center}
-\end{figure}
-
----
-
-# SIRSV epidemic model
-
-$$
-\begin{align}
-S' &= (1-\alpha)dN-dS-\beta\frac{SI}{N}-\phi S+\theta
-V+\nu R \qquad\qquad\\
-I' &= \beta\frac{SI}{N}
-+\sigma\beta\frac{VI}{N} -(d+\gamma)I \\
-R' &= \gamma I-(d+\nu)R \\
-V' &= \alpha dN+\phi S-(d+\theta)V
--\sigma\beta\frac{VI}{N} 
-\end{align}
-$$
-
-- $\alpha$ proportion of newborns vaccinated
-- $\phi$ vaccination rate of susceptibles
-- $\theta$ rate of vaccine efficacy loss
-- $1-\sigma$ vaccine efficacy
-
-
----
-
-Since the total population is constant, the system in proportions takes the form
-$$
-\begin{align}
-S' &= (1-\alpha)d-dS-\beta SI-\phi S+\theta
-(1-S-I-R)+\nu R \qquad\qquad \\
-I' &= \beta SI
-+\sigma\beta(1-S-I-R)I -(d+\gamma)I \\
-R' &= \gamma I-(d+\nu)R \\
-V &= 1-(S+I+R) 
-\end{align}
-$$
-where $S$, $I$, $R$, $V$ are the proportions of individuals who are in the susceptible, infectious, recovered and vaccinated, respectively
-
----
-
-# Equilibrium and bifurcations
-
-The system always has the DFE
-$$
-(S,I,R,V)=\left(
-\frac{\theta+d(1-\alpha)}{d+\theta+\phi},0,0,
-\frac{\phi+d\alpha}{d+\theta+\phi}
-\right)
-$$
-
-We now consider endemic equilibria with $I=I^\star >0$
-
-When $\sigma=0$ (vaccine 100% efficacious), there is at most one endemic equilibrium. From now on, assume (realistic) that $0<\sigma<1$, i.e., vaccine is not 100% efficacious
-
----
-
-# Existence of endemic equilbria
-
-The existence of endemic equilibria is determined by the number of positive roots of the polynomial
-$$
-P(I)=AI^2+BI+C
-$$
-where
-$$
-A=-\sigma\beta^2\frac{d+\nu+\gamma}{d+\nu}<0
-$$
-$$
-B=\sigma\beta^2-\beta(d+\theta+\sigma(d+\gamma+\phi))
--\frac{\beta\gamma}{d+\nu}(d+\theta+\sigma\phi)
-$$
-$$
-C=(d+\theta+\sigma\phi-d\alpha(1-\sigma))\beta
--(d+\gamma)(d+\theta+\phi)
-$$
-
----
-
-# Case of a forward bifurcation
-
-\begin{figure}[htbp]
-  \begin{center}
-    \includegraphics[width=\fighalfwidth]{Figures/PI_vs_I_forward}
-    \includegraphics[width=\fighalfwidth]{Figures/SIRV_bif_forward}
-  \end{center}
-\end{figure}
-
----
-
-# Case of a backward bifurcation
-
-\begin{figure}[htbp]
-  \begin{center}
-    \includegraphics[width=\fighalfwidth]{Figures/PI_vs_I_backward}
-    \includegraphics[width=\fighalfwidth]{Figures/SIRV_bif_backward}
-  \end{center}
-\end{figure}
-
----
-
-# Bistable region
- 
-- Concavity of the curve is fixed (since $A<0$), so a necessary condition for existence of two endemic equilibria is: 
-  - $P'(0)=B>0$ and $P(0)=C<0$
-  - The roots of $P(I)$ must be real
-
-$\implies$ region of bistability is $\Delta=B^2-4AC\geq 0$, $B>0$ and $C<0$
-
----
-
-# Bifurcation in the $(\sigma,\phi)$ plane
-
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=\figfullwidth]{Figures/bif_sigma_vs_phi}
-\end{center}
-\end{figure}
-
----
-
-# EEP
-
-S'il existe de telles solutions $I^\star$ \`a l'\'equation $P(I)=0$ (potentiellement une racine double), les PEE du syst\`eme \eqref{sys:SIR_vacc_AMV} est/sont donn\'es par $(S,I,R,V)=$
-$$
-\left(
-\frac{(1-\alpha)d+\frac{(\nu-\theta)\gamma
-    I^\star }{d+\nu}+(1-I^\star )\theta}{d+\beta
-  I^\star +\phi+\theta},I^\star ,\frac{\gamma
-  I^\star }{d+\nu},1-S^\star -I^\star -R^\star  
-\right)
-$$
-
----
-
-# $\mathcal{R}_0$
-
-En utilisant l'op\'erateur de prochaine g\'en\'eration, le nombre de reproduction \'el\'ementaire est donn\'e par 
-$$
-\mathcal{R}_\phi=\mathcal{R}_0
-\frac{d+\theta+\sigma\phi-d\alpha(1-\sigma)}{d+\theta+\phi}
-$$
-where
-$$
-\mathcal{R}_0=\frac{\beta}{d+\gamma}
-$$
-and as a consequence
-$$
-\mathcal{R}
-(\alpha,\phi,1,\theta)=\mathcal{R}_0
-$$
-
----
-
-# Stability - DFE
- 
-- Using Th\'eor\`eme~\ref{th:R0_VdDW}, the DFE is
-  - locally asymptotically stable for $\mathcal{R}_\phi<1$
-  - unstable for $\mathcal{R}_\phi>1$
-- Furthermore, when $\mathcal{R}_0<1$, using $I$ as a Lyapunov function, it is easily shown the the DFE is globally asymptotically stable
-
----
-
-# Local stability - EEP
-
-En lin\'earisant (\ref{sys3dS})-(\ref{sys3dR}) en l'\'equilibre end\'emique
- 
-- avec la plus petite valeur de $I$, la matrice jacobienne a une trace n\'egative et un d\'eterminant positif. Elle a par cons\'equent une valeur propre strictement positive, et la branche inf\'erieure de la bifurcation est instable.  
-- Sur la branche sup\'erieure, on conclut de la lin\'earisation qu'il y a soit une soit trois valeurs propres \`a partie r\'eelle n\'egative. Par cons\'equent, la stabilit\'e de cet \'equilibre est ind\'etermin\'ee. Toutefois, les r\'esultats num\'eriques semblent indiquer que la branche sup\'erieure est localement stable.
-
----
-
-# Module de stabilit\'e en les \'equilibres
-
-Module de stabilit\'e $s(J)$ (maximum des parties r\'eeles des valeurs propres de la matrice jacobienne $J$) de la lin\'earisation en l'DFE et en les deux PEE, quand on varie $\theta$.
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=\figfullwidth]{Figures/evalues_SIRbif}
-\end{center}
-\end{figure}
-
-
----
-
-# Global behaviour
-
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
-
-Suppose that in the system \eqref{sys:SIR_vacc}, parameters satisfy
-$$
-\begin{aligned}
-  \theta &< d + 2 \nu                   \\
-2 \gamma &< d + \phi + \theta + \nu     \\
-  \gamma &< d + \phi + \nu
-\end{aligned}
-$$
-Then all positive semi-trajectories of \eqref{sys3dS}-\eqref{sys3dR} in $\bar D$, where
-$$
-D=\{(S,I,R): S,R\geq 0, I>0, S+I+R\leq 1\}
-$$
-limit to a unique equilibrium point
-</div>
 
 ---
 
@@ -1747,269 +1770,4 @@ $X_0=(N_0,0,0)$ est globalement asymptotiquement stable.
 
 Dans le cas $\mathcal{R}_0,\mathcal{R}_2>1$, la stabilit\'e globale de $X_*$
 est \'etablie dans des conditions ``\'esot\'eriques''..
-
----
-
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->Compound matrices
-
----
-
-
-On peut se r\'ef\'erer par exemple \`a Fiedler, 1998.
-Soit $A=(a_{ij})$, $i=1,\ldots,m$, $j=1,\ldots,n$ une $m\times
-n$-matrice, et soit $k$ un entier, $1\leq k\leq\min(m,n)$. 
-Soit $M=\{1,\ldots,m\}$ et $N=\{1,\ldots,n\}$, $M^{(k)}$
-(respectivement, $N^{(k)}$) les ensembles ordon\'es lexicographiquement
-de $k$-tuples ordon\'es d'\'el\'ements de $M$ (respectivement, $N$).
-
-
----
-
-
-La $k$\eme matrice compos\'ee $A^{(k)}$ de $A$ est alors la
-$C(m,k)\times C(n,k)$ matrice, de lignes index\'ees par les
-\'el\'ements de $M^{(k)}$ et de colonnes index\'ees par les
-\'el\'ements de $N^{(k)}$, telle que l'\'el\'ement $A^{(k)}(I,J)$,
-$I\in M^{(k)}$, $J\in N^{(k)}$ soit le d\'eterminant $\det A(I,J)$.
-Le symbole $A(I,J)$ repr\'esente la sous-matrice de $A$ form\'ee par
-les lignes appartenant \`a $I$ et les colonnes appartenant \`a $J$.
-
-\begin{remark}
-Une autre interpr\'etation de $A^{(k)}$ est en tant que $k$\eme
-produit ext\'erieur de la matrice $A$.
-\end{remark}
-
-
----
-
-
-Supposons maintenant que $A$ soit une $n\times n$-matrice. La matrice
-$(I+tA)^{(k)}$ est une $C(n,k)\times C(n,k)$-matrice, dont chaque
-\'el\'ement est un polyn\^ome en $t$ de degr\'e au plus $k$. En
-regroupant les termes de m\^eme degr\'e en $t$, on peut \'ecrire
-$$
-(I+tA)^{(k)}=A^{(k,0)}+tA^{(k,1)}+\cdots+t^kA^{(k,k)}
-$$
-o\`u les matrices $A^{(k,s)}$ ne d\'ependent pas de $t$. La matrice
-$A^{(k,1)}$ est appel\'ee la $k$\eme *matrice compos\'ee
-  additive} de $A$, et est not\'ee $A^{[k]}$. Elle satisfait la
-relation
-$$
-A^{[k]}=\lim_{h\to 0}
-\left(\frac 1h\left((I+hA)^{(k)}-I^{(k)}\right)\right)
-$$
-
-
----
-
-{Remarque}
-On note \'egalement cette derni\`ere \'egalit\'e sous la forme
-$$
-A^{[k]}=D_+(I+hA)^{(k)}|_{h=0}
-$$
-o\`u $D_+$ est la d\'eriv\'ee \`a droite.
-
-
----
-
-
-\begin{property}\label{prop:construction_MC}
-Supposons que $A=(a_{pq})$. Alors, pour $I,J\in N^{(k)}$,
-$$
-A^{[k]}(I,J)=\left\{
-\begin{array}{ll}
-\sum_{p\in I}a_{pp} & \textrm{si } J=I \\
-0 & \textrm{si }|I\cap J|\leq k-2 \\
-(-1)^\sigma a_{pq} & \textrm{si } |I\cap J|=k-1
-\end{array}
-\right.
-$$
-o\`u $p$ est l'entr\'ee dans $I\setminus(I\cap J)$, $q$ est l'entr\'ee
-dans $J\setminus(I\cap J)$, et $\sigma$ est le nombre d'\'el\'ements
-de $I\cap J$ entre $p$ et $q$.
-\end{property}
-
-
----
-
-
-Dans le cas $k=2$, on a donc la
-caract\'erisation suivante.
-\begin{property}\label{prop:construction_MC2}
-Supposons que $A=(a_{ij})$. Pour tout entier $i=1,\ldots,C(n,2)$, soit
-$(i)=(i_1,i_2)$ le $i$\eme membre de l'ordre lexicographique des
-couples d'entiers $(i_1,i_2)$ tel que $1\leq i_1<i_2\leq n$. Alors
-l'\'el\'ement dans la $i$\eme ligne et $j$\eme colonne de $A^{[2]}$ est
-$$
-a_{ij}=\left\{
-\begin{array}{ll}
-a_{i_1i_1}+a_{i_2i_2} & \textrm{si } (j)=(i) \\
-(-1)^{r+s}a_{i_rj_s} & \textrm{si exactement un \'el\'ement }
-i_r\textrm{ de }(i)\textrm{ n'appara\^it pas}\\
-&\textrm{dans }(j)\textrm{ et }j_s
-\textrm{ n'appara\^it pas dans }(i) \\
-0 & \textrm{si aucun \'el\'ement de }(i)
-\textrm{ n'appara\^it dans }(j) 
-\end{array}
-\right.
-$$
-o\`u $p$ est l'entr\'ee dans $I\setminus(I\cap J)$, $q$ est l'entr\'ee
-dans $J\setminus(I\cap J)$, et $\sigma$ est le nombre d'\'el\'ements
-de $I\cap J$ entre $p$ et $q$.
-\end{property}
-
-
-
-
----
-
-# Example
-
-Let
-$$
-A_2=\left(
-\begin{matrix}
-a_{11} & a_{12} \\
-a_{21} & a_{22} 
-\end{matrix}
-\right),\quad
-A_3=\left(
-\begin{matrix}
-a_{11} & a_{12} & a_{13} \\
-a_{21} & a_{22} & a_{23} \\
-a_{31} & a_{32} & a_{33}
-\end{matrix}
-\right)
-$$
-$$
-A_4=\left(
-\begin{matrix}
-a_{11} & a_{12} & a_{13} & a_{14} \\
-a_{21} & a_{22} & a_{23} & a_{24} \\
-a_{31} & a_{32} & a_{33} & a_{34} \\
-a_{41} & a_{42} & a_{43} & a_{44}
-\end{matrix}
-\right)
-$$
-
----
-
-Then
-$$
-A_2^{[2]}=a_{11}+a_{22},\quad
-A_3^{[2]}=\left(
-\begin{matrix}
-a_{11}+a_{22} & a_{23} & -a_{13} \\
-a_{32} & a_{11}+a_{33} & a_{12} \\
--a_{31} & a_{21} & a_{22}+a_{33}
-\end{matrix}
-\right)
-$$
-
-
----
-
-$$
-A_4^{[2]}=\left(
-\begin{matrix}
-a_{11}+a_{22} & a_{23} & a_{24} & -a_{13} & -a_{14} & 0 \\
-a_{32} & a_{11}+a_{33} & a_{34} & a_{12} & 0 & -a_{14} \\
-a_{42} & a_{43} & a_{11}+a_{44} & 0 & a_{12} & a_{13} \\
--a_{31} & a_{21} & 0 & a_{22}+a_{33} & a_{34} & -a_{24} \\
--a_{41} & 0 & a_{21} & a_{43} & a_{22}+a_{44} & a_{23} \\
-0 & -a_{41} & a_{31} & -a_{42} & a_{32} & a_{33}+a_{44}
-\end{matrix}
-\right)
-$$
-$$
-A_3^{[3]}=a_{11}+a_{22}+a_{33}
-$$
-$$
-A_4^{[3]}=\left(
-\right)
-$$
-
----
-
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
-
-Soit $A,B$ deux $n\times n$-matrices. Alors,
- 
-- Le nombre d'\'el\'ements non nuls hors diagonale de $A^{[k]}$
-  est \'egal \`a $C(n-2,k-1)$ fois le nombre d'\'el\'ements non nuls
-  hors diagonale de $A$.
-- $A^{[1]}=A$, $A^{[n]}=\tr A$.
-- $(A+B)^{[k]}=A^{[k]}+B^{[k]}$ (d'o\`u le suffixe
-  *additive}).
-- Soit $S$ une $n\times n$-matrice non singuli\`ere. Alors
-  $(SAS)^{[k]}=S^{{k}}A^{[k]}(S^{-1})^{(k)}$.
-</div>
-
----
-
-Soit $A$ une $m\times m$-matrice. On note $A^{[2]}$ la seconde matrice compound de $A$ (sur le sujet des matrices compos\'ees, on consultera par exemple ...).
-
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
-
-Soit $A$ une $m\times m$-matrice \`a entr\'ees r\'eelles. Pour que $A$
-ait ses valeurs propres \`a parties r\'eelles strictement n\'egatives,
-il faut et il suffit que
-1. la deuxi\`eme matrice compound additive $A^{[2]}$ ait ses valeurs propres \`a parties r\'eelles strictement n\'egatives
-2. $(-1)^m\det(A)>0$
-</div>
-
----
-
-# Role in stability
-
-Soit le syst\`eme diff\'erentiel
-\begin{equation}\label{sys:diff_general}
-x'=f(x)
-\end{equation}
-On a le th\'eor\`eme qui suit.
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
-
-[Li \& Muldowney, 1995]\label{th:LM1}
-Une condition suffisante pour qu'une orbite p\'eriodique $\gamma=\{p(t):0\leq t\leq\omega\}$ de (\ref{sys:diff_general}) soit asymptotiquement orbitalement stable avec phase asymptotique est que le syst\`eme lin\'eaire
-$$
-z'(t)=\left(\frac{\partial f^{[2]}}{\partial x}
-  \left(p(t)\right)\right)z(t)
-$$
-soit asymptotiquement stable
-</div>
-
----
-
-{Mod\`eles multigroupes}
-Mod\`eles sensiblement similaires aux mod\`eles de m\'etapopulations. 
- 
-- Individus vivant dans un m\^eme lieu.
-- Diff\'erents groupes (sociaux, pratiques sexuelles, etc.).
-- Param\`etres de m\'elange entre les groupes.
-
-Mod\`eles de maisonn\'ees.
- 
-- Individu infect\'e est retir\'e de la population g\'en\'erale et
-  plac\'e dans une maison, o\`u les taux d'infections sont
-  compl\`etement diff\'erents.
-
-Mod\`ele avec un groupe noyau.
- 
-- 
-Vient de l'observation que certaines maladies semblent \^etre mieux  propag\'ees par quelques individus (**super spreaders**)
-
-
 

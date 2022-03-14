@@ -54,10 +54,11 @@ Groups allow to introduce structure in a population without using PDEs
 - Age structure
 - Social structure
 - Pathogen heterogeneity
+- Host heterogeneity (e.g., super spreaders)
 
 In this lecture, we do not consider *spatial heterogeity*; this is done in [Lecture 05](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_L05_MetapopulationModels.html)
 
-Let us start by considering a few examples
+We start by considering a few examples
 
 ---
 
