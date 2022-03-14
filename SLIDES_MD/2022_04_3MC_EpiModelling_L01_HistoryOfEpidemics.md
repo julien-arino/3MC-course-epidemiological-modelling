@@ -62,20 +62,40 @@ It is important to do the 4 interactively
 
 ---
 
-# Organisation of the course
+# About modelling
 
-L1: History of epidemics and Historical epidemics
-L2: Basic concepts of Mathematical Epidemiology. Models in one population
-P1: Introduction to R. Collecting data. Solving ODEs in R
-L3: Epidemics spreading among groups. Epidemics spreading in space and time                                     
-L4: Group models
-L5: Metapopulation models
-P2: Model analysis, studying large-scale models in R
-L6: Stochastic aspects in the spread of epidemics
-L7: Stochastic epidemic models
-L8: Agent-based models
-P3: Analysis, studying stochastic models in R. Simulating agent-based models                   
-L9: Some recent mathematical models for COVID-19, HIV/AIDS, TB, Malaria, etc.
+- Do not neglect this step
+- Think outside the box
+- Take the time
+- Try to remain simple
+
+---
+
+# About mathematical analysis
+
+- Used to be the sole purpose of most papers
+- Judge your audience: global stability is cool, but is it really required if you want to present work to a public health person?
+
+---
+
+# About numerics
+
+- Numerics should be used to complement the mathematical analysis
+
+- If you have shown the global stability of some equilibrium point, no need to show a simulation where solutions converge to this equilibrium
+
+- In fact, it is rarely useful to show a solution (cases where it is okay: before going to zero the number of infectious does something really cool, you have a period doubling, etc.)
+
+- Instead, use numerics to investigate scenarios or test the effect of varying parameters
+
+- A good figure tells a story, it is worth spending time thinking about how to make good figures
+
+---
+
+# About data
+
+- Acquiring data has become much easier than even 20 years ago
+- As a modeller, it is not necessary that everything be data-driven, but it is necessary to be "context-aware" and this means getting a sense of the quantities involved in the process you want to model
 
 ---
 
@@ -125,6 +145,22 @@ The following are *my* favourite references:
 - Brauer & C$^3$. [Mathematical Models in Population Biology and Epidemiology](https://doi.org/10.1007/978-1-4614-1686-9) (2012)
 - Brauer, C$^3$ & Feng. [Mathematical Models in Epidemiology](https://doi.org/10.1007/978-1-4939-9828-9) (2019)
 
+---
+
+# Organisation of the course
+
+L1: History of epidemics and Historical epidemics
+L2: Basic concepts of Mathematical Epidemiology. Models in one population
+P1: Introduction to R. Collecting data. Solving ODEs in R
+L3: Epidemics spreading among groups. Epidemics spreading in space and time                                     
+L4: Group models
+L5: Metapopulation models
+P2: Model analysis, studying large-scale models in R
+L6: Stochastic aspects in the spread of epidemics
+L7: Stochastic epidemic models
+L8: Agent-based models
+P3: Analysis, studying stochastic models in R. Simulating agent-based models                   
+L9: Some recent mathematical models for COVID-19, HIV/AIDS, TB, Malaria, etc.
 
 ---
 
