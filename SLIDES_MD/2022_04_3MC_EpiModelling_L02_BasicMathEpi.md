@@ -522,22 +522,18 @@ $$
 
 In summary, the solution to the system in proportions is given by
 $$
-\begin{equation}
 s(t)=1-\frac{i_0(\beta-(d+\gamma))}{i_0\beta(1-e^{-(\beta-(d+\gamma))t})
   +(\beta-(d+\gamma))e^{-(\beta-(d+\gamma))t}}
-\end{equation}
 $$
 and
 $$
-\begin{equation}
 i(t)=\frac{i_0(\beta-(d+\gamma))}{i_0\beta(1-e^{-(\beta-(d+\gamma))t})
   +(\beta-(d+\gamma))e^{-(\beta-(d+\gamma))t}}
-\end{equation}
 $$
 
 ---
 
-From \eqref{eq:sol_sys_sis}, we see there are two cases: 
+From these solutions, there are two cases: 
  
 - If $\beta-(d+\gamma)<0$, then $\lim_{t\to\infty}e^{-(\beta-(d+\gamma))t}=+\infty$, so $\lim_{t\to\infty}s(t)=1$ and $\lim_{t\to\infty}i(t)=0$
 - If $\beta-(d+\gamma)>0$, then $\lim_{t\to\infty}e^{-(\beta-(d+\gamma))t}=0$; thus, $\lim_{t\to\infty}s(t)=1-(\beta-(d+\gamma))/\beta$ and $\lim_{t\to\infty}i(t)=(\beta-(d+\gamma))/\beta$
@@ -1153,11 +1149,7 @@ This is *herd immunity*
 
 # Another SIRS model with vaccination
 
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=\figfullwidth]{Figures/SIRV_newborns}
-\end{center}
-\end{figure}
+![width:1000px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_newborns.png)
 
 ---
 
@@ -1237,23 +1229,14 @@ $$
 
 # Case of a forward bifurcation
 
-\begin{figure}[htbp]
-  \begin{center}
-    \includegraphics[width=\fighalfwidth]{Figures/PI_vs_I_forward}
-    \includegraphics[width=\fighalfwidth]{Figures/SIRV_bif_forward}
-  \end{center}
-\end{figure}
+![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/PI_vs_I_forward.png)  ![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_bif_forward.png)
+
 
 ---
 
 # Case of a backward bifurcation
 
-\begin{figure}[htbp]
-  \begin{center}
-    \includegraphics[width=\fighalfwidth]{Figures/PI_vs_I_backward}
-    \includegraphics[width=\fighalfwidth]{Figures/SIRV_bif_backward}
-  \end{center}
-\end{figure}
+![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/PI_vs_I_backward.png)  ![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_bif_backward.png)
 
 ---
 
