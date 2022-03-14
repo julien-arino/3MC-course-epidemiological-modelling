@@ -164,12 +164,9 @@ $$
 
 ---
 
-Trajectories in phase plane $(S,I)$ corresponding to IC $(S_0,1-S_0)$ (and $R_0=0$)
-\begin{figure}[htbp]
-  \begin{center}
-    \includegraphics[width=\figfullwidth]{Simuls/SIR_simple}
-  \end{center}
-\end{figure}
+Trajectories in phase plane $(S,I)$ corresponding to IC $(S_0,1-S_0)$ and $\beta/\gamma=2.5$
+
+![width:1200px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/KMK_planar_trajectories.png)
 
 ---
 
@@ -523,16 +520,16 @@ $$
 
 ---
 
-In summary, the solution to \eqref{sys_prop} is given by
+In summary, the solution to the system in proportions is given by
 $$
-\begin{equation}\label{eq:sol_s}
+\begin{equation}
 s(t)=1-\frac{i_0(\beta-(d+\gamma))}{i_0\beta(1-e^{-(\beta-(d+\gamma))t})
   +(\beta-(d+\gamma))e^{-(\beta-(d+\gamma))t}}
 \end{equation}
 $$
 and
 $$
-\begin{equation}\label{eq:sol_i}
+\begin{equation}
 i(t)=\frac{i_0(\beta-(d+\gamma))}{i_0\beta(1-e^{-(\beta-(d+\gamma))t})
   +(\beta-(d+\gamma))e^{-(\beta-(d+\gamma))t}}
 \end{equation}
