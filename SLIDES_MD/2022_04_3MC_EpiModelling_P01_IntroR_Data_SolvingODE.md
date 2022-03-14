@@ -265,12 +265,8 @@ Recent movement (5-10 years): governments (local or higher) create portals where
 # Example: population of Senegal
 
 ```
-if (FALSE) {
-  pop_data_CTRY <- wb(country = c("SEN"), indicator = "SP.POP.TOTL",
+pop_data_CTRY <- wb(country = c("SEN"), indicator = "SP.POP.TOTL",
                       mrv = 100)
-} else {
-  pop_data_CTRY = readRDS("DATA/pop_data_CTRY_downloaded.Rds")
-}
 y_range = range(pop_data_CTRY$value)
 y_axis <- make_y_axis(y_range)
 pdf(file = "FIGS/pop_SEN.pdf", width = 11, height = 8.5)
@@ -278,7 +274,6 @@ plot(pop_data_CTRY$date, pop_data_CTRY$value * y_axis$factor,
      xlab = "Année", ylab = "Population", type = "b", lwd = 2,
      yaxt = "n")
 axis(2, at = y_axis$ticks, labels = y_axis$labels, las = 1, cex.axis = 0)
-dave <- dev.off()
 ```
 
 ---
@@ -289,10 +284,10 @@ dave <- dev.off()
 
 # Dutch Elm Disease
 
-- Maladie fongique de l'orme 
-- Causée par le champignon \emph{Ophiostoma ulmi} 
-- Transmise par le scolyte de l'orme (Scolytus scolytus) (coléoptère)
-- A décimé les forêts urbaines en amérique du nord
+- Fungal disease that affects Elms
+- Caused by the fungus *Ophiostoma ulmi* 
+- Transmitted by the Elm bark beetle (*Scolytus scolytus*)
+- Has decimated North American urban elm forests
 
 ---
 
@@ -308,66 +303,46 @@ dave <- dev.off()
 
 ---
 
-\begin{frame}[fragile]{Recuperation des données des arbres}
-\protect\hypertarget{recuperation-des-donnuxe9es-des-arbres}{}
+# Getting the tree data
 
-\footnotesize
+```
+allTrees = read.csv("https://data.winnipeg.ca/api/views/hfwk-jp4h/ro
+```
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ (}\OtherTok{FALSE}\NormalTok{) \{}
-\NormalTok{    allTrees =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"https://data.winnipeg.ca/api/views/hfwk-jp4h/rows.csv?accessType=DOWNLOAD"}\NormalTok{)}
-\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
-\NormalTok{    allTrees =}\StringTok{ }\KeywordTok{readRDS}\NormalTok{(}\StringTok{"DATA/allTrees.Rds"}\NormalTok{)}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
+After this,
 
-\normalsize
-
-Voilà ce que cela retourne:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{dim}\NormalTok{(allTrees)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 300846     15
-\end{verbatim}
+```
+dim(allTrees)
+## [1] 300846
+15
+```
 
 ---
 
-\begin{frame}[fragile]{On nettoie un peu}
-\protect\hypertarget{on-nettoie-un-peu}{}
+# Let us clean things a little
 
-\footnotesize
+```
+elms_idx = grep("American Elm", allTrees$Common.Name, ignore.case = TRUE)
+elms = allTrees[elms_idx, ]
+```
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{elms_idx =}\StringTok{ }\KeywordTok{grep}\NormalTok{(}\StringTok{"American Elm"}\NormalTok{, allTrees}\OperatorTok{$}\NormalTok{Common.Name, }\DataTypeTok{ignore.case =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{elms =}\StringTok{ }\NormalTok{allTrees[elms_idx, ]}
-\end{Highlighting}
-\end{Shaded}
-
-\normalsize ce qui nous laisse 54036 ormes américains
+We are left with 54,036 American elms
 
 ---
 
-\maxFrameImageNoFrame{Recap_Diagram}
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Recap_Diagram)
 
 ---
 
-\maxFrameImageNoFrame{temperaturePhase}
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/temperaturePhase)
 
 ---
 
-\maxFrameImageNoFrame{flowDiagramBeetlesV4}
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flowDiagramBeetlesV4)
 
 ---
 
-\maxFrameImageNoFrame{flowDiagramTreesV2}
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flowDiagramTreesV2)
 
 ---
 
