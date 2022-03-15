@@ -25,6 +25,13 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 <div style = "text-align: justify; position: relative; bottom: -5%; font-size:18px;">
 * The University of Manitoba campuses are located on original lands of Anishinaabeg, Cree, Oji-Cree, Dakota and Dene peoples, and on the homeland of the Métis Nation.</div>
 
+<style>
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+</style>
+
 ---
 
 <!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
@@ -166,7 +173,7 @@ $$
 
 Trajectories in phase plane $(S,I)$ corresponding to IC $(S_0,1-S_0)$ and $\beta/\gamma=2.5$
 
-![width:1200px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/KMK_planar_trajectories.png)
+![width:1200px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/KMK_planar_trajectories.png)
 
 ---
 
@@ -228,6 +235,10 @@ SIR is a little too simple for many diseases:
 $\implies$ model with SIR but also L(atent) and (A)symptomatic individuals, in which I are now symptomatic individuals
 
 Arino, Brauer, PvdD, Watmough & Wu. [Simple models for containment of a pandemic](http://dx.doi.org/10.1098/rsif.2006.0112) (2006)
+
+---
+
+![width:550px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIAR.png)
 
 ---
 
@@ -1149,7 +1160,7 @@ This is *herd immunity*
 
 # Another SIRS model with vaccination
 
-![width:1000px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_newborns.png)
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_newborns.png)
 
 ---
 
@@ -1252,7 +1263,7 @@ $\implies$ region of bistability is $\Delta=B^2-4AC\geq 0$, $B>0$ and $C<0$
 
 # Bifurcation in the $(\sigma,\phi)$ plane
 
-![width:800px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/bif_sigma_vs_phi.png)
+![width:800px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/bif_sigma_vs_phi.png)
 
 ---
 
@@ -1313,7 +1324,8 @@ Linearising (\ref{sys3dS})-(\ref{sys3dR}) at the EEP
 
 Spectral abscissa $s(J)$ (maximum of real parts of eigenvalues of the Jacobian matrix $J$) of the linearisation at the DFE and the 2 EEP, when $\theta$ varies
 
-![width:600px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/evalues_SIRbif.png)
+![width:600px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/evalues_SIRbif.png)
+
 
 
 ---
@@ -1361,7 +1373,7 @@ I' &= \varepsilon L-(\gamma+d)I
 $$
 $p$ proportion of newborns from $I$ who are $I$ at birth
 $q$ proportion of newborns from $E$ who are $E$ at birth
-$R$ does not influence the dynamics of \eqref{sys:SEIR_vert_transmission}, so not shown
+$R$ does not influence the dynamics of the system, so not shown
 
 ---
 
@@ -1456,6 +1468,8 @@ Clearly, this is hard to use in practice so the system was studied in other ways
 
 ---
 
+# Li, Muldowney and PvdD
+
 Li, Muldowney and van den Driessche study an SLIRS with incidence
 $$
 f(S,I,N)=\beta g(I)S
@@ -1490,7 +1504,7 @@ border-radius:20px;
 padding:10px 20px 10px 20px;
 box-shadow: 0px 1px 5px #999;">
 
-If $g(I)$ satisfies hypothesis **(H)**, then system (\ref{sys:SEIRS}) with incidence (\ref{eq:g_incidence}) is uniformly persistent if and only if $\mathcal{R}_0>1$
+If $g(I)$ satisfies hypothesis **(H)**, then system $f(S,I,N)=\beta S^q I^p$ with incidence $f(S,I,N)=\beta S^q I^p$ is uniformly persistent if and only if $\mathcal{R}_0>1$
 </div>
 
 The system is **uniformly persistent** if there exists $0<\epsilon_0<1$ s.t. any solution $(S(t),L(t),I(t),R(t))$ of (\ref{sys:SEIRS}) with initial condition $(S(0),L(0),I(0),R(0))\in \overset{\circ}{\Gamma}$ satisfies
@@ -1511,7 +1525,7 @@ border-radius:20px;
 padding:10px 20px 10px 20px;
 box-shadow: 0px 1px 5px #999;">
 
-Suppose that incidence (\ref{eq:g_incidence}) satisfies **(H)** and that
+Suppose that incidence $f(S,I,N)=\beta S^q I^p$ satisfies **(H)** and that
 $$
 |g'(I)|I\leq g(I) \textrm{ pour }I\in(0,1]
 $$
@@ -1526,49 +1540,7 @@ is satisfied, where
 $$
 \eta_0=\min_{I\in[\epsilon_0,1]}g(I)>0
 $$
-et $\epsilon_0$ d\'efini par (\ref{eq:SEIRS_persist}). Alors il n'y a pas de courbe ferm\'ee rectifiable qui soit invariante par rapport \`a (\ref{sys:SEIRS}). De plus, chaque semi-trajectoire de (\ref{sys:SEIRS}) dans $\Gamma$ converge vers un \'equilibre.
+and $\epsilon_0$ defined by (\ref{eq:SEIRS_persist}). Then there is no closed rectifiable curve that is invariant with respect to (\ref{sys:SEIRS}). Furthermore, each semi-trajectory of (\ref{sys:SEIRS}) in $\Gamma$ converges to an equilibrium
 </div>
 
----
-
-Nous ne donnons pas la preuve de ce r\'esultat. Elle utilise la m\'ethode des matrices compos\'ees. Toutefois, l'application est ici difficile, et nous pr\'eferrons illustrer cette m\'ethode en l'utilisant dans un cas plus simple. Le cas d'un mod\`ele SEIR (sans perte d'immunit\'e) en population non constante est trait\'e plus loin
-
----
-
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->SLIRS with non-constant population
-
----
-
-# Liu, Levin & Iwasa
-
-SIRS model of the form
-
-$$
-\begin{align*}
-S' &= B(N)-dS-f(S,I)I+\nu R \\
-I' &= f(S,I)I-(d+\gamma)I \\
-R' &= \gamma I-(d+\nu)R
-\end{align*}
-$$
-
-Les auteurs font quelques consid\'erations sur le cas g\'en\'eral d'une fonction $f$ diff\'erentiable, et telle que $f(0,I)=0$ pour tout $I$ et $\partial f/\partial S>0$. Ils supposent que la composante d\'emographique du syst\`eme, qui est r\'egie par l'\'equation
-$$
-N'=B(N)-dN
-$$
-admet un \'equilibre stable. 
-
-
----
-
-
-Utilisant le fait que $N$ a un \'equilibre stable, ils r\'eduisent la dimension du syst\`eme. Apr\`es avoir \'etabli des conditions g\'en\'eriques conduisant \`a une bifurcation de Hopf, ils se livrent \`a une analyse plus d\'etaill\'ee du syst\`eme lorsque la fonction d'incidence prend la forme
-$$
-f(S,I)=\beta I^{p-1}S^q
-$$
-
-
----
-
-# Liu and van den Driessche
-Liu et van den Driessche traitent d'un mod\`ele SEIS et d'un mod\`ele SEIRS dans lesquels la population est non constante et la p\'eriode de latence est une fonction qui d\'epend du nombre d'infect\'es dans la population. Dans le cas d'un mod\`ele SEIS, le comportement n'est pas modifi\'e par cette fonction. Par contre, dans le cas d'une immunit\'e temporaire (SEIRS), les auteurs trouvent (num\'eriquement) une bifurcation de Hopf.
+The proof uses compound matrices

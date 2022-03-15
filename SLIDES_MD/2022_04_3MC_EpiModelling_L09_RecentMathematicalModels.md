@@ -190,3 +190,37 @@ $X_0=(N_0,0,0)$ est globalement asymptotiquement stable.
 Dans le cas $\mathcal{R}_0,\mathcal{R}_2>1$, la stabilit\'e globale de $X_*$
 est \'etablie dans des conditions ``\'esot\'eriques''..
 
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->SLIRS with non-constant population
+
+---
+
+# Liu, Levin & Iwasa
+
+SIRS model of the form
+
+$$
+\begin{align*}
+S' &= B(N)-dS-f(S,I)I+\nu R \\
+I' &= f(S,I)I-(d+\gamma)I \\
+R' &= \gamma I-(d+\nu)R
+\end{align*}
+$$
+
+Les auteurs font quelques consid\'erations sur le cas g\'en\'eral d'une fonction $f$ diff\'erentiable, et telle que $f(0,I)=0$ pour tout $I$ et $\partial f/\partial S>0$. Ils supposent que la composante d\'emographique du syst\`eme, qui est r\'egie par l'\'equation
+$$
+N'=B(N)-dN
+$$
+admet un \'equilibre stable. 
+
+
+---
+
+
+Utilisant le fait que $N$ a un \'equilibre stable, ils r\'eduisent la dimension du syst\`eme. Apr\`es avoir \'etabli des conditions g\'en\'eriques conduisant \`a une bifurcation de Hopf, ils se livrent \`a une analyse plus d\'etaill\'ee du syst\`eme lorsque la fonction d'incidence prend la forme
+$$
+f(S,I)=\beta I^{p-1}S^q
+$$
+
