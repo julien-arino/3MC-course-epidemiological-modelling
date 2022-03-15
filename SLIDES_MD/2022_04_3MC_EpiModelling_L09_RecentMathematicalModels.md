@@ -25,6 +25,13 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 <div style = "text-align: justify; position: relative; bottom: -5%; font-size:18px;">
 * The University of Manitoba campuses are located on original lands of Anishinaabeg, Cree, Oji-Cree, Dakota and Dene peoples, and on the homeland of the Métis Nation.</div>
 
+<style>
+img[alt~="center"] {
+  display: block;
+  margin: 0 auto;
+}
+</style>
+
 ---
 
 <!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
@@ -127,9 +134,8 @@ The cumulative distribution function (c.d.f.) is a function $F(t)$ that characte
 $$
 F(s)=\mathbb{P}{T\leq s}=\int_{-\infty}^sf(x)dx
 $$
-\begin{center}
-\includegraphics[width=0.6\textwidth]{cdf_auc}
-\end{center}
+
+![width:500px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/cdf_auc.png)
 
 ---
 
@@ -138,7 +144,7 @@ $$
 - Since $f$ is a nonnegative function, $F$ is nondecreasing
 - Since $f$ is a probability density function, $\int_{-\infty}^{+\infty}f(s)ds=1$, and thus $\lim_{t\to\infty}F(t)=1$
 
-\includegraphics[width=0.6\textwidth]{cdf_plot}
+![width:550px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/cdf_plot.png)
 
 ---
 
@@ -367,10 +373,8 @@ Thus, considered for $t\geq 0$, the function $P(t)$ is a survival function
 
 # A flow diagram for the model
 
-This is the \textbf{flow diagram} of our model:
-\begin{center}
-    \includegraphics[width=0.5\textwidth]{SIS_general}
-\end{center}
+![width:800px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIS_general_P.png)
+
 
 ---
 
