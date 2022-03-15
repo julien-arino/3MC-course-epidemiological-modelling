@@ -238,7 +238,7 @@ Arino, Brauer, PvdD, Watmough & Wu. [Simple models for containment of a pandemic
 
 ---
 
-![width:550px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIAR.png)
+![width:1200px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIAR.png)
 
 ---
 
