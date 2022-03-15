@@ -1313,11 +1313,7 @@ Linearising (\ref{sys3dS})-(\ref{sys3dR}) at the EEP
 
 Spectral abscissa $s(J)$ (maximum of real parts of eigenvalues of the Jacobian matrix $J$) of the linearisation at the DFE and the 2 EEP, when $\theta$ varies
 
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=\figfullwidth]{Figures/evalues_SIRbif}
-\end{center}
-\end{figure}
+![width:600px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/evalues_SIRbif.png)
 
 
 ---
