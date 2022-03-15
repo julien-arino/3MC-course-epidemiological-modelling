@@ -1,6 +1,6 @@
 ---
 marp: true
-title: Practicum - Model analysis, studying large-scale models in R
+title: Practicum 02 - Model analysis, studying large-scale models in R
 description: 3MC Course Epidemiological Modelling - Julien Arino - Practicum 02 - Model analysis, studying large-scale models in R
 theme: default
 paginate: false

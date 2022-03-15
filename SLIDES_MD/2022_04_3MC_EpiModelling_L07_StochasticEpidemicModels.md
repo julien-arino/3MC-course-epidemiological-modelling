@@ -1,7 +1,7 @@
 ---
 marp: true
 title: Stochastic epidemic models
-description: 3MC Course Epidemiological Modelling - Julien Arino - Course 07 - Stochastic epidemic models
+description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 07 - Stochastic epidemic models
 theme: default
 paginate: false
 size: 4K

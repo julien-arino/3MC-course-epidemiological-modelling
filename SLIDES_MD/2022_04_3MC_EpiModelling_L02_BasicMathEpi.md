@@ -5,7 +5,14 @@ description: 3MC Course Epidemiological Modelling - Julien Arino - Course 02 - B
 theme: default
 paginate: false
 size: 4K
+math: mathjax
 ---
+
+<style>
+  MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</style>
 
 # Basic concepts of mathematical epidemiology. Models in one population and their basic properties
 
@@ -88,9 +95,9 @@ Really worth taking a look at this series of papers!
 Consider the following model, usually called the Kermack-McKendrick model
 $$
 \begin{align}
-S' &= -\beta SI \qquad\qquad\qquad  \tag{1a} \\
-I' &= (\beta S-\gamma)I  \tag{1b} \\
-R' &= \gamma I  \tag{1c}
+S' &= -\beta SI \qquad\qquad\qquad  \tag{1a}\label{sys:KMK_dS} \\
+I' &= (\beta S-\gamma)I  \tag{1b}\label{sys:KMK_dI} \\
+R' &= \gamma I  \tag{1c}\label{sys:KMK_dR}
 \end{align}
 $$
 
@@ -122,20 +129,21 @@ $$
 Consider the equilibia of
 $$
 \begin{align}
-S' &= -\beta SI \qquad\qquad\qquad \tag{2a}\\
-I' &= (\beta S-\gamma)I  \tag{2b}
+S' &= -\beta SI \qquad\qquad\qquad \tag{2a}\label{sys:KMK_2d_dS} \\
+I' &= (\beta S-\gamma)I  \tag{2b}\label{sys:KMK_2d_dI}
 \end{align}
 $$
 
-From (2b)
+From $\eqref{sys:KMK_2d_dI}$
 - either $\bar S=\gamma/\beta$
 - or $\bar I=0$
 
-Substitute into (2a)
+Substitute into $\eqref{sys:KMK_2d_dS}$
 - in the first case, $(\bar S,\bar I)=(\gamma/\beta,0)$
 - in the second case, any $\bar S\geq 0$ is an equilibrium (*continuum* of EP)
 
 Second case is a **problem**: usual linearisation does not work as EP are not isolated!
+
 
 ---
 
@@ -151,7 +159,7 @@ $$
 $$
 provided $S\neq 0$
 
-**Careful!** Remember that $S$ and $I$ are $S(t)$ and $I(t)$.. the equation above thus describes the relationship between $S$ and $I$ along solutions to the original ODE (2)
+**Careful!** Remember that $S$ and $I$ are $S(t)$ and $I(t)$.. the equation above thus describes the relationship between $S$ and $I$ along solutions to the original ODE $\eqref{sys:KMK_2d_dS}$-$\eqref{sys:KMK_2d_dI}$
 
 ---
 
@@ -161,7 +169,7 @@ I(S)=\frac\gamma\beta \ln S-S+C
 $$
 with $C\in\mathbb{R}$
 
-The initial condition $I(S_0)=I_0$ gives $C=S_0+I_0-\frac \gamma\beta \ln S_0$, and the solution to (1) is thus, as a function of $S$,
+The initial condition $I(S_0)=I_0$ gives $C=S_0+I_0-\frac \gamma\beta \ln S_0$, and the solution to $\eqref{sys:KMK_dS}$-$\eqref{sys:KMK_dR}$ is thus, as a function of $S$,
 $$
 \begin{align*}
 I(S)&=S_0+I_0-S+\frac\gamma\beta \ln \frac S{S_0} \\
@@ -183,8 +191,11 @@ Suppose total population $N$ is normalised, i.e., $N=1$. Then $R=1-(S+I)$
 
 Define
 $$
+\begin{equation}\label{eq:R0_KMK}\tag{3}
 \mathcal{R}_0=\frac{\beta}{\gamma}
+\end{equation}
 $$
+
 
 ---
 
@@ -194,7 +205,7 @@ border-radius:20px;
 padding:10px 20px 10px 20px;
 box-shadow: 0px 1px 5px #999;">
 
-Let $(S(t),I(t))$ be a solution to (1) in proportions. If $\mathcal{R}_0
+Let $(S(t),I(t))$ be a solution to $\eqref{sys:KMK_dS}$-$\eqref{sys:KMK_dR}$ in proportions and $\mathcal{R}_0$ be defined as in $\eqref{eq:R0_KMK}$. If $\mathcal{R}_0
 S_0\leq 1$, then $I(t)$ tends to 0 when $t\to\infty.$ If $\mathcal{R}_0
 S_0>1$, then $I(t)$ first reaches a maximum 
 $$
@@ -239,6 +250,31 @@ Arino, Brauer, PvdD, Watmough & Wu. [Simple models for containment of a pandemic
 ---
 
 ![width:1200px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIAR.png)
+
+---
+
+## Basic reproduction number
+$$
+\mathcal{R}_0=S_0\beta
+\left(
+\frac{p}{\alpha}+\frac{\delta(1-p)}{\eta}
+\right)
+=\frac{S_0\beta\rho}{\alpha}
+$$
+where 
+$$
+\rho = \alpha
+\left(
+\frac{p}{\alpha}+\frac{\delta(1-p)}{\eta}
+\right)
+$$
+
+## Final size relation
+
+$$
+S_0(\ln S_0-\ln S_\infty) =
+\mathcal{R}_0(S_0-S_\infty)+\frac{\mathcal{R}_0I_0}{\rho}
+$$
 
 ---
 
@@ -353,16 +389,11 @@ Each infectious individual meets a proportion of the susceptibles
 
 Remark that the interpretation and units of $\beta$ varies depending on the case
 
-
 ---
 
 # Back to the model
 
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=\figfullwidth]{Figures/SIS}
-\end{center}
-\end{figure}
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIS.png)
 
 ---
 
@@ -371,13 +402,13 @@ Remark that the interpretation and units of $\beta$ varies depending on the case
 Using standard incidence 
 $$
 \begin{align}
-S' &= \underbrace{dN}_\textrm{birth}
+S' &= \underbrace{bN}_\textrm{birth}
 -\underbrace{dS}_\textrm{death} 
 -\underbrace{\beta\frac{SI}{N}}_\textrm{infection}
-+\underbrace{\gamma I}_\textrm{recovery} \qquad\qquad\\
++\underbrace{\gamma I}_\textrm{recovery} \qquad\qquad \tag{4a}\label{sys:SIS_base_dS}\\
 I' &= \underbrace{\beta\frac{SI}{N}}_\textrm{infection}
 -\underbrace{dI}_\textrm{death} 
--\underbrace{\gamma I}_\textrm{recovery}
+-\underbrace{\gamma I}_\textrm{recovery} \tag{4b}\label{sys:SIS_base_dI}
 \end{align}
 $$
 
@@ -387,7 +418,8 @@ Consider the initial value problem (IVP) consisting of this system together with
 
 # Remarks
  
-- \eqref{sys:SIS_simple} is an SIS (Susceptible-Infectious-Susceptible) model
+- In what follows, assume $b=d$ to keep population constant
+- $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$ is an SIS (Susceptible-Infectious-Susceptible) model
 - If $\gamma=0$ (no recovery), then model is SI
   - In this case, infected individual remains infected their whole life (but disease is not lethal since there is no disease-induced death)
 - Diseases with these types of characteristics are bacterial diseases such as those caused by *staphylococcus aureus*, *streptococcus pyogenes*, *chlamydia pneumoniae* or *neisseria gonorrhoeae*
@@ -459,19 +491,18 @@ $$
 Since $s+i=1$, we can use $s=1-i$ in the latter equation, giving $i'=\beta(1-i)i-(d+\gamma)i$. As a consequence, the *system in proportion* is
 $$
 \begin{align}
-s &= 1-i \tag{3a} \\
-i' &= \beta(1-i)i-(d+\gamma)i \tag{3b}\qquad\qquad
+s &= 1-i \tag{5a}\label{sys:SIS_proportion_ds} \\
+i' &= \beta(1-i)i-(d+\gamma)i \tag{5b}\label{sys:SIS_proportion_di}\qquad\qquad
 \end{align}
 $$
 
-Since $N$ constant, solutions of (2) are deduced directly from those of (3) and we now consider (3) 
+Since $N$ constant, solutions of $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$ are deduced directly from those of $\eqref{sys:SIS_proportion_ds}$-$\eqref{sys:SIS_proportion_di}$ and we now consider $\eqref{sys:SIS_proportion_ds}$-$\eqref{sys:SIS_proportion_di}$
 
 ---
 
-
-Rewrite (3b) as
+Rewrite $\eqref{sys:SIS_proportion_di}$ as
 $$
-\begin{equation} \tag{4}
+\begin{equation} \tag{6}\label{eq:SIS_i_as_Bernoulli}
 i'-(\beta-(d+\gamma))i=-\beta i^2\qquad\qquad
 \end{equation}
 $$
@@ -481,7 +512,7 @@ $$
 $$
 so that finally
 $$
-\begin{equation}\tag{5}
+\begin{equation}\tag{7}\label{eq:SIS_true_Bernoulli}
 u'+(\beta-(d+\gamma))u=\beta\qquad\qquad
 \end{equation}
 $$
@@ -514,7 +545,7 @@ $$
 
 ---
 
-As a consequence, the solution to the linear equation (5) is
+As a consequence, the solution to the linear equation $\eqref{eq:SIS_true_Bernoulli}$ is
 $$
 \begin{aligned}
 u &= \frac{i_0\beta+(\beta-(d+\gamma)-i_0\beta)e^{-(\beta-(d+\gamma))t}}
@@ -523,7 +554,7 @@ u &= \frac{i_0\beta+(\beta-(d+\gamma)-i_0\beta)e^{-(\beta-(d+\gamma))t}}
   +(\beta-(d+\gamma))e^{-(\beta-(d+\gamma))t}}{i_0(\beta-(d+\gamma))}
 \end{aligned}
 $$
-and that of (4) is
+and that of $\eqref{eq:SIS_i_as_Bernoulli}$ is
 $$
 i(t)=\frac{i_0(\beta-(d+\gamma))}{i_0\beta(1-e^{-(\beta-(d+\gamma))t})
   +(\beta-(d+\gamma))e^{-(\beta-(d+\gamma))t}}
@@ -581,7 +612,7 @@ border-radius:20px;
 padding:10px 20px 10px 20px;
 box-shadow: 0px 1px 5px #999;">
 
-For system \eqref{sys:SIS_simple}, the following alternative holds
+For system $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$, the following alternative holds
  
 - If $\mathcal{R}_0< 1$, then
   - $\lim_{t\to\infty}s(t)=1$
