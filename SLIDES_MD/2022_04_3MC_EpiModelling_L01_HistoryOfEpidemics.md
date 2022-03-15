@@ -27,7 +27,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
-<!-- _backgroundImage: "radial-gradient(white,80%,#85110d)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
 # <!--fit-->About the course
 
 
@@ -164,7 +164,15 @@ L9: Some recent mathematical models for COVID-19, HIV/AIDS, TB, Malaria, etc.
 
 ---
 
-<!-- _backgroundImage: "radial-gradient(white,80%,#85110d)" -->
+# <!--fit-->Colour codes for course organisation
+
+![bg](bg_colour_red.png) 
+![bg](bg_colour_yellow.png) 
+![bg](bg_colour_green.png)
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
 # <!--fit-->On to the course !
 
 ---

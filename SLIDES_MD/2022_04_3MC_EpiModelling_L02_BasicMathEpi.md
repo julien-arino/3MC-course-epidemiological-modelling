@@ -8,12 +8,6 @@ size: 4K
 math: mathjax
 ---
 
-<style>
-  MathJax.Hub.Config({
-    TeX: { equationNumbers: { autoNumber: "AMS" } }
-  });
-</style>
-
 # Basic concepts of mathematical epidemiology. Models in one population and their basic properties
 
 4 April 2022 
@@ -639,11 +633,7 @@ Remark that the higher $\mathcal{R}_0$, the higher the proportion of infectious 
 
 Thus, $\mathcal{R}_0$ is also an indicator of the infectiousness of a pathogen
 
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=\figfullwidth]{Figures/R0}
-\end{center}
-\end{figure}
+![width:550px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/R0.png)
 
 ---
 
@@ -660,10 +650,82 @@ Thus, $\mathcal{R}_0$ is also an indicator of the infectiousness of a pathogen
 
 ---
 
+# Classic way to compute $\mathcal{R}_0$
+Take SIS $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$ normalised to $N=1$ 
+$$
+\begin{align*}
+S' &= d-dS-\beta SI+\gamma I \\
+I' &= \beta SI-(d+\gamma)I 
+\end{align*}
+$$
+DFE: $(\bar S,\bar I)=(1,0)$
+$$
+J_{DFE}=\begin{pmatrix}
+-d & \gamma-\beta\bar S \\
+\beta\bar I & \beta\bar S-(d+\gamma)
+\end{pmatrix}
+=
+\begin{pmatrix}
+-d & \gamma-\beta \\
+0 & \beta-(d+\gamma)
+\end{pmatrix}
+$$
+When eigenvalues $-d$ and $\beta-(d+\gamma)$
+$\Rightarrow$
+LAS of the DFE is determined by the sign of $\beta-(d+\gamma)$. We find the same $\mathcal{R}_0$ we had found before
+
+---
+
+# A more efficient way to $\mathcal{R}_0$: next generation matrix
+
+Diekmann and Heesterbeek, characterised in ODE case by PvdD & Watmough (2002)
+
+Consider only compartments $x$ with infected individuals and write
+$$
+x'=\mathcal{F}-\mathcal{V}
+$$
+ 
+- $\mathcal{F}$ flows within infected compartments
+- $\mathcal{V}$ other flows (with $-$ sign)
+
+Compute the (Frechet) derivatives $F=D\mathcal{F}$ and $V=D\mathcal{V}$ with respect to the infected variables $x$ and evaluate at the DFE
+
+Then
+$$
+\mathcal{R}_0=\rho(FV^{-1})
+$$
+where $\rho$ is the spectral radius
+
+
+---
+
+# The main result of PvdD and Watmough (2002)
+
+
+<div align=justify 
+style="background-color:#16a085;
+border-radius:20px;
+padding:10px 20px 10px 20px;
+box-shadow: 0px 1px 5px #999;">
+
+Suppose the DFE exists. Let then
+$$
+\mathcal{R}_0=\rho(FV^{-1})
+$$
+with matrices $F$ and $V$ obtained as indicated. Assume conditions (A1) through (A5) hold. Then
+- if $\mathcal{R}_0<1$, then the DFE is LAS
+- if $\mathcal{R}_0>1$, the DFE is unstable
+</div>
+
+(We make conditions (A1)-(A5) explicit in [Practicum 02](2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html))
+
+---
+
 # Summary thus far
-- An SIR *epidemic* model in which the presence or absence of an epidemic wave is characterised by the value of $\mathcal{R}_0$
+- An SIR *epidemic* model (the KMK SIR) in which the presence or absence of an epidemic wave is characterised by the value of $\mathcal{R}_0$
+- An SLIAR *epidemic* model extending the KMK SIR
 - An SIS *endemic* model in which the threshold $\mathcal{R}_0=1$ is such that when $\mathcal{R}_0<1$, the disease goes extinct, whereas when $\mathcal{R}_0>1$, the disease becomes established in the population
-- Both examples are integrable in some sense. **This is an exception!!!**
+- Both the KMK SIR and the SIS are integrable in some sense. **This is an exception!!!**
 
 
 ---
@@ -705,10 +767,10 @@ Thus, $\mathcal{R}_0$ is also an indicator of the infectiousness of a pathogen
 The model takes the form
 $$
 \begin{align}
-S' &= d(N-S)-f(S,I,N)+\nu R\qquad\qquad \\
-L' &= f(S,I,N) -(d+\varepsilon)L \\
-I' &= \varepsilon L -(d+\gamma)I \\
-R' &= \gamma I-(d+\nu)R
+S' &= d(N-S)-f(S,I,N)+\nu R\qquad\qquad \tag{8a}\label{sys:SLIR_dS}\\
+L' &= f(S,I,N) -(d+\varepsilon)L \tag{8b}\label{sys:SLIR_dL} \\
+I' &= \varepsilon L -(d+\gamma)I \tag{8a}\label{sys:SLIR_dI} \\
+R' &= \gamma I-(d+\nu)R \tag{8d}\label{sys:SLIR_dR}
 \end{align}
 $$
 
@@ -874,76 +936,6 @@ Mathematically
 
 ---
 
-# Example of the SIS model
-Take SIS normalised to $N=1$ 
-$$
-\begin{align*}
-S' &= d-dS-\beta SI+\gamma I \\
-I' &= \beta SI-(d+\gamma)I 
-\end{align*}
-$$
-DFE: $(\bar S,\bar I)=(1,0)$
-$$
-J_{DFE}=\begin{pmatrix}
--d & \gamma-\beta\bar S \\
-\beta\bar I & \beta\bar S-(d+\gamma)
-\end{pmatrix}
-=
-\begin{pmatrix}
--d & \gamma-\beta \\
-0 & \beta-(d+\gamma)
-\end{pmatrix}
-$$
-When eigenvalues $-d$ and $\beta-(d+\gamma)$
-$\Rightarrow$
-LAS of the DFE is determined by the sign of $\beta-(d+\gamma)$. We find the same $\mathcal{R}_0$ we had found before
-
-
----
-
-# Next generation matrix/operator
-
-Diekmann and Heesterbeek, characterised in the ODE case by PvdD and Watmough
-
-Consider only compartments $x$ with infected individuals and write
-$$
-x'=\mathcal{F}-\mathcal{V}
-$$
- 
-- $\mathcal{F}$ flows within infected compartments
-- $\mathcal{V}$ other flows (with $-$ sign)
-
-Compute the (Frechet) derivatives $F=D\mathcal{F}$ and $V=D\mathcal{V}$ with respect to the infected variables $x$ and evaluate at the DFE
-
-Then
-$$
-\mathcal{R}_0=\rho(FV^{-1})
-$$
-where $\rho$ is the spectral radius
-
-
----
-
-# A result of van den Driessche and Watmough
-
-
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
-
-Suppose the DFE exists. Let then
-$$
-\mathcal{R}_0=\rho(FV^{-1})
-$$
-with matrices $F$ and $V$ obtained as indicated. Assume conditions 1 through 5 hold. Then
-- if $\mathcal{R}_0<1$, then the DFE is LAS
-- if $\mathcal{R}_0>1$, the DFE is unstable
-</div>
-
----
-
 # Example of the SLIRS model
 
 Variations of the infected variables described by
@@ -1091,6 +1083,12 @@ We will see some cases later
 
 # Links between model types
 
+<style scoped>
+@import url('https://unpkg.com/tailwindcss@^2/dist/utilities.min.css');
+</style>
+<div class="grid grid-cols-2 gap-4">
+<div>
+
 $$
 \begin{align*}
 S'&=d(1-S)-f(S,I)+\nu R \\
@@ -1099,16 +1097,19 @@ I'&=\varepsilon L-(d+\gamma)I \\
 R'&=\gamma I-(d+\nu)R
 \end{align*}
 $$
+</div>
 
-SLIR is SLIRS where $\nu=0$
-SLIS is limit of an SLIRS when $\nu\to\infty$
-SLI is SLIR where $\gamma=0$
-SIRS is limit of an SLIRS when $\varepsilon\to\infty$
-SIR is SIRS where $\nu=0$
-SIS is limit of an SIRS when $\nu\to\infty$
-SIS is limit of an SLIS when $\varepsilon\to\infty$
-SI is SIS where $\nu=0$ 
+<div>
 
+- SLIR is SLIRS where $\nu=0$
+- SLIS limit of an SLIRS when $\nu\to\infty$
+- SLI is SLIR where $\gamma=0$
+- SIRS limit of an SLIRS when $\varepsilon\to\infty$
+- SIR is SIRS where $\nu=0$
+- SIS limit of an SIRS when $\nu\to\infty$
+- SIS limit of an SLIS when $\varepsilon\to\infty$
+- SI is SIS where $\nu=0$ 
+</div>
 
 ---
 
