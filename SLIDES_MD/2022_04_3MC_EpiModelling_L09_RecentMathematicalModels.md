@@ -38,7 +38,6 @@ img[alt~="center"] {
 # Outline
 
 - Back to sojourn times
-- Some models with better sojourn times
 - Models of COVID-19
 
 ---
@@ -51,6 +50,22 @@ img[alt~="center"] {
 - Most models considered in this course (ODE or CTMC) assume exponential sojourn times in compartments
 - Acceptable as first approximation in many cases, but needs tweaking at times
 - Has led to interesting models
+
+---
+
+<!-- _backgroundImage: "radial-gradient(white,80%,#156C26)" -->
+# Back to sojourn times - Outline
+
+- Some probability theory
+- The exponential distribution
+- A cohort model
+- Sojourn times in an SIS disease transmission model
+- An $SL_1L_2I_1I_2A_1A_2R$ COVID-19 model
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Some probability
 
 ---
 
@@ -85,7 +100,7 @@ From this, deduce a model, which in this context is called a **probability distr
 
 ---
 
-\includegraphics[height=0.95\textheight]{random_length_sample}
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/random_length_sample.png)
 
 ---
 
@@ -124,7 +139,7 @@ Since $T$ is continuous, it has a continuous **probability density function**, $
 - $\int_{-\infty}^{+\infty}f(s)ds=1$
 - $\mathbb{P}{a\leq T\leq b}=\int_a^bf(t)dt$
 
-\includegraphics[width=0.6\textwidth]{distrib_a_b}
+![width:450px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/distrib_a_b.png)
 
 ---
 
@@ -187,7 +202,7 @@ $$
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# Exponential distribution
+# The exponential distribution
 
 ---
 
@@ -247,12 +262,14 @@ We suppose
 # The model
 
 Denote $N(t)$ the population at time $t\geq 0$. Then
+
 $$
 \begin{equation}\label{eq:N_general}
 N(t)=N_0P(t)
 \end{equation}
 $$
-- $N_0P(t)$ gives the proportion of $N_0$, the initial population, that is still alive at time $t$
+
+$N_0P(t)$ gives the proportion of $N_0$, the initial population, that is still alive at time $t$
 
 ---
 
@@ -274,7 +291,7 @@ $$
 $$
 with $N(0)=N_0$
 
-$\red\implies$ The ODE $N'=-dN$ makes the assumption that the life expectancy at birth is exponentially distributed
+$\implies$ The ODE $N'=-dN$ makes the assumption that the life expectancy at birth is exponentially distributed
 
 ---
 
@@ -298,7 +315,7 @@ N_0, & 0\leq t\leq\omega\\
 $$
 All individuals survive until time $\omega$, then they all die at time $\omega$
 
-Here, we have $N'=0$ everywhere except at $t=\omega$, where it is undefined.
+Here, we have $N'=0$ everywhere except at $t=\omega$, where it is undefined
 
 ---
 
@@ -307,63 +324,11 @@ Here, we have $N'=0$ everywhere except at $t=\omega$, where it is undefined.
 
 ---
 
-# Hypotheses
+![bg 80% right:40%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIS_general_P.png)
 
-- Individuals typically recover from the disease
-- The disease does not confer immunity
-- There is no birth or death
-- Infection is of **standard incidence** type
+# <!--fit-->An SIS with tweaked recovery
 
----
-
-# Recovery and No immunity
-
-Individuals recover from the disease: the infection is not permanent
-
-Upon recovery from the disease, an individual becomes susceptible again immediately
-
-Good description for diseases that confer no immunity, e.g.,
-
-- the cold
-- gonorrhea
-- $\ldots$
-
----
-
-# No birth or death
-
-Suppose that
-
-- the time period of interest is short
-- the population is large enough
-
-then it is reasonable to assume that the total population is constant, in the absence of disease
-
-For mild diseases (cold, etc.), there are very little risks of dying from the disease. We assume no disease-induced death
-
-Hence $N\equiv N(t)=S(t)+I(t)$ is the (constant) total population
-
----
-
-\frame{\frametitle{Standard incidence}
-New infectives result from random contacts between susceptible and infective individuals, described using standard incidence:
-$$
-\beta\frac{SI}{N},
-$$
-\begin{itemize}
-\item $\beta SI/N$ is a rate (per unit time), 
-\item $\beta$ is the \textbf{transmission coefficient}, giving probability of transmission of the disease in case of a
-contact, times the number of such contacts made by an infective per
-unit time.
-\end{itemize}
-
----
-
-# Recovery
-
-We have not yet stated our hypotheses on the recovery process..
-
-Traditional epidemiological models assume recovery from disease with a *per capita* rate constant (often denoted $\gamma$)
+Traditional ODE models assume recovery from disease at *per capita* rate (often denoted $\gamma$)
 
 Here, assume that, of the individuals who have become infective at time $t_0$, a fraction $P(t-t_0)$ remain infective at time $t\geq t_0$
 
@@ -371,24 +336,14 @@ Thus, considered for $t\geq 0$, the function $P(t)$ is a survival function
 
 ---
 
-# A flow diagram for the model
-
-![width:800px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIS_general_P.png)
-
-
----
-
 # Reducing the dimension of the problem
-To formulate our model, we would in principle require an equation for $S$ and an equation for $I$
 
-But we have
+We have
 $$
 S(t)+I(t)=N, \textrm{ or equivalently, }S(t)=N-I(t)
 $$
 
 $N$ is constant (equal total population at time $t=0$), so we can deduce the value of $S(t)$, once we know $I(t)$, from the equation $S(t)=N-I(t)$
-
-We only need to consider 1 equation. **Do this when possible!** (nonlinear systems are hard, one less equation can make a lot of difference)
 
 ---
 
@@ -433,8 +388,7 @@ Summing over $[0,t]$ gives the number of infective individuals at time $t$
 ---
 
 # Case of an exponentially distributed time to recovery
-Suppose that $P(t)$ is such that the sojourn time in the infective
-state has an exponential distribution with mean $1/\gamma$, i.e., $P(t)=e^{-\gamma t}$
+Suppose that $P(t)$ is such that the sojourn time in the infective state has an exponential distribution with mean $1/\gamma$, i.e., $P(t)=e^{-\gamma t}$
 
 Then the initial condition function $I_0(t)$ takes the form
 $$
@@ -475,8 +429,7 @@ P(t)=\begin{cases}
 0, & t>\omega
 \end{cases}
 $$
-i.e., the sojourn time in the infective state is a constant
-$\omega>0$
+i.e., the sojourn time in the infective state is a constant $\omega>0$
  
 In this case (\ref{eq:SIS_I}) becomes
 $$
@@ -488,7 +441,7 @@ Here, it is more difficult to obtain an expression for $I_0(t)$. It is however a
 
 ---
 
-When differentiated, \eqref{eq:I_DDE} gives, for $t\geq\omega$,
+When differentiated, \eqref{eq:I_DDE} gives, for $t\geq\omega$
 $$
 I'(t)=I_0'(t)+\beta\frac{(N-I(t))I(t)}{N}
 -\beta\frac{\left(N-I(t-\omega)\right)I(t-\omega)}{N}
@@ -503,18 +456,39 @@ $$
 
 # Conclusion
 
-- The time of sojourn in classes (compartments) plays an important role in determining the type of model that we deal with
+- The time of sojourn in compartments plays an important role in determining the type of model that we deal with
 - All ODE models, when they use terms of the form $\kappa X$, make the assumption that the time of sojourn in compartments is exponentially distributed
-- At the other end of the spectrum, delay delay differential with discrete delay make the assumption of a constant sojourn time, equal for all individuals
+- At the other end of the spectrum, delay differential with discrete delay make the assumption of a constant sojourn time, equal for all individuals
 - Both can be true sometimes.. but reality is often somewhere in between
 
 ---
 
 Survival function, $\mathcal{S}(t)=\mathbb{P}(T>t)$, for an exponential distribution with mean 80 years
 
-\begin{center}
-\includegraphics[width=0.7\textwidth]{survival_exp_80years}
-\end{center}
+![width:800px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/survival_exp_80years.png)
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# An $SL_1L_2I_1I_2A_1A_2R$ COVID-19 model
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+JA & Portet. [A simple model for COVID-19](http://dx.doi.org/10.1016/j.idm.2020.04.002). *Infectious Disease Modelling* **5**:309-315 (2020)
+</div>
+
+---
+
+# <!--fit-->One way to fix "bad" sojourn times: sums of exponential distributions
+
+- Exponential distribution of sojourn times is acceptable if what matters is mean duration of sojourn over long time period
+- For COVID-19, were trying to give "predictions" over 2-4 weeks period, so we need more than the mean
+
+$\implies$ Use a property of exponential distributions, namely, that the sum of i.i.d. exponential distributions is Erlang distributed
+
+---
+
+# Sum of exponential distributions
 
 ---
 
