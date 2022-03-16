@@ -34,16 +34,30 @@ img[alt~="center"] {
 
 ---
 
+<!-- _backgroundImage: "radial-gradient(white,80%,#85110d)" -->
+# Outline
+
+- Additional considerations and a few oddities
+- Some recent models
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
+# <!--fit-->Additional considerations and a few oddities
+
+---
+
 <!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
 # Outline
 
-- Back to sojourn times
-- Models of COVID-19
+- More on sojourn times
+- An issue with the next generation method for $\mathcal{R}_0$
+- Tuberculosis (TB) model with non-trivial behaviour at the origin
 
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->Back to sojourn times
+# <!--fit-->More on sojourn times
 
 ---
 
@@ -54,9 +68,9 @@ img[alt~="center"] {
 ---
 
 <!-- _backgroundImage: "radial-gradient(white,80%,#156C26)" -->
-# Back to sojourn times - Outline
+# More on sojourn times - Outline
 
-- Some probability theory
+- Some (simple) probability theory
 - The exponential distribution
 - A cohort model
 - Sojourn times in an SIS disease transmission model
@@ -65,7 +79,7 @@ img[alt~="center"] {
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# Some probability
+# Some (simple) probability theory
 
 ---
 
@@ -454,11 +468,11 @@ $$
 
 ---
 
-# Conclusion
+# What we know this far
 
 - The time of sojourn in compartments plays an important role in determining the type of model that we deal with
-- All ODE models, when they use terms of the form $\kappa X$, make the assumption that the time of sojourn in compartments is exponentially distributed
-- At the other end of the spectrum, delay differential with discrete delay make the assumption of a constant sojourn time, equal for all individuals
+- All ODE compartmental models, when they use terms of the form $\kappa X$, make the assumption that the time of sojourn in compartments is exponentially distributed with mean $1/\kappa$
+- At the other end of the spectrum, delay differential with discrete delay $\tau$ make the assumption of a constant sojourn time $\tau$, equal for all individuals
 - Both can be true sometimes.. but reality is often somewhere in between
 
 ---
@@ -466,6 +480,16 @@ $$
 Survival function, $\mathcal{S}(t)=\mathbb{P}(T>t)$, for an exponential distribution with mean 80 years
 
 ![width:800px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/survival_exp_80years.png)
+
+---
+
+# The problems with the exponential distribution
+
+- Survival drops quickly: in previous graph, 20% mortality of a cohort at age 20 years
+- Survival extends way past the mean: in previous graph, almost 25% survival to age 120 years
+- Acceptable if what matters is mean duration of sojourn over long time period
+- Less so if interested in short term dynamics
+- Exponential distribution with parameter $\theta$ has mean $1/\theta$ and variance $1/\theta^2$, i.e., one parameter controls both the mean and dispersion
 
 ---
 
@@ -479,38 +503,179 @@ JA & Portet. [A simple model for COVID-19](http://dx.doi.org/10.1016/j.idm.2020.
 
 ---
 
-# <!--fit-->One way to fix "bad" sojourn times: sums of exponential distributions
+# <!--fit-->Simple way to "fix" sojourn times: sums of exponential distributions
 
 - Exponential distribution of sojourn times is acceptable if what matters is mean duration of sojourn over long time period
 - For COVID-19, were trying to give "predictions" over 2-4 weeks period, so we need more than the mean
 
-$\implies$ Use a property of exponential distributions, namely, that the sum of i.i.d. exponential distributions is Erlang distributed
+$\implies$ Use a property of exponential distributions, namely, that the sum of i.i.d. (independent and identically distributed) exponential distributions is Erlang distributed
 
 ---
 
 # Sum of exponential distributions
 
+$X_1$ and $X_2$ independent exponential r.v. with rate parameters $\theta_1$ and $\theta_2$. Then the p.d.f. of $Z=X_1+X_2$ is the convolution
+$$
+\begin{align}
+ f_Z(z) &= \int_{-\infty}^\infty f_{X_1}(x_1) f_{X_2}(z - x_1)\,dx_1\\
+   &= \int_0^z \theta_1 e^{-\theta_1 x_1} \theta_2 e^{-\theta_2(z - x_1)} \, dx_1 \\
+   &= \theta_1 \theta_2 e^{-\theta_2 z} \int_0^z e^{(\theta_2 - \theta_1)x_1}\,dx_1 \\
+   &= \begin{cases}
+        \dfrac{\theta_1 \theta_2}{\theta_2-\theta_1} \left(e^{-\theta_1 z} - e^{-\theta_2 z}\right) & \text{ if } \theta_1 \neq \theta_2 \\[0.15cm]
+        \theta^2 z e^{-\theta z} & \text{ if } \theta_1 = \theta_2 =: \theta
+      \end{cases}
+ \end{align}
+ $$
+
+---
+
+# The Erlang distribution
+
+P.d.f. of the Erlang distribution
+$$
+f(x; k,\lambda)={\lambda^k x^{k-1} e^{-\lambda x} \over (k-1)!},\quad x,\lambda \geq 0
+$$
+$k$ **shape parameter**, $\lambda$ **rate parameter** (sometimes use **scale parameter** $\beta = 1/\lambda$)
+
+So, if $\theta_1=\theta_2$, $Z=X_1+X_2$ has distribution
+$$
+f_Z(z)=\theta^2e^{-\theta z}
+$$
+i.e., an Erlang distribution with shape parameter $k=2$ and rate parameter $\theta$
+
+---
+
+# Continuing..
+
+$X_i$, $i=1,\ldots,N$, be exponential i.i.d. random variables with parameter $\theta$
+
+Then $\sum_i X_i$ Erlang distributed with rate parameter $\theta$ and shape parameter $N$
+
+
+---
+
+# Properties of the Erlang distribution
+
+An Erlang is a Gamma with shape parameter $k\in\mathbb{N}$. P.d.f. of the Erlang distribution
+$$
+f(t; k,\lambda)={\lambda^k t^{k-1} e^{-\lambda t} \over (k-1)!},\quad t,\lambda \geq 0
+$$
+$k$ **shape parameter**, $\lambda$ **rate parameter**
+
+Mean $k/\lambda$, variance $k/\lambda^2$, c.d.f.
+$$
+F(t; k,\lambda) = 1 - \sum_{n=0}^{k-1}\frac{1}{n!}e^{-\lambda t}(\lambda t)^n
+$$
+and thus survival function
+$$
+\mathcal{S}(t; k,\lambda) = 
+\sum_{n=0}^{k-1}\frac{1}{n!}e^{-\lambda t}(\lambda t)^n
+$$
+
+---
+
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/expo_vs_erlang.png)
+
+---
+
+# Back to the model
+
+---
+
+![bg contain drop-shadow](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flow_diagram_SLLIIAARRD.png)
+
+---
+
+# Case detection-based compartments
+
+Rather than the usual $S$ (*susceptible*), $L$ (*latent*), $I$ (*symptomatically infectious*), $A$ (*asymptomatically infectious*) and $R$ (*recovered*) interpretation
+- $I$ compartments are **detected** (positive tests)
+- $A$ are **undetected** (even if symptomatic)
+
+$\pi$ fraction of undetected cases. And $\xi$ is *modulation*, not *diminution*, of the contact coefficient $\beta$. Infection is $\beta S(I_1+I_2+\xi(A_1+A_2)+\eta L_2)$
+
+---
+
+# Some convenient quantities
+
+**Reproduction number**
+
+$$
+\mathcal{R}_t = \beta
+\left(
+2\frac{\pi\xi}{\gamma}+2\frac{1-\pi}{\gamma}+\frac{\eta}{\varepsilon}
+\right)
+S(0)
+$$
+
+**Final size relation**
+
+$$
+\begin{aligned}
+\ln \left( \frac{S(0)}{S_{\infty}} \right) &= \frac{\mathcal{R}_t}{S(0)} \Bigl( S(0) - S_{\infty} + L_1 (0) + L_2 (0) \Bigr) \\
+&\quad+ \frac{\beta}{\gamma} \Bigl( 2I_1 (0) + I_2 (0) + 2\xi A_1 (0) + \xi A_2 (0) \Bigr)
+\end{aligned}
+$$
+
+
+<div style = "position: relative; bottom: -10%; font-size:20px;">
+
+Arino, Brauer, van den Driessche, Watmough & Wu. A final size relation for epidemic models. *Mathematical Biosciences and Engineering* (2007)
+</div>
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# <!--fit-->PDE model with age of infection
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Some paper
+</div>
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# <!--fit-->Integro-differential model
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Some paper
+</div>
+
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->Tuberculosis (TB) model with non-trivial behaviour at the origin
+# <!--fit-->An issue with the next generation method for $\mathcal{R}_0$
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+JA, Bowman, Gumel & Portet (2007)
+</div>
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# Tuberculosis (TB) model with non-trivial behaviour at the origin
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+McCluskey & PvdD (2004)
+</div>
 
 ---
 
 # Demographic model
 
-Model of McCluskey et van den Driessche, 2004. 
-En l'absence de maladie, supposent que la population totale $N$ est r\'egie par l'equation diff\'erentielle 
+In absence of disease, assume total population governed by
 $$
 N'=B(N)-dN
 $$
-o\`u $B(N)$ satisfait les propri\'et\'es suivantes:
-\begin{enumerate}
-- Il existe un unique $N_0>0$ tel que $B(N_0)-dN_0=0$.
-- $B'(N)<B(N)/N$ pour $N\in ]0,N_0]$.
-- $b_0:=\lim_{N\to 0^+}B(N)/N >d$, o\`u $b_0\in\overline{\mathbb{R}}$. 
-\end{enumerate}
+where $B(N)$ satisfies
 
+- $\exists$ unique $N_0>0$ s.t. $B(N_0)-dN_0=0$
+- $B'(N)<B(N)/N$ for $N\in ]0,N_0]$
+- $b_0:=\lim_{N\to 0^+}B(N)/N >d$, where $b_0\in\overline{\mathbb{R}}$
 
 ---
 
@@ -522,28 +687,23 @@ o\`u $B(N)$ satisfait les propri\'et\'es suivantes:
 Diagramme de flot du mod\`ele SEI pour la tuberculose.
 \end{figure}
 
-
 ---
 
-
-En utilisant le fait que $N=S+E+I$, on \'ecrit le mod\`ele en les
-variables $N$, $E$ et $I$ de la fa\c{c}on suivante.
-\begin{subequations}\label{sys:SEI_TB}
+Since $N=S+E+I$, write the model using $N$, $E$ and $I$ as
+$$
+\label{sys:SEI_TB}
 \begin{align}
 N' &= B(N)-dN-\delta I \\
 E' &= c\beta\frac{(N-E-I)I}{N}-(\varepsilon+\rho_1+d)E \\
 I' &= \varepsilon E-(\rho_2+\delta+d)I
 \end{align}
-\end{subequations}
-
+$$
 
 ---
 
-
-Le probl\`eme ici est pour l'\'equilibre sans maladie: on peut avoir
-des solutions limitant en $(0,0,0)$. On consid\`ere le syst\`eme en
-proportions
-\begin{subequations}\label{sys:SEI_TB_prop}
+The issue here is with the DFE: we can have solutions limiting to $(0,0,0)$. Consider the system in proportions
+$$
+\label{sys:SEI_TB_prop}
 \begin{align}
 N' &= \left(\frac{B(N)}{N}-d-\delta i\right)N \\
 e' &=
@@ -551,36 +711,27 @@ c\beta(1-e-i)i-\left(\varepsilon+\rho_1+\frac{B(N)}{N}+di\right)e \\
 I' &= \varepsilon e-\left(\delta+\rho_2+\frac{B(N)}{N}+\delta
   i\right)i
 \end{align}
-\end{subequations}
-On \'etend le syst\`eme en $\{N=0\}$ en rempla\c{c}ant
-$\left.\frac{B(N)}{N}\right|_{N=0}$ par $b_0$ (3\eme hypoth\`ese sur
-$B$).
-
+$$
+Extend the system at $\{N=0\}$ by replacing $\left.\frac{B(N)}{N}\right|_{N=0}$ by $b_0$ (3rd hypothesis on $B$)
 
 ---
 
-
-R\'egion biologiquement int\'eressante est l'ensemble compact
-positivement invariant
+Biologically relevant region is the positively invariant compact set 
 $$
-\mathcal{B}=\{(N,e,i)\in\R^3_+: N\leq N_0,e+i\leq 1\}
+\mathcal{B}=\{(N,e,i)\in\mathbb{R}^3_+: N\leq N_0,e+i\leq 1\}
 $$
-Si $b_0=\infty$ ($B(N)=\Lambda$ constant), $N=0$ est
-r\'epulsif. Dor\'enavant, on le suppose fini.
+If $b_0=\infty$ ($B(N)=\Lambda$ constant), $N=0$ is unstable, so consider it finite from now on
 
-Deux \'equilibres tels que $N=0$:
+Two equilibria with $N=0$:
  
-- $A_0=(0,0,0)$.
-- $A_*=(0,e_*,i_*)$, avec $e_*,i_*>0$.
+- $A_0=(0,0,0)$
+- $A_*=(0,e_*,i_*)$, with $e_*,i_*>0$
 
-Ainsi, en $A_*$, la population s'\'eteint, mais de fa\c{c}on
-``contr\^ol\'ee''.
-
+Thus, at $A_*$, the population goes extinct, but in a "controlled" manner
 
 ---
 
-
-Soit
+Let
 $$
 \mathcal{R}_0=\frac{c\beta\varepsilon}
 {(\delta+\rho_2+d)(\varepsilon+\rho_1+d)}
@@ -589,34 +740,23 @@ $$
 \mathcal{R}_1=\frac{c\beta\varepsilon}
 {(\delta+\rho_2+b_0)(\varepsilon+\rho_1+b_0)}
 $$
-et, si $\mathcal{R}_0>1$,
+and, if $\mathcal{R}_0>1$,
 $$
 \mathcal{R}_2=\frac{b_0}{d+\delta i_*}
 $$
 
-
-
 ---
 
-# Equilibres
+# Equilibria
 
-$X_0=(N_0,0,0)$, $X_*=(N_*,E_*,I_*)$ (unique).
+$X_0=(N_0,0,0)$, $X_*=(N_*,E_*,I_*)$ (unique)
 
-\begin{center}
-\begin{tabular}{l|cccc}
-\hline
-& $A_0$ & $X_0$ & $A_*$ & $X_*$ \\
-\hline
-$\mathcal{R}_0<1$ & instable & LAS & & \\
-$\mathcal{R}_2<1<\mathcal{R}_0,\mathcal{R}_1$ & instable & instable & LAS &
-\\
-$\mathcal{R}_1<1<\mathcal{R}_0,\mathcal{R}_2$ & instable & instable & & LAS
-\\ 
-$1<\mathcal{R}_0,\mathcal{R}_1,\mathcal{R}_2$ & instable & instable &
-instable & LAS
-\end{tabular}
-\end{center}
-
+| | $A_0$ | $X_0$ | $A_*$ | $X_*$ |
+|:---|:---:|:---:|:---:|:---:|
+| $\mathcal{R}_0<1$ | instable | LAS | | |
+| $\mathcal{R}_2<1<\mathcal{R}_0,\mathcal{R}_1$ | unstable | unstable | LAS | |
+| $\mathcal{R}_1<1<\mathcal{R}_0,\mathcal{R}_2$ | unstable | unstable | | LAS |
+| $1<\mathcal{R}_0,\mathcal{R}_1,\mathcal{R}_2$ | unstable | unstable | unstable | LAS |
 
 ---
 
@@ -685,4 +825,9 @@ Utilisant le fait que $N$ a un \'equilibre stable, ils r\'eduisent la dimension 
 $$
 f(S,I)=\beta I^{p-1}S^q
 $$
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
+# <!--fit-->A few recent models
 
