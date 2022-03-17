@@ -2,9 +2,10 @@ theme: jekyll-theme-cayman
 title: Material for the 3MC Course on Epidemiological Modelling
 description: Html versions of the slides for the course.
 google_analytics: UA-1943806-8
+
 plugins:
   - jekyll-sitemap
 - scope:
-    path:            FIGS/**
+    path: FIGS/**
   values:
-    sitemap:         false
+    sitemap: false
