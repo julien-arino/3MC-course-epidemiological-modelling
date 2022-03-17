@@ -30,7 +30,6 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 <!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
 # <!--fit-->About the course
 
-
 ---
 
 ![bg right:40%](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/epidemio/FredBrauer_2007-05-13.jpg)

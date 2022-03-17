@@ -664,6 +664,87 @@ JA, Bowman, Gumel & Portet. [Effect of pathogen-resistant vectors on the transmi
 
 ---
 
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flow_diagram_transgenic_mosquitoes.jpg)
+
+---
+
+
+# Hypotheses about mosquitoes
+
+- **H1** Resistant vectors are completely immune to the pathogen
+- **H2-a**  A proportion $p_1$ of the offspring resulting from the interbreeding of wild and resistant vectors are resistant to the pathogen
+- **H2-b**  A proportion $p_2$$ of the offspring resulting from inbreeding within the resistant type are resistant to the pathogen
+- **H3** In the absence of disease, wild vectors are better fitted for competition than resistant vectors
+- **H4** Wild vectors are ill-fitted for competition when they carry the disease
+
+---
+
+# The model
+
+$$
+\begin{align}
+S' &= B_W(S,I,T) - (d_W+\kappa_SV)S-f_V \\
+I' &= f_V-(d_W+\delta_W+\kappa_IV)I \\
+T' &= B_T(S,I,T)-(d_T+\kappa_TV)T \\
+S_H' &= \Pi+\nu R_H-f_H-d_HS_H \\
+I_H' &= f_H-(d_H+\delta_H+\gamma)I_H \\
+R_H' &= \gamma I_H-(d_H+\nu)R_H
+\end{align}
+$$
+
+- $f_V,f_H\in C^1$
+- $f_V,f_H\geq 0$
+- $f_V=0$ if $S=0$ or $I_H=0$
+- $f_H=0$ if $S_H=0$ or $I=0$
+
+---
+
+# Coexistence of vectors
+
+- Can wild type and transgenic vectors coexist?
+
+$$
+\begin{align}
+S' &= \frac{\alpha_1}{2}S+(1-p_2)\frac{\alpha_3}{2}T
++(1-p_1)\alpha_5\frac{ST}{S+T}
+-(d_W+\kappa_S(S+T))S \\
+T' &= p_2\frac{\alpha_3}{2}T
++p_1\alpha_5\frac{ST}{S+T}
+-(d_T+\kappa_T(S+T))T
+\end{align}
+$$
+
+Fitness (from undetailed assumptions, $\mathbb{F}_S\geq\mathbb{F}_T$):
+$$
+\mathbb{F}_S=
+\frac{\alpha_1-2d_W}{2\kappa_S}
+\quad\textrm{and}\quad
+\mathbb{F}_T=
+\frac{p_2\alpha_3-2d_T}{2\kappa_T}
+$$
+
+Find 2 boundary EP $\bar E_0=(S,T)=(0,0)$ and $\bar E_W=(S,T)=(\mathbb{F}_S,0)$ and one coexistence EP $\bar E_C$. If there is no loss of resistance in offspring of two resistant parents ($p_2=1$), then there is another boundary EP $\bar E_T=(0,\mathbb{F}_T)$
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/transgenic_mosquitoes_stability_regions.jpg)
+
+---
+
+# Where the problem arises
+
+There are up to 4 EPs for vectors and these are independent from the host population in the case when disease is absent
+
+$\implies$ the whole coupled system with vectors *and* hosts has up to 4 DFE
+
+We can use the method of PvdD & Watmough (2002) at each of these DFE to get the local stability properties of these DFE
+
+At $\bar E_0$, we find $\mathcal{R}_0=0$, which makes no sense. What's wrong?
+
+Problem is with (A5): compute Jacobian of $(S,T)$ system and evaluate at $\bar E_0$, we get e-values $\lambda_1=\kappa_S\mathbb{F}_S>0$ and $\lambda_2=\kappa_T\mathbb{F}_T$, so $\bar E_0$ is always unstable $\implies$ (A5) cannot be satisfied at $\bar E_0$ and the LAS condition provided by PvdD & Watmough (2002) is not usable
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # Non-trivial behaviour at the origin
 
