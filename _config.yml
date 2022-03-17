@@ -7,6 +7,6 @@ plugins:
 defaults:
   -
     scope:
-      path:            "FIGS/*"
+      path:            "FIGS/*.png"
     values:
       sitemap:         false
