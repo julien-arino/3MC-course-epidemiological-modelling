@@ -39,6 +39,7 @@ img[alt~="center"] {
 
 - Additional considerations and a few oddities
 - Some recent models
+- Quick overview of missing topics
 
 ---
 
@@ -648,19 +649,30 @@ Some paper
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->An issue with the next generation method for $\mathcal{R}_0$
 
+# (Malaria model with transgenic vectors)
+
 <div style = "position: relative; bottom: -40%; font-size:20px;">
 
-JA, Bowman, Gumel & Portet (2007)
+JA, Bowman, Gumel & Portet. [Effect of pathogen-resistant vectors on the transmission dynamics of a vector-borne disease](http://dx.doi.org/10.1080/17513750701605614). *Journal of Biological Dynamics* **1**:320-346 (2007)
 </div>
 
 ---
 
+# Foreword
+
+- This is not an issue with the method itself, but an illustration of the reason why it is important to check that (A1)-(A5) are satisfied when using the next generation matrix method of PvdD & Watmough (2002)
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# Tuberculosis (TB) model with non-trivial behaviour at the origin
+# Non-trivial behaviour at the origin
+
+
+# <!--fit-->(Tuberculosis model with complicated recruitment)
 
 <div style = "position: relative; bottom: -40%; font-size:20px;">
 
-McCluskey & PvdD (2004)
+McCluskey & PvdD. [Global Analysis of Two Tuberculosis Models](https://doi.org/10.1023/B:JODY.0000041283.66784.3e). *Journal of Dynamics and Differential Equations* **16**:139–166 (2004)
 </div>
 
 ---
@@ -679,13 +691,7 @@ where $B(N)$ satisfies
 
 ---
 
-{Propagation de la TB}
-\begin{figure}[htbp]
-\begin{center}
-\includegraphics[width=\figfullwidth]{Figures/SEI_TB}
-\end{center}
-Diagramme de flot du mod\`ele SEI pour la tuberculose.
-\end{figure}
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SEI_TB.png)
 
 ---
 
@@ -777,7 +783,7 @@ border-radius:20px;
 padding:10px 20px 10px 20px;
 box-shadow: 0px 1px 5px #999;">
 
-If $\mathcal{R}_1<1$, alors $(0,0,0)$ n'est pas un point omega-limite de toute solution de \eqref{sys:SEI_TB} avec conditions initiales dans $\mathcal{R}^3_+\setminus\{(0,0,0)\}$
+If $\mathcal{R}_1<1$, then $(0,0,0)$ is not an omega-limit point for any solution of \eqref{sys:SEI_TB} with initial conditions in $\mathbb{R}^3_+\setminus\{(0,0,0)\}$
 </div>
 
 <div align=justify 
@@ -786,8 +792,7 @@ border-radius:20px;
 padding:10px 20px 10px 20px;
 box-shadow: 0px 1px 5px #999;">
 
-Pour le syst\`eme \eqref{sys:SEI_TB}, si $\mathcal{R}_0\leq 1$ alors
-$X_0=(N_0,0,0)$ est globalement asymptotiquement stable.
+For system \eqref{sys:SEI_TB}, if $\mathcal{R}_0\leq 1$ then $X_0=(N_0,0,0)$ is GAS
 </div>
 
 In the case $\mathcal{R}_0,\mathcal{R}_2>1$, global stability of $X_*$ is established in "esoteric" conditions..
@@ -831,3 +836,11 @@ $$
 <!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
 # <!--fit-->A few recent models
 
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
+# <!--fit-->Quick overview of missing topics
+
+---
+
+# I have left out many topics !
