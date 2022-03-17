@@ -431,5 +431,12 @@ Measles cases in the USA
 
 ---
 
+# A more recent trend
+
+- Some numerical work in the 1970s, but rare
+- More and more frequent now, to the point that some modelling studies are purely simulational
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Use of data in epidemiology
