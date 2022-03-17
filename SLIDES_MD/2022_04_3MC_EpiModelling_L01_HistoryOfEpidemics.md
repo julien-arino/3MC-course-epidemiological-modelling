@@ -165,9 +165,9 @@ L9: Some recent mathematical models for COVID-19, HIV/AIDS, TB, Malaria, etc.
 
 # <!--fit-->Colour codes for course organisation
 
-![bg](bg_colour_red.png) 
-![bg](bg_colour_yellow.png) 
-![bg](bg_colour_green.png)
+![bg](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/bg_colour_red.png) 
+![bg](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/bg_colour_yellow.png) 
+![bg](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/bg_colour_green.png)
 
 ---
 
