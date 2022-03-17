@@ -5,7 +5,4 @@ google_analytics: UA-1943806-8
 
 plugins:
   - jekyll-sitemap
-- scope:
-    path: FIGS/**
-  values:
-    sitemap: false
+  
