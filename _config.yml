@@ -2,7 +2,7 @@ theme: jekyll-theme-minimal
 title: 3MC Course on Epidemiological Modelling
 description: Course material (slides and code).
 show_downloads: true
-logo: /assets/img/PCA_plot_of_European_individuals.png
+logo: /FIGS/plasmodium_entering_RBC.jpg
 google_analytics: UA-1943806-8
 plugins:
   - jekyll-sitemap

@@ -17,3 +17,5 @@ List of lectures.
   - Practicum 03: [Analysis, studying stochastic models in R. Simulating agent-based models](2022_04_3MC_EpiModelling_P03_IntroR_Data_SolvingODE.html)
 - Thursday 7 April 2022
   - Lecture 09: [Some recent mathematical models for Covid-19, HIV/AIDS, TB, Hepatitis, Malaria](2022_04_3MC_EpiModelling_L09_RecentMathematicalModels.html)
+
+<!--- Image credit: Malaria parasite entering a red blood cell. https://flic.kr/p/V8qaYt. National Institute of Allergy and Infectious Diseases, NIH. CC BY NC 2.0 --->
