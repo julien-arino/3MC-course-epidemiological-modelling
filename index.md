@@ -1,6 +1,6 @@
 # 3MC Epidemic Modelling Course
 
-This is the web version of the course pages for the [3MC course on Epidemiological Modelling](http://natural-sciences.nwu.ac.za/paa/3MC-Course-EM). It is used to access the presentation files in `html` format. To view files in other formats, to access the code, etc., click the *View on GitHub* button above to access the repository content. You can also download the whole repository by clicking the buttons on the left. (You can of course clone the repo, but will have to do it from the GitHub version.)
+This is the web version of the course pages for the [3MC course on Epidemiological Modelling](http://natural-sciences.nwu.ac.za/paa/3MC-Course-EM). It is used to access the presentation files in `html` format. To view files in other formats, to access the code, etc., click the *View on GitHub* button to access the repository content. You can also download the whole repository by clicking the buttons on the left. (You can of course clone the repo, but will have to do it from the GitHub version.)
 
 ## List of lectures
 
