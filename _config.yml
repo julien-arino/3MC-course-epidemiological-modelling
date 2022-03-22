@@ -1,6 +1,8 @@
-theme: jekyll-theme-cayman
-title: Material for the 3MC Course on Epidemiological Modelling
-description: Html versions of the slides for the course.
+theme: jekyll-theme-minimal
+title: 3MC Course on Epidemiological Modelling
+description: Course material (slides and code).
+show_downloads: true
+logo: /assets/img/PCA_plot_of_European_individuals.png
 google_analytics: UA-1943806-8
 plugins:
   - jekyll-sitemap
