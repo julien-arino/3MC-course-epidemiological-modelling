@@ -974,8 +974,8 @@ Then compute the Jacobian matrices of vectors $\mathcal{F}$ and $\mathcal{V}$
 $$
 F=\left(
 \begin{matrix}
-\frac{\partial\overline{f}}{\partial L}
-& \frac{\partial\overline{f}}{\partial I} \\
+\dfrac{\partial\overline{f}}{\partial L}
+& \dfrac{\partial\overline{f}}{\partial I} \\
 0 & 0
 \end{matrix}
 \right),\quad
@@ -988,11 +988,11 @@ V=\left(
 $$
 where
 $$
-\frac{\partial\overline{f}}{\partial I}:=
-\frac{\partial f}{\partial I}(\bar
+\dfrac{\partial\overline{f}}{\partial I}:=
+\dfrac{\partial f}{\partial I}(\bar
 S,\bar I,\bar N)\quad\quad 
-\frac{\partial\overline{f}}{\partial L}:=
-\frac{\partial f}{\partial L}(\bar
+\dfrac{\partial\overline{f}}{\partial L}:=
+\dfrac{\partial f}{\partial L}(\bar
 S,\bar I,\bar N)
 $$
 
@@ -1040,7 +1040,7 @@ box-shadow: 0px 1px 5px #999;">
 Let
 $$
 \mathcal{R}_0=
-\frac{\varepsilon\frac{\partial\overline{f}}{\partial I}}
+\dfrac{\varepsilon\dfrac{\partial\overline{f}}{\partial I}}
 {(d+\varepsilon)(d+\gamma)}
 $$
 
@@ -1117,12 +1117,11 @@ $$
 
 $(\bar S,\bar I)$ the DFE, denote $\overline{f}_I=\partial f/\partial I(\bar S,\bar I)$
 
-| Model | $\mathcal{R}_0$ | Model | $\mathcal{R}_0$ |
-|:---|:---:|:---|:---:|
-| SLIRS | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SIRS | $\frac{\varepsilon\overline{f}_I}{d+\gamma}$ |
-| SLIR | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SIR | $\frac{\overline{f}_I}{d+\gamma}$ |
-| SLIS | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SIS | $\frac{\overline{f}_I}{d+\gamma}$ |
-| SLI | $\frac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SI | $\frac{\overline{f}_I}{d+\gamma}$ |
+| Model | $\mathcal{R}_0$ | Model | $\mathcal{R}_0$ | Model | $\mathcal{R}_0$ |
+|:---|:---:|:---|:---:|:---|:---:|
+| SLIRS | $\dfrac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SIRS | $\dfrac{\varepsilon\overline{f}_I}{d+\gamma}$ | SIS | $\dfrac{\overline{f}_I}{d+\gamma}$ |
+| SIR | $\dfrac{\overline{f}_I}{d+\gamma}$ | SLIS | $\dfrac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SI | $\dfrac{\overline{f}_I}{d+\gamma}$ | 
+| SLI | $\dfrac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | SLIR | $\dfrac{\varepsilon\overline{f}_I}{(d+\varepsilon)(d+\gamma)}$ | 
 
 ---
 
@@ -1345,7 +1344,7 @@ $$
 
 # Local stability - EEP
 
-Linearising (\ref{sys3dS})-(\ref{sys3dR}) at the EEP
+Linearising $\eqref{sys3dS}$-$\eqref{sys3dR}$ at the EEP
  
 - at the smaller $I$, Jacobian matrix has negative trace and positive determinant $\implies$ one of the eigenvalues is positive and the lower bifurcating branch is unstable
 - On the upper branch, conclude from linearisation that there is either one or three eigenvalues with nonpositive real part $\implies$ stability is undetermined. From numerical investigations, the upper branch seems locally stable
@@ -1519,8 +1518,8 @@ We have
 $$
 \frac{\partial\overline{f}}{\partial I}=\beta\frac{\partial\overline{g}}{\partial I}
 $$
-Since $\frac{\partial\overline{g}}{\partial I}=\lim_{I\to 0^+}
-\frac{g(I)}{I}=c$, 
+Since $\dfrac{\partial\overline{g}}{\partial I}=\lim_{I\to 0^+}
+\dfrac{g(I)}{I}=c$, 
 $$
 \mathcal{R}_0=\frac{c\beta\varepsilon}
 {(d+\varepsilon)(d+\gamma)}

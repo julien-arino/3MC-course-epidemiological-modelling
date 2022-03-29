@@ -433,10 +433,24 @@ Measles cases in the USA
 
 # A more recent trend
 
-- Some numerical work in the 1970s, but rare
-- More and more frequent now, to the point that some modelling studies are purely simulational
+- Some rare numerical work $\leq$ 1980s, mostly simulation of math models
+  - Baroyan, Rvachev et al. [Computer modelling of influenza epidemics for the whole country (USSR)](https://doi.org/10.2307/1426167). *Advances in Applied Probability* (1971)
+  - Rvachev & Longini. [A mathematical model for the global spread of influenza](https://doi.org/10.1016/0025-5564(85)90064-1). *Mathematical Biosciences* (1986)
+  - Flahault, Letrait et al.[Modelling the 1985 influenza epidemic in France](https://doi.org/10.1002/sim.4780071107). *Statistics in Medicine* (1988)
+- More and more frequent now, to the point that some modelling studies are purely simulation-based
 
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Use of data in epidemiology
+
+---
+
+# <!-- fit -->Has happened all along, undergoind a transformation
+
+- Epidemiology has long relied on data
+- Many developments in statistics originate there
+- Data has traditionally been better for chronic diseases than for infectious ones
+- Near-real-time surveillance of infectious diseases ongoing since the 1980s (e.g., Réseau Sentinelles)
+- SARS-CoV-1 saw the beginning of a move towards real-time emerging infectious disease data
+- With SARS-CoV-2, the system has really progressed a lot, both in terms of "citizen science" and governmental initiatives
