@@ -38,6 +38,84 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 # Heterogeneity of spread within a location
 
 ---
+
+<!-- _backgroundImage: "radial-gradient(white, 80%, #156C26)" -->
+# Heterogeneity of spread within a location
+- Age structure
+- Social structure
+- Pathogen heterogeneity
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Age structure
+
+---
+
+# <!-- fit -->Many diseases have different burdens in different age groups
+
+- Childhood disease conferring lifelong immunity: measles, mumps, etc.
+- Diseases in which immunity is acquired through repeated exposition: malaria
+- Disease for which repeated contacts are important: kids playing together, adults meeting mostly other adults, adults with kids getting sick from them (WAIFW - who acquires infection from whom)
+
+---
+
+![bg left:71%](https://www.cdc.gov/mmwr/preview/mmwrhtml/figures/m6013a1f.gif "https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6013a1.htm")
+
+# Measles cases among travellers returning to the US
+
+---
+
+![bg contain](../FIGS/malaria-deaths-by-age.png "Max Roser and Hannah Ritchie (2019) - 'Malaria'. Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/malaria' [Online Resource]")
+
+---
+
+# Population contact patterns in the United States during the COVID-19 pandemic
+
+![bg right:65%](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-021-20990-2/MediaObjects/41467_2021_20990_Fig3_HTML.png?as=webp "https://doi.org/10.1038/s41467-021-20990-2")
+
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Social structure
+
+---
+
+# Social structure also plays a very important role
+
+- Age is determinant of social structure and thus contacts:
+  - School
+  - Work
+  - Social events
+- In countries with large immigration: newcomers versus more established population, e.g., TB
+- Risk groups: drug users (HIV)
+
+---
+
+![bg right:71%](https://erj.ersjournals.com/content/erj/38/4/895/F1.large.jpg "https://doi.org/10.1183/09031936.00196610")
+
+# Arrivals to CAN from country groups with incidence per 100K ..
+
+---
+
+![bg contain](https://www.cdc.gov/mmwr/preview/mmwrhtml/figures/m6410a2f2.gif "https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6410a2.htm")
+
+---
+
+![bg contain](https://www.cdc.gov/hiv/images/basics/statistics/infographics/cdc-hiv-statistics-diagnoses-category-1200x630.png "https://www.cdc.gov/hiv/basics/statistics.html")
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Pathogen heterogeneity
+
+---
+
+![bg contain](../FIGS/ppat.1008984.g001.png "Characterising the epidemic spread of influenza A/H3N2 within a city through phylogenetics https://doi.org/10.1371/journal.ppat.1008984")
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # Mobility and the spread of infectious diseases
 
