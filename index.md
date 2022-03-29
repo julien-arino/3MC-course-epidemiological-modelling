@@ -22,7 +22,7 @@ This is the web version of the course pages for the [3MC course on Epidemiologic
 - Lecture 06: [Stochastic aspects in the spread of epidemics](2022_04_3MC_EpiModelling_L06_StochasticAspectsInSpread.html)
 - Lecture 07: [Stochastic epidemic models](2022_04_3MC_EpiModelling_L07_StochasticEpidemicModels.html)
 - Lecture 08: [Agent-based models](2022_04_3MC_EpiModelling_L08_AgentBasedModels.html)
-- Practicum 03: [Analysis, studying stochastic models in R. Simulating agent-based models](2022_04_3MC_EpiModelling_P03_IntroR_Data_SolvingODE.html)
+- Practicum 03: [Analysis, studying stochastic models in R. Simulating agent-based models](2022_04_3MC_EpiModelling_P03_Stochastic_systems.html)
 
 ### Thursday 7 April 2022
 
