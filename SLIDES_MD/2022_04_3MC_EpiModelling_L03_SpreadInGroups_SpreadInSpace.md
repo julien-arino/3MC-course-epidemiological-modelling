@@ -64,9 +64,13 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 # Measles cases among travellers returning to the US
 
+<!-- Measles cases among travellers returning to the US https://www.cdc.gov/mmwr/preview/mmwrhtml/mm6013a1.htm -->
+
 ---
 
 ![bg contain](../FIGS/malaria-deaths-by-age.png "Max Roser and Hannah Ritchie (2019) - 'Malaria'. Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/malaria' [Online Resource]")
+
+<!-- Max Roser and Hannah Ritchie (2019) - 'Malaria'. Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/malaria' [Online Resource] -->
 
 ---
 
@@ -74,6 +78,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ![bg right:65%](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-021-20990-2/MediaObjects/41467_2021_20990_Fig3_HTML.png?as=webp "https://doi.org/10.1038/s41467-021-20990-2")
 
+<!-- https://doi.org/10.1038/s41467-021-20990-2 -->
 
 ---
 
@@ -90,6 +95,12 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
   - Social events
 - In countries with large immigration: newcomers versus more established population, e.g., TB
 - Risk groups: drug users (HIV)
+
+---
+
+![bg contain](..FIGS/../../FIGS/pnas.202112605fig01.jpg "Within and between classroom transmission patterns of seasonal influenza among primary school students in Matsumoto city, Japan https://doi.org/10.1073/pnas.2112605118")
+
+<!-- Within and between classroom transmission patterns of seasonal influenza among primary school students in Matsumoto city, Japan https://doi.org/10.1073/pnas.2112605118 -->
 
 ---
 
@@ -113,6 +124,14 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 ---
 
 ![bg contain](../FIGS/ppat.1008984.g001.png "Characterising the epidemic spread of influenza A/H3N2 within a city through phylogenetics https://doi.org/10.1371/journal.ppat.1008984")
+
+---
+
+<div style="width:100%; height:100%">
+  <iframe src="https://covariants.org/per-country?country=South+Africa" style="position:absolute; top:0px; left:0px; 
+  width:100%; height:100%; border: none; overflow: hidden;"></iframe>
+</div>
+
 
 ---
 

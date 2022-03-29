@@ -434,8 +434,8 @@ Then compute the Jacobian matrices of vectors $\mathcal{F}$ and $\mathcal{V}$
 $$
 F=\left(
 \begin{matrix}
-\frac{\partial\overline{f}}{\partial L}
-& \frac{\partial\overline{f}}{\partial I} \\
+\dfrac{\partial\overline{f}}{\partial L}
+& \dfrac{\partial\overline{f}}{\partial I} \\
 0 & 0
 \end{matrix}
 \right),\quad
@@ -460,7 +460,7 @@ $$
 
 We have
 $$
-V^{-1}=\frac{1}{(d+\varepsilon)(d+\gamma)}
+V^{-1}=\dfrac{1}{(d+\varepsilon)(d+\gamma)}
 \left(
 \begin{matrix}
 d+\gamma & 0 \\
@@ -472,7 +472,7 @@ $$
 Also, when $N$ constant, $\partial f/\partial
 L=0$, then
 $$
-FV^{-1}=\frac{{\partial\overline{f}}/{\partial I}}
+FV^{-1}=\dfrac{{\partial\overline{f}}/{\partial I}}
 {(d+\varepsilon)(d+\gamma)}
 \left(
 \begin{matrix}
@@ -485,7 +485,7 @@ $$
 and thus,
 $$
 \mathcal{R}_0=\varepsilon
-\frac{{\partial\overline{f}}/{\partial I}}
+\dfrac{{\partial\overline{f}}/{\partial I}}
 {(d+\varepsilon)(d+\gamma)}
 $$
 
@@ -500,7 +500,7 @@ box-shadow: 0px 1px 5px #999;">
 Let
 $$
 \mathcal{R}_0=
-\frac{\varepsilon\frac{\partial\overline{f}}{\partial I}}
+\dfrac{\varepsilon\dfrac{\partial\overline{f}}{\partial I}}
 {(d+\varepsilon)(d+\gamma)}
 $$
 
@@ -520,13 +520,20 @@ Important to stress *local* nature of stability that is deduced from this result
 
 ---
 
-On peut se r\'ef\'erer par exemple \`a Fiedler, 1998.
-Soit $A=(a_{ij})$, $i=1,\ldots,m$, $j=1,\ldots,n$ une $m\times
-n$-matrice, et soit $k$ un entier, $1\leq k\leq\min(m,n)$. 
-Soit $M=\{1,\ldots,m\}$ et $N=\{1,\ldots,n\}$, $M^{(k)}$
-(respectivement, $N^{(k)}$) les ensembles ordon\'es lexicographiquement
-de $k$-tuples ordon\'es d'\'el\'ements de $M$ (respectivement, $N$).
+# The compound matrix method
 
+- An extension of Dulac's criterion to higher order systems
+- Useful to rule out the existence of periodic orbits
+- Was very popular for a while, but you must be aware of the main limitation:
+  - Becomes hard to use when dimensionality $\geq 4$
+
+---
+
+Refer for example to Fiedler, 1998 for details
+
+Let $A=(a_{ij})$, $i=1,\ldots,m$, $j=1,\ldots,n$ an $m\times n$-matrix and $k$ an integer, $1\leq k\leq\min(m,n)$
+
+Let $M=\{1,\ldots,m\}$ and $N=\{1,\ldots,n\}$, $M^{(k)}$ (respectively, $N^{(k)}$) the lexicographically ordered sets of ordered $k$-tuples of elements of $M$ (respectively, $N$)
 
 ---
 

@@ -45,6 +45,56 @@ Fred passed away 2021-10-17. This course is dedicated to his memory!
 
 ---
 
+# GitHub repository for the course
+
+Most course material is available from a GitHub repository/page I set up: 
+[https://julien-arino.github.io/3MC-course-epidemiological-modelling](https://julien-arino.github.io/3MC-course-epidemiological-modelling)
+
+This includes the slides, code and data samples
+
+This *does not* include bibliographic references, although there are links to articles and books. As much as possible, I link to Open Access sources
+
+One remark: I sometimes refer to Wikipedia. For the younger students here: this can be where you first look, not what you cite in proper work
+
+---
+
+# Slides
+
+- Slides are written in `Markdown` and `LaTeX` and are rendered as `html` files using [Marp](https://marp.app/) running in the [Visual Studio Code](https://code.visualstudio.com/) editor
+
+- Image files are mostly not hosted locally and thus require internet access
+
+- As much as possible, I have indicated provenance (by linking the file on the original website); when not possible, the file is saved with the name of the source indicated
+
+- Figure sources are added as html comments which appear as "speakers notes" in the presentation version
+
+- For convenience, `pdf` versions of the slides are available in the GitHub repo; the `pdf` versions embed image files. However, movies and Shiny code do not function in the `pdf` version of the slides
+
+---
+
+# Code
+
+- I use `R`
+- Instructions on setting up `R` for the course can be found in the GitHub repo
+- Some code is in the repo
+- For the epi side of things, a very useful open reference: [R for applied epidemiology and public health](https://epirhandbook.com/en/index.html)
+
+---
+
+# Reading recommendations (math epi)
+
+The following are *my* favourite references:
+
+- Waltman. [Deterministic threshold models in the theory of epidemics](https://doi.org/10.1007/978-3-642-80820-3) (1974)
+- Capasso. [Mathematical structures of epidemic systems](https://doi.org/10.1007/978-3-540-70514-7) (1993)
+- Hethcote. [The mathematics of infectious diseases](https://doi.org/10.1137/S0036144500371907) SIAM Review (2000)
+- Daley & Gani. [Epidemic modelling]() (2001)
+- Brauer, PvdD & Wu. [Mathematical Epidemiology](https://doi.org/10.1007/978-3-540-78911-6) (2008)
+- Brauer & C$^3$. [Mathematical Models in Population Biology and Epidemiology](https://doi.org/10.1007/978-1-4614-1686-9) (2012)
+- Brauer, C$^3$ & Feng. [Mathematical Models in Epidemiology](https://doi.org/10.1007/978-1-4939-9828-9) (2019)
+
+---
+
 # Course objectives
 
 Introduction to Mathematical Epidemiology
@@ -95,54 +145,6 @@ It is important to do the 4 interactively
 
 - Acquiring data has become much easier than even 20 years ago
 - As a modeller, it is not necessary that everything be data-driven, but it is necessary to be "context-aware" and this means getting a sense of the quantities involved in the process you want to model
-
----
-
-# GitHub repository for the course
-
-Most course material is available from a GitHub repository/page I set up: 
-[https://julien-arino.github.io/3MC-course-epidemiological-modelling](https://julien-arino.github.io/3MC-course-epidemiological-modelling)
-
-This includes the slides, code and data samples
-
-This *does not* include bibliographic references, although there are links to articles and books. As much as possible, I link to Open Access sources
-
-One remark: I sometimes refer to Wikipedia. For the younger students here: this can be where you first look, not what you cite in proper work
-
----
-
-# Slides
-
-- Slides are written in `Markdown` and `LaTeX` and are rendered as `html` files using [Marp](https://marp.app/) running in the [Visual Studio Code](https://code.visualstudio.com/) editor
-
-- Image files are not hosted locally and thus require internet access
-
-- As much as possible, I have left provenance information (by linking the file on the original website); when not possible, the file is saved with the name of the source indicated
-
-- For convenience, `pdf` versions of the slides are available in the GitHub repo; the `pdf` versions embed image files. However, movies and Shiny code do not function in the `pdf` version of the slides
-
----
-
-# Code
-
-- I use `R`
-- Instructions on setting up `R` for the course can be found in the GitHub repo
-- Some code is in the repo
-- For the epi side of things, a very useful open reference: [R for applied epidemiology and public health](https://epirhandbook.com/en/index.html)
-
----
-
-# Reading recommendations (math epi)
-
-The following are *my* favourite references:
-
-- Waltman. [Deterministic threshold models in the theory of epidemics](https://doi.org/10.1007/978-3-642-80820-3) (1974)
-- Capasso. [Mathematical structures of epidemic systems](https://doi.org/10.1007/978-3-540-70514-7) (1993)
-- Hethcote. [The mathematics of infectious diseases](https://doi.org/10.1137/S0036144500371907) SIAM Review (2000)
-- Daley & Gani. [Epidemic modelling]() (2001)
-- Brauer, PvdD & Wu. [Mathematical Epidemiology](https://doi.org/10.1007/978-3-540-78911-6) (2008)
-- Brauer & C$^3$. [Mathematical Models in Population Biology and Epidemiology](https://doi.org/10.1007/978-1-4614-1686-9) (2012)
-- Brauer, C$^3$ & Feng. [Mathematical Models in Epidemiology](https://doi.org/10.1007/978-1-4939-9828-9) (2019)
 
 ---
 
