@@ -298,7 +298,7 @@ $$
 
 ---
 
-Another way to check regularity:
+# Another way to check regularity
 <div class="theorem">
 
 A matrix $M$ is primitive if the associated connection graph is strongly connected, i.e., that there is a path between any pair $(i,j)$ of states, and that there is at least one positive entry on the diagonal of $M$
@@ -767,6 +767,45 @@ $$
 <!-- _backgroundImage: "radial-gradient(white, 80%, #156C26)" -->
 # More on stochastic models in R
 - Paralellisation
+
+---
+
+To see multiple realisations: good idea to parallelise, then interpolate results. Write a function, e.g.,  `run_one_sim` that .. runs one simulation, then..
+
+```
+no_cores <- detectCores()-1
+cl <- makeCluster(no_cores)
+clusterEvalQ(cl,{
+  library(GillespieSSA2)
+})
+clusterExport(cl,
+              c("params",
+                "run_one_sim"),
+              envir = .GlobalEnv)
+SIMS = parLapply(cl = cl, 
+                 X = 1:params$number_sims, 
+                 fun =  function(x) run_one_sim(params))
+stopCluster(cl)
+```
+
+See `simulate_CTMC_parallel.R` on [Github](https://github.com/julien-arino/UK-APASI)
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/many_CTMC_sims_with_means.png)
+
+---
+
+# Benefit of parallelisation
+
+Run the parallel code for 100 sims between `tictoc::tic()` and `tictoc::toc()`, giving `66.958 sec elapsed`, then the sequential version
+```
+tictoc::tic()
+SIMS = lapply(X = 1:params$number_sims, 
+              FUN =  function(x) run_one_sim(params))
+tictoc::toc()
+```
+which gives `318.141 sec elapsed` on a 6C/12T Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz (4.75$\times$ faster) or `12.067 sec elapsed` versus `258.985 sec elapsed` on a 32C/64T AMD Ryzen Threadripper 3970X 32-Core Processor (21.46$\times$ faster !)
 
 ---
 

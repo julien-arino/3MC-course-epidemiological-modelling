@@ -421,11 +421,11 @@ SIMS = parLapply(cl = cl,
 stopCluster(cl)
 ```
 
-See `simulate_CTMC_parallel.R` on [Github](https://github.com/julien-arino/UK-APASI)
+See `simulate_CTMC_parallel.R` on [Github](https://github.com/julien-arino/3MC-course-epidemiological-modelling/tree/main/CODE)
 
 ---
 
-![bg contain](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/stochastic/many_CTMC_sims_with_means.png)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/many_CTMC_sims_with_means.png)
 
 ---
 
