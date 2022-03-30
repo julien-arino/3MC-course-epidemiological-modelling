@@ -71,7 +71,15 @@ plot(1:(length(t)-1), diff(t),
      type = "l")
 
 # Plot the inter-event time. Diff removes one entry, beware..
+if (OUTPUT_PLOT) {
+  png(filename = paste0("../FIGS/CTMC_birth_death_ie_vs_t_", fig_title, ".png"),
+      width = 800, height = 600, res = 120)
+}
 plot(t[2:length(t)], diff(t),
      xlab = "Time", ylab = "Inter-event time",
      main = main_title,
      type = "l")
+if (OUTPUT_PLOT) {
+  dev.off()
+  crop_figure(paste0("../FIGS/CTMC_birth_death_ie_vs_t_", fig_title, ".png"))
+}
