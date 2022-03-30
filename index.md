@@ -12,7 +12,7 @@ This is the web version of the course pages for the [3MC course on Epidemiologic
 
 ### Tuesday 5 April 2022:
 
-- Lecture 03: [Spread of infections in groups. Spread of infections in space](2022_04_3MC_EpiModelling_L03_SpreadInGroups_SpreadInSpace.html)
+- Lecture 03: [Spread of infections in groups / in space](2022_04_3MC_EpiModelling_L03_SpreadInGroups_SpreadInSpace.html)
 - Lecture 04: [Group models](2022_04_3MC_EpiModelling_L04_GroupModels.html)
 - Lecture 05: [Metapopulation epidemic models](2022_04_3MC_EpiModelling_L05_MetapopulationModels.html)
 - Practicum 02: [Model analysis, studying large-scale models in R](2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html)

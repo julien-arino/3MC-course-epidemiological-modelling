@@ -14,6 +14,11 @@ size: 4K
     border-radius:20px;
     padding:10px 20px 10px 20px;
     box-shadow: 0px 1px 5px #999;
+    /*outline-style: solid;
+    outline-color: white;*/
+    margin-bottom: 10px;
+    /*outline-width: 20px;
+    border: 1px solid silver;*/
   }
   .definition {
     text-align:justify;
@@ -21,6 +26,7 @@ size: 4K
     border-radius:20px;
     padding:10px 20px 10px 20px;
     box-shadow: 0px 1px 5px #999;
+    margin-bottom: 10px;
   }
 </style>
 
@@ -146,20 +152,21 @@ $$
 p(n+1)=p(n)P, \quad n=1,2,3,\dots
 $$
 
-
 ---
 
 # Stochastic matrices
 
-\begin{definition}[Stochastic matrix]
-The nonnegative $r\times r$ matrix $M$ is \emph{stochastic} if $\sum_{j=1}^ra_{ij}=1$ for all $i=1,2,\dots, r$.
-\end{definition}
-\begin{theorem}
-Let $M$ be a stochastic matrix $M$. Then all eigenvalues $\lambda$ of $M$ are such that $|\lambda|\leq 1$. 
-Furthermore, $\lambda =1$ is an eigenvalue of $M$.
-\end{theorem}
-\vskip0.4cm
-To see that $1$ is an eigenvalue, write the definition of a stochastic matrix, i.e., $M$ has row sums 1. In vector form, $M\nbOne=\nbOne$. Now remember that $\lambda$ is an eigenvalue of $M$, with associated eigenvector $v$, iff $Mv=\lambda v$. So, in the expression $M\nbOne=\nbOne$, we read an eigenvector, $\nbOne$, and an eigenvalue, $1$.
+<div class="definition">
+
+The nonnegative $r\times r$ matrix $M$ is **stochastic** if $\sum_{j=1}^ra_{ij}=1$ for all $i=1,2,\dots, r$
+</div>
+
+<div class="theorem">
+
+Let $M$ be a stochastic matrix $M$. Then all eigenvalues $\lambda$ of $M$ are such that $|\lambda|\leq 1$. Furthermore, $\lambda =1$ is an eigenvalue of $M$
+</div>
+
+To see that $1$ is an eigenvalue, write the definition of a stochastic matrix, i.e., $M$ has row sums 1. In vector form, $M\mathbf{1}=\mathbf{1}$. Now remember that $\lambda$ is an eigenvalue of $M$, with associated eigenvector $v$, iff $Mv=\lambda v$. So, in the expression $M\mathbf{1}=\mathbf{1}$, we read an eigenvector, $\mathbf{1}$, and an eigenvalue, $1$
 
 ---
 
@@ -187,12 +194,15 @@ $$
 
 # Additional properties of stochastic matrices
 
-\begin{theorem}
-If $M,N$ are stochastic matrices, then $MN$ is a stochastic matrix.
-\end{theorem}
-\begin{theorem}
-If $M$ is a stochastic matrix, then for any $k\in\IN$, $M^k$ is a stochastic matrix.
-\end{theorem}
+<div class="theorem">
+
+If $M,N$ are stochastic matrices, then $MN$ is a stochastic matrix
+</div>
+
+<div class="theorem">
+
+If $M$ is a stochastic matrix, then for any $k\in\mathbb{N}$, $M^k$ is a stochastic matrix
+</div>
 
 ---
 
@@ -201,7 +211,7 @@ If $M$ is a stochastic matrix, then for any $k\in\IN$, $M^k$ is a stochastic mat
 
 ---
 
-# Will not be using much
+# Not much use in disease models
 
 - In disease models, the state $I=0$ is *absorbing*, so chains are not *regular*
 - Worth taking a quick look at, though
@@ -210,28 +220,33 @@ If $M$ is a stochastic matrix, then for any $k\in\IN$, $M^k$ is a stochastic mat
 
 #  Regular Markov chain
 
-\begin{definition}[Regular Markov chain]
+<div class="definition">
+
 A **regular Markov chain** is one in which $P^k$ is positive for some integer $k>0$, i.e., $P^k$ has only positive entries, no zero entries
-\end{definition}
-\begin{definition}
+</div>
+
+<div class="definition">
+
 A nonnegative matrix $M$ is **primitive** if, and only if, there is an integer $k>0$ such that $M^k$ is positive
-\end{definition}
-\begin{theorem}
+</div>
+
+<div class="theorem">
+
 A Markov chain is regular if, and only if, the transition matrix $P$ is primitive
-\end{theorem}
+</div>
 
 ---
 
 #  Important result for regular Markov chains
 
-\begin{theorem}
+<div class="theorem">
+
 If $P$ is the transition matrix of a regular Markov chain, then
 
 1. the powers $P^n$ approach a stochastic matrix $W$
 2. each row of $W$ is the same (row) vector $w=(w_1,\ldots,w_r)$
 3. the components of $w$ are positive
-
-\end{theorem}
+</div>
 
 So if the Markov chain is regular
 $$
@@ -243,7 +258,7 @@ $$
 
 #  Left and right eigenvectors
 
-Let $M$ be an $r\times r$ matrix, $u,v$ be two column vectors, $\lambda\in\IR$. Then, if  
+Let $M$ be an $r\times r$ matrix, $u,v$ be two column vectors, $\lambda\in\mathbb{R}$. Then, if  
 $$
 Mu=\lambda u
 $$
@@ -255,7 +270,7 @@ then $v$ is the left eigenvector corresponding to $\lambda$. Note that to a give
 
 ---
 
-The vector $w$ is in fact the left eigenvector corresponding to the eigenvalue 1 of $P$. (We already know that the (right) eigenvector corresponding to 1 is $\nbOne$.)
+The vector $w$ is in fact the left eigenvector corresponding to the eigenvalue 1 of $P$. (We already know that the (right) eigenvector corresponding to 1 is $\mathbf{1}$.)
 
 To see this, remark that, if $p(n)$ converges, then $p(n+1)=p(n)P$, so $w$ is a fixed point of the system. We thus write
 $$
@@ -284,9 +299,11 @@ $$
 ---
 
 Another way to check regularity:
-\begin{theorem}
+<div class="theorem">
+
 A matrix $M$ is primitive if the associated connection graph is strongly connected, i.e., that there is a path between any pair $(i,j)$ of states, and that there is at least one positive entry on the diagonal of $M$
-\end{theorem}
+</div>
+
 This is checked directly on the transition graph
 \begin{center}
 \includegraphics[width=0.6\textwidth]{../figs_08_genetics/graphe_hybride}
@@ -301,15 +318,20 @@ This is checked directly on the transition graph
 
 #  Absorbing states, absorbing chains
 
-\begin{definition}
-A state $S_i$ in a Markov chain is **absorbing** if whenever it occurs on the $n^{th}$ generation of the experiment, it then occurs on every subsequent step. In other words, $S_i$ is absorbing if $p_{ii}=1$ and $p_{ij}=0$ for $i\neq j$
-\end{definition}
+<div class="definition">
 
-\begin{definition}
-A Markov chain is said to be absorbing if it has at least one absorbing state, and if from every state it is possible to go to an absorbing state
-\end{definition}
+A state $S_i$ in a Markov chain is **absorbing** if whenever it occurs on the $n^{th}$ generation of the experiment, it then occurs on every subsequent step. In other words, $S_i$ is absorbing if $p_{ii}=1$ and $p_{ij}=0$ for $i\neq j$
+</div>
+
+<div class="definition">
+
+A **Markov chain is absorbing** if it has at least one absorbing state, and if from every state it is possible to go to an absorbing state
+</div>
+
+<div class="definition">
 
 In an absorbing Markov chain, a state that is not absorbing is called **transient**
+</div>
 
 ---
 
@@ -330,9 +352,10 @@ Suppose we have a chain like the following:
 #  Reaching an absorbing state
 
 Answer to question 1:
-\begin{theorem}
+<div class="theorem">
+
 In an absorbing Markov chain, the probability of reaching an absorbing state is 1
-\end{theorem}
+</div>
 
 ---
 
@@ -578,7 +601,7 @@ This is a **symmetric tridiagonal Toeplitz** matrix
 
 #  Inverting a symmetric tridiagonal matrix
 
-We want to use the following result (found for example in Gérard Meurant [A Review on the Inverse of Symmetric Tridiagonal and Block Tridiagonal Matrices](https://doi-org.uml.idm.oclc.org/10.1137/0613045) 1992): if 
+Gérard Meurant [A Review on the Inverse of Symmetric Tridiagonal and Block Tridiagonal Matrices](https://doi-org.uml.idm.oclc.org/10.1137/0613045) (1992): if 
 $$
 J_k=
 \begin{pmatrix}
@@ -601,7 +624,8 @@ then we have the result on the next slide
 
 #  Inverse of a symmetric tridiagonal matrix
 
-\begin{theorem}
+<div class="theorem">
+
 The inverse of the symmetric tridiagonal matrix $J_k$ is given by
 $$
 (J_k^{-1})_{ij} = (-1)^{j-i}\beta_i\cdots\beta_{j-1}\frac{d_{j+1}^{(k)}\cdots d_k^{(k)}}{\delta_i\cdots\delta_k},\;\forall i,\forall j>i
@@ -609,7 +633,7 @@ $$
 $$
 (J_k^{-1})_{ii} = \frac{d_{i+1}^{(k)}\cdots d_k^{(k)}}{\delta_i\cdots\delta_k},\;\forall i
 $$
-\end{theorem}
+</div>
 
 ---
 
