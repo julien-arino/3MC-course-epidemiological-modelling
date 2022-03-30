@@ -144,11 +144,14 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
+![bg contain](../FIGS/InfluenzaStrainsCAN_2019-2020.png)
+
+---
+
 <div style="width:100%; height:100%">
   <iframe src="https://covariants.org/per-country?country=South+Africa" style="position:absolute; top:0px; left:0px; 
   width:100%; height:100%; border: none; overflow: hidden;"></iframe>
 </div>
-
 
 ---
 
