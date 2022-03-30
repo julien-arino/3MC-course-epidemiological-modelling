@@ -43,3 +43,48 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 * The University of Manitoba campuses are located on original lands of Anishinaabeg, Cree, Oji-Cree, Dakota and Dene peoples, and on the homeland of the Métis Nation.</div>
 
 ---
+
+<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
+# Outline
+
+- What are agent-based models (ABM)
+- When to use ABM
+- When not to use ABM
+- Some examples
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->What are agent-based models (ABM)
+
+---
+
+# ABM $\neq$ IBM
+
+- Early in the life of these models, they were called IBM (individual-based models)
+- Over the years, a "philosophical" distinction has emerged:
+  - IBM are mathematical models that consider individuals as the units; e.g., DTMC, CTMC, branching processes, etc.
+  - ABM are computational models whose study is, for the most part, only possible numerically 
+
+---
+
+# ABM vs Network models
+
+- Network models endow vertices with simple systems and couple them through graphs
+- Can be ABM, but some networks can also be studied analytically
+- Not enough time to go into this, a very interesting subject!
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->When to use ABM
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->When not to use ABM
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Some examples
