@@ -4,7 +4,7 @@ title: Agent-based models
 description: 3MC Course Epidemiological Modelling - Julien Arino - Course 08 - Agent-based models
 theme: default
 paginate: false
-size: 4K
+size: 16:9
 ---
 
 <style>
@@ -81,10 +81,43 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
+# ABM are very useful to decipher contact processes
+
+- Classic mathematical models capture contact by using approximations of what contact could be like
+- Classic models allow some flexibility (see section about incidence functions in [Lecture 02](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_L02_BasicMathEpi.html)) but they remain limited
+- ABM can model actual trajectories of individuals, so given a definition of what a contact is (how close do you need to be for a contact to take place), can count them efficaciously
+
+---
+
+# ABM are very useful to understand behavioural responses
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->When not to use ABM
 
 ---
 
+# As with _all_ tools, beware!
+
+- There is a law of large numbers effects happening often: if you have many units, unless some emergent behaviour arises, you get the same results using ODEs...
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Some examples
+
+---
+
+Estimating Social Contacts in Mass Gatherings for Disease Outbreak Prevention and Management (Case of Hajj Pilgrimage), Tropical Diseases, Travel Medicine and Vaccines. Tofighi, Asgary, Tofighi, Najafabadi, Arino, Amiche, Rahman, McCarthy, Bragazzi, Thommes,  Coudeville, Grunnill, Bourouiba and Wu
+
+---
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/_oOf4uNIghw?loop=1&modestbranding=1&origin=https://julien-arino.github.io/&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; loop" allowfullscreen>
+</iframe>
+
+---
+
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/qcWBi17qKnU?start=9&loop=1&modestbranding=1&origin=https://julien-arino.github.io/&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; loop" allowfullscreen>
+</iframe>
+
