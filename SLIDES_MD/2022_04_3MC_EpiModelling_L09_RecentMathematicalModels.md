@@ -7,6 +7,23 @@ paginate: false
 size: 4K
 ---
 
+<style>
+  .theorem {
+    text-align:justify;
+    background-color:#16a085;
+    border-radius:20px;
+    padding:10px 20px 10px 20px;
+    box-shadow: 0px 1px 5px #999;
+  }
+  .definition {
+    text-align:justify;
+    background-color:#ededde;
+    border-radius:20px;
+    padding:10px 20px 10px 20px;
+    box-shadow: 0px 1px 5px #999;
+  }
+</style>
+
 # Some recent mathematical models for COVID-19, HIV/AIDS, TB, Hepatitis, Malaria, etc.
 
 7 April 2022 

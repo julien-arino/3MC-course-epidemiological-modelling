@@ -7,6 +7,23 @@ paginate: false
 size: 4K
 ---
 
+<style>
+  .theorem {
+    text-align:justify;
+    background-color:#16a085;
+    border-radius:20px;
+    padding:10px 20px 10px 20px;
+    box-shadow: 0px 1px 5px #999;
+  }
+  .definition {
+    text-align:justify;
+    background-color:#ededde;
+    border-radius:20px;
+    padding:10px 20px 10px 20px;
+    box-shadow: 0px 1px 5px #999;
+  }
+</style>
+
 # Lecture 04 - Group models
 
 5 April 2022 

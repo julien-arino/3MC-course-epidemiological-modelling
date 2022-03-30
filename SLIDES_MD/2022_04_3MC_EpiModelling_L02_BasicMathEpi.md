@@ -8,6 +8,23 @@ size: 4K
 math: mathjax
 ---
 
+<style>
+  .theorem {
+    text-align:justify;
+    background-color:#16a085;
+    border-radius:20px;
+    padding:10px 20px 10px 20px;
+    box-shadow: 0px 1px 5px #999;
+  }
+  .definition {
+    text-align:justify;
+    background-color:#ededde;
+    border-radius:20px;
+    padding:10px 20px 10px 20px;
+    box-shadow: 0px 1px 5px #999;
+  }
+</style>
+
 # Basic concepts of mathematical epidemiology. Models in one population and their basic properties
 
 4 April 2022 
@@ -600,11 +617,7 @@ $$
 
 We have proved the following result
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 For system $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$, the following alternative holds
  
@@ -701,12 +714,7 @@ where $\rho$ is the spectral radius
 
 # The main result of PvdD and Watmough (2002)
 
-
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Suppose the DFE exists. Let then
 $$
@@ -1031,11 +1039,7 @@ $$
 
 ---
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Let
 $$
@@ -1363,11 +1367,7 @@ Spectral abscissa $s(J)$ (maximum of real parts of eigenvalues of the Jacobian m
 
 # Global behaviour
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Suppose that in the system \eqref{sys:SIR_vacc}, parameters satisfy
 $$
@@ -1437,11 +1437,7 @@ $$
 V=\sum a_i(x_i-x_i^\star  \ln x_i)
 $$
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
  
 - If $\mathcal{R}_0>1$, then system \eqref{sys:SEIR_vert_transmission} has the globally asymptotically stable equilibrium $E^\star$
 - If $\mathcal{R}_0\leq 1$, then system \eqref{sys:SEIR_vert_transmission} has the globally asymptotically stable DFE $E_0$ and $E^\star$ is not biologically relevant
@@ -1484,11 +1480,7 @@ S^q-S^{*q}=(S-S^\star )g(S),\quad I^p-I^{*p}=(I-I^\star )h(I)
 $$
 they obtain the following result
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Function $V$ is s.t. $V'<0$ if
 - $4(\beta I^{*p}g(S)+d+\nu)(\varepsilon+d)>(\nu-\beta I^{*p}g(S))^2$
@@ -1529,11 +1521,7 @@ The local stability results already established are valid here, since (\ref{eq:g
 
 ---
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 If $g(I)$ satisfies hypothesis **(H)**, then system $f(S,I,N)=\beta S^q I^p$ with incidence $f(S,I,N)=\beta S^q I^p$ is uniformly persistent if and only if $\mathcal{R}_0>1$
 </div>
@@ -1550,11 +1538,7 @@ $$
 
 ---
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Suppose that incidence $f(S,I,N)=\beta S^q I^p$ satisfies **(H)** and that
 $$

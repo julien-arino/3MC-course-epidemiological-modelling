@@ -7,6 +7,23 @@ paginate: false
 size: 4K
 ---
 
+<style>
+  .theorem {
+    text-align:justify;
+    background-color:#16a085;
+    border-radius:20px;
+    padding:10px 20px 10px 20px;
+    box-shadow: 0px 1px 5px #999;
+  }
+  .definition {
+    text-align:justify;
+    background-color:#ededde;
+    border-radius:20px;
+    padding:10px 20px 10px 20px;
+    box-shadow: 0px 1px 5px #999;
+  }
+</style>
+
 # Lecture 05 - Metapopulation epidemic models
 
 5 April 2022 
@@ -336,11 +353,7 @@ m_{c|\mathcal{P}|1} & m_{c|\mathcal{P}|2} & & -\sum_{q\in\mathcal{P}} m_{cq|\mat
 \end{pmatrix}
 $$
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Consider a compartment $c\in\mathcal{C}$. Then the following hold true:
 1. $0\in\sigma(\mathcal{M}^c)$ and corresponds to left eigenvector $\mathbf{1}^T_{|\mathcal{P}|}=(1,\ldots,1)$
@@ -396,11 +409,7 @@ given, of course, that $\mathbf{d}-\mathcal{M}$ (or, equivalently, $\mathcal{M}-
 
 # "Perturbations" of movement matrices
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 $\mathcal{M}$ a movement matrix  and $D$ a diagonal matrix. The following hold true:
 1. $s(\mathcal{M}+d\mathbb{I})=d$ for all $d\in\mathbb{R}$
@@ -453,11 +462,7 @@ $\mathcal{M}$ irreducible $\rightarrow$ $\mathbf{N}^\star\gg 0$ (provided $\math
 
 # <!--fit-->Behaviour of total population with reducible movement
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Assume $\mathcal{M}$ reducible. Let $a$ be the number of minimal absorbing sets in the corresponding connection graph $\mathcal{G}(\mathcal{M})$. Then
 1. The spectral abscissa $s(\mathcal{M})=0$ has multiplicity $a$
@@ -649,6 +654,10 @@ $$
 
 # Evaluate $D\mathcal{F}$ at DFE
 
+<style scoped>
+@import url('https://unpkg.com/tailwindcss@^2/dist/utilities.min.css');
+</style>
+
 <div class="grid grid-cols-2 gap-4">
 <div>
 
@@ -733,8 +742,7 @@ $$
 \mathcal{R}_0=\rho\Biggl(
 \mathsf{diag}\left(
 \frac{\partial\Phi_1}{\partial I_1},\ldots,\frac{\partial\Phi_{|\mathcal{P}|}}{\partial I_{|\mathcal{P}|}}\right)
-\left(\mathsf{diag}_p(\varepsilon_p+d_p)-\mathcal{M}^L\right)^{-1} \\
-\qquad\qquad\qquad\qquad\qquad\qquad
+\left(\mathsf{diag}_p(\varepsilon_p+d_p)-\mathcal{M}^L\right)^{-1} 
 \mathsf{diag}_p(\varepsilon_p)
 \left(\mathsf{diag}_p(\gamma_p+d_p)-\mathcal{M}^I\right)^{-1}
 \Biggr)
@@ -745,19 +753,14 @@ $$
 
 # Local asymptotic stability of the DFE
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Define $\mathcal{R}_0$ for the $|\mathcal{P}|$-SLIRS as 
 $$
 \mathcal{R}_0=\rho\Biggl(
 \mathsf{diag}\left(
 \frac{\partial\Phi_1}{\partial I_1},\ldots,\frac{\partial\Phi_{|\mathcal{P}|}}{\partial I_{|\mathcal{P}|}}\right)
-\left(\mathsf{diag}_p(\varepsilon_p+d_p)-\mathcal{M}^L\right)^{-1}  \\
-\qquad\qquad\qquad\qquad\qquad\qquad
+\left(\mathsf{diag}_p(\varepsilon_p+d_p)-\mathcal{M}^L\right)^{-1}  
 \mathsf{diag}_p(\varepsilon_p)
 \left(\mathsf{diag}_p(\gamma_p+d_p)-\mathcal{M}^I\right)^{-1}
 \Biggr)
@@ -946,22 +949,14 @@ This is a metapopulation-specific problem, not one of inheritance of dynamical p
 
 # Types of equilibria
 
-<div align=justify 
-style="background-color:#ededde;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="definition">
 
 **[Patch level]** Patch $p\in\mathcal{P}$ at equilibrium is **empty** if $X_p^\star=0$, at the **disease-free equilibrium** if $X_p^\star=(s_{k_1p}^\star,\ldots,s_{k_up}^\star,0,\ldots,0)$, where $k_1,\ldots,k_u$ are some indices with $1\leq u\leq|\mathcal{U}|$ and $s_{k_1p}^\star,\ldots,s_{k_up}^\star$ are positive, and at an **endemic equilibrium** if $X_p\gg 0$
 </div>
 
 <p style="margin-bottom:1cm;"></p> 
 
-<div align=justify 
-style="background-color:#ededde;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="definition">
 
 **[Metapopulation level]** A **population-free equilibrium** has all patches empty. A **metapopulation disease-free equilibrium** has all patches at the disease-free equilibrium for the same compartments. A **metapopulation endemic equilibrium** has all patches at an endemic equilibrium
 </div>
@@ -970,11 +965,7 @@ box-shadow: 0px 1px 5px #999;">
 
 # Mixed equilibria
 
-<div align=justify 
-style="background-color:#ededde;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="definition">
 
 A **mixed equilibrium** is an equilibrium such that
 - all patches are at a disease-free equilibrium but the system is not at a metapopulation disease-free equilibrium
@@ -995,11 +986,7 @@ $$
 
 ---
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Suppose that movement is similar for all compartments (MSAC) and that the system is at equilibrium
 
@@ -1203,4 +1190,3 @@ Need to play with movement rates and initial conditions. Will not explain here
 - Simulation (deterministic and stochastic) can be costly in RAM and cycles
 
 - Metapopulation models are not the only solution
-

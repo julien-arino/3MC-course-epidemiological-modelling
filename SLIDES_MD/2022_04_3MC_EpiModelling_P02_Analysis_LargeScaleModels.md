@@ -7,6 +7,23 @@ paginate: false
 size: 4K
 ---
 
+<style>
+  .theorem {
+    text-align:justify;
+    background-color:#16a085;
+    border-radius:20px;
+    padding:10px 20px 10px 20px;
+    box-shadow: 0px 1px 5px #999;
+  }
+  .definition {
+    text-align:justify;
+    background-color:#ededde;
+    border-radius:20px;
+    padding:10px 20px 10px 20px;
+    box-shadow: 0px 1px 5px #999;
+  }
+</style>
+
 # Practicum 02 - Model analysis, studying large-scale models in R
 
 5 April 2022 
@@ -203,11 +220,7 @@ At this point, similarly to [PvdD & Watmough (2002)](https://doi.org/10.1016/S00
 Indeed, in \cite{ArinoBrauerVdDWatmoughWu2007}, the matrix $\mathbf{f}|_{\mathbf{E}_0}$ has rank 1, which allows to much improve the expression for the spectral radius.
 Here, in general, the matrix $\mathbf{D}\beta(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)\mathsf{diag}(\mathbf{S}_0)$ has full rank $m$ and in general, $\mathbf{f}|_{\mathbf{E}_0}$ has full rank $n$.
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Let
 $$
@@ -215,7 +228,7 @@ $$
 \mathbf{\Pi}\mathbf{D}\beta(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)\mathsf{diag}(\mathbf{S}_0)\mathbf{h}\mathbf{V}^{-1}
 \right)
 $$
-If $\mathcal{R}_0<1$, the DFE $\mathbf{E}_0$ is locally asymptotically stable; if $\mathcal{R}_0>1$, the DFE $\mathbf{E}_0$ is unstable.
+If $\mathcal{R}_0<1$, the DFE $\mathbf{E}_0$ is locally asymptotically stable; if $\mathcal{R}_0>1$, the DFE $\mathbf{E}_0$ is unstable
 
 </div>
 
@@ -491,11 +504,7 @@ $$
 
 ---
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Let
 $$
@@ -510,8 +519,6 @@ Then
 </div>
 
 Important to stress *local* nature of stability that is deduced from this result. We will see later that even when $\mathcal{R}_0<1$, there can be several positive equilibria
-
-
 
 ---
 
@@ -533,105 +540,80 @@ Refer for example to Fiedler, 1998 for details
 
 Let $A=(a_{ij})$, $i=1,\ldots,m$, $j=1,\ldots,n$ an $m\times n$-matrix and $k$ an integer, $1\leq k\leq\min(m,n)$
 
-Let $M=\{1,\ldots,m\}$ and $N=\{1,\ldots,n\}$, $M^{(k)}$ (respectively, $N^{(k)}$) the lexicographically ordered sets of ordered $k$-tuples of elements of $M$ (respectively, $N$)
+Let $M=\{1,\ldots,m\}$ and $N=\{1,\ldots,n\}$, $M^{(k)}$ and $N^{(k)}$) the lexicographically ordered sets of ordered $k$-tuples of elements of $M$ and $N$, respecti
 
 ---
 
 
-La $k$\eme matrice compos\'ee $A^{(k)}$ de $A$ est alors la
-$C(m,k)\times C(n,k)$ matrice, de lignes index\'ees par les
-\'el\'ements de $M^{(k)}$ et de colonnes index\'ees par les
-\'el\'ements de $N^{(k)}$, telle que l'\'el\'ement $A^{(k)}(I,J)$,
-$I\in M^{(k)}$, $J\in N^{(k)}$ soit le d\'eterminant $\det A(I,J)$.
-Le symbole $A(I,J)$ repr\'esente la sous-matrice de $A$ form\'ee par
-les lignes appartenant \`a $I$ et les colonnes appartenant \`a $J$.
+The $k$th compound matrix $A^{(k)}$ of $A$ is the $C(m,k)\times C(n,k)$ matrix, with rows indexed by elements of $M^{(k)}$ and columns indexed by the elements of $N^{(k)}$, s.t. element $A^{(k)}(I,J)$, $I\in M^{(k)}$, $J\in N^{(k)}$ is the determinant $\det A(I,J)$
 
-\begin{remark}
-Une autre interpr\'etation de $A^{(k)}$ est en tant que $k$\eme
-produit ext\'erieur de la matrice $A$.
-\end{remark}
+$A(I,J)$ is the submatrix of $A$ consisting of rows in $I$ and columns in $J$
 
+Another interpretation of $A^{(k)}$ is as the $k$th exterior product of matrix $A$
 
 ---
 
 
-Supposons maintenant que $A$ soit une $n\times n$-matrice. La matrice
-$(I+tA)^{(k)}$ est une $C(n,k)\times C(n,k)$-matrice, dont chaque
-\'el\'ement est un polyn\^ome en $t$ de degr\'e au plus $k$. En
-regroupant les termes de m\^eme degr\'e en $t$, on peut \'ecrire
+Suppose now that $A$ is an $n\times n$-matrix. The matrix $(I+tA)^{(k)}$ is a $C(n,k)\times C(n,k)$-matrix, with each entry a polynomial of $t$ with degree at most $k$
+
+Grouping monomials of same degree in $t$
 $$
 (I+tA)^{(k)}=A^{(k,0)}+tA^{(k,1)}+\cdots+t^kA^{(k,k)}
 $$
-o\`u les matrices $A^{(k,s)}$ ne d\'ependent pas de $t$. La matrice
-$A^{(k,1)}$ est appel\'ee la $k$\eme *matrice compos\'ee
-  additive} de $A$, et est not\'ee $A^{[k]}$. Elle satisfait la
-relation
+where matrices $A^{(k,s)}$ do not depend on $t$
+
+Matrix $A^{(k,1)}$ is the $k$th **additive compound matrix** of $A$ and is denoted $A^{[k]}$. It satisfies
 $$
 A^{[k]}=\lim_{h\to 0}
 \left(\frac 1h\left((I+hA)^{(k)}-I^{(k)}\right)\right)
 $$
 
-
----
-
-{Remarque}
-On note \'egalement cette derni\`ere \'egalit\'e sous la forme
+The latter equality can be written
 $$
 A^{[k]}=D_+(I+hA)^{(k)}|_{h=0}
 $$
-o\`u $D_+$ est la d\'eriv\'ee \`a droite.
-
+where $D_+$ is the right derivative
 
 ---
 
 
-\begin{property}\label{prop:construction_MC}
-Supposons que $A=(a_{pq})$. Alors, pour $I,J\in N^{(k)}$,
+<div class="theorem">
+
+Suppose $A=(a_{pq})$. Then, for $I,J\in N^{(k)}$
 $$
 A^{[k]}(I,J)=\left\{
 \begin{array}{ll}
-\sum_{p\in I}a_{pp} & \textrm{si } J=I \\
-0 & \textrm{si }|I\cap J|\leq k-2 \\
-(-1)^\sigma a_{pq} & \textrm{si } |I\cap J|=k-1
+\sum_{p\in I}a_{pp} & \textrm{if } J=I \\
+0 & \textrm{if }|I\cap J|\leq k-2 \\
+(-1)^\sigma a_{pq} & \textrm{if } |I\cap J|=k-1
 \end{array}
 \right.
 $$
-o\`u $p$ est l'entr\'ee dans $I\setminus(I\cap J)$, $q$ est l'entr\'ee
-dans $J\setminus(I\cap J)$, et $\sigma$ est le nombre d'\'el\'ements
-de $I\cap J$ entre $p$ et $q$.
-\end{property}
-
+where $p$ is the entry in $I\setminus(I\cap J)$, $q$ is the entry in $J\setminus(I\cap J)$ and $\sigma$ is the number of entries of $I\cap J$ between $p$ and $q$
+</div>
 
 ---
 
+When $k=2$, we have
 
-Dans le cas $k=2$, on a donc la
-caract\'erisation suivante.
-\begin{property}\label{prop:construction_MC2}
-Supposons que $A=(a_{ij})$. Pour tout entier $i=1,\ldots,C(n,2)$, soit
-$(i)=(i_1,i_2)$ le $i$\eme membre de l'ordre lexicographique des
-couples d'entiers $(i_1,i_2)$ tel que $1\leq i_1<i_2\leq n$. Alors
-l'\'el\'ement dans la $i$\eme ligne et $j$\eme colonne de $A^{[2]}$ est
+<div class="theorem">
+
+Suppose that $A=(a_{ij})$. For all $i=1,\ldots,C(n,2)$, let $(i)=(i_1,i_2)$ the $i$th element of the lexicographic order of pairs $(i_1,i_2)$ of integers s.t. $1\leq i_1<i_2\leq n$
+
+Then the entry in the $i$th row and $j$th column of $A^{[2]}$ is
 $$
 a_{ij}=\left\{
 \begin{array}{ll}
-a_{i_1i_1}+a_{i_2i_2} & \textrm{si } (j)=(i) \\
-(-1)^{r+s}a_{i_rj_s} & \textrm{si exactement un \'el\'ement }
-i_r\textrm{ de }(i)\textrm{ n'appara\^it pas}\\
-&\textrm{dans }(j)\textrm{ et }j_s
-\textrm{ n'appara\^it pas dans }(i) \\
-0 & \textrm{si aucun \'el\'ement de }(i)
-\textrm{ n'appara\^it dans }(j) 
+a_{i_1i_1}+a_{i_2i_2} & \textrm{if } (j)=(i) \\
+(-1)^{r+s}a_{i_rj_s} & \textrm{if exactly one element  } i_r\textrm{ of }(i)\textrm{ does not appear}\\
+&\textrm{in }(j)\textrm{ and }j_s \textrm{ does not appear in }(i) \\
+0 & \textrm{if no element of }(i)
+\textrm{ appears in }(j) 
 \end{array}
 \right.
 $$
-o\`u $p$ est l'entr\'ee dans $I\setminus(I\cap J)$, $q$ est l'entr\'ee
-dans $J\setminus(I\cap J)$, et $\sigma$ est le nombre d'\'el\'ements
-de $I\cap J$ entre $p$ et $q$.
-\end{property}
-
-
-
+where $p$ is the entry in $I\setminus(I\cap J)$, $q$ is the entry in $J\setminus(I\cap J)$ and $\sigma$ is the number of elements of $I\cap J$ between $p$ and $q$
+</div>
 
 ---
 
@@ -703,38 +685,27 @@ $$
 
 ---
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
-Soit $A,B$ deux $n\times n$-matrices. Alors,
+Let $A,B$ be two $n\times n$-matrices. Then
  
-- Le nombre d'\'el\'ements non nuls hors diagonale de $A^{[k]}$
-  est \'egal \`a $C(n-2,k-1)$ fois le nombre d'\'el\'ements non nuls
-  hors diagonale de $A$.
-- $A^{[1]}=A$, $A^{[n]}=\tr A$.
-- $(A+B)^{[k]}=A^{[k]}+B^{[k]}$ (d'o\`u le suffixe
-  *additive}).
-- Soit $S$ une $n\times n$-matrice non singuli\`ere. Alors
-  $(SAS)^{[k]}=S^{{k}}A^{[k]}(S^{-1})^{(k)}$.
+- The number of nonzero offdiagonal entries of $A^{[k]}$ equals $C(n-2,k-1)$ times the number of nonzero offdiagonal entries of $A$
+- $A^{[1]}=A$, $A^{[n]}=\mathsf{tr} A$
+- $(A+B)^{[k]}=A^{[k]}+B^{[k]}$ (whence the *additive* suffix)
+- Let $S$ be a nonsingular $n\times n$-matrix. Then
+$$
+(SAS)^{[k]}=S^{{k}}A^{[k]}(S^{-1})^{(k)}
+$$
 </div>
 
 ---
 
-Soit $A$ une $m\times m$-matrice. On note $A^{[2]}$ la seconde matrice compound de $A$ (sur le sujet des matrices compos\'ees, on consultera par exemple ...).
+Let $A$ be an $m\times m$-matrix. Denote $A^{[2]}$ the second additive compound matrix of $A$
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
-Soit $A$ une $m\times m$-matrice \`a entr\'ees r\'eelles. Pour que $A$
-ait ses valeurs propres \`a parties r\'eelles strictement n\'egatives,
-il faut et il suffit que
-1. la deuxi\`eme matrice compound additive $A^{[2]}$ ait ses valeurs propres \`a parties r\'eelles strictement n\'egatives
+Let $A$ be a real $m\times m$-mix. For $A$ to have all its eigenvalues with negative real parts, it is necessary and sufficient that 
+1. the second additive compound matrix $A^{[2]}$ has all its eigevalues with negative real parts
 2. $(-1)^m\det(A)>0$
 </div>
 
@@ -742,25 +713,20 @@ il faut et il suffit que
 
 # Role in stability
 
-Soit le syst\`eme diff\'erentiel
-\begin{equation}\label{sys:diff_general}
+Consider the differential equation
+$$
+\begin{equation}\tag{1}\label{sys:diff_general}
 x'=f(x)
 \end{equation}
-On a le th\'eor\`eme qui suit.
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+$$
+
+<div class="theorem">
 
 [Li \& Muldowney, 1995]\label{th:LM1}
-Une condition suffisante pour qu'une orbite p\'eriodique $\gamma=\{p(t):0\leq t\leq\omega\}$ de (\ref{sys:diff_general}) soit asymptotiquement orbitalement stable avec phase asymptotique est que le syst\`eme lin\'eaire
+A sufficient condition for a periodic orbit $\gamma=\{p(t):0\leq t\leq\omega\}$ of $\eqref{sys:diff_general}$ be asymptotically orbitally stable with asymptotic phase is that the linear system
 $$
 z'(t)=\left(\frac{\partial f^{[2]}}{\partial x}
   \left(p(t)\right)\right)z(t)
 $$
-soit asymptotiquement stable
+be asymptotically stable
 </div>
-
-
-
