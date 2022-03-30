@@ -356,7 +356,6 @@ $\gamma I$ | $S\to S+1$, $I\to I-1$ | recovery of an infectious
 
 Will use $S=N^*-I$ and omit $S$ dynamics
 
-
 ---
 
 # Gillespie's algorithm (SIS model with only I eq.)
@@ -369,9 +368,17 @@ while {$t\leq t_f$}
 - Draw $\zeta_t$ from $\mathcal{U}([0,1])$
 - Find $pos$ such that $v_{pos-1}\leq\zeta_t\leq v_{pos}$
 - switch {$pos$}
--- 1: New infection, $I(t+\tau_t)=I(t)+1$
--- 2: End of infectious period, $I(t+\tau_t)=I(t)-1$
+  - 1: New infection, $I(t+\tau_t)=I(t)+1$
+  - 2: End of infectious period, $I(t+\tau_t)=I(t)-1$
 - $t\leftarrow t+\tau_t$
+
+---
+
+# You can also use a package
+
+- You can implement Gillespie's algorithm yourself, it is a good exercise..
+- But in R there also exists a few packages allowing you to do that easily
+- They have the advantage of implementing tau-leaping (more on this later)
 
 ---
 
@@ -429,14 +436,96 @@ See `simulate_CTMC_parallel.R` on [Github](https://github.com/julien-arino/3MC-c
 
 ---
 
-# Benefit of parallelisation
+# Sometimes in a CTMC things go bad
 
-Run the parallel code for 100 sims between `tictoc::tic()` and `tictoc::toc()`, giving `66.958 sec elapsed`, then the sequential version
-```
-tictoc::tic()
-SIMS = lapply(X = 1:params$number_sims, 
-              FUN =  function(x) run_one_sim(params))
-tictoc::toc()
-```
-which gives `318.141 sec elapsed` on a 6C/12T Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz (4.75$\times$ faster) or `12.067 sec elapsed` versus `258.985 sec elapsed` on a 32C/64T AMD Ryzen Threadripper 3970X 32-Core Processor (21.46$\times$ faster !)
+- Recall that the inter-event time is exponentially distributed
+- Critical step of the Gillespie algorithm:
+  -  $\xi_t\leftarrow$ weight of all possible events (*propensity*)
+  - Draw $\tau_t$ from $T\thicksim \mathcal{E}(\xi_t)$
+- So the inter-event time $\tau_t\to 0$ if $\xi_t$ becomes very large for some $t$
+- This can cause the simulation to grind to a halt
 
+---
+
+# Example: a birth and death process
+
+- Individuals born at *per capita* rate $b$
+- Individuals die at *per capita* rate $d$
+- Let's implement this using classic Gillespie
+
+---
+
+# Gillespie's algorithm (birth-death model)
+
+set $t\leftarrow t_0$ and $N(t)\leftarrow N(t_0)$
+while {$t\leq t_f$}
+- $\xi_t\leftarrow (b+d)N(t)$
+- Draw $\tau_t$ from $T\thicksim \mathcal{E}(\xi_t)$
+- $v\leftarrow\left[bN(t),\xi_t\right]/\xi_t$
+- Draw $\zeta_t$ from $\mathcal{U}([0,1])$
+- Find $pos$ such that $v_{pos-1}\leq\zeta_t\leq v_{pos}$
+- switch {$pos$}
+  - 1: Birth, $N(t+\tau_t)=N(t)+1$
+  - 2: Death, $N(t+\tau_t)=N(t)-1$
+- $t\leftarrow t+\tau_t$
+
+---
+
+```
+b = 0.01   # Birth rate
+d = 0.01   # Death rate
+t_0 = 0    # Initial time
+N_0 = 100  # Initial population
+
+# Vectors to store time and state. Initialise with initial condition.
+t = t_0
+N = N_0
+
+t_f = 1000  # Final time
+
+# We'll track the current time and state (could also just check last entry in t
+# and N, but will take more operations)
+t_curr = t_0
+N_curr = N_0
+```
+
+---
+
+```
+while (t_curr<=t_f) {
+  xi_t = (b+d)*N_curr
+  # The exponential number generator does not like a rate of 0 (when the 
+  # population crashes), so we check if we need to quit
+  if (N_curr == 0) {
+    break
+  }
+  tau_t = rexp(1, rate = xi_t)
+  t_curr = t_curr+tau_t
+  v = c(b*N_curr, xi_t)/xi_t
+  zeta_t = runif(n = 1)
+  pos = findInterval(zeta_t, v)+1
+  switch(pos,
+         { 
+           # Birth
+           N_curr = N_curr+1
+         },
+         {
+           # Death
+           N_curr = N_curr-1
+         })
+  N = c(N, N_curr)
+  t = c(t, t_curr)
+}
+```
+
+---
+
+![bg contain](../FIGS/CTMC_birth_death_sol_b=0_01__d=0_01.png)
+
+---
+
+![bg contain](../FIGS/CTMC_birth_death_sol_b=0_01__d=0_02.png)
+
+---
+
+![bg contain](../FIGS/CTMC_birth_death_sol_b=0_025__d=0_01.png)

@@ -124,10 +124,19 @@ make_y_axis <- function(yrange) {
 #
 # Crop an output pdf file. Requires to have pdfcrop installed
 # in the system (for example, under linux)
-crop_figure = function(file) {
-  command_str = sprintf("pdfcrop %s.pdf",file)
-  system(command_str)
-  command_str = sprintf("mv %s-crop.pdf %s.pdf",file,file)
-  system(command_str)
+crop_figure = function(fileFull) {
+  fileName = tools::file_path_sans_ext(fileFull)
+  fileExt = tools::file_ext(fileFull)
+  if (fileExt == "pdf") {
+    command_str = sprintf("pdfcrop %s",fileFull)
+    system(command_str)
+    command_str = sprintf("mv %s-crop.pdf %s.pdf",fileName,fileFull)
+    system(command_str)
+  }
+  if (fileExt == "png") {
+    command_str = sprintf("convert %s -trim %s-trim.png",fileFull,fileName)
+    system(command_str)
+    command_str = sprintf("mv %s-trim.png %s",fileName,fileFull)
+    system(command_str)
+  }
 }
-
