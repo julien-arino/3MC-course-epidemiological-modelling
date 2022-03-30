@@ -198,7 +198,7 @@ p(2) &amp;= p(1)P\\
 <p><svg data-marp-fitting="svg" data-marp-fitting-math><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mi>w</mi><mrow><mi mathvariant="normal">∥</mi><mi>w</mi><mi mathvariant="normal">∥</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{w}{\|w\|}
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0436em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">∥</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord">∥</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></span></foreignObject></svg></p></section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-theme="default" style="--theme:default;">
-<p>Another way to check regularity:</p>
+<h1>Another way to check regularity</h1>
 <div class="theorem">
 <p>A matrix <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span> is primitive if the associated connection graph is strongly connected, i.e., that there is a path between any pair <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span> of states, and that there is at least one positive entry on the diagonal of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span></p>
 </div>
@@ -665,10 +665,39 @@ R &amp; Q
 <li>Paralellisation</li>
 </ul>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-background-image="linear-gradient(to bottom, #f1c40f, 20%, white)" data-theme="default" style="--background-image:linear-gradient(to bottom, #f1c40f, 20%, white);--theme:default;background-image:linear-gradient(to bottom, #f1c40f, 20%, white);background-position:center;background-repeat:no-repeat;background-size:cover;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="55" data-theme="default" style="--theme:default;">
+<p>To see multiple realisations: good idea to parallelise, then interpolate results. Write a function, e.g.,  <code>run_one_sim</code> that .. runs one simulation, then..</p>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>no_cores &lt;- detectCores()-1
+cl &lt;- makeCluster(no_cores)
+clusterEvalQ(cl,{
+  library(GillespieSSA2)
+})
+clusterExport(cl,
+              c(&quot;params&quot;,
+                &quot;run_one_sim&quot;),
+              envir = .GlobalEnv)
+SIMS = parLapply(cl = cl, 
+                 X = 1:params$number_sims, 
+                 fun =  function(x) run_one_sim(params))
+stopCluster(cl)
+</span></span></foreignObject></svg></code></pre>
+<p>See <code>simulate_CTMC_parallel.R</code> on <a href="https://github.com/julien-arino/UK-APASI">Github</a></p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-theme="default" style="--theme:default;" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/many_CTMC_sims_with_means.png&quot;);background-size:contain;"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="56" data-theme="default" style="--theme:default;" data-marpit-advanced-background="content"></section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section style="" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="57" data-theme="default" style="--theme:default;">
+<h1>Benefit of parallelisation</h1>
+<p>Run the parallel code for 100 sims between <code>tictoc::tic()</code> and <code>tictoc::toc()</code>, giving <code>66.958 sec elapsed</code>, then the sequential version</p>
+<pre><code><svg data-marp-fitting="svg" data-marp-fitting-code><foreignObject><span data-marp-fitting-svg-content><span data-marp-fitting-svg-content-wrap>tictoc::tic()
+SIMS = lapply(X = 1:params$number_sims, 
+              FUN =  function(x) run_one_sim(params))
+tictoc::toc()
+</span></span></foreignObject></svg></code></pre>
+<p>which gives <code>318.141 sec elapsed</code> on a 6C/12T Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz (4.75<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">×</span></span></span></span> faster) or <code>12.067 sec elapsed</code> versus <code>258.985 sec elapsed</code> on a 32C/64T AMD Ryzen Threadripper 3970X 32-Core Processor (21.46<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">×</span></span></span></span> faster !)</p>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="58" data-background-image="linear-gradient(to bottom, #f1c40f, 20%, white)" data-theme="default" style="--background-image:linear-gradient(to bottom, #f1c40f, 20%, white);--theme:default;background-image:linear-gradient(to bottom, #f1c40f, 20%, white);background-position:center;background-repeat:no-repeat;background-size:cover;">
 <h1>Simulating agent-based models</h1>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="56" data-background-image="radial-gradient(white, 80%, #156C26)" data-theme="default" style="--background-image:radial-gradient(white, 80%, #156C26);--theme:default;background-image:radial-gradient(white, 80%, #156C26);background-position:center;background-repeat:no-repeat;background-size:cover;">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="59" data-background-image="radial-gradient(white, 80%, #156C26)" data-theme="default" style="--background-image:radial-gradient(white, 80%, #156C26);--theme:default;background-image:radial-gradient(white, 80%, #156C26);background-position:center;background-repeat:no-repeat;background-size:cover;">
 <h1>Simulating agent-based models</h1>
 <ul>
 <li></li>

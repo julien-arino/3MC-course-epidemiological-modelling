@@ -529,3 +529,31 @@ while (t_curr<=t_f) {
 ---
 
 ![bg contain](../FIGS/CTMC_birth_death_sol_b=0_025__d=0_01.png)
+
+---
+
+# Last one did not go well
+
+- Wanted 1000 time units (days?)
+- Interrupted around 500 ($t=473.4544$) because I lost patience
+- (Slide before: the sim stopped because the population went extinct, I did not stop it!)
+- At stop time
+  - $|N| = 241,198$ (and $|t|$ as well, of course!)
+  - time was moving slowly
+```
+> tail(diff(t))
+[1] 1.357242e-04 1.291839e-04 5.926044e-05 7.344020e-05 1.401148e-04 4.423529e-04
+```
+
+---
+
+![bg contain](../FIGS/CTMC_birth_death_ie_vs_t_b=0_025__d=0_01.png)
+
+---
+
+# Tau-leaping to the rescue!
+
+- Will not go into details
+- *Approximation* method (compared to classic Gillespie, which is exact)
+- Roughly: consider "groups" of events instead of individual events
+- Good news: `GillespieSSA2` (which we saw earlier) and `ssatauleap`
