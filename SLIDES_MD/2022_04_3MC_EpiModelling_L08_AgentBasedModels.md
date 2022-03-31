@@ -109,7 +109,18 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
-Estimating Social Contacts in Mass Gatherings for Disease Outbreak Prevention and Management (Case of Hajj Pilgrimage), Tropical Diseases, Travel Medicine and Vaccines. Tofighi, Asgary, Tofighi, Najafabadi, Arino, Amiche, Rahman, McCarthy, Bragazzi, Thommes,  Coudeville, Grunnill, Bourouiba and Wu
+# Social contacts during Hajj
+
+- In a mass gathering event like Hajj, lots of people come together originating from many countries
+- So if propagation occurs during the event, this has the capacity to spread infection far and wide when individuals (pilgrims here) return home
+- Contacts during part of the event are really specific in their configuration
+
+<div style = "position: relative; bottom: -20%; font-size:20px;">
+
+Tofighi, Asgary, Tofighi, Najafabadi, Arino, Amiche, Rahman, McCarthy, Bragazzi, Thommes,  Coudeville, Grunnill, Bourouiba and Wu. [Estimating Social Contacts in Mass Gatherings for Disease Outbreak Prevention and Management (Case of Hajj Pilgrimage)](http://dx.doi.org/10.2139/ssrn.3678581), Tropical Diseases, Travel Medicine and Vaccines
+</div>
+
+
 
 ---
 
