@@ -114,13 +114,67 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 - In a mass gathering event like Hajj, lots of people come together originating from many countries
 - So if propagation occurs during the event, this has the capacity to spread infection far and wide when individuals (pilgrims here) return home
 - Contacts during part of the event are really specific in their configuration
+- Word of warning: I am a little fuzzy on the specifics :)
 
 <div style = "position: relative; bottom: -20%; font-size:20px;">
 
 Tofighi, Asgary, Tofighi, Najafabadi, Arino, Amiche, Rahman, McCarthy, Bragazzi, Thommes,  Coudeville, Grunnill, Bourouiba and Wu. [Estimating Social Contacts in Mass Gatherings for Disease Outbreak Prevention and Management (Case of Hajj Pilgrimage)](http://dx.doi.org/10.2139/ssrn.3678581), Tropical Diseases, Travel Medicine and Vaccines
 </div>
 
+---
 
+# The setup
+
+- Pilgrims enter Masjid al-Haram mosque through several gates
+- Proceed to Mataaf (area around Kaaba), circle the Kaaba 7 times counterclockwise (process is the *Tawaf*)
+- Then do seven trips between Safa and Marwah (process is the *Sa'ee*)
+
+
+---
+
+![bg contain](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Great_Mosque_of_Mecca.jpg/1280px-Great_Mosque_of_Mecca.jpg)
+
+---
+
+# Tawaf in pre-COVID-19 times
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/L-YyR1oN66w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+# Tawaf - Socially distanced version
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Rl8a0wQePCo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+# Sa'ee in pre-COVID-19 times
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/r1qM-mHj2d0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+# Sa'ee - Socially distanced version
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JVges7Q2Mow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+- As you can gather from this:
+  - Typically high density crowds
+  - Very specific mixing pattern
+
+---
+
+![bg contain](../FIGS/ABM_Hajj_setup.png)
+
+---
+
+![bg contain](../FIGS/ABM_Hajj_MAH_3Dmodel.png)
+
+---
+
+![bg contain](../FIGS/ABM_Hajj_config_tawaf.png)
 
 ---
 
