@@ -89,7 +89,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
-# ABM are very useful to understand behavioural responses
+# <!--fit-->ABM are very useful to understand behavioural responses
 
 ---
 
@@ -102,6 +102,10 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 - There is a law of large numbers effects happening often: if you have many units, unless some emergent behaviour arises, you get the same results using ODEs...
 
+# With this specific tool, beware!
+
+- There is a certain tendency in CS people to create *yet another* system and seek *adoption* by users
+
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
@@ -109,12 +113,111 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
-# Social contacts during Hajj
+<!-- _backgroundImage: "radial-gradient(white, 80%, #156C26)" -->
+# Some examples
+- Antibiotic resistance in hospitals
+- Effectiveness of contact tracing
+- Contacts during Hajj
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Antibiotic resistance in hospitals
+
+<div style = "position: relative; bottom: -30%; font-size:20px;">
+
+D’Agata, Magal, Olivier, Ruand & Webb. [Modeling antibiotic resistance in hospitals: The impact of minimizing treatment duration](https://doi.org/10.1016/j.jtbi.2007.08.011), Journal of Theoretical Biology (2007)
+</div>
+
+---
+
+# An IBM that's almost an ABM
+
+- This work is a good illustration of the "cultural proximity" between IBM and ABM
+- Model is stochastic and individual-based, in good enough form that approximating ODE can be derived
+- Allows for very specific tracking of the status of individuals through the process (almost an ABM in this sense)
+
+---
+
+# The setup
+
+- Three processes:
+  1. admission and exit of patients
+  2. infection of patients by HCW (health care workers) 
+  3. contamination of HCW by patients
+- Contamination of HCW is "transient": they are carriers, if they wash their hands properly, they become OK
+- Each day has 3 shifts of 8h for HCW
+- Patients are put in contact by visits of HCW
+- Rules for contaminations per unit time
+
+---
+
+![bg contain](../FIGS/Dagata_etal_patients_profiles.jpg)
+
+<!-- Patient–HCW contact diagram for four patients and one HCW during one shift. Patient status: uninfected (green), infected with the non-resistant strain (yellow), infected with the resistant strain (red). HCW status: uncontaminated (______ ), contaminated with the non-resistant strain (………), contaminated with the resistant strain (- - - - - ) -->
+
+---
+
+![bg contain](../FIGS/Dagata_etal_comparisons.jpg)
+
+<!-- The left (respectively the right) figure corresponds to 1 trajectory (respectively the average over 80 trajectories) of the IBM during one shift, with no exit and admission of patients, and no changes in the infection status of patients -->
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Effectiveness of contact tracing
+
+<div style = "position: relative; bottom: -30%; font-size:20px;">
+
+Tian, Osgood, Al-Azem & Hoeppner. [Evaluating the Effectiveness of Contact Tracing on Tuberculosis Outcomes in Saskatchewan Using Individual-Based Modeling](https://doi-org.uml.idm.oclc.org/10.1177%2F1090198113493910), Health Education & Behavior (2013)
+</div>
+
+---
+
+# Evaluation of contact tracing in TB
+
+
+---
+
+![bg contain](../FIGS/TianOsgood_etal_TB_CT.jpeg)
+
+---
+
+![bg contain](../FIGS/TianOsgood_etal_state_flow_agent.jpeg)
+
+---
+
+![bg contain](../FIGS/TianOsgood_etal_model_CT.jpeg)
+
+---
+
+They can then formulate scenarios
+
+![height:60%](../FIGS/TianOsgood_etal_scenarios.jpeg)
+
+They then run these scenarios and compare results
+
+---
+
+![bg contain](../FIGS/TianOsgood_etal_scenario_results.jpeg)
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Contacts during Hajj
+
+<div style = "position: relative; bottom: -20%; font-size:20px;">
+
+Tofighi, Asgary, Tofighi, Najafabadi, Arino, Amiche, Rahman, McCarthy, Bragazzi, Thommes,  Coudeville, Grunnill, Bourouiba and Wu. [Estimating Social Contacts in Mass Gatherings for Disease Outbreak Prevention and Management (Case of Hajj Pilgrimage)](http://dx.doi.org/10.2139/ssrn.3678581), Tropical Diseases, Travel Medicine and Vaccines
+</div>
+
+---
+
+# Contacts during Hajj
 
 - In a mass gathering event like Hajj, lots of people come together originating from many countries
 - So if propagation occurs during the event, this has the capacity to spread infection far and wide when individuals (pilgrims here) return home
 - Contacts during part of the event are really specific in their configuration
-- Word of warning: I am a little fuzzy on the specifics :)
 
 <div style = "position: relative; bottom: -20%; font-size:20px;">
 
@@ -125,6 +228,7 @@ Tofighi, Asgary, Tofighi, Najafabadi, Arino, Amiche, Rahman, McCarthy, Bragazzi,
 
 # The setup
 
+- Word of warning: I am quite fuzzy on the specifics :)
 - Pilgrims enter Masjid al-Haram mosque through several gates
 - Proceed to Mataaf (area around Kaaba), circle the Kaaba 7 times counterclockwise (process is the *Tawaf*)
 - Then do seven trips between Safa and Marwah (process is the *Sa'ee*)
@@ -138,35 +242,35 @@ Tofighi, Asgary, Tofighi, Najafabadi, Arino, Amiche, Rahman, McCarthy, Bragazzi,
 
 # Tawaf in pre-COVID-19 times
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/L-YyR1oN66w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/L-YyR1oN66w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 
 # Tawaf - Socially distanced version
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Rl8a0wQePCo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/Rl8a0wQePCo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 
 # Sa'ee in pre-COVID-19 times
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/r1qM-mHj2d0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/r1qM-mHj2d0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 
 # Sa'ee - Socially distanced version
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JVges7Q2Mow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/JVges7Q2Mow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 
 - As you can gather from this:
   - Typically high density crowds
-  - Very specific mixing pattern
+  - Very specific mixing patterns
+- Opportunities for transmission are very high
+- However, control mechanisms are also available
 
----
-
-![bg contain](../FIGS/ABM_Hajj_setup.png)
+$\implies$ understanding contact patterns and frequency would help
 
 ---
 
@@ -174,15 +278,19 @@ Tofighi, Asgary, Tofighi, Najafabadi, Arino, Amiche, Rahman, McCarthy, Bragazzi,
 
 ---
 
+![bg contain](../FIGS/ABM_Hajj_setup.png)
+
+---
+
 ![bg contain](../FIGS/ABM_Hajj_config_tawaf.png)
 
 ---
 
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/_oOf4uNIghw?loop=1&modestbranding=1&origin=https://julien-arino.github.io/&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; loop" allowfullscreen>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/_oOf4uNIghw?loop=1&modestbranding=1&origin=https://julien-arino.github.io/&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; loop" allowfullscreen>
 </iframe>
 
 ---
 
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/qcWBi17qKnU?start=9&loop=1&modestbranding=1&origin=https://julien-arino.github.io/&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; loop" allowfullscreen>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/qcWBi17qKnU?start=9&loop=1&modestbranding=1&origin=https://julien-arino.github.io/&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; loop" allowfullscreen>
 </iframe>
 
