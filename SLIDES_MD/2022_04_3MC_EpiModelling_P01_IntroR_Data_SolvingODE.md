@@ -73,6 +73,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 # Development environments
 
 - Terminal version, not very friendly
+- Nicer terminal: [radian](https://github.com/randy3k/radian)
 - Execute R scripts by using `Rscript name_of_script.R`. Useful to run code in `cron`, for instance
 - Use IDEs:
     - [RStudio](https://www.rstudio.com/products/rstudio/) has become the reference
@@ -96,7 +97,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 - Interactive
 - Allows you to work in real time
     - Be careful: what is in memory might involve steps not written down in a script
-    - If you want to reproduce your steps, it is good to write all the steps down in a script and to test from time to time running using `Rscript`: this will ensure that all that is required to run is indeed loaded to memory when it needs to..
+    - If you want to reproduce your steps, it is good to write all the steps down in a script and to test from time to time running using `Rscript`: this will ensure that all that is required to run is indeed loaded to memory when it needs to, i.e., that it is not already there..
 
 ---
 
@@ -223,12 +224,136 @@ Then `x+1` gives
  ```
  i.e., adds 1 to all entries in the vector
 
+ Beware of this in particular when addressing sets of indices in lists, vectors or matrices
+
 ---
 
 # For the matlab-ers here
 
 - R does not have the keyword `end` to access the last entry in a matrix/vector/list..
 - Use `length` (lists or vectors), `nchar` (character chains), `dim` (matrices.. careful, of course returns 2 values)
+
+---
+
+# Flow control
+
+```
+if (condition is true) {
+  list of stuff to do
+}
+```
+
+Even if `list of stuff to do` is a single instruction, best to use curly braces
+
+```
+if (condition is true) {
+  list of stuff to do
+} else if (another condition) {
+  ...
+} else {
+  ...
+}
+```
+
+---
+
+# For loops
+
+`for` applies to lists or vectors
+
+```
+for (i in 1:10) {
+  something using integer i
+}
+for (j in c(1,3,4)) {
+  something using integer j
+}
+for (n in c("truc", "muche", "chose")) {
+  something using string n
+}
+for (m in list("truc", "muche", "chose", 1, 2)) {
+  something using string n or integer n, depending
+}
+```
+
+---
+
+# lapply
+
+Very useful function (a few others in the same spirit: `sapply`, `vapply`, `mapply`)
+
+Applies a function to each entry in a list/vector/matrix
+
+Because there is a parallel version (`parLapply`) that we will see later, worth learning
+
+```
+l = list()
+for (i in 1:10) {
+        l[[i]] = runif(i)
+}
+lapply(X = l, FUN = mean)
+```
+
+or, to make a vector
+
+```
+unlist(lapply(X = l, FUN = mean))
+```
+
+or
+
+```
+sapply(X = l, FUN = mean)
+```
+
+---
+
+# "Advanced" lapply
+
+Can "pick up" nontrivial list entries
+
+```
+l = list()
+for (i in 1:10) {
+        l[[i]] = list()
+        l[[i]]$a = runif(i)
+        l[[i]]$b = runif(2*i)
+}
+sapply(X = l, FUN = function(x) length(x$b))
+```
+
+gives
+
+```
+[1]  2  4  6  8 10 12 14 16 18 20
+```
+
+Just recall: the argument to the function you define is a list entry (`l[[1]]`, `l[[2]]`, etc., here)
+
+---
+
+# Avoid parameter variation loops with expand.grid
+
+```
+# Suppose we want to vary 3 parameters
+variations = list(
+    p1 = seq(1, 10, length.out = 10),
+    p2 = seq(0, 1, length.out = 10),
+    p3 = seq(-1, 1, length.out = 10)
+)
+
+# Create the list
+tmp = expand.grid(variations)
+PARAMS = list()
+for (i in 1:dim(tmp)[1]) {
+    PARAMS[[i]] = list()
+    for (k in 1:length(variations)) {
+        PARAMS[[i]][[names(variations)[k]]] = tmp[i, k]     
+    }
+}
+```
+
+There is still a loop, but you can split this list, use it on different machines, etc. And can use `parLapply`
 
 ---
 
@@ -490,15 +615,19 @@ to_keep = setdiff(to_keep,tree_pairs_roads_intersect)
 
 ---
 
-![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/pairs_postproc.png)
-
----
-
 ![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/pairs_postproc_zoom.png)
 
 ---
 
 ![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/selected_trees.png)
+
+---
+
+# Data wrangling: `dplyr` vs `sqldf`
+
+`dplyr` is part of the `tidyverse` set of libraries. Load `magrittr` and its pipe `%>%`
+
+`sqldf` allows to use SQL on dataframes.. interesting alternative if you know SQL
 
 ---
 
@@ -572,3 +701,39 @@ ode(y, times, func, parms,
 ```
 
 - You can even implement your own integration method
+
+---
+
+# Example - Fitting to data
+
+- Note that this is a super simplified version of what to do
+- Much more elaborate procedures exist
+  - Li ..
+  - Portet. A primer on 
+- Let us grab some epi data online and fit an SIR model to it
+- Don't expect anything funky, as I said, this is the baby version
+
+---
+
+# Principle
+
+- Data is a set $(t_i,y_i)$, $i=1,\ldots,N$, where $t_i\in\mathcal{I}$, some interval
+- Solution to SIR is $(t,x(t))$ for $t\in\mathcal{I}$
+- Suppose parameters of the model are $p$
+- We want to minimise the error function
+$$
+E(p) = \sum_{i=1}^N \|x(t_i)-y_i\|
+$$
+- Norm is typically Euclidean, but could be different depending on objectives
+- So given a point $p$ in (admissible) parameter space, we compute the solution to the ODE, compute $E(p)$
+- Using some minimisation algorithm, we seek a minimum of $E(p)$ by varying $p$
+
+---
+
+# What are $y_i$ and $x(t_i)$ here?
+
+- In epi data for infectious diseases, we typically have incidence, i.e., number of new cases per unit time
+- In SIR model, this is $\beta SI$, so, if using incidence and Euclidean norm
+$$
+E(p)=\sum_{i=1}^N(\beta S(t_i)I(t_i)-y_i)^2
+$$

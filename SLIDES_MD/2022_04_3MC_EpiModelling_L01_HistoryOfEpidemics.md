@@ -161,7 +161,7 @@ It is important to do the 4 interactively
 # About data
 
 - Acquiring data has become much easier than even 20 years ago
-- As a modeller, it is not necessary that everything be data-driven, but it is necessary to be "context-aware" and this means getting a sense of the quantities involved in the process you want to model
+- As a modeller, it is not necessary that everything be data-driven, but it is necessary to be "context-aware" (this means getting a sense of the quantities involved in the process you want to model)
 
 ---
 

@@ -266,6 +266,7 @@ Arino, Brauer, PvdD, Watmough & Wu. [Simple models for containment of a pandemic
 
 ## Basic reproduction number
 $$
+\tag{5}
 \mathcal{R}_0=S_0\beta
 \left(
 \frac{p}{\alpha}+\frac{\delta(1-p)}{\eta}
@@ -282,7 +283,7 @@ $$
 
 ## Final size relation
 
-$$
+$$\tag{6}
 S_0(\ln S_0-\ln S_\infty) =
 \mathcal{R}_0(S_0-S_\infty)+\frac{\mathcal{R}_0I_0}{\rho}
 $$
@@ -340,11 +341,11 @@ Incidence includes two main components:
 ---
 
 The two most frequently used incidence functions are  *mass action incidence*
-$$
+$$\tag{7}
 f(S,I)=\beta SI
 $$
 and *standard* (or *proportional*) incidence
-$$
+$$\tag{8}
 f(S,I)=\beta\frac{SI}{S+I}
 $$
 
@@ -416,10 +417,10 @@ $$
 S' &= \underbrace{bN}_\textrm{birth}
 -\underbrace{dS}_\textrm{death} 
 -\underbrace{\beta\frac{SI}{N}}_\textrm{infection}
-+\underbrace{\gamma I}_\textrm{recovery} \qquad\qquad \tag{4a}\label{sys:SIS_base_dS}\\
++\underbrace{\gamma I}_\textrm{recovery} \qquad\qquad \tag{9a}\label{sys:SIS_base_dS}\\
 I' &= \underbrace{\beta\frac{SI}{N}}_\textrm{infection}
 -\underbrace{dI}_\textrm{death} 
--\underbrace{\gamma I}_\textrm{recovery} \tag{4b}\label{sys:SIS_base_dI}
+-\underbrace{\gamma I}_\textrm{recovery} \tag{9b}\label{sys:SIS_base_dI}
 \end{align}
 $$
 
@@ -451,13 +452,13 @@ E.g., consider a model for human immunodeficiency virus (HIV) in an at-risk popu
 
 # Analysis of the system
 
-System \eqref{sys:SIS_simple} is planar nonlinear 
+System $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$ is planar nonlinear 
 
 Typically, we would use standard planar analysis techniques
 
 However, here we can find an explicit solution
 
-**NB:** while this is useful to illustrate some stuff, this is a rare exception!!
+**NB:** while this is useful illustration, this is a rare exception!!
 
 ---
 
@@ -502,8 +503,8 @@ $$
 Since $s+i=1$, we can use $s=1-i$ in the latter equation, giving $i'=\beta(1-i)i-(d+\gamma)i$. As a consequence, the *system in proportion* is
 $$
 \begin{align}
-s &= 1-i \tag{5a}\label{sys:SIS_proportion_ds} \\
-i' &= \beta(1-i)i-(d+\gamma)i \tag{5b}\label{sys:SIS_proportion_di}\qquad\qquad
+s &= 1-i \tag{10a}\label{sys:SIS_proportion_ds} \\
+i' &= \beta(1-i)i-(d+\gamma)i \tag{10b}\label{sys:SIS_proportion_di}\qquad\qquad
 \end{align}
 $$
 
@@ -513,7 +514,7 @@ Since $N$ constant, solutions of $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_
 
 Rewrite $\eqref{sys:SIS_proportion_di}$ as
 $$
-\begin{equation} \tag{6}\label{eq:SIS_i_as_Bernoulli}
+\begin{equation} \tag{11}\label{eq:SIS_i_as_Bernoulli}
 i'-(\beta-(d+\gamma))i=-\beta i^2\qquad\qquad
 \end{equation}
 $$
@@ -523,7 +524,7 @@ $$
 $$
 so that finally
 $$
-\begin{equation}\tag{7}\label{eq:SIS_true_Bernoulli}
+\begin{equation}\tag{12}\label{eq:SIS_true_Bernoulli}
 u'+(\beta-(d+\gamma))u=\beta\qquad\qquad
 \end{equation}
 $$
@@ -775,10 +776,10 @@ with matrices $F$ and $V$ obtained as indicated. Assume conditions (A1) through 
 The model takes the form
 $$
 \begin{align}
-S' &= d(N-S)-f(S,I,N)+\nu R\qquad\qquad \tag{8a}\label{sys:SLIR_dS}\\
-L' &= f(S,I,N) -(d+\varepsilon)L \tag{8b}\label{sys:SLIR_dL} \\
-I' &= \varepsilon L -(d+\gamma)I \tag{8a}\label{sys:SLIR_dI} \\
-R' &= \gamma I-(d+\nu)R \tag{8d}\label{sys:SLIR_dR}
+S' &= d(N-S)-f(S,I,N)+\nu R\qquad\qquad \tag{13a}\label{sys:SLIR_dS}\\
+L' &= f(S,I,N) -(d+\varepsilon)L \tag{13b}\label{sys:SLIR_dL} \\
+I' &= \varepsilon L -(d+\gamma)I \tag{13c}\label{sys:SLIR_dI} \\
+R' &= \gamma I-(d+\nu)R \tag{13d}\label{sys:SLIR_dR}
 \end{align}
 $$
 
@@ -833,8 +834,8 @@ $$
 
 Each susceptible individual meets a fraction of the infectious individuals
 
-Or vice-versa!
-[Papier a citer]
+Or vice-versa! See, e.g., Hethcote, [Qualitative analyses of communicable disease models](https://doi-org.uml.idm.oclc.org/10.1016/0025-5564(76)90132-2), *Mathematical Biosciences* (1976)
+
 
 ---
 
@@ -909,6 +910,21 @@ $$
 \frac{C(N)}N F(S,I)
 $$
 with $C(N)=N/(1-\varepsilon+\varepsilon N)$ the function describing the contact rate and $F(S,I)$ the function describing disease spread, assumed here to be of negative binomial incide-type
+
+---
+
+# Switching incidence
+
+Arino & McCluskey, [Effect of a sharp change of the incidence function on the dynamics of a simple disease](https://doi.org/10.1080/17513751003793017), *Journal of Biological Dynamics* (2010)
+
+Scale population so switch occurs at $N=1$ and suppose
+$$
+F(S,I,N) = 
+\begin{cases}
+\beta SI & \textrm{if }N\leq 1 \\
+\beta \dfrac{SI}{N} & \textrm{if }N> 1
+\end{cases}
+$$
 
 ---
 
@@ -1225,11 +1241,11 @@ Since the total population is constant, the system in proportions takes the form
 $$
 \begin{align}
 S' &= (1-\alpha)d-dS-\beta SI-\phi S+\theta
-(1-S-I-R)+\nu R \qquad\qquad \\
+(1-S-I-R)+\nu R \qquad \tag{14a} \label{sys:vacc_3dS} \\
 I' &= \beta SI
-+\sigma\beta(1-S-I-R)I -(d+\gamma)I \\
-R' &= \gamma I-(d+\nu)R \\
-V &= 1-(S+I+R) 
++\sigma\beta(1-S-I-R)I -(d+\gamma)I \tag{14b}\label{sys:vacc_3dI}\\
+R' &= \gamma I-(d+\nu)R \tag{14c}\label{sys:vacc_3dR} \\
+V &= 1-(S+I+R)
 \end{align}
 $$
 where $S$, $I$, $R$, $V$ are the proportions of individuals who are in the susceptible, infectious, recovered and vaccinated, respectively
@@ -1348,7 +1364,7 @@ $$
 
 # Local stability - EEP
 
-Linearising $\eqref{sys3dS}$-$\eqref{sys3dR}$ at the EEP
+Linearising $\eqref{sys:vacc_3dS}$-$\eqref{sys:vacc_3dR}$ at the EEP
  
 - at the smaller $I$, Jacobian matrix has negative trace and positive determinant $\implies$ one of the eigenvalues is positive and the lower bifurcating branch is unstable
 - On the upper branch, conclude from linearisation that there is either one or three eigenvalues with nonpositive real part $\implies$ stability is undetermined. From numerical investigations, the upper branch seems locally stable
@@ -1357,7 +1373,7 @@ Linearising $\eqref{sys3dS}$-$\eqref{sys3dR}$ at the EEP
 
 # Spectral abscissa at the EP
 
-Spectral abscissa $s(J)$ (maximum of real parts of eigenvalues of the Jacobian matrix $J$) of the linearisation at the DFE and the 2 EEP, when $\theta$ varies
+Spectral abscissa $s(J)$ (maximum of real parts of eigenvalues) of the linearisation at the DFE and the 2 EEP, when $\theta$ varies
 
 ![width:600px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/evalues_SIRbif.png)
 
@@ -1448,7 +1464,7 @@ $$
 
 # SEIRS - Mukherjee et al
 
-Mukherjee, Chattopadhyay and Tapaswi consider system \eqref{sys:SEIRS} with an incidence function taking the form
+Mukherjee, Chattopadhyay and Tapaswi consider system an SEIRS with an incidence function taking the form
 $$
 f(S,I,N)=\beta S^q I^p
 $$
@@ -1493,14 +1509,14 @@ Clearly, this is hard to use in practice so the system was studied in other ways
 
 # Li, Muldowney and PvdD
 
-Li, Muldowney and van den Driessche study an SLIRS with incidence
+Li, Muldowney and van den Driessche study an SEIRS with incidence
 $$
 f(S,I,N)=\beta g(I)S
 $$
 wheere $g$ is s.t. $g(0)=0$, $g(I)>0$ for $I\in(0,1]$ and $g\in
 C^1(0,1]$
 
-They normalise the total population, so $S+L+I+R=1$. They make an additional hypothesis about $g$:
+They normalise the total population, so $S+E+I+R=1$. They make an additional hypothesis about $g$:
 
 - **(H)** $c=\lim_{I\to 0^+} \frac{g(I)}{I}\leq +\infty$; when $0<c<+\infty$, $g(I)\leq cI$ for sufficiently small $I$
 
@@ -1517,7 +1533,7 @@ $$
 {(d+\varepsilon)(d+\gamma)}
 $$
 
-The local stability results already established are valid here, since (\ref{eq:g_incidence}) is a particular case of the function $f$ used to establish these results
+The local stability results already established are valid here, since $g$ is a particular case of the function $f$ used to establish these results
 
 ---
 
@@ -1526,7 +1542,7 @@ The local stability results already established are valid here, since (\ref{eq:g
 If $g(I)$ satisfies hypothesis **(H)**, then system $f(S,I,N)=\beta S^q I^p$ with incidence $f(S,I,N)=\beta S^q I^p$ is uniformly persistent if and only if $\mathcal{R}_0>1$
 </div>
 
-The system is **uniformly persistent** if there exists $0<\epsilon_0<1$ s.t. any solution $(S(t),L(t),I(t),R(t))$ of (\ref{sys:SEIRS}) with initial condition $(S(0),L(0),I(0),R(0))\in \overset{\circ}{\Gamma}$ satisfies
+The system is **uniformly persistent** if there exists $0<\epsilon_0<1$ s.t. any solution $(S(t),E(t),I(t),R(t))$ of SEIRS with initial condition $(S(0),E(0),I(0),R(0))\in \overset{\circ}{\Gamma}$ satisfies
 $$
 \begin{array}{c}
 \liminf_{t\to\infty} S(t)\geq \epsilon_0,\quad 
@@ -1555,7 +1571,7 @@ is satisfied, where
 $$
 \eta_0=\min_{I\in[\epsilon_0,1]}g(I)>0
 $$
-and $\epsilon_0$ defined by (\ref{eq:SEIRS_persist}). Then there is no closed rectifiable curve that is invariant with respect to (\ref{sys:SEIRS}). Furthermore, each semi-trajectory of (\ref{sys:SEIRS}) in $\Gamma$ converges to an equilibrium
+and $\epsilon_0$ defined by (\ref{eq:SEIRS_persist}). Then there is no closed rectifiable curve that is invariant with respect to SEIRS. Furthermore, each semi-trajectory of SEIRS in $\Gamma$ converges to an equilibrium
 </div>
 
 The proof uses compound matrices
