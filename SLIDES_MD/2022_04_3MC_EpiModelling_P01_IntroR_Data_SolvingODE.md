@@ -709,10 +709,11 @@ ode(y, times, func, parms,
 
 - Note that this is a super simplified version of what to do
 - Much more elaborate procedures exist
-  - Li ..
-  - Portet. A primer on 
+  - Roda. [Bayesian inference for dynamical systems](https://doi.org/10.1016/j.idm.2019.12.007)
+  - Portet. [A primer on model selection using the Akaike Information Criterion](https://doi.org/10.1016/j.idm.2019.12.010)
 - Let us grab some epi data online and fit an SIR model to it
 - Don't expect anything funky, as I said, this is the baby version
+- Also, keep in mind that any identification procedure is subject to risks due to *identifiability issues*; see, e.g., Roda et al, [Why is it difficult to accurately predict the COVID-19 epidemic?](https://doi.org/10.1016/j.idm.2020.03.001)
 
 ---
 
