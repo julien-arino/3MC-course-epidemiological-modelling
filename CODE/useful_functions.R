@@ -6,17 +6,6 @@
 # This file contains several useful functions that I do not want to
 # include in the main Rmd files.
 
-# Do you have an internet connection..
-haveIP <- function() {
-  if (.Platform$OS.type == "windows") {
-    ipmessage <- system("ipconfig", intern = TRUE)
-  } else {
-    ipmessage <- system("ifconfig", intern = TRUE)
-  }
-  validIP <- "((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)[.]){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
-  any(grep(validIP, ipmessage))
-}
-
 # Table to map region names in mainland France between French and English.
 # Put as many different lists as needed.
 # Make sure order is the same in each sublist.

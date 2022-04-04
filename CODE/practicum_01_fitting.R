@@ -2,6 +2,7 @@ library(lubridate)
 library(dplyr)
 library(wbstats)
 library(deSolve)
+library(GA)
 
 # The RHS function for KMK
 RHS_KMK_SIR <- function(t, x, p) {
@@ -17,11 +18,11 @@ RHS_KMK_SIR <- function(t, x, p) {
 # arguments
 error_Newton <- function(p_vary, params, incidence_data) {
   # Anything that changes during optimisation needs to be set here
-  params$beta = p_vary["beta"]
+  params$beta = p_vary[1]
   IC = c(S = params$pop, I = incidence_data$inc[1], R = 0)
   times = as.numeric(as.Date(incidence_data$date))
-  sol <- ode(IC, times, RHS_KMK_SIR, params,
-             rtol = 1, atol = 1)
+  sol = ode(IC, times, RHS_KMK_SIR, params,
+            method = "rk4")
   # Error checking
   if (sol[dim(sol)[1],"time"] < times[length(times)]) {
     writeLines("Cut short")
@@ -95,7 +96,9 @@ sol <- ode(IC, times, RHS_KMK_SIR, params)
 # Just to check: does the error function indeed return what we want it to return
 # and does it not change beta (here)
 params$beta
-error_Newton(p_vary = c(beta=0.001), params, data_subset)
+error_Newton(p_vary = c(beta=0.0001), 
+             params = params, 
+             incidence_data = data_subset)
 params$beta
 
 # "Classic" minimisation using a Newton-type algorithm
@@ -111,4 +114,25 @@ param_value = optim(fn =
                       function(x) error_Newton(x, 
                                                params = params,
                                                incidence_data = data_subset),
-                    par = params$beta) 
+                    par = c(params$beta)) 
+# Using a genetic algorithm
+GA = ga(
+  type = "real-valued",
+  fitness = function(x) -error_Newton(p_vary = x,
+                                      params = params,
+                                      incidence_data = data_subset),
+  lower = c(0),
+  upper = c(0.1),
+  pcrossover = 0.7, 
+  pmutation = 0.3, 
+  suggestions = params$beta,
+  popSize = 1000,
+  maxiter = 500
+)
+
+params$beta = GA@solution
+IC = c(S = pop_data_FRA, I = data_subset$inc100[1], R = 0)
+times = as.numeric(as.Date(data_subset$date))
+sol <- ode(IC, times, RHS_KMK_SIR, params)
+sol_incidence = as.numeric(params$beta) * sol[,"S"] * sol[,"I"]
+plot(sol[,"time"], sol_incidence)

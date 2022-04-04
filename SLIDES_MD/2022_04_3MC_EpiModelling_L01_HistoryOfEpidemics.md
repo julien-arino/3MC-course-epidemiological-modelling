@@ -47,7 +47,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 ![bg right:40%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/FredBrauer_2007-05-13.jpg)
 # In Memoriam - Fred Brauer
 
-Fred Brauer was a friend and mentor to many worldwide and an * of Mathematical Epidemiology in Canada
+Fred Brauer was a friend and mentor to many worldwide and an *éminence grise* of Mathematical Epidemiology in Canada
 
 I was privileged to learn from him and teach math epi with him in a wide variety of settings
 
