@@ -44,21 +44,29 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
+![bg right:40%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/FredBrauer_2007-05-13.jpg)
+# In Memoriam - Fred Brauer
+
+Fred Brauer was a friend and mentor to many worldwide and an * of Mathematical Epidemiology in Canada
+
+I was privileged to learn from him and teach math epi with him in a wide variety of settings
+
+Fred passed away 2021-10-17. This course is dedicated to his memory!
+
+> When you learn to use a hammer, everything looks like a nail
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
 # <!--fit-->About the course
 
 ---
 
-![bg right:40%](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/epidemio/FredBrauer_2007-05-13.jpg)
-# In Memoriam - Fred Brauer
+# Getting in touch
 
-Fred Brauer was a friend and mentor to many worldwide and a driving force of Mathematical Epidemiology in Canada
-
-I was priviledged to learn from him and teach math epi with him in a wide variety of settings
-
-Fred passed away 2021-10-17. This course is dedicated to his memory!
-
-> When you learn to use a hammer, everything looks like a nail
+- Happy to answer questions during the class and after
+- Otherwise, just email me
+- Do add something like [3MC] in your subject line, I get (too) many emails
 
 ---
 
@@ -442,6 +450,9 @@ Measles cases in the USA
 ---
 
 # Some activity later, but not much until 1990s
+
+- In recent years, explosion
+- Since the beginning of COVID-19: just nuts..
 
 ---
 

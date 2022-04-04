@@ -29,7 +29,7 @@ math: mathjax
 
 4 April 2022 
 
-Julien Arino [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/email-round.png)](mailto:Julien.Arino@umanitoba.ca) [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/world-wide-web.png)](https://julien-arino.github.io/) [![width:32px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/icons/github-icon.png)](https://github.com/julien-arino)
+Julien Arino [![width:32px](../FIGS/email-round.png)](mailto:Julien.Arino@umanitoba.ca) [![width:32px](../FIGS/world-wide-web.png)](https://julien-arino.github.io/) [![width:32px](../FIGS/github-icon.png)](https://github.com/julien-arino)
 
 Department of Mathematics & Data Science Nexus
 University of Manitoba*
@@ -1211,7 +1211,7 @@ This is *herd immunity*
 
 # Another SIRS model with vaccination
 
-![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_newborns.png)
+![width:1000px center](../FIGS/SIRV_newborns.png)
 
 ---
 
@@ -1291,14 +1291,14 @@ $$
 
 # Case of a forward bifurcation
 
-![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/PI_vs_I_forward.png)  ![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_bif_forward.png)
+![width:550px](../FIGS/PI_vs_I_forward.png)  ![width:550px](../FIGS/SIRV_bif_forward.png)
 
 
 ---
 
 # Case of a backward bifurcation
 
-![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/PI_vs_I_backward.png)  ![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_bif_backward.png)
+![width:550px](../FIGS/PI_vs_I_backward.png)  ![width:550px](../FIGS/SIRV_bif_backward.png)
 
 ---
 
@@ -1314,7 +1314,7 @@ $\implies$ region of bistability is $\Delta=B^2-4AC\geq 0$, $B>0$ and $C<0$
 
 # Bifurcation in the $(\sigma,\phi)$ plane
 
-![width:800px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/bif_sigma_vs_phi.png)
+![width:800px center](../FIGS/bif_sigma_vs_phi.png)
 
 ---
 
