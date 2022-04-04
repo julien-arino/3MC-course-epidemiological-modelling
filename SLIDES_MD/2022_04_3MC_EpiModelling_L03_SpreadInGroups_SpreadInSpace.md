@@ -85,7 +85,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
-![bg contain](../FIGS/malaria-deaths-by-age.png "Max Roser and Hannah Ritchie (2019) - 'Malaria'. Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/malaria' [Online Resource]")
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/malaria-deaths-by-age.png "Max Roser and Hannah Ritchie (2019) - 'Malaria'. Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/malaria' [Online Resource]")
 
 <!-- Max Roser and Hannah Ritchie (2019) - 'Malaria'. Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/malaria' [Online Resource] -->
 
@@ -115,7 +115,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
-![bg contain](..FIGS/../../FIGS/pnas.202112605fig01.jpg "Within and between classroom transmission patterns of seasonal influenza among primary school students in Matsumoto city, Japan https://doi.org/10.1073/pnas.2112605118")
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/pnas.202112605fig01.jpg "Within and between classroom transmission patterns of seasonal influenza among primary school students in Matsumoto city, Japan https://doi.org/10.1073/pnas.2112605118")
 
 <!-- Within and between classroom transmission patterns of seasonal influenza among primary school students in Matsumoto city, Japan https://doi.org/10.1073/pnas.2112605118 -->
 
@@ -140,11 +140,11 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
-![bg contain](../FIGS/ppat.1008984.g001.png "Characterising the epidemic spread of influenza A/H3N2 within a city through phylogenetics https://doi.org/10.1371/journal.ppat.1008984")
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/ppat.1008984.g001.png "Characterising the epidemic spread of influenza A/H3N2 within a city through phylogenetics https://doi.org/10.1371/journal.ppat.1008984")
 
 ---
 
-![bg contain](../FIGS/InfluenzaStrainsCAN_2019-2020.png)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/InfluenzaStrainsCAN_2019-2020.png)
 
 ---
 
