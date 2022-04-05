@@ -121,6 +121,7 @@ GA = ga(
   fitness = function(x) -error_Newton(p_vary = x,
                                       params = params,
                                       incidence_data = data_subset),
+  parallel = TRUE,
   lower = c(0),
   upper = c(0.1),
   pcrossover = 0.7, 
