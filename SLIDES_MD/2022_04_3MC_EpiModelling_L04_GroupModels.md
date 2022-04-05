@@ -178,6 +178,8 @@ Preventing tuberculosis in the foreign-born population of Canada: a mathematical
 
 [Risk of COVID-19 variant importation – How useful are travel control measures?](https://doi.org/10.1016/j.idm.2021.06.006) Arino, Boëlle, Milliken & Portet. *Infectious Disease Modelling* **6** 
 
+- Idea was to consider what happens when a new variant arrives in a situation where another variant is already circulating
+
 ---
 
 ![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/importation_model_2variants.jpg)
