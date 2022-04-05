@@ -7,11 +7,11 @@ pop_data_CTRY <- wb_data(country = c("ZAF"), indicator = "SP.POP.TOTL",
                          mrv = 100, return_wide = FALSE)
 y_range = range(pop_data_CTRY$value)
 y_axis <- make_y_axis(y_range)
-png(file = "../FIGS/pop_ZAF.png", width = 800, height = 400)
+png(file = "https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//pop_ZAF.png", width = 800, height = 400)
 plot(pop_data_CTRY$date, pop_data_CTRY$value * y_axis$factor,
      xlab = "Year", ylab = "Population", type = "b", lwd = 2,
      yaxt = "n")
 axis(2, at = y_axis$ticks, labels = y_axis$labels, las = 1)
 dev.off()
-crop_figure("../FIGS/pop_ZAF.png")
+crop_figure("https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//pop_ZAF.png")
 

@@ -306,7 +306,7 @@ A matrix $M$ is primitive if the associated connection graph is strongly connect
 
 This is checked directly on the transition graph
 \begin{center}
-\includegraphics[width=0.6\textwidth]{../figs_08_genetics/graphe_hybride}
+\includegraphics[width=0.6\textwidth]{https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/graphe_hybride}
 \end{center}
 
 ---
@@ -339,7 +339,7 @@ In an absorbing Markov chain, a state that is not absorbing is called **transien
 
 Suppose we have a chain like the following:
 \begin{center}
-\includegraphics[width=0.8\textwidth]{../figs_08_genetics/graphe_absorbant}
+\includegraphics[width=0.8\textwidth]{https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/graphe_absorbant}
 \end{center}
 
 1. Does the process eventually reach an absorbing state?
@@ -404,7 +404,7 @@ Answers to our remaining questions:
 - if in state $S_1$, probability 1 of going to $S_2$
 - if in state $S_p$, probability 1 of going to $S_{p-1}$
 
-\includegraphics[width=\textwidth]{../figs_08_genetics/drunk_mans_walk_regular}
+\includegraphics[width=\textwidth]{https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/drunk_mans_walk_regular}
 
 ---
 
@@ -507,7 +507,7 @@ $$
 - if in state $S_1$, probability 1 of going to $S_1$
 - if in state $S_p$, probability 1 of going to $S_p$
 
-\includegraphics[width=\textwidth]{../figs_08_genetics/drunk_mans_walk_absorbing}
+\includegraphics[width=\textwidth]{https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/drunk_mans_walk_absorbing}
 
 ---
 

@@ -163,6 +163,10 @@ $$
 
 Preventing tuberculosis in the foreign-born population of Canada: a mathematical modelling study.  Varughese, Langlois-Klassen, Long, & Li. [International Journal of Tuberculosis and Lung Disease](https://doi.org/10.5588/ijtld.13.0625) **18** (2014)
 
+- New immigrants from Canada come predominantly from countries in which TB is very active
+- It has been noticed that people develop TB in the first few years of their presence in CAN
+- Want to investigate this, together with effect of various screening measures
+
 ---
 
 ![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/VarugheseLangloisklassenLongLi-2014-TB-flow_diagram.png)
@@ -176,9 +180,9 @@ Preventing tuberculosis in the foreign-born population of Canada: a mathematical
 
 # Importation of a new SARS-CoV-2 variant
 
-[Risk of COVID-19 variant importation – How useful are travel control measures?](https://doi.org/10.1016/j.idm.2021.06.006) Arino, Boëlle, Milliken & Portet. *Infectious Disease Modelling* **6** 
+[Risk of COVID-19 variant importation – How useful are travel control measures?](https://doi.org/10.1016/j.idm.2021.06.006) Arino, Boëlle, Milliken & Portet. *Infectious Disease Modelling* **6** (2021)
 
-- Idea was to consider what happens when a new variant arrives in a situation where another variant is already circulating
+- Consider what happens when a new variant N arrives in a situation where another variant O is already circulating
 
 ---
 
@@ -186,7 +190,43 @@ Preventing tuberculosis in the foreign-born population of Canada: a mathematical
 
 ---
 
+# Coupling is through the force of infection
+
+- For now, we have discussed *incidence functions* $f(S,I,N)$
+- Here, we use a *force of infection* $\Phi_X$, for $X\in\{O,N\}$
+- Force of infection uses $S$ "outside" of function: it is the pressure that applies to $S$ individuals to make them infected
+- Of course, the two are equivalent, but in some contexts, it makes sense to use this
+- Here, for $X\in\{O,N\}$
+$$
+\Phi_X = \beta_X(\eta_{X}L_{X_C2}+\xi_X(D_{X_C1}+D_{X_C2})+U_{X_C1}+U_{X_C2})
+$$
+
+---
+
+# Adding more groups - "Importation layer"
+
+- How can we evaluate how much "importations" contribute to propagation within a location?
+- If an individual arrives in a new location while bearing the disease, we put them in a special group, the *importation layer*
+- In importation layer, individuals make contacts with others in the population, but they remain in the importation layer until recovery or death
+
+---
+
 ![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/importation_model_2variants_import_layer.jpg)
+
+---
+
+# Force of infection with importation layer
+
+For $X\in\{O,N\}$
+$$
+\Phi_X = \Phi_{X_I}+\Phi_{X_I}
+$$
+where, for $X\in\{O,N\}$ and $Z\in\{I,C\}$
+
+$$
+\Phi_{X_Z} = \beta_X(\eta_{X}L_{X_Z2}+\xi_X(D_{X_Z1}+D_{X_Z2})+U_{X_Z1}+U_{X_Z2})
+$$
+
 
 ---
 
@@ -194,6 +234,9 @@ Preventing tuberculosis in the foreign-born population of Canada: a mathematical
 # Models with immunological component
 
 Global dynamics of a general class of multistage models for infectious diseases. Guo, Li & Shuai. [SIAM Journal on Applied Mathematics](https://doi.org/10.1137/110827028) **72** (2012)
+
+- Viruses such as HIV reside in the body for a very long time, potentially for life
+- Throughout the course of this residence, virus loads change and with it symptoms and infectiousness
 
 ---
 
@@ -206,6 +249,30 @@ Global dynamics of a general class of multistage models for infectious diseases.
 
 ---
 
+# Model of Guo, Li & Shuai
+
+- For general considerations about a method, see Lu & Shuai, [Global-stability problem for coupled systems of differential equations on networks](https://doi.org/10.1016/j.jde.2009.09.003), *JDE* **248** (2010)
+- Techniques use combination of "classical" ODE stability theory, linear algebra and graph theory
+- They show GAS when $\mathcal{R}_0\leq 1$ and GAS under conditions when $\mathcal{R}_0>1$
+- Use Lyapunov function $L=\sum_{i=1}^nw_iI_i$ for DFE when $\mathcal{R}_0\leq 1$
+- For EEP, use a Goh type Lyapunov function
+$$
+V=\tau_1
+\int_{S^*}^{S}
+\dfrac{\Phi(\xi)-\Phi(S^*)}{\Phi(\xi)}d\xi
++\sum_{i=1}^n
+\tau_i
+\int_{I_i^*}^{I_i}
+\dfrac{\psi(\xi)-\psi(I_i^*)}{\psi(\xi)}d\xi
+$$
+- Use Kirchhoff’s matrix tree theorem to show that $V'$ is negative definite
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Simulating group models
 
+---
+
+- This is very similar to metapopulation models which are described in [Practicum 02](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html)
+- The variant importation model simulations will be discussed in the stochastic lectures

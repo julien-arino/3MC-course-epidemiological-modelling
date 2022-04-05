@@ -53,7 +53,7 @@ OUTPUT_PLOT = TRUE
 
 # Plot the result
 if (OUTPUT_PLOT) {
-  png(filename = paste0("../FIGS/CTMC_birth_death_sol_", fig_title, ".png"),
+  png(filename = paste0("https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//CTMC_birth_death_sol_", fig_title, ".png"),
       width = 800, height = 600, res = 120)
 }
 plot(t, N, type = "l",
@@ -61,7 +61,7 @@ plot(t, N, type = "l",
 abline(h = N_0, lty = 2)
 if (OUTPUT_PLOT) {
   dev.off()
-  crop_figure(paste0("../FIGS/CTMC_birth_death_sol_", fig_title, ".png"))
+  crop_figure(paste0("https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//CTMC_birth_death_sol_", fig_title, ".png"))
 }
 
 # Plot the inter-event time. Diff removes one entry, beware..
@@ -72,7 +72,7 @@ plot(1:(length(t)-1), diff(t),
 
 # Plot the inter-event time. Diff removes one entry, beware..
 if (OUTPUT_PLOT) {
-  png(filename = paste0("../FIGS/CTMC_birth_death_ie_vs_t_", fig_title, ".png"),
+  png(filename = paste0("https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//CTMC_birth_death_ie_vs_t_", fig_title, ".png"),
       width = 800, height = 600, res = 120)
 }
 plot(t[2:length(t)], diff(t),
@@ -81,5 +81,5 @@ plot(t[2:length(t)], diff(t),
      type = "l")
 if (OUTPUT_PLOT) {
   dev.off()
-  crop_figure(paste0("../FIGS/CTMC_birth_death_ie_vs_t_", fig_title, ".png"))
+  crop_figure(paste0("https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//CTMC_birth_death_ie_vs_t_", fig_title, ".png"))
 }

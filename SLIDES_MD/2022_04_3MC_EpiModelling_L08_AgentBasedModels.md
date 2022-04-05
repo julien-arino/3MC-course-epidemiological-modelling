@@ -152,13 +152,13 @@ D’Agata, Magal, Olivier, Ruand & Webb. [Modeling antibiotic resistance in hosp
 
 ---
 
-![bg contain](../FIGS/Dagata_etal_patients_profiles.jpg)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//Dagata_etal_patients_profiles.jpg)
 
 <!-- Patient–HCW contact diagram for four patients and one HCW during one shift. Patient status: uninfected (green), infected with the non-resistant strain (yellow), infected with the resistant strain (red). HCW status: uncontaminated (______ ), contaminated with the non-resistant strain (………), contaminated with the resistant strain (- - - - - ) -->
 
 ---
 
-![bg contain](../FIGS/Dagata_etal_comparisons.jpg)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//Dagata_etal_comparisons.jpg)
 
 <!-- The left (respectively the right) figure corresponds to 1 trajectory (respectively the average over 80 trajectories) of the IBM during one shift, with no exit and admission of patients, and no changes in the infection status of patients -->
 
@@ -179,27 +179,27 @@ Tian, Osgood, Al-Azem & Hoeppner. [Evaluating the Effectiveness of Contact Traci
 
 ---
 
-![bg contain](../FIGS/TianOsgood_etal_TB_CT.jpeg)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//TianOsgood_etal_TB_CT.jpeg)
 
 ---
 
-![bg contain](../FIGS/TianOsgood_etal_state_flow_agent.jpeg)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//TianOsgood_etal_state_flow_agent.jpeg)
 
 ---
 
-![bg contain](../FIGS/TianOsgood_etal_model_CT.jpeg)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//TianOsgood_etal_model_CT.jpeg)
 
 ---
 
 They can then formulate scenarios
 
-![height:60%](../FIGS/TianOsgood_etal_scenarios.jpeg)
+![height:60%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//TianOsgood_etal_scenarios.jpeg)
 
 They then run these scenarios and compare results
 
 ---
 
-![bg contain](../FIGS/TianOsgood_etal_scenario_results.jpeg)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//TianOsgood_etal_scenario_results.jpeg)
 
 ---
 
@@ -274,15 +274,15 @@ $\implies$ understanding contact patterns and frequency would help
 
 ---
 
-![bg contain](../FIGS/ABM_Hajj_MAH_3Dmodel.png)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//ABM_Hajj_MAH_3Dmodel.png)
 
 ---
 
-![bg contain](../FIGS/ABM_Hajj_setup.png)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//ABM_Hajj_setup.png)
 
 ---
 
-![bg contain](../FIGS/ABM_Hajj_config_tawaf.png)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//ABM_Hajj_config_tawaf.png)
 
 ---
 

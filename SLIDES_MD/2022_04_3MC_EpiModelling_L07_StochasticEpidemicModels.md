@@ -520,15 +520,15 @@ while (t_curr<=t_f) {
 
 ---
 
-![bg contain](../FIGS/CTMC_birth_death_sol_b=0_01__d=0_01.png)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//CTMC_birth_death_sol_b=0_01__d=0_01.png)
 
 ---
 
-![bg contain](../FIGS/CTMC_birth_death_sol_b=0_01__d=0_02.png)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//CTMC_birth_death_sol_b=0_01__d=0_02.png)
 
 ---
 
-![bg contain](../FIGS/CTMC_birth_death_sol_b=0_025__d=0_01.png)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//CTMC_birth_death_sol_b=0_025__d=0_01.png)
 
 ---
 
@@ -547,7 +547,7 @@ while (t_curr<=t_f) {
 
 ---
 
-![bg contain](../FIGS/CTMC_birth_death_ie_vs_t_b=0_025__d=0_01.png)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//CTMC_birth_death_ie_vs_t_b=0_025__d=0_01.png)
 
 ---
 
