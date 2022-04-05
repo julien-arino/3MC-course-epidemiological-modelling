@@ -4,6 +4,7 @@ title: Practicum - Introduction to R. Collecting data. Solving ODEs in R
 description: 3MC Course Epidemiological Modelling - Julien Arino - Practicum 01 - Introduction to R. Collecting data. Solving ODEs in R
 theme: default
 paginate: false
+math: mathjax
 size: 4K
 ---
 

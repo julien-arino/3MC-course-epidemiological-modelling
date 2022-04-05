@@ -4,6 +4,7 @@ title: Group models
 description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 04 - Group models
 theme: default
 paginate: false
+math: mathjax
 size: 4K
 ---
 

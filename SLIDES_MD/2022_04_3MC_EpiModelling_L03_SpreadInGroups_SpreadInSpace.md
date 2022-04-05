@@ -4,6 +4,7 @@ title: Epidemics spreading among groups. Epidemics spreading in space and time
 description: 3MC Course Epidemiological Modelling - Julien Arino - Course 03 - Epidemics spreading among groups. Epidemics spreading in space and time
 theme: default
 paginate: false
+math: mathjax
 size: 4K
 ---
 

@@ -3,6 +3,7 @@ marp: true
 title: Stochastic aspects in the spread of epidemics
 description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 06 - Stochastic aspects in the spread of epidemics
 theme: default
+math: mathjax
 paginate: false
 size: 4K
 ---

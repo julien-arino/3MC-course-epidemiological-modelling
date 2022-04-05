@@ -4,7 +4,8 @@ title: Agent-based models
 description: 3MC Course Epidemiological Modelling - Julien Arino - Course 08 - Agent-based models
 theme: default
 paginate: false
-size: 16:9
+math: mathjax
+size: 4K
 ---
 
 <style>

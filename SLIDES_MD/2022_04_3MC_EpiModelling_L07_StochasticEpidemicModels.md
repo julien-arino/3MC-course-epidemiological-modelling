@@ -4,6 +4,7 @@ title: Stochastic epidemic models
 description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 07 - Stochastic epidemic models
 theme: default
 paginate: false
+math: mathjax
 size: 4K
 ---
 

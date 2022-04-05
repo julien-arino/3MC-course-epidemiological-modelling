@@ -3,6 +3,7 @@ marp: true
 title: History of epidemics and Historical epidemics
 description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 01 - History of epidemics and Historical epidemics
 theme: default
+math: mathjax
 paginate: false
 size: 4K
 ---
