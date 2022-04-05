@@ -4,6 +4,7 @@ title: Metapopulation epidemic models
 description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 05 - Metapopulation models
 theme: default
 paginate: false
+math: mathjax
 size: 4K
 ---
 
