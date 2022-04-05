@@ -50,7 +50,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 - Basic mathematical analysis
 - $\mathcal{R}_0$ is not the panacea - An urban centre and satellite cities
 - Problems specific to metapopulations
-- Numerical investigations
+- Global stability considerations
 
 ---
 
@@ -65,6 +65,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 </div>
 
 ---
+
 <div style = "position: relative; top: -47%; font-size:40px">
 
 **Disease spread process in a jurisdiction-based world**
@@ -116,13 +117,18 @@ $N_{cp}$ population of compartment $c\in\mathcal{C}$ in patch $p\in\mathcal{P}$
 Assume no birth or death. Balance inflow and outflow
 
 $$
-\begin{aligned}
+\begin{align}
 N_{cp}' &= \left(\sum_{q\in\mathcal{P}\setminus\{p\}} m_{cpq}N_{cq}\right)-\left(\sum_{q\in\mathcal{P}\setminus\{p\}} m_{cqp}\right)N_{cp} \\
 &\\
-&=  \sum_{q\in\mathcal{P}} m_{cpq}N_{cq} 
-\qquad\textrm{with }
+\text{or} & \\
+&\\
+N_{cp}' &=  \sum_{q\in\mathcal{P}} m_{cpq}N_{cq} 
+\qquad \tag{1}\label{eq:dNcp}
+\end{align}
+$$
+when we write
+$$
 m_{cpp}=-\sum_{q\in\mathcal{P}\setminus\{p\}} m_{cqp}
-\end{aligned}
 $$
 
 ---
@@ -140,24 +146,26 @@ $L$ = latently infected ($\simeq E$ exposed, although the latter term is ambiguo
 # $|\mathcal{P}|$-SLIRS model
 
 $$
-\begin{aligned}
-S_{p}' &=\mathcal{B}_p\left(N_p\right)+\nu_pR_p-\Phi_p-d_pS_p
-\red{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Spq}S_{q}} \\
+\begin{align}
+S_{p}' &=\mathcal{B}_p\left(N_p\right)+\nu_pR_p-\Phi_p-d_pS_p 
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Spq}S_{q}} \tag{2a}\label{sys:pSLIRS_dS} \\
 L_{p}' &=\Phi_p-\left( \varepsilon_{p}+d_{p}\right)L_{p}
-\red{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Lpq}L_{q}} \\
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Lpq}L_{q}} \tag{2b}\label{sys:pSLIRS_dL} \\
 I_{p}' &=\varepsilon_pL_p-(\gamma_p+d_p)I_p
-\red{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Ipq}I_{q}} \\
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Ipq}I_{q}} \tag{2c}\label{sys:pSLIRS_dI} \\
 R_{p}' &=\gamma _{p}I_{p}-\left(\nu_{p}+d_{p}\right)R_{p}
-\red{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Rpq}R_{q}}
-\end{aligned}
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Rpq}R_{q}} \tag{2d}\label{sys:pSLIRS_dR} 
+\end{align}
 $$
 
+with incidence 
 $$
 \Phi_p=\beta_p\frac{S_pI_p}{N_p^{q_p}},\qquad q_p\in\{0,1\}
+\tag{2e}\label{sys:pSLIRS_incidence} 
 $$
 
 
-<div style = "position: relative; bottom: -20%; font-size:20px;">
+<div style = "position: relative; bottom: -15%; font-size:20px;">
 
 - JA & PvdD. [Disease spread in metapopulations](https://server.math.umanitoba.ca/~jarino/publications/ArinoVdD-2006-FIC48.pdf). *Fields Institute Communications* **48**:1-13 (2006)
 - JA. [Diseases in metapopulations](https://server.math.umanitoba.ca/~jarino/papers/Arino_metapopulations.pdf). In *Modeling and Dynamics of Infectious Diseases*, World Scientific (2009)
@@ -169,23 +177,25 @@ $$
 
 $\mathcal{S}$ a set of species
 $$
-\begin{aligned}
+\begin{align}
 S_{sp}' &= \mathcal{B}_{sp}(N_{sp})+\nu_{sp}R_{sp}-\Phi_{sp}-d_{sp}S_{sp}
-\red{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Sspq}S_{sq}} \\
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Sspq}S_{sq}} \tag{3a}\label{sys:spSLIRS_dS} \\
 L_{sp}' &= \Phi_{sp}-(\varepsilon_{sp}+d_{sp})L_{sp}
-\red{+\textstyle{\sum_{q\in\mathcal{P}}}m_{Lspq}L_{sq}} \\
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}}m_{Lspq}L_{sq}} \tag{3b}\label{sys:spSLIRS_dL} \\
 I_{sp}' &= \varepsilon_{sp}L_{sp}-(\gamma_{sp}+d_{sp})I_{sp}
-\red{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Ispq}I_{sq}} \\
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Ispq}I_{sq}} \tag{3c}\label{sys:spSLIRS_dI} \\
 R_{sp} &= \gamma _{sp}I_{sp}-(\nu_{sp}+d_{sp})R_{sp}
-\red{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Rspq}R_{sq}}
-\end{aligned}
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Rspq}R_{sq}} \tag{3d}\label{sys:spSLIRS_dR} 
+\end{align}
 $$
 
+with incidence
 $$
 \Phi_{sp}=\sum_{k\in\mathcal{S}}\beta_{skp}\frac{S_{sp}I_{kp}}{N_p^{q_p}},\qquad q_p\in\{0,1\}
+\tag{3e}\label{sys:spSLIRS_incidence} 
 $$
 
-<div style = "position: relative; bottom: -8%; font-size:20px;">
+<div style = "position: relative; bottom: -6%; font-size:20px;">
 
 - JA, Davis, Hartley, Jordan, Miller \& PvdD. [A multi-species epidemic model with spatial dynamics](https://server.math.umanitoba.ca/~jarino/papers/ArinoDavisHartleyJordanMillerVdD-2005-MMB22.pdf). *Mathematical Medicine and Biology* **22**(2):129-142 (2005) 
 - JA, Jordan \& PvdD. [Quarantine in a multi-species epidemic model with spatial dynamics](https://server.math.umanitoba.ca/~jarino/publications/ArinoJordanVdD-2007-MBS206.pdf). *Mathematical Biosciences* **206**(1):46-60 (2007)
@@ -196,23 +206,29 @@ $$
 # $|\mathcal{P}|^2$-SLIRS (residency patch/movers-stayers)
 
 $$
-\begin{aligned}
+\begin{align}
 S_{pq}' =& 
-\mathcal{B}_{pq}\left(N_p^r\right)+\nu_{pq} R_{pq}-\Phi_{pq}-d_{pq}S_{pq} \red{+\textstyle{\sum_{k\in\mathcal{P}}} m_{Spqk}S_{pk}} \\
+\mathcal{B}_{pq}\left(N_p^r\right)+\nu_{pq} R_{pq}-\Phi_{pq}-d_{pq}S_{pq} \color{red}{+\textstyle{\sum_{k\in\mathcal{P}}} m_{Spqk}S_{pk}} 
+\tag{4a}\label{sys:ppSLIRS_dS} \\
 L_{pq}' =& \Phi_{pq}
 -(\varepsilon_{pq}+d_{pq})L_{pq}
-\red{+\textstyle{\sum_{k\in\mathcal{P}}} m_{Lpqk}L_{pk}} \\
+\color{red}{+\textstyle{\sum_{k\in\mathcal{P}}} m_{Lpqk}L_{pk}} 
+\tag{4b}\label{sys:ppSLIRS_dL} \\
 I_{pq}' =& \varepsilon_{pq} L_{pq}
 -(\gamma_{pq}+d_{pq})I_{pq}
-\red{+\textstyle{\sum_{k\in\mathcal{P}}} m_{Ipqk}I_{pk}} \\
+\color{red}{+\textstyle{\sum_{k\in\mathcal{P}}} m_{Ipqk}I_{pk}} 
+\tag{4c}\label{sys:ppSLIRS_dI} \\
 R_{pq}' =& \gamma_{pq} I_{pq}
 -(\nu_{pq}+d_{pq})R_{pq}
-\red{+\textstyle{\sum_{k\in\mathcal{P}}} m_{Rpqk}R_{pk}}
-\end{aligned}
+\color{red}{+\textstyle{\sum_{k\in\mathcal{P}}} m_{Rpqk}R_{pk}}
+\tag{4d}\label{sys:ppSLIRS_dR} 
+\end{align}
 $$
 
+with incidence
 $$
 \Phi_{pq}=\sum_{k\in\mathcal{P}}\beta_{pqk}\frac{S_{pq}I_{kq}}{N_p^{q_q}},\qquad q_q=\{0,1\}
+\tag{4e}\label{sys:ppSLIRS_incidence} 
 $$
 
 <div style = "position: relative; bottom: -10%; font-size:20px;">
@@ -230,10 +246,12 @@ $\mathcal{U}\subsetneq\mathcal{C}$ **uninfected** and $\mathcal{I}\subsetneq\mat
 
 For $k\in\mathcal{U}$, $\ell\in\mathcal{I}$ and $p\in\mathcal{P}$,
 $$
-\begin{aligned}
-	s_{kp}' &= f_{kp}(S_p,I_p)+\sum_{q\in\mathcal{P}} m_{kpq}s_{kq} \\
-	i_{\ell p}' &= g_{\ell p}(S_p,I_p)+\sum_{q\in\mathcal{P}} m_{\ell pq}i_{\ell q}
-\end{aligned}
+\begin{align}
+s_{kp}' &= f_{kp}(S_p,I_p)+\sum_{q\in\mathcal{P}} m_{kpq}s_{kq} 
+\tag{5a}\label{sys:general_metapop_ds} \\
+i_{\ell p}' &= g_{\ell p}(S_p,I_p)+\sum_{q\in\mathcal{P}} m_{\ell pq}i_{\ell q}
+\tag{5b}\label{sys:general_metapop_di} 
+\end{align}
 $$
 where $S_p=(s_{1p},\ldots,s_{|\mathcal{U}|p})$ and $I_p=(i_{1p},\ldots,i_{|\mathcal{I}|p})$
 
@@ -248,20 +266,26 @@ where $S_p=(s_{1p},\ldots,s_{|\mathcal{U}|p})$ and $I_p=(i_{1p},\ldots,i_{|\math
 
 For simplicity, consider $|\mathcal{P}|$-SLIRS with $\mathcal{B}_p(N_p)=\mathcal{B}_p$
 $$
-\begin{aligned}
+\begin{align}
 S_{p}' &=\mathcal{B}_p-\Phi_p-d_pS_p+\nu_pR_p
-+\textstyle{\sum_{q\in\mathcal{P}}} m_{Spq}S_{q} \\
++\textstyle{\sum_{q\in\mathcal{P}}} m_{Spq}S_{q} 
+\tag{6a}\label{sys:pSLIRS_toy_dS} \\
 L_{p}' &=\Phi_p-\left( \varepsilon_{p}+d_{p}\right)L_{p}
-+\textstyle{\sum_{q\in\mathcal{P}}} m_{Lpq}L_{q} \\
++\textstyle{\sum_{q\in\mathcal{P}}} m_{Lpq}L_{q} 
+\tag{6b}\label{sys:pSLIRS_toy_dL} \\
 I_{p}' &=\varepsilon_pL_p-(\gamma_p+d_p)I_p
-+\textstyle{\sum_{q\in\mathcal{P}}} m_{Ipq}I_{q} \\
++\textstyle{\sum_{q\in\mathcal{P}}} m_{Ipq}I_{q} 
+\tag{6c}\label{sys:pSLIRS_toy_dI} \\
 R_{p}' &=\gamma _{p}I_{p}-\left(\nu_{p}+d_{p}\right)R_{p}
 +\textstyle{\sum_{q\in\mathcal{P}}} m_{Rpq}R_{q}
-\end{aligned}
+\tag{6d}\label{sys:pSLIRS_toy_dR} 
+\end{align}
 $$
 
+with incidence
 $$
 \Phi_p=\beta_p\frac{S_pI_p}{N_p^{q_p}},\qquad q_p\in\{0,1\}
+\tag{6e}\label{sys:pSLIRS_toy_incidence} 
 $$
 
 System of $4|\mathcal{P}|$ equations
@@ -332,6 +356,7 @@ N_p'=\mathcal{B}_p-d_pN_p
 $$
 Write this in vector form
 $$
+\tag{7}\label{sys:pSLIRS_dN_general} 
 \mathbf{N}'=\mathbf{b}-\mathbf{d}\mathbf{N}+\sum_{X\in\{S,L,I,R\}}\mathcal{M}^X\mathbf{X}
 $$
 where $\mathbf{b}=(\mathcal{B}_1,\ldots,\mathcal{B}_{|\mathcal{P}|})^T,\mathbf{N}=(N_1,\ldots,N_{|\mathcal{P}|})^T,\mathbf{X}=(X_1,\ldots,X_{|\mathcal{P}|})^T\in\mathbb{R}^{|\mathcal{P}|},$ $\mathbf{d},\mathcal{M}^X$ $|\mathcal{P}|\times|\mathcal{P}|$-matrices with 
@@ -373,6 +398,7 @@ Consider a compartment $c\in\mathcal{C}$. Then the following hold true:
 
 Recall that
 $$
+\tag{7}
 \mathbf{N}'=\mathbf{b}-\mathbf{d}\mathbf{N}+\sum_{X\in\{S,L,I,R\}}\mathcal{M}^X\mathbf{X}
 $$
 
@@ -382,15 +408,16 @@ $$
 $$
 Then
 $$
-\begin{aligned}
+\begin{align}
 \mathbf{N}' &= \mathbf{b}-\mathbf{d}\mathbf{N}+\mathcal{M}\sum_{X\in\{S,L,I,R\}}\mathbf{X}\\
-&= \mathbf{b}-\mathbf{d}\mathbf{N}+\mathcal{M}\mathbf{N}
-\end{aligned}
+&= \mathbf{b}-\mathbf{d}\mathbf{N}+\mathcal{M}\mathbf{N} \tag{8}\label{sys:pSLIRS_toy_dN}
+\end{align}
 $$
 
 --- 
 
 $$
+\tag{8}
 \mathbf{N}'=\mathbf{b}-\mathbf{d}\mathbf{N}+\mathcal{M}\mathbf{N}
 $$
 
@@ -407,7 +434,7 @@ given, of course, that $\mathbf{d}-\mathcal{M}$ (or, equivalently, $\mathcal{M}-
 
 ---
 
-# "Perturbations" of movement matrices
+# Perturbations of movement matrices
 
 <div class="theorem">
 
@@ -1020,157 +1047,230 @@ required to observe a metapopulation-induced behaviour?
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!-- fit -->Numerical investigations
+# <!-- fit -->Global stability considerations
 
-<div style = "position: relative; bottom: -40%; font-size:20px;">
+---
 
-- JA. [Spatio-temporal spread of infectious pathogens of humans](https://doi.org/10.1016/j.idm.2017.05.001). *Infectious Disease Modelling* **2**(2):218-228 (2017)
-- JA. [Mathematical epidemiology in a data-rich world](https://doi.org/10.1016/j.idm.2019.12.008). *Infectious Disease Modelling* **5**:161-188 (2020)
-- github repo [modelling-with-data](https://github.com/julien-arino/modelling-with-data)
+# $|\mathcal{P}|$-SLIRS model
 
+$$
+\begin{aligned}
+S_{p}' &=\mathcal{B}_p\left(N_p\right)+\nu_pR_p-\Phi_p-d_pS_p
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Spq}S_{q}} \\
+L_{p}' &=\Phi_p-\left( \varepsilon_{p}+d_{p}\right)L_{p}
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Lpq}L_{q}} \\
+I_{p}' &=\varepsilon_pL_p-(\gamma_p+d_p)I_p
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Ipq}I_{q}} \\
+R_{p}' &=\gamma _{p}I_{p}-\left(\nu_{p}+d_{p}\right)R_{p}
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Rpq}R_{q}}
+\end{aligned}
+$$
+
+$$
+\Phi_p=\beta_p\frac{S_pI_p}{N_p^{q_p}},\qquad q_p\in\{0,1\}
+$$
+
+
+<div style = "position: relative; bottom: -20%; font-size:20px;">
+
+- JA & PvdD. [Disease spread in metapopulations](https://server.math.umanitoba.ca/~jarino/publications/ArinoVdD-2006-FIC48.pdf). *Fields Institute Communications* **48**:1-13 (2006)
+- JA. [Diseases in metapopulations](https://server.math.umanitoba.ca/~jarino/papers/Arino_metapopulations.pdf). In *Modeling and Dynamics of Infectious Diseases*, World Scientific (2009)
 </div>
 
 ---
 
-# Not very difficult
+The linear stability result for $\mathcal{R}_{0}<1$ can be strengthened to a global result
 
-- As for the mathematical analysis: if you do things carefully and think about things a bit, numerics are not hard. Well: not harder than numerics in low-D
-- Exploit vector structure
+<div class="theorem">
 
----
-
-# Define the vector field
-
-```
-SLIAR_metapop_rhs <- function(t, x, p) {
-  with(as.list(x), {
-    S = x[p$idx_S]
-    L = x[p$idx_L]
-    I = x[p$idx_I]
-    A = x[p$idx_A]
-    R = x[p$idx_R]
-    N = S + L + I + A + R
-    Phi = p$beta * S * (I + p$eta * A)
-    dS = S - Phi + p$M %*% S
-    dL = Phi - p$epsilon * L + p$M %*% L
-    dI = (1 - p$pi) * p$epsilon * L - p$gammaI * I + p$M %*% I
-    dA = p$pi * p$epsilon * L - p$gammaA * A + p$M %*% A
-    dR = p$gammaI * I + p$gammaA * A + p$M %*% R
-    list(c(dS, dL, dI, dA, dR))
-  })
-}
-```
+Let $\mathcal{R}_0$ be computed as explained earlier, and use proportional incidence. If $\mathcal{R}_0<1$, then the DFE of system $|\mathcal{P}|$-SLIRS is globally asymptotically stable
+</div>
 
 ---
 
-# Set up parameters
+# Proof 
 
-```
-pop = c(34.017, 1348.932, 1224.614, 173.593, 93.261) * 1e+06
-countries = c("Canada", "China", "India", "Pakistan", "Philippines")
-T = matrix(data = 
-             c(0, 1268, 900, 489, 200, 
-               1274, 0, 678, 859, 150, 
-               985, 703, 0, 148, 58, 
-               515, 893, 144, 0, 9, 
-               209, 174, 90, 2, 0), 
-           nrow = 5, ncol = 5, byrow = TRUE)
-```
-
----
-
-# Work out movement matrix
-
-```
-p = list()
-# Use the approximation explained in Arino & Portet (JMB 2015)
-p$M = mat.or.vec(nr = dim(T)[1], nc = dim(T)[2])
-for (from in 1:5) {
-  for (to in 1:5) {
-    p$M[to, from] = -log(1 - T[from, to]/pop[from])
-  }
-  p$M[from, from] = 0
-}
-p$M = p$M - diag(colSums(p$M))
-```
-
----
-
-```
-p$P = dim(p$M)[1]
-p$idx_S = 1:p$P
-p$idx_L = (p$P + 1):(2 * p$P)
-p$idx_I = (2 * p$P + 1):(3 * p$P)
-p$idx_A = (3 * p$P + 1):(4 * p$P)
-p$idx_R = (4 * p$P + 1):(5 * p$P)
-p$eta = rep(0.3, p$P)
-p$epsilon = rep((1/1.5), p$P)
-p$pi = rep(0.7, p$P)
-p$gammaI = rep((1/5), p$P)
-p$gammaA = rep((1/3), p$P)
-# The desired values for R_0. Here we take something simple
-R_0 = rep(1.5, p$P)
-```
-
----
-
-# Set up IC and time
-
-```
-# Set initial conditions. For example, we start with 2
-# infectious individuals in Canada.
-L0 = mat.or.vec(p$P, 1)
-I0 = mat.or.vec(p$P, 1)
-A0 = mat.or.vec(p$P, 1)
-R0 = mat.or.vec(p$P, 1)
-I0[1] = 2
-S0 = pop - (L0 + I0 + A0 + R0)
-# Vector of initial conditions to be passed to ODE solver.
-IC = c(S = S0, L = L0, I = I0, A = A0, R = R0)
-# Time span of the simulation (5 years here)
-tspan = seq(from = 0, to = 5 * 365.25, by = 0.1)
-```
-
----
-
-# Set up $\beta$ to avoid blow up
-
-Let us take $\mathcal{R}_0=1.5$ for patches in isolation. Solve $\mathcal{R}_0$ for $\beta$ 
+Since $\ S_{i}\leq N_{i},$ $\Phi_i\leq\beta_iN_iI_i/N_i$, and the equation for $L'$ gives the inequality
 $$
-\beta=\frac{\mathcal{R}_0}{S(0)}
-\left(
-\frac{1-\pi_p}{\gamma_{Ip}}
-+\frac{\pi_p\eta_p}{\gamma_{Ap}}
-\right)^{-1}
-$$ 
-
-<p style="margin-bottom:2cm;"></p> 
-
-```
-for (i in 1:p$P) {
-  p$beta[i] = 
-    R_0[i] / S0[i] * 1/((1 - p$pi[i])/p$gammaI[i] + p$pi[i] * p$eta[i]/p$gammaA[i])
-}
-```
+\begin{equation}
+\frac{d}{dt}L_i \leq \beta_iI_i-(\varepsilon_i+d_i)L_i+\sum_{j\in\mathcal{P}}m_{ij}^LL_{j}
+-\sum_{j\in\mathcal{P}}m_{ji}^LL_i  \label{eq:14}
+\end{equation}
+$$
+For comparison, define a linear system given by the equation above and the original equation for $I'$
+$$
+\begin{align*}
+\frac{d}{dt}L_i &= \beta_iI_i-(\varepsilon_i+d_i)L_i+\sum_{j\in\mathcal{P}}m_{ij}^LL_j
+-\sum_{j\in\mathcal{P}}m_{ji}^LL_i \\
+\frac{d}{dt}I_i &= \varepsilon_iE_i-(\gamma_i+d_i+\delta_i)I_i+\sum_{j\in\mathcal{P}}m_{ij}^II_j
+-\sum_{j\in\mathcal{P}}m_{ji}^II_i
+\end{align*}
+$$
 
 ---
 
-# And now the problems begin :)
+- This system linear has coefficient matrix $F-V$, and so (by some argument in the proof of local stability based on $\mathcal{R}_0$) satisfies $\lim\limits_{t\rightarrow \infty }L_{i}=0$ and $\lim\limits_{t\rightarrow \infty }I_{i}=0$ for $\mathcal{R}_{0}=\rho (FV^{-1})<1$ 
+- Using a comparison theorem, it follows that these limits also hold for the nonlinear system in $L_i'$ and $I_i'$
+- That $\lim\limits_{t\rightarrow \infty }R_{i}=0$ and $\lim\limits_{t\rightarrow \infty }S_{i}=N_{i}^{{}}\,^{\ast }$ follow from the equations for $S_i'$ and $R_i'$
 
-```
-# Call the ODE solver
-sol <- deSolve::ode(y = IC, times = tspan, 
-                    func = SLIAR_metapop_rhs, parms = p)
-## DLSODA- At current T (=R1), MXSTEP (=I1) steps
-## taken on this call before reaching TOUT
-## In above message, I1 = 5000
-##
-## In above message, R1 = 117.498
-```
+Thus for $\mathcal{R}_{0}<1,$ the disease free equilibrium is globally asymptotically stable and the disease dies out.
 
-The output I copy above means the integration went wrong. The problem is the sie difference between countries, in particular China and Canada..
+---
 
-Need to play with movement rates and initial conditions. Will not explain here
+# $|\mathcal{S}|\;|\mathcal{P}|$-SLIRS (multiple species)
+
+$\mathcal{S}$ a set of species
+$$
+\begin{aligned}
+S_{sp}' &= \mathcal{B}_{sp}(N_{sp})+\nu_{sp}R_{sp}-\Phi_{sp}-d_{sp}S_{sp}
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Sspq}S_{sq}} \\
+L_{sp}' &= \Phi_{sp}-(\varepsilon_{sp}+d_{sp})L_{sp}
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}}m_{Lspq}L_{sq}} \\
+I_{sp}' &= \varepsilon_{sp}L_{sp}-(\gamma_{sp}+d_{sp})I_{sp}
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Ispq}I_{sq}} \\
+R_{sp} &= \gamma _{sp}I_{sp}-(\nu_{sp}+d_{sp})R_{sp}
+\color{red}{+\textstyle{\sum_{q\in\mathcal{P}}} m_{Rspq}R_{sq}}
+\end{aligned}
+$$
+
+$$
+\Phi_{sp}=\sum_{k\in\mathcal{S}}\beta_{skp}\frac{S_{sp}I_{kp}}{N_p^{q_p}},\qquad q_p\in\{0,1\}
+$$
+
+<div style = "position: relative; bottom: -8%; font-size:20px;">
+
+- JA, Davis, Hartley, Jordan, Miller \& PvdD. [A multi-species epidemic model with spatial dynamics](https://server.math.umanitoba.ca/~jarino/papers/ArinoDavisHartleyJordanMillerVdD-2005-MMB22.pdf). *Mathematical Medicine and Biology* **22**(2):129-142 (2005) 
+- JA, Jordan \& PvdD. [Quarantine in a multi-species epidemic model with spatial dynamics](https://server.math.umanitoba.ca/~jarino/publications/ArinoJordanVdD-2007-MBS206.pdf). *Mathematical Biosciences* **206**(1):46-60 (2007)
+</div>
+
+---
+
+<div class="theorem">
+
+For the $|\mathcal{S}|\;|\mathcal{P}|$-SLIRS system, with equal movement rates for all states, define $\mathcal{R}_0$ using the method described earlier and use proportional incidence. If $\mathcal{R}_0<1$, then the DFE is globally asymptotically stable
+</div>
+
+---
+
+# Proof of the result
+
+To establish the global stability of the DFE, consider the **nonautonomous** system consisting of $L'$, $I'$ and $R'$, with $L'$ written in the form
+$$
+\begin{equation}\label{sys:nonauton_E}
+\begin{aligned}
+\frac{d}{dt}L_{sp} =& \sum_{j\in\mathcal{S}}
+\beta_{sjp}(N_{sp}-L_{sp}-I_{sp}-R_{sp})\frac{I_{jp}}{N_{jp}} \\
+&-(d_{sp}+\varepsilon_{sp})L_{sp}+\sum_{q\in\mathcal{P}} m_{spq}L_{sq}
+-\sum_{q\in\mathcal{P}} m_{sqp}L_{sp}
+\end{aligned}
+\end{equation}
+$$
+in which $S_{sp}$ has been replaced by $N_{sp}-L_{sp}-I_{sp}-R_{sp}$, and $N_{sp}$ is a solution of the equation for the total population
+$$
+\begin{equation}
+\frac{d}{dt}N_{sp}=\sum_{q\in\mathcal{P}}m_{spq}N_{sq}-\sum_{q\in\mathcal{P}}m_{sqp}N_{sp},
+\end{equation}
+$$
+
+---
+
+# To continue, we need this
+
+<div class="theorem">
+
+Suppose movement is identical for all epidemiological states, that disease is not lethal ($\delta_{sp}=0$), and that in each patch, birth compensates natural death, that is, $b_{sp}(N_{sp})=d_{sp}N_{sp}$. Then the movement model is given, for all $s=1,\ldots,|\mathcal{S}|$ and all $p=1,\ldots,|\mathcal{P}|$, by
+$$
+\begin{equation}\label{eq:Nsp_spSEIRS}
+\frac{d}{dt}N_{sp}=\sum_{q\in\mathcal{P}}m_{spq}N_{sq}-\sum_{q\in\mathcal{P}}m_{sqp}N_{sp},
+\end{equation}
+$$
+and there holds
+$$
+\lim_{t\to\infty}N_{sp}(t)=N_{sp}^*>0
+$$
+</div>
+
+---
+
+Write this system as
+$$
+\begin{equation}\label{sys:nonauton}
+x' = f(t,x)
+\end{equation}
+$$
+where $x$ is the $3|\mathcal{S}||\mathcal{P}|$ dimensional vector consisting of the $L_{sp}$, $I_{sp}$ and $R_{sp}$ 
+
+The DFE of the original system corresponds to the equilibrium $x=0$ in the the nonautonomous system
+
+System for $N'$ can be solved for $N_{sp}(t)$ independently of the epidemic variables, and result earlier implies that the time dependent functions $N_{sp}(t)\to N^*_{sp}$ as $t\to\infty$
+
+---
+
+Substituting this large time limit value $N_{sp}^*$ for $N_{sp}$ in the nonautonomous equation for $L'$ gives  
+$$
+\begin{equation}\label{sys:asympt_auton_E}
+\begin{aligned}
+\frac{d}{dt}L_{sp} =& \sum_{j\in\mathcal{S}}
+\beta_{sjp}(N_{sp}^*-L_{sp}-I_{sp}-R_{sp})\frac{I_{jp}}{N_{jp}^*} \\
+&-(d_{sp}+\varepsilon_{sp})L_{sp}+\sum_{q\in\mathcal{P}} m_{spq}L_{sq}
+-\sum_{q\in\mathcal{P}} m_{sqp}L_{sp}
+\end{aligned}
+\end{equation}
+$$
+Therefore, the nonautonomous system is *asymptotically autonomous*, with limit equation
+$$
+\begin{equation}\label{sys:asympt_auton}
+x' = g(x)
+\end{equation}
+$$
+
+---
+
+To show that 0 is a globally asymptotically stable equilibrium for the limit system, consider the linear system
+$$
+\begin{equation}\label{sys:linear}
+x'=\mathcal{L}x
+\end{equation}
+$$
+where $x$ is the $3|\mathcal{S}||\mathcal{P}|$ dimensional vector consisting of the $L_{sp}$, $I_{sp}$ and $R_{sp}$. In $\mathcal{L}$, we replace $S_{sp}/N_{jp}$ with $N^*_{sp}/N^*_{jp}$. Equations \eqref{sys:spSEIRS_Isp} and \eqref{sys:spSEIRS_Rsp} are not affected by this transformation, whereas \eqref{sys:spSEIRS_Esp} takes the form
+$$ 
+\begin{equation}\label{sys:lin_E}
+\frac{dL_{sp}}{dt} = \sum_{j\in\mathcal{S}}
+\beta_{sjp}\frac{N_{sp}^*}{N_{jp}^*}I_{jp}
+-(d_{sp}+\varepsilon_{sp})L_{sp}+\sum_{q\in\mathcal{P}} m_{spq}L_{sq}
+-\sum_{q\in\mathcal{P}} m_{sqp}L_{sp}
+\end{equation}
+$$
+Comparing \eqref{sys:asympt_auton_E} and \eqref{sys:lin_E}, we note that $g(x)\leq\mathcal{L}x$ for all $x \in \mathbb{R}_+^{3|\mathcal{S}||\mathcal{P}|}$
+
+---
+
+In system \eqref{sys:linear}, the equations for $L_{sp}$ and $I_{sp}$ do not involve $R_{sp}$. Let $\tilde x$ be the part of the vector $x$ corresponding to the variables $E_{sp}$ and $I_{sp}$, and $\tilde{\mathcal{L}}$ be the corresponding submatrix of $\mathcal{L}$.
+
+The method of used to prove local stability can also 
+be applied to study the stability of the $\tilde x=0$ equilibrium of the subsystem $\tilde x'=\tilde{\mathcal{L}}\tilde x$, with $\tilde{\mathcal{L}}=F-V$
+
+Therefore, if $\mathcal{R}_0<1$, then the equilibrium $\tilde x=0$ of the subsystem $\tilde x'=\tilde{\mathcal{L}}\tilde x$ is stable. When $\tilde x=0$, \eqref{sys:spSEIRS_Rsp} takes the form
+$$
+\frac{d}{dt}R_s = (M_s-D_s)R_s
+$$
+with $R_s=(R_{s1},\ldots,R_{s|\mathcal{P}|})^T$ and $D_s$ is the diagonal matrix with $p$th diagonal entry equal to $d_{sp}$
+
+---
+
+It was shown in the proof of Theorem~\ref{th:GAS_metapop1} that $(-M_s)$ is a singular M-matrix. It follows that $-M_s+D_s$ is a nonsingular M-matrix for each $D_s$
+
+Thus the equilibrium $R_s=0$ of this linear system in $R_s$ is stable
+
+As a consequence, the equilibrium $x=0$ of \eqref{sys:linear} is stable when $\mathcal{R}_0<1$
+
+Using a standard comparison theorem, it follows that 0 is a globally asymptotically stable equilibrium of \eqref{sys:asympt_auton}
+
+---
+
+For $\mathcal{R}_0<1$, the linear system \eqref{sys:lin_E} and \eqref{sys:spSEIRS_Isp} has a unique equilibrium (the DFE) since its coefficient matrix $F-V$ is nonsingular
+
+The proof of global stability is completed using results on asymptotically autonomous equations
 
 ---
 
@@ -1185,8 +1285,9 @@ Need to play with movement rates and initial conditions. Will not explain here
 
 - One way to model space is to use metapopulation models
 
-- Metapopulation models are easy to analyse locally, give interesting problems at the global level and are easy to simulate
+- Metapopulation models are easy to analyse locally, give interesting problems at the global level
 
-- Simulation (deterministic and stochastic) can be costly in RAM and cycles
+
+- We will in [Practicum 02](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html) that simulation (deterministic and stochastic) can be costly in RAM and cycles but is easy
 
 - Metapopulation models are not the only solution

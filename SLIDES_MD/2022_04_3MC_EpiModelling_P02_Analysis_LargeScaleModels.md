@@ -730,3 +730,159 @@ z'(t)=\left(\frac{\partial f^{[2]}}{\partial x}
 $$
 be asymptotically stable
 </div>
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!-- fit -->Numerical investigations of large-scale systems
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+- JA. [Spatio-temporal spread of infectious pathogens of humans](https://doi.org/10.1016/j.idm.2017.05.001). *Infectious Disease Modelling* **2**(2):218-228 (2017)
+- JA. [Mathematical epidemiology in a data-rich world](https://doi.org/10.1016/j.idm.2019.12.008). *Infectious Disease Modelling* **5**:161-188 (2020)
+- github repo [modelling-with-data](https://github.com/julien-arino/modelling-with-data)
+
+</div>
+
+---
+
+# Not very difficult
+
+- As for the mathematical analysis: if you do things carefully and think about things a bit, numerics are not hard. Well: not harder than numerics in low-D
+- Exploit vector structure
+
+---
+
+# Define the vector field
+
+```
+SLIAR_metapop_rhs <- function(t, x, p) {
+  with(as.list(x), {
+    S = x[p$idx_S]
+    L = x[p$idx_L]
+    I = x[p$idx_I]
+    A = x[p$idx_A]
+    R = x[p$idx_R]
+    N = S + L + I + A + R
+    Phi = p$beta * S * (I + p$eta * A)
+    dS = S - Phi + p$M %*% S
+    dL = Phi - p$epsilon * L + p$M %*% L
+    dI = (1 - p$pi) * p$epsilon * L - p$gammaI * I + p$M %*% I
+    dA = p$pi * p$epsilon * L - p$gammaA * A + p$M %*% A
+    dR = p$gammaI * I + p$gammaA * A + p$M %*% R
+    list(c(dS, dL, dI, dA, dR))
+  })
+}
+```
+
+---
+
+# Set up parameters
+
+```
+pop = c(34.017, 1348.932, 1224.614, 173.593, 93.261) * 1e+06
+countries = c("Canada", "China", "India", "Pakistan", "Philippines")
+T = matrix(data = 
+             c(0, 1268, 900, 489, 200, 
+               1274, 0, 678, 859, 150, 
+               985, 703, 0, 148, 58, 
+               515, 893, 144, 0, 9, 
+               209, 174, 90, 2, 0), 
+           nrow = 5, ncol = 5, byrow = TRUE)
+```
+
+---
+
+# Work out movement matrix
+
+```
+p = list()
+# Use the approximation explained in Arino & Portet (JMB 2015)
+p$M = mat.or.vec(nr = dim(T)[1], nc = dim(T)[2])
+for (from in 1:5) {
+  for (to in 1:5) {
+    p$M[to, from] = -log(1 - T[from, to]/pop[from])
+  }
+  p$M[from, from] = 0
+}
+p$M = p$M - diag(colSums(p$M))
+```
+
+---
+
+```
+p$P = dim(p$M)[1]
+p$idx_S = 1:p$P
+p$idx_L = (p$P + 1):(2 * p$P)
+p$idx_I = (2 * p$P + 1):(3 * p$P)
+p$idx_A = (3 * p$P + 1):(4 * p$P)
+p$idx_R = (4 * p$P + 1):(5 * p$P)
+p$eta = rep(0.3, p$P)
+p$epsilon = rep((1/1.5), p$P)
+p$pi = rep(0.7, p$P)
+p$gammaI = rep((1/5), p$P)
+p$gammaA = rep((1/3), p$P)
+# The desired values for R_0. Here we take something simple
+R_0 = rep(1.5, p$P)
+```
+
+---
+
+# Set up IC and time
+
+```
+# Set initial conditions. For example, we start with 2
+# infectious individuals in Canada.
+L0 = mat.or.vec(p$P, 1)
+I0 = mat.or.vec(p$P, 1)
+A0 = mat.or.vec(p$P, 1)
+R0 = mat.or.vec(p$P, 1)
+I0[1] = 2
+S0 = pop - (L0 + I0 + A0 + R0)
+# Vector of initial conditions to be passed to ODE solver.
+IC = c(S = S0, L = L0, I = I0, A = A0, R = R0)
+# Time span of the simulation (5 years here)
+tspan = seq(from = 0, to = 5 * 365.25, by = 0.1)
+```
+
+---
+
+# Set up $\beta$ to avoid blow up
+
+Let us take $\mathcal{R}_0=1.5$ for patches in isolation. Solve $\mathcal{R}_0$ for $\beta$ 
+$$
+\beta=\frac{\mathcal{R}_0}{S(0)}
+\left(
+\frac{1-\pi_p}{\gamma_{Ip}}
++\frac{\pi_p\eta_p}{\gamma_{Ap}}
+\right)^{-1}
+$$ 
+
+<p style="margin-bottom:2cm;"></p> 
+
+```
+for (i in 1:p$P) {
+  p$beta[i] = 
+    R_0[i] / S0[i] * 1/((1 - p$pi[i])/p$gammaI[i] + p$pi[i] * p$eta[i]/p$gammaA[i])
+}
+```
+
+---
+
+# And now the problems begin :)
+
+```
+# Call the ODE solver
+sol <- deSolve::ode(y = IC, times = tspan, 
+                    func = SLIAR_metapop_rhs, parms = p)
+## DLSODA- At current T (=R1), MXSTEP (=I1) steps
+## taken on this call before reaching TOUT
+## In above message, I1 = 5000
+##
+## In above message, R1 = 117.498
+```
+
+The output I copy above means the integration went wrong. The problem is the sie difference between countries, in particular China and Canada..
+
+Need to play with movement rates and initial conditions. Will not explain here
+
