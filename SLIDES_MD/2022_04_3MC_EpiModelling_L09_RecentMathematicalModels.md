@@ -1,7 +1,7 @@
 ---
 marp: true
 title: Some recent mathematical models for Covid-19, HIV/AIDS, TB, Hepatitis, Malaria
-description: 3MC Course Epidemiological Modelling - Julien Arino - Course 09 - Some recent mathematical models for Covid-19, HIV/AIDS, TB, Hepatitis, Malaria
+description: 3MC Course Epidemiological Modelling - Julien Arino - Course 09 - Some (recent?) mathematical models for HIV/AIDS, TB, Hepatitis, Malaria
 theme: default
 paginate: false
 math: mathjax
@@ -29,7 +29,7 @@ size: 4K
   }
 </style>
 
-# Some recent mathematical models for COVID-19, HIV/AIDS, TB, Hepatitis, Malaria, etc.
+# Some (recent?) mathematical models for HIV/AIDS, TB, Hepatitis, Malaria, etc.
 
 7 April 2022 
 
@@ -75,6 +75,8 @@ img[alt~="center"] {
 
 - An "issue" with the next generation method for $\mathcal{R}_0$
 - Tuberculosis (TB) model with non-trivial behaviour at the origin
+- SLIRS with non-constant population
+- Bistable states
 
 ---
 
@@ -169,11 +171,11 @@ There are up to 4 EPs for vectors and these are independent from the host popula
 
 $\implies$ the whole coupled system with vectors *and* hosts has up to 4 DFE
 
-We can use the method of PvdD & Watmough (2002) at each of these DFE to get the local stability properties of these DFE
+We can use the method of [PvdD & Watmough (2002)](https://doi.org/10.1016/S0025-5564(02)00108-6) at each of these DFE to get the local stability properties of these DFE
 
 At $\bar E_0$, we find $\mathcal{R}_0=0$, which makes no sense. What's wrong?
 
-Problem is with (A5): compute Jacobian of $(S,T)$ system and evaluate at $\bar E_0$, we get e-values $\lambda_1=\kappa_S\mathbb{F}_S>0$ and $\lambda_2=\kappa_T\mathbb{F}_T$, so $\bar E_0$ is always unstable $\implies$ (A5) cannot be satisfied at $\bar E_0$ and the LAS condition provided by PvdD & Watmough (2002) is not usable
+Problem is with (A5): compute Jacobian of $(S,T)$ system and evaluate at $\bar E_0$, we get e-values $\lambda_1=\kappa_S\mathbb{F}_S>0$ and $\lambda_2=\kappa_T\mathbb{F}_T$, so $\bar E_0$ is always unstable $\implies$ (A5) cannot be satisfied at $\bar E_0$ and the LAS condition provided by [PvdD & Watmough (2002)](https://doi.org/10.1016/S0025-5564(02)00108-6) is not usable
 
 ---
 
@@ -281,29 +283,17 @@ $X_0=(N_0,0,0)$, $X_*=(N_*,E_*,I_*)$ (unique)
 
 # Global results
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 The EP $A_0=(0,0,0)$ is never an omega-limit point of a solution of \eqre{sys:SEI_TB_prop} with initial conditions s.t. $N>0$, $e,i\geq 0$ and $e+i\leq 1$
 </div>
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 If $\mathcal{R}_1<1$, then $(0,0,0)$ is not an omega-limit point for any solution of \eqref{sys:SEI_TB} with initial conditions in $\mathbb{R}^3_+\setminus\{(0,0,0)\}$
 </div>
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 For system \eqref{sys:SEI_TB}, if $\mathcal{R}_0\leq 1$ then $X_0=(N_0,0,0)$ is GAS
 </div>
@@ -358,8 +348,33 @@ $$
 
 ---
 
+# Example $p=2$ and $q=1$
+
+Gives the system (after some transformations)
+$$
+\begin{align}
+I' &= aI^2S - I, \tag{9"} \\
+R' &= r(I - R/h)  \tag{10"}
+\end{align} 
+$$
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/LiuLevinIwasa_p10.png)
+
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->Effect of vaccination - Bistable states
+# <!--fit-->Bistable states
+
+# Undesired effect of vaccination
+
+<div style = "position: relative; bottom: -35%; font-size:20px;">
+
+Arino, McCluskey & PvdD. [Global results for an epidemic model with vaccination that exhibits backward bifurcation](http://dx.doi.org/10.1137/S0036139902413829). SIAM J Applied Math (2003)
+
+</div>
 
 ---
 
@@ -567,3 +582,8 @@ limit to a unique equilibrium point
 ---
 
 # I have left out many topics !
+
+- Already mentioned graph models, which would warrant coverage
+- Immunology, i.e., so-called within-host models
+- Immunono-epidemiology, i.e., interface between within-host dynamics and between-host dynamics
+- Evolutionary dynamics, in particular of viruses
