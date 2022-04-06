@@ -336,7 +336,8 @@ In an absorbing Markov chain, a state that is not absorbing is called **transien
 
 #  Some questions on absorbing chains
 
-Suppose we have a chain like the following:
+Suppose we have a chain like the following
+
 \begin{center}
 \includegraphics[width=0.8\textwidth]{https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/graphe_absorbant}
 \end{center}
