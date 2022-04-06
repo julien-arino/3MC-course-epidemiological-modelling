@@ -23,6 +23,10 @@ size: 4K
     padding:10px 20px 10px 20px;
     box-shadow: 0px 1px 5px #999;
   }
+  img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+  }
 </style>
 
 # Some recent mathematical models for COVID-19, HIV/AIDS, TB, Hepatitis, Malaria, etc.
@@ -69,13 +73,13 @@ img[alt~="center"] {
 <!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
 # Outline
 
-- An issue with the next generation method for $\mathcal{R}_0$
+- An "issue" with the next generation method for $\mathcal{R}_0$
 - Tuberculosis (TB) model with non-trivial behaviour at the origin
 
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->An issue with the next generation method for $\mathcal{R}_0$
+# <!--fit-->An "issue" with the next generation method for $\mathcal{R}_0$
 
 # (Malaria model with transgenic vectors)
 
@@ -88,7 +92,7 @@ JA, Bowman, Gumel & Portet. [Effect of pathogen-resistant vectors on the transmi
 
 # Foreword
 
-- This is not an issue with the method itself, but an illustration of the reason why it is important to check that (A1)-(A5) are satisfied when using the next generation matrix method of PvdD & Watmough (2002)
+- This is not an issue with the method itself, but an illustration of the reason why it is important to check that (A1)-(A5) are satisfied when using the next generation matrix method of [PvdD & Watmough (2002)](https://doi.org/10.1016/S0025-5564(02)00108-6)
 
 ---
 
@@ -311,9 +315,17 @@ In the case $\mathcal{R}_0,\mathcal{R}_2>1$, global stability of $X_*$ is establ
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->SLIRS with non-constant population
 
+# (Some periodic solutions)
+
+<div style = "position: relative; bottom: -35%; font-size:20px;">
+
+Liu, Levin & Iwasa. [Influence of nonlinear incidence rates upon the behavior of SIRS epidemiological models](https://doi.org/10.1007/BF00276956). J. Math. Biology **23** (1986)
+
+</div>
+
 ---
 
-# Liu, Levin & Iwasa
+# General setting
 
 SIRS model of the form
 
@@ -325,20 +337,222 @@ R' &= \gamma I-(d+\nu)R
 \end{align*}
 $$
 
-Les auteurs font quelques consid\'erations sur le cas g\'en\'eral d'une fonction $f$ diff\'erentiable, et telle que $f(0,I)=0$ pour tout $I$ et $\partial f/\partial S>0$. Ils supposent que la composante d\'emographique du syst\`eme, qui est r\'egie par l'\'equation
+$f$ differentiable and s.t. $f(0,I)=0$ for all $I$ and $\partial f/\partial S>0$
+
+Assume demographic component of the system
 $$
 N'=B(N)-dN
 $$
-admet un \'equilibre stable. 
+admits a stable equilibrium $N_0$ s.t. $N_0=dN_0$
+
+Since $N$ converges, they then reduce the dimension
+
+---
+
+# Case of incidence $f(S,I)=\beta I^{p-1}S^q$
+
+They establish generic conditions leading to the existence of a Hopf bifurcation, then consider the system when incidence take the form
+$$
+f(S,I)=\beta I^{p-1}S^q
+$$
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Effect of vaccination - Bistable states
+
+---
+
+# Another SIRS model with vaccination
+
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_newborns.png)
+
+---
+
+# SIRSV epidemic model
+
+$$
+\begin{align}
+S' &= (1-\alpha)dN-dS-\beta\frac{SI}{N}-\phi S+\theta
+V+\nu R \qquad\qquad\\
+I' &= \beta\frac{SI}{N}
++\sigma\beta\frac{VI}{N} -(d+\gamma)I \\
+R' &= \gamma I-(d+\nu)R \\
+V' &= \alpha dN+\phi S-(d+\theta)V
+-\sigma\beta\frac{VI}{N} 
+\end{align}
+$$
+
+- $\alpha$ proportion of newborns vaccinated
+- $\phi$ vaccination rate of susceptibles
+- $\theta$ rate of vaccine efficacy loss
+- $1-\sigma$ vaccine efficacy
 
 
 ---
 
+Since the total population is constant, the system in proportions takes the form
+$$
+\begin{align}
+S' &= (1-\alpha)d-dS-\beta SI-\phi S+\theta
+(1-S-I-R)+\nu R \qquad \tag{14a} \label{sys:vacc_3dS} \\
+I' &= \beta SI
++\sigma\beta(1-S-I-R)I -(d+\gamma)I \tag{14b}\label{sys:vacc_3dI}\\
+R' &= \gamma I-(d+\nu)R \tag{14c}\label{sys:vacc_3dR} \\
+V &= 1-(S+I+R)
+\end{align}
+$$
+where $S$, $I$, $R$, $V$ are the proportions of individuals who are in the susceptible, infectious, recovered and vaccinated, respectively
 
-Utilisant le fait que $N$ a un \'equilibre stable, ils r\'eduisent la dimension du syst\`eme. Apr\`es avoir \'etabli des conditions g\'en\'eriques conduisant \`a une bifurcation de Hopf, ils se livrent \`a une analyse plus d\'etaill\'ee du syst\`eme lorsque la fonction d'incidence prend la forme
+---
+
+# Equilibrium and bifurcations
+
+The system always has the DFE
 $$
-f(S,I)=\beta I^{p-1}S^q
+(S,I,R,V)=\left(
+\frac{\theta+d(1-\alpha)}{d+\theta+\phi},0,0,
+\frac{\phi+d\alpha}{d+\theta+\phi}
+\right)
 $$
+
+We now consider endemic equilibria with $I=I^\star >0$
+
+When $\sigma=0$ (vaccine 100% efficacious), there is at most one endemic equilibrium. From now on, assume (realistic) that $0<\sigma<1$, i.e., vaccine is not 100% efficacious
+
+---
+
+# Existence of endemic equilbria
+
+The existence of endemic equilibria is determined by the number of positive roots of the polynomial
+$$
+P(I)=AI^2+BI+C
+$$
+where
+$$
+A=-\sigma\beta^2\frac{d+\nu+\gamma}{d+\nu}<0
+$$
+$$
+B=\sigma\beta^2-\beta(d+\theta+\sigma(d+\gamma+\phi))
+-\frac{\beta\gamma}{d+\nu}(d+\theta+\sigma\phi)
+$$
+$$
+C=(d+\theta+\sigma\phi-d\alpha(1-\sigma))\beta
+-(d+\gamma)(d+\theta+\phi)
+$$
+
+---
+
+# Case of a forward bifurcation
+
+![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/PI_vs_I_forward.png)  ![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_bif_forward.png)
+
+
+---
+
+# Case of a backward bifurcation
+
+![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/PI_vs_I_backward.png)  ![width:550px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIRV_bif_backward.png)
+
+---
+
+# Bistable region
+ 
+- Concavity of the curve is fixed (since $A<0$), so a necessary condition for existence of two endemic equilibria is: 
+  - $P'(0)=B>0$ and $P(0)=C<0$
+  - The roots of $P(I)$ must be real
+
+$\implies$ region of bistability is $\Delta=B^2-4AC\geq 0$, $B>0$ and $C<0$
+
+---
+
+# Bifurcation in the $(\sigma,\phi)$ plane
+
+![width:800px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/bif_sigma_vs_phi.png)
+
+---
+
+# EEP
+
+If there are such solutions $I^\star$ to $P(I)=0$ (potentielly a double root), EEP of \eqref{sys:SIR_vacc_AMV} are $(S,I,R,V)=$
+
+$$
+\left(
+\frac{(1-\alpha)d+\frac{(\nu-\theta)\gamma
+    I^\star }{d+\nu}+(1-I^\star )\theta}{d+\beta
+  I^\star +\phi+\theta},I^\star ,\frac{\gamma
+  I^\star }{d+\nu},1-S^\star -I^\star -R^\star  
+\right)
+$$
+
+---
+
+# $\mathcal{R}_0$
+
+Using the next generation method, the reproduction number (with vaccination) is
+
+$$
+\mathcal{R}_\phi=\mathcal{R}_0
+\frac{d+\theta+\sigma\phi-d\alpha(1-\sigma)}{d+\theta+\phi}
+$$
+where
+$$
+\mathcal{R}_0=\frac{\beta}{d+\gamma}
+$$
+and as a consequence
+$$
+\mathcal{R}
+(\alpha,\phi,1,\theta)=\mathcal{R}_0
+$$
+
+---
+
+# Stability - DFE
+ 
+- Using a theorem of PvdD & Watmough (2002), the DFE is
+  - locally asymptotically stable for $\mathcal{R}_\phi<1$
+  - unstable for $\mathcal{R}_\phi>1$
+- Furthermore, when $\mathcal{R}_0<1$, using $I$ as a Lyapunov function, it is easily shown the the DFE is globally asymptotically stable
+
+---
+
+# Local stability - EEP
+
+Linearising $\eqref{sys:vacc_3dS}$-$\eqref{sys:vacc_3dR}$ at the EEP
+ 
+- at the smaller $I$, Jacobian matrix has negative trace and positive determinant $\implies$ one of the eigenvalues is positive and the lower bifurcating branch is unstable
+- On the upper branch, conclude from linearisation that there is either one or three eigenvalues with nonpositive real part $\implies$ stability is undetermined. From numerical investigations, the upper branch seems locally stable
+
+---
+
+# Spectral abscissa at the EP
+
+Spectral abscissa $s(J)$ (maximum of real parts of eigenvalues) of the linearisation at the DFE and the 2 EEP, when $\theta$ varies
+
+![width:600px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/evalues_SIRbif.png)
+
+
+
+---
+
+# Global behaviour
+
+<div class="theorem">
+
+Suppose that in the system \eqref{sys:SIR_vacc}, parameters satisfy
+$$
+\begin{aligned}
+  \theta &< d + 2 \nu                   \\
+2 \gamma &< d + \phi + \theta + \nu     \\
+  \gamma &< d + \phi + \nu
+\end{aligned}
+$$
+Then all positive semi-trajectories of \eqref{sys3dS}-\eqref{sys3dR} in $\bar D$, where
+$$
+D=\{(S,I,R): S,R\geq 0, I>0, S+I+R\leq 1\}
+$$
+limit to a unique equilibrium point
+</div>
 
 ---
 

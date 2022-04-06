@@ -364,28 +364,6 @@ plot(sol$time, sol$state[,"I"], type = "l",
 
 ---
 
-To see multiple realisations: good idea to parallelise, then interpolate results. Write a function, e.g.,  `run_one_sim` that .. runs one simulation, then..
-
-```
-no_cores <- detectCores()-1
-cl <- makeCluster(no_cores)
-clusterEvalQ(cl,{
-  library(GillespieSSA2)
-})
-clusterExport(cl,
-              c("params",
-                "run_one_sim"),
-              envir = .GlobalEnv)
-SIMS = parLapply(cl = cl, 
-                 X = 1:params$number_sims, 
-                 fun =  function(x) run_one_sim(params))
-stopCluster(cl)
-```
-
-See `simulate_CTMC_parallel.R` on [Github](https://github.com/julien-arino/3MC-course-epidemiological-modelling/tree/main/CODE)
-
----
-
 ![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/many_CTMC_sims_with_means.png)
 
 ---
@@ -471,6 +449,30 @@ while (t_curr<=t_f) {
   t = c(t, t_curr)
 }
 ```
+
+---
+
+# <!--fit-->Drawing at random from an exponential distribution
+
+If you do not have an exponential distribution random number generator.. We want $\tau_t$ from $T\thicksim\mathcal{E}(\xi_t)$, i.e., $T$ has probability density function
+$$
+f(x,\xi_t)=
+\xi_te^{-\xi_t x}\mathbf{1}_{x\geq 0}
+$$
+Use cumulative distribution function $F(x,\xi_t)=\int_{-\infty}^x f(s,\xi_t)\,ds$
+$$
+F(x,\xi_t)=
+(1-e^{-\xi_t x})\mathbf{1}_{x\geq 0}
+$$
+which has values in $[0,1]$. So draw $\zeta$ from $\mathcal{U}([0,1])$ and solve $F(x,\xi_t)=\zeta$ for $x$
+$$
+\begin{align*}
+F(x,\xi_t)=\zeta & \Leftrightarrow 1-e^{-\xi_tx}=\zeta \\
+&\Leftrightarrow e^{-\xi_tx} = 1-\zeta \\
+&\Leftrightarrow \xi_tx = -\ln(1-\zeta) \\
+&\Leftrightarrow \boxed{x = \frac{-\ln(1-\zeta)}{\xi_t}}
+\end{align*}
+$$
 
 ---
 
