@@ -29,6 +29,10 @@ size: 4K
     box-shadow: 0px 1px 5px #999;
     margin-bottom: 10px;
   }
+  img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+  }
 </style>
 
 # Practicum 03 - Analysis, studying stochastic models in R. Simulating agent-based models
@@ -60,12 +64,12 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# Analysing stochastic models
+# <!--fit-->Analysing stochastic models
 
 ---
 
 <!-- _backgroundImage: "radial-gradient(white, 80%, #156C26)" -->
-# Analysing stochastic models
+# <!--fit-->Analysing stochastic models
 - Asymptotic behaviour of a DTMC
 - Regular DTMC
 - Absorbing DTMC
@@ -75,7 +79,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# Asymptotic behaviour of a DTMC
+# <!--fit-->Asymptotic behaviour of a DTMC
 
 ---
 
@@ -306,7 +310,7 @@ A matrix $M$ is primitive if the associated connection graph is strongly connect
 </div>
 
 This is checked directly on the transition graph
-![width:100% center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/graphe_hybride.png)
+![width:100% center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/graphe_hybride.png)
 
 ---
 
@@ -338,9 +342,7 @@ In an absorbing Markov chain, a state that is not absorbing is called **transien
 
 Suppose we have a chain like the following
 
-\begin{center}
-\includegraphics[width=0.8\textwidth]{https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/graphe_absorbant}
-\end{center}
+![width:100% center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/graphe_absorbant.png)
 
 1. Does the process eventually reach an absorbing state?
 2. Average number of times spent in a transient state, if starting in a transient state?
@@ -404,7 +406,7 @@ Answers to our remaining questions:
 - if in state $S_1$, probability 1 of going to $S_2$
 - if in state $S_p$, probability 1 of going to $S_{p-1}$
 
-\includegraphics[width=\textwidth]{https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/drunk_mans_walk_regular}
+![width:100% center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_regular.png)
 
 ---
 
@@ -507,7 +509,7 @@ $$
 - if in state $S_1$, probability 1 of going to $S_1$
 - if in state $S_p$, probability 1 of going to $S_p$
 
-\includegraphics[width=\textwidth]{https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/drunk_mans_walk_absorbing}
+![width:100% center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_absorbing.png)
 
 ---
 
@@ -759,16 +761,105 @@ $$
 
 ---
 
+# Several ways to formulate CTMC's
+
+A continuous time Markov chain can be formulated in terms of
+- infinitesimal transition probabilities
+- branching process
+- time to next event
+
+Here, time is in $\mathbb{R}_+$
+
+---
+
+For small $\Delta t$,
+$$
+\begin{align*}
+p_{ji}(\Delta t) &= \mathbb{P}\left\{I(t+\Delta)=j|I(t)=i\right\} \\
+&=
+\begin{cases}
+B(i)\Delta t+o(\Delta t) & j=i+1 \\
+D(i)\Delta t+o(\Delta t) & j=i-1 \\
+1-[B(i)+D(i)]\Delta t+o(\Delta t) & j=i \\
+o(\Delta t) & \textrm{otherwise}
+\end{cases}
+\end{align*}
+$$
+with $o(\Delta t)\to 0$ as $\Delta t\to 0$
+
+---
+
+# Forward Kolmogorov equations
+
+Assume we know $I(0)=k$. Then
+$$
+\begin{multline*}
+p_i(t+\Delta t)= p_{i-1}(t)B(i-1)\Delta t+p_{i+1}(t)D(i+1)\Delta t \\
++p_i(t)[1-(B(i)+D(i))\Delta t]+o(\Delta t)
+\end{multline*}
+$$
+Compute $(p_i(t+\Delta t)-p_i(t))/\Delta t$ and take $\lim_{\Delta t\to 0}$, giving
+$$
+\begin{align*}
+\frac d{dt}p_0 &= p_1D(1) \\
+\frac d{dt}p_i &= p_{i-1}B(i-1)+p_{i+1}D(i+1)-p_i[B(i)+D(i)] \quad i=1,\ldots,N
+\end{align*}
+$$
+
+**Forward Kolmogorov equations** associated to the CTMC
+
+---
+
+# In vector form
+
+Write previous system as
+$$
+p'=Qp
+$$
+with
+$$
+Q=
+\begin{pmatrix}
+0 & D(1) & 0 & \cdots & 0 \\
+0 & -(B(1)+D(1)) & D(2) & \cdots & 0 \\
+0 & B(1) & -(B(2)+D(2)) & \cdots & 0 \\
+&&& \\
+&&&& D(N) \\
+&&&& -D(N)
+\end{pmatrix}
+$$
+$Q$ **generator matrix**. Of course,
+$$
+p(t)=e^{Qt}p(0)
+$$
+
+
+---
+
+# Linking DTMC and CTMC for small $\Delta t$
+
+DTMC:
+$$
+p(t+\Delta t)=P(\Delta t)p(t)
+$$
+for transition matrix $P(\Delta t)$. Let $\Delta t\to 0$, obtain Kolmogorov equations for CTMC
+$$
+\frac d{dt} p = Qp
+$$
+where
+$$
+Q=\lim_{\Delta t\to 0}\frac{P(\Delta t)-\mathbb{I}}{\Delta t}=P'(0)
+$$
+
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # More on stochastic models in R
 
 ---
 
-<!-- _backgroundImage: "radial-gradient(white, 80%, #156C26)" -->
-# More on stochastic models in R
-- Paralellisation
-
----
+# Parallelisation
 
 To see multiple realisations: good idea to parallelise, then interpolate results. Write a function, e.g.,  `run_one_sim` that .. runs one simulation, then..
 
@@ -815,8 +906,7 @@ which gives `318.141 sec elapsed` on a 6C/12T Intel(R) Core(TM) i9-8950HK CPU @ 
 
 ---
 
-<!-- _backgroundImage: "radial-gradient(white, 80%, #156C26)" -->
-# Simulating agent-based models
-- 
+# Some simulation systems
 
-
+- [AnyLogic](https://www.anylogic.com/). Free (limited) personal edition, not open source
+- [NetLogo](http://ccl.northwestern.edu/netlogo/). GPL
