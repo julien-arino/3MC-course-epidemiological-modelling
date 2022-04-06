@@ -23,6 +23,10 @@ size: 4K
     padding:10px 20px 10px 20px;
     box-shadow: 0px 1px 5px #999;
   }
+  img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+  }
 </style>
 
 # Lecture 06 - Stochastic aspects in the spread of epidemics
@@ -43,32 +47,87 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 <div style = "text-align: justify; position: relative; bottom: -5%; font-size:18px;">
 * The University of Manitoba campuses are located on original lands of Anishinaabeg, Cree, Oji-Cree, Dakota and Dene peoples, and on the homeland of the Métis Nation.</div>
 
+--- 
+
+<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
+# Outline
+- Why stochastic systems? 
+- What types of stochastic systems?
+- More on sojourn times
+
 ---
 
-# Why stochastic systems? And what type?
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!-- fit -->Why stochastic systems?
 
 ---
 
 # Why stochastic systems?
 
-Life results from the interaction of countless processes
+- Life results from the interaction of countless processes
 
-Each process happens with some degree of imprecision. E.g., when a virus replicates, it misses a base here and there; when a cell undergoes mitosis, material is not split 50-50; when you meet another human, you *forget* to shake their hand. Etc.
+- Each process happens with some degree of imprecision. E.g., when a virus replicates, it misses a base here and there; when a cell undergoes mitosis, material is not split 50-50; when you meet another human, you *forget* to shake their hand. Etc.
 
-Because of repetition, this gives rise to uncertainty
+- Because of repetition, this gives rise to uncertainty
 
-Stochastic systems incorporate uncertainty
+- Stochastic systems incorporate uncertainty
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!-- fit -->What types of stochastic systems?
+
+---
+
+# Chain binomial models
+
+- Reed-Frost model from circa 1920
+  - Infection spread from I individuals to others after adequate contact
+  - Any S individual, after contact with an I individual in a given period, develops the infection and is infectious to others only within the following time period; in subsequent time periods, become R
+  - Each individual has a fixed probability of coming into adequate contact with any other specified individual in the group within one time interval, and this probability is the same for every member of the group
+  - Closed population
+- Many variations since
+
+---
+
+# Discrete time Markov chains (DTMC)
+
+- Will discuss later
+- Equivalent of discrete time system but includes stochasticity
+- Jump to next state depends only on current state(*memoryless property*)
+- Easy to study using linear algebra
+
+---
+
+# Continuous time Markov chains (CTMC)
+
+- Almost exact stochastic equivalent to ODE
+- Conversion from ODE to CTMC and vice-versa is very easy for compartmental models
+- Harder to study than DTMC but still quite amenable to analysis
+
+---
+
+# Branching processes
+
+- Special case of CTMC .. or are CTMC special cases of BP?
+
+---
+
+# Stochastic differential equations
+
+- Will confess some bias against these: "ODEs with noise added"
 
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->More on sojourn times
 
+## <!--fit-->Deterministic models incorporate stochasticity, they just hide it
+
 ---
 
+- Contrary to common claim, ODEs and the like do incorporate stochasticity, they simply do so in a way that makes it not apparent
 - Most models considered in this course (ODE or CTMC) assume exponential sojourn times in compartments
-- Acceptable as first approximation in many cases, but needs tweaking at times
-- Has led to interesting models
 
 ---
 
@@ -79,7 +138,7 @@ Stochastic systems incorporate uncertainty
 - The exponential distribution
 - A cohort model
 - Sojourn times in an SIS disease transmission model
-- An $SL_1L_2I_1I_2A_1A_2R$ COVID-19 model
+- An $SL_1L_2I_1I_2A_1A_2R$ COVID-19 model : "making Erlangs"
 
 ---
 
@@ -152,7 +211,7 @@ Gives the likelihood of an event occurring, among all the events that are possib
 
 # Probability density function
 
-Since $T$ is continuous, it has a continuous **probability density function**, $f$.
+Assume $T$ continuous; it has a continuous **probability density function** $f$
 
 - $f\geq 0$
 - $\int_{-\infty}^{+\infty}f(s)ds=1$
@@ -499,7 +558,7 @@ Survival function, $\mathcal{S}(t)=\mathbb{P}(T>t)$, for an exponential distribu
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# An $SL_1L_2I_1I_2A_1A_2R$ COVID-19 model
+# <!--fit-->An $SL_1L_2I_1I_2A_1A_2R$ COVID-19 model : "making Erlangs"
 
 <div style = "position: relative; bottom: -40%; font-size:20px;">
 
@@ -588,63 +647,4 @@ $$
 ---
 
 ![bg contain drop-shadow](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flow_diagram_SLLIIAARRD.png)
-
----
-
-# Case detection-based compartments
-
-Rather than the usual $S$ (*susceptible*), $L$ (*latent*), $I$ (*symptomatically infectious*), $A$ (*asymptomatically infectious*) and $R$ (*recovered*) interpretation
-- $I$ compartments are **detected** (positive tests)
-- $A$ are **undetected** (even if symptomatic)
-
-$\pi$ fraction of undetected cases. And $\xi$ is *modulation*, not *diminution*, of the contact coefficient $\beta$. Infection is $\beta S(I_1+I_2+\xi(A_1+A_2)+\eta L_2)$
-
----
-
-# Some convenient quantities
-
-**Reproduction number**
-
-$$
-\mathcal{R}_t = \beta
-\left(
-2\frac{\pi\xi}{\gamma}+2\frac{1-\pi}{\gamma}+\frac{\eta}{\varepsilon}
-\right)
-S(0)
-$$
-
-**Final size relation**
-
-$$
-\begin{aligned}
-\ln \left( \frac{S(0)}{S_{\infty}} \right) &= \frac{\mathcal{R}_t}{S(0)} \Bigl( S(0) - S_{\infty} + L_1 (0) + L_2 (0) \Bigr) \\
-&\quad+ \frac{\beta}{\gamma} \Bigl( 2I_1 (0) + I_2 (0) + 2\xi A_1 (0) + \xi A_2 (0) \Bigr)
-\end{aligned}
-$$
-
-
-<div style = "position: relative; bottom: -10%; font-size:20px;">
-
-Arino, Brauer, van den Driessche, Watmough & Wu. A final size relation for epidemic models. *Mathematical Biosciences and Engineering* (2007)
-</div>
-
----
-
-<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# <!--fit-->PDE model with age of infection
-
-<div style = "position: relative; bottom: -40%; font-size:20px;">
-
-Some paper
-</div>
-
----
-
-<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# <!--fit-->Integro-differential model
-
-<div style = "position: relative; bottom: -40%; font-size:20px;">
-
-Some paper
-</div>
 

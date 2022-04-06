@@ -23,6 +23,10 @@ size: 4K
     padding:10px 20px 10px 20px;
     box-shadow: 0px 1px 5px #999;
   }
+  img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
+  }
 </style>
 
 # Stochastic epidemic models
@@ -68,9 +72,10 @@ $$\mathcal{R}_0 = \dfrac{\beta}{\gamma}P^\star$$
 
 # In the deterministic world, $\mathcal{R}_0$ rules the world
 
-If $\mathcal{R}_0=\beta P^\star/\gamma<1$, the disease dies out (*disease-free* equilibrium); if $\mathcal{R}_0>1$, it becomes established at an *endemic* equilibrium $I^\star=P^\star-\gamma/\beta=(1-1/\mathcal{R}_0)P^\star$
+- If $\mathcal{R}_0=\beta P^\star/\gamma<1$, the disease dies out (*disease-free* equilibrium)
+- If $\mathcal{R}_0>1$, it becomes established at an *endemic* equilibrium $I^\star=P^\star-\gamma/\beta=(1-1/\mathcal{R}_0)P^\star$
 
-$P^\star = 100$K, $\gamma=1/5$, $\mathcal{R}_0=\{0.8,1.5,2.5\}$ (and $\beta=\gamma \mathcal{R}_0/P^\star$)
+Next slides: $P^\star = 100$K, $\gamma=1/5$, $\mathcal{R}_0=\{0.8,1.5,2.5\}$ (and $\beta=\gamma \mathcal{R}_0/P^\star$)
 
 ---
 
@@ -78,9 +83,9 @@ $P^\star = 100$K, $\gamma=1/5$, $\mathcal{R}_0=\{0.8,1.5,2.5\}$ (and $\beta=\gam
 
 ---
 
-# In the stochastic world, make that ''$\mathcal{R}_0$ rules-*ish*''
+# <!--fit-->In stochastic world, make that ''$\mathcal{R}_0$ rules-*ish*'' ($\mathcal{R}_0=1.5$)
 
-![height:600px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/stochastic/several_CTMC_sims.png)
+![height:600px center](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/stochastic/several_CTMC_sims.png)
 
 ---
 
@@ -99,63 +104,10 @@ But there are many others. Of note:
 - Branching processes (BP)
 - Stochastic differential equations (SDE)
 
----
-
-# Deterministic systems incorporate uncertainty !
-
-Before proceeding with stochastic systems: one often hears that deterministic systems do not incorporate stochasticity. This is **false** !
-
-However, they do so in a predictable way, e.g., using means of distributions
-
----
-
-# Small variation on the SIS model
-
-Assume that time of sojourn in $I$ compartment is distributed following $f(t)$ with survival function $\mathcal{P}(t)=1-\int_0^tf(s)ds$, i.e., fraction $\mathcal{P}(t-t_0)$ of individuals who became infectious at time $t_0$ remain infective at time $t\geq t_0$
-
-
-Integral equation for the number of infectious individuals: 
-$$
-I(t) = I_0(t)+ \int_0^t\beta[P^\star-I(u)]I(u) \mathcal{P}(t-u) du
-$$
-- $I_0(t)$ # individuals who were infective at time $t=0$ and still are at time $t$: $I_0(t)$ nonnegative, nonincreasing and s.t. $\lim_{t\to\infty}I_0(t)=0$
-- $P(t-u)$ proportion of individuals who became infective at time $u$ and who still are at time $t$
-
----
-
-# Case of exponentially distributed time to recovery
-
-Suppose sojourn time in $I$ has exponential distribution with mean $1/\gamma$, $f(t) = \gamma e^{−\gamma t}$ 
-
-Then $\mathcal{P}(t) = e^{−\gamma t}$, the initial condition function $I_0(t)$ takes the form
-$$
-I_0(t)=I_0(0)e^{-\gamma t}
-$$
-with $I_0(0)$ the number of infective individuals at time $t=0$ (obtained by considering the cohort of initially infectious individuals) and the integral equation becomes
-$$
-I(t)=I_0(0)e^{-\gamma t}+\int_0^t \beta[P^\star-I(u)]I(u) e^{-\gamma (t-u)}du
-$$
-
----
-
-Taking the time derivative of the integral equation yields
-$$
-\begin{aligned}
-I'(t) &= -\gamma I_0(0)e^{-\gamma t}
--\gamma\int_0^t \beta[P^\star-I(u)]I(u)e^{-\gamma(t-u)}du \\
-&\qquad +\beta [P^\star-I(t)]I(t) \\[0.2cm]
-&= -\gamma\left(I_0(0)e^{-\gamma t}+
-\int_0^t \beta[P^\star-I(u)]I(u)e^{-\gamma(t-u)}du\right) \\
-&\qquad +\beta [P^\star-I(t)]I(t) \\[0.2cm]
-&= \beta [P^\star-I(t)]I(t)-\gamma I(t) \\[0.5cm]
-&= \beta S(t)I(t)-\gamma I(t)
-\end{aligned}
-$$
-
-
 --- 
 
-# How to - DTMCs
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!-- fit -->Discrete time Markov chains
 
 ---
 
@@ -163,7 +115,7 @@ $$
 
 $p(t)=(p_1(t),\ldots,p_n(t))^T$: probability vector, with $p_i(t)$ describing the probability that at time $t$, the system is in state $S_i$, $i=1,\ldots,n$
 
-$\sum_i p_i(t)=1$ for all $t$, of course
+$\sum_i p_i(t)=1$ for al# l $t$, of course
 
 State evolution governed by
 $$
@@ -200,7 +152,7 @@ As a teacher of modelling: base theory of DTMC uses a lot of linear algebra and 
 
 *Absorbing* DTMC (with *reducible* transition matrices) allow the consideration of time to absorption, mean first passage time, etc.
 
-See for instance book of Kemeny and Snell
+See for instance book of [Kemeny and Snell](https://www.amazon.com/Finite-Markov-Chains-Laurie-Kemeny/dp/B000KYES0O)
 
 ---
 
@@ -325,9 +277,10 @@ Function | Role
 
 </span>
 
----
+--- 
 
-# How to - CTMCs
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!-- fit -->Continuous time Markov chains
 
 ---
 
@@ -339,7 +292,7 @@ DTMC: transitions occur each $\Delta t$
 
 CTMC: $\Delta t\to 0$ and transition times follow an exponential distribution parametrised by the state of the system
 
-Recall from course last month: CTMC are roughly equivalent to ODE
+CTMC are roughly equivalent to ODE
 
 ---
 
@@ -557,4 +510,4 @@ while (t_curr<=t_f) {
 - Will not go into details
 - *Approximation* method (compared to classic Gillespie, which is exact)
 - Roughly: consider "groups" of events instead of individual events
-- Good news: `GillespieSSA2` (which we saw earlier) and `ssatauleap`
+- Good news: `GillespieSSA2` (which we saw earlier) and `adaptivetau`

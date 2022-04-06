@@ -306,9 +306,7 @@ A matrix $M$ is primitive if the associated connection graph is strongly connect
 </div>
 
 This is checked directly on the transition graph
-\begin{center}
-\includegraphics[width=0.6\textwidth]{https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/graphe_hybride}
-\end{center}
+![width:100% center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/_08_genetics/graphe_hybride.png)
 
 ---
 
