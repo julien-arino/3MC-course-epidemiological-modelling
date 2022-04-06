@@ -576,6 +576,47 @@ limit to a unique equilibrium point
 
 ---
 
+<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
+# A few (recent?) models
+
+- HIV: viral load monitoring and patient tracing in Malawi
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->HIV: viral load monitoring and patient tracing in Malawi
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Estill, Kerr, Blaser, Salazar-Vizcaya, Tenthani, Wilson, Keiser. [The Effect of Monitoring Viral Load and Tracing Patients Lost to Follow-up on the Course of the HIV Epidemic in Malawi: A Mathematical Model](https://doi.org/10.1093/ofid/ofy092). *Open Forum Infectious Diseases* **5** (2018) 
+</div>
+
+---
+
+- Individual-based simulation of disease progression and a deterministic transmission model
+- Used the R package gems to develop an individual-based simulation model for disease progression in patients who have started ART
+- Deterministic transmission model to represent the HIV epidemic in Malawi between 1975 and 2050: 40 compartments representing HIV status (susceptible; primary, asymptomatic chronic, or symptomatic chronic infection; ART; AIDS), age (children <15 years, adults 15–49 years, adults ≥50 years), sex (not distinguished for children), and risk behavior (high or low, except for children, older adults, and AIDS patients)
+
+---
+
+![bg contain](../FIGS/ofy09201.jpeg)
+
+<!--Schematic representation of the mathematical model. A, Flow of patients in the treatment model. White boxes represent stages with suppressed viral load, and gray boxes represent stages with continuously elevated viral load. “Discordant” immunological failure refers to a decline in CD4 cell count fulfilling the failure criteria under suppressed viral load; this condition will not reverse upon switch to second-line therapy. The flow described on the upper half is applicable to patients on ART, including those who returned after ART interruption. While progressing along the stages of treatment response (upper graph), the patients may also interrupt and restart treatment or die (lower graph). B, Transmission model. The upper graph shows the course of the HIV infection, and the lower graph the flow through age, sex, and risk group. Black arrows show flows between compartments, and gray lines show sexual contact patterns. Abbreviation: ART, antiretroviral therapy.-->
+
+---
+
+Granich, Gilks, Dye, De Cock & Williams. [Universal voluntary HIV testing with immediate antiretroviral therapy as a strategy for elimination of HIV transmission: a mathematical model](https://doi.org/10.1016/S0140-6736(08)61697-9). *The Lancet* **373** (2009)
+
+---
+
+![bg contain](../FIGS/1-s2.0-S0140673608616979-gr2_lrg.gif)
+
+<!--Transmission model for HIV infection and antiretroviral therapy (ART) provision
+
+N represents population aged 15 years and above. People enter into the susceptible class (S) at a rate βN, become infected at a rate λSJ/N, progress through four stages of HIV (Ii, i=1–4) at a rate ρ between each stage, and then die (D). The background mortality rate is μ and people are tested at a rate τ. If they are tested and put onto ART, they move to the corresponding ART box Ai (i=1–4), where they progress through four stages at a rate σ and then die. The term governing transmission contains the factor J α (Ii+ɛAi) where ɛ allows for the fact that people receiving ART are less infectious than are those who are not. They might also stop treatment or the treatment might become ineffective, in which case they return to the corresponding non-ART state at a rate φ. To allow for heterogeneity in sexual behaviour and for the observed steady state prevalence of HIV, we let the transmission decrease with the prevalence, P. If n=1, the decrease is exponential; if n=∞, the decrease is a step function. Both have been used in previous models-->
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
 # <!--fit-->Quick overview of missing topics
 
