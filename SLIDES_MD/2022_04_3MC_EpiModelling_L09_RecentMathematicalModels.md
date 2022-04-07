@@ -777,7 +777,7 @@ where
 
 ---
 
-![width:20%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Tchoumi_etal_optimalC_u1.jpg) ![width:20%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Tchoumi_etal_optimalC_u2.jpg)
+![width:5%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Tchoumi_etal_optimalC_u1.jpg) ![width:10%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Tchoumi_etal_optimalC_u2.jpg)
 
 ---
 
