@@ -755,6 +755,32 @@ Tchoumi, Diagne, Rwezaura & Tchuenche. [Malaria and COVID-19 co-dynamics: A math
 
 ---
 
+![bg 90%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Tchoumi_etal_flow1.jpg)
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Tchoumi_etal_flow2.jpg)
+
+---
+
+- Various considerations
+- Optimal control using cost functional
+$$
+J(u_1,u_2) =
+\int_0^T
+A_1(I_m+I_{mE_c})+A_2(I_c+I_{cE_m})+A_3I_{mc}+A_4N_{v}
++B_1u_1^2(t)+B_2u_2^2(t)\; dt
+$$
+where
+1. $u_1(t)$ use of PPM to prevent mosquitoes bites during the day and the night, such as insecticide-treated nets, application of repellents to skin or spraying of insecticides
+2. $u_2(t)$ use of PPM to protect against SARS-CoV-2:  facial mask, hydro alcoholic gel, hand-washing with soap, etc.
+
+---
+
+![width:20%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Tchoumi_etal_optimalC_u1.jpg) ![width:20%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Tchoumi_etal_optimalC_u2.jpg)
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
 # <!--fit-->Quick overview of missing topics
 
@@ -766,3 +792,4 @@ Tchoumi, Diagne, Rwezaura & Tchuenche. [Malaria and COVID-19 co-dynamics: A math
 - Immunology, i.e., so-called within-host models
 - Immunono-epidemiology, i.e., interface between within-host dynamics and between-host dynamics
 - Evolutionary dynamics, in particular of viruses
+- And so much more..
