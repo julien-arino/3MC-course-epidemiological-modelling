@@ -60,7 +60,7 @@ img[alt~="center"] {
 # Outline
 
 - Additional considerations and a few oddities
-- Some recent models
+- A few (recent?) models
 - Quick overview of missing topics
 
 ---
@@ -572,14 +572,85 @@ limit to a unique equilibrium point
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
-# <!--fit-->A few recent models
+# <!--fit-->A few (recent?) models
 
 ---
 
 <!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
 # A few (recent?) models
 
+- HIV: Sex, drugs and matrices
+- HIV: An early complex model
+- HIV: Universal HIV testing followed by ART
 - HIV: viral load monitoring and patient tracing in Malawi
+- Malaria: A super classic model
+- Malaria: A classic model
+- Malaria: Sensitivity analysis
+- Malaria and COVID-19: Optimal control
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->HIV: Sex, drugs and matrices
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Abramson & Rothschild. [Sex, drugs and matrices: Mathematical prediction of HIV infection](https://doi.org/10.1080/00224498809551447). *The Journal of Sex Research* **25** (1988)
+</div>
+
+---
+
+- Data related to sexual encounters and practices are often unreliable or ambiguous
+- Use a simple model to illustrate this
+- Suggest that epidemiology of AIDS is particularly sensitive to the limitations in the assessment of sexuality/drug‐related behavior
+
+---
+
+For group $G_i$, $i=1,\ldots,m$, $n_i$ is size of group and $x_i$ number of members of $G_i$ who are seropositive. $Q=[q_{ij}]$ rate at which uninfected members of $G_i$ are infected by interaction with infected member of $G_j$; rate proportional to number of uninfected in $G_i$ and proportion of $G_j$ that is seropositive. $B_{ij}$ recruitment into $G_i$ from other groups (e.g., from different risk group), $a_i$ death rate due to AIDS, $d_i$ death for all other causes. (All births and deaths are "relative to the group", might not be real birth/death)
+$$
+\begin{aligned}
+x_i' &= (n_i-x_i)\sum_{j=1}^m q_{ij}\frac{x_j}{n_j}-(d_i+a_i)x_i \\
+n_i' &= \sum_{j=1}^m b_{ij}n_j -d_in_i-a_ix_i
+\end{aligned}
+$$
+
+Study is only numerical
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->HIV: An early complex model
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Hethcote [A Model for HIV Transmission and AIDS](https://doi.org/10.1007/978-3-642-46693-9_13) (1989)
+</div>
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Hethcote1989_HIV_part.png)
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/Hethcote1989_AIDS_part.png)
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->HIV: Universal HIV testing followed by ART
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Granich, Gilks, Dye, De Cock & Williams. [Universal voluntary HIV testing with immediate antiretroviral therapy as a strategy for elimination of HIV transmission: a mathematical model](https://doi.org/10.1016/S0140-6736(08)61697-9). *The Lancet* **373** (2009)
+</div>
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/1-s2.0-S0140673608616979-gr2_lrg.gif)
+
+<!--Transmission model for HIV infection and antiretroviral therapy (ART) provision
+
+N represents population aged 15 years and above. People enter into the susceptible class (S) at a rate βN, become infected at a rate λSJ/N, progress through four stages of HIV (Ii, i=1–4) at a rate ρ between each stage, and then die (D). The background mortality rate is μ and people are tested at a rate τ. If they are tested and put onto ART, they move to the corresponding ART box Ai (i=1–4), where they progress through four stages at a rate σ and then die. The term governing transmission contains the factor J α (Ii+ɛAi) where ɛ allows for the fact that people receiving ART are less infectious than are those who are not. They might also stop treatment or the treatment might become ineffective, in which case they return to the corresponding non-ART state at a rate φ. To allow for heterogeneity in sexual behaviour and for the observed steady state prevalence of HIV, we let the transmission decrease with the prevalence, P. If n=1, the decrease is exponential; if n=∞, the decrease is a step function. Both have been used in previous models-->
 
 ---
 
@@ -599,21 +670,88 @@ Estill, Kerr, Blaser, Salazar-Vizcaya, Tenthani, Wilson, Keiser. [The Effect of 
 
 ---
 
-![bg contain](../FIGS/ofy09201.jpeg)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/ofy09201.jpeg)
 
 <!--Schematic representation of the mathematical model. A, Flow of patients in the treatment model. White boxes represent stages with suppressed viral load, and gray boxes represent stages with continuously elevated viral load. “Discordant” immunological failure refers to a decline in CD4 cell count fulfilling the failure criteria under suppressed viral load; this condition will not reverse upon switch to second-line therapy. The flow described on the upper half is applicable to patients on ART, including those who returned after ART interruption. While progressing along the stages of treatment response (upper graph), the patients may also interrupt and restart treatment or die (lower graph). B, Transmission model. The upper graph shows the course of the HIV infection, and the lower graph the flow through age, sex, and risk group. Black arrows show flows between compartments, and gray lines show sexual contact patterns. Abbreviation: ART, antiretroviral therapy.-->
 
 ---
 
-Granich, Gilks, Dye, De Cock & Williams. [Universal voluntary HIV testing with immediate antiretroviral therapy as a strategy for elimination of HIV transmission: a mathematical model](https://doi.org/10.1016/S0140-6736(08)61697-9). *The Lancet* **373** (2009)
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Malaria: A super classic model
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Dietz, Molineaux & Thomas. [A malaria model tested in the African savannah](https://www.ncbi.nlm.nih.gov/pubmed/4613512). *Bulletin of the WHO* **50** (1974)
+</div>
 
 ---
 
-![bg contain](../FIGS/1-s2.0-S0140673608616979-gr2_lrg.gif)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/DietzMolineauxThomas_flow_diagram.png)
 
-<!--Transmission model for HIV infection and antiretroviral therapy (ART) provision
+---
 
-N represents population aged 15 years and above. People enter into the susceptible class (S) at a rate βN, become infected at a rate λSJ/N, progress through four stages of HIV (Ii, i=1–4) at a rate ρ between each stage, and then die (D). The background mortality rate is μ and people are tested at a rate τ. If they are tested and put onto ART, they move to the corresponding ART box Ai (i=1–4), where they progress through four stages at a rate σ and then die. The term governing transmission contains the factor J α (Ii+ɛAi) where ɛ allows for the fact that people receiving ART are less infectious than are those who are not. They might also stop treatment or the treatment might become ineffective, in which case they return to the corresponding non-ART state at a rate φ. To allow for heterogeneity in sexual behaviour and for the observed steady state prevalence of HIV, we let the transmission decrease with the prevalence, P. If n=1, the decrease is exponential; if n=∞, the decrease is a step function. Both have been used in previous models-->
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/DietzMolineauxThomas_equations.png)
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/DietzMolineauxThomas_biting_rates.png)
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/DietzMolineauxThomas_positives.png)
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Malaria: A classic model
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Ngwa & Shu. [A mathematical model for endemic malaria with variable human and mosquito populations](https://doi.org/10.1016/S0895-7177(00)00169-2). *Mathematical and Computer Modelling* **32** (2000)
+</div>
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/NgwaShu_contact_scaling.png)
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/NgwaShu_system.png)
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Malaria: Sensitivity analysis
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Chitnis, Hyman & Cushing. [Determining Important Parameters in the Spread of Malaria Through the Sensitivity Analysis of a Mathematical Model](https://doi.org/10.1007/s11538-008-9299-0). *Bulletin of Mathematical Biology* **70** (2008)
+</div>
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/ChitnisHymanCushing_flow_diagram.png)
+
+---
+
+- Consider two transmission scenarios for areas of *high* and *low* transmission
+- Perform sensitivity analysis
+- Very good paper if you are looking for parameters for malaria models
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/ChitnisHymanCushing_sensitivity_table.png)
+
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Malaria and COVID-19: Optimal control
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Tchoumi, Diagne, Rwezaura & Tchuenche. [Malaria and COVID-19 co-dynamics: A mathematical model and optimal control](https://doi.org/10.1016/j.apm.2021.06.016). *Applied Mathematical Modelling* **99** (2021)
+</div>
 
 ---
 
