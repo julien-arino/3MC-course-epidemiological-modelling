@@ -14,12 +14,7 @@ size: 4K
     background-color:#16a085;
     border-radius:20px;
     padding:10px 20px 10px 20px;
-    box-shadow: 0px 1px 5px #999;
-    /*outline-style: solid;
-    outline-color: white;*/
-    margin-bottom: 10px;
-    /*outline-width: 20px;
-    border: 1px solid silver;*/
+    box-shadow: 0px 1px 5px #999;  margin-bottom: 10px;
   }
   .definition {
     text-align:justify;

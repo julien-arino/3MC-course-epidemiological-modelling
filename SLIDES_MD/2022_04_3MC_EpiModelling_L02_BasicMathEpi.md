@@ -14,7 +14,7 @@ math: mathjax
     background-color:#16a085;
     border-radius:20px;
     padding:10px 20px 10px 20px;
-    box-shadow: 0px 1px 5px #999;
+    box-shadow: 0px 1px 5px #999;  margin-bottom: 10px;
   }
   .definition {
     text-align:justify;
@@ -22,6 +22,11 @@ math: mathjax
     border-radius:20px;
     padding:10px 20px 10px 20px;
     box-shadow: 0px 1px 5px #999;
+    margin-bottom: 10px;
+  }
+  img[alt~="center"] {
+    display: block;
+    margin: 0 auto;
   }
 </style>
 
@@ -101,12 +106,13 @@ Really worth taking a look at this series of papers!
 # The SIR model without demography
 
 - The time interval under consideration is sufficiently small that demography can be omitted (we say there is *no vital dynamics*)
-- Incidence is mass action
+- Individuals in the population can be susceptible ($S$) or infected and infectious with the disease ($I$). Upon recovery or death, they are *removed* from the infectious compartment ($R$)
+- Incidence is mass action $\beta SI$
 
 Consider the following model, usually called the Kermack-McKendrick model
 $$
 \begin{align}
-S' &= -\beta SI \qquad\qquad\qquad  \tag{1a}\label{sys:KMK_dS} \\
+S' &= -\beta SI \tag{1a}\label{sys:KMK_dS} \\
 I' &= (\beta S-\gamma)I  \tag{1b}\label{sys:KMK_dI} \\
 R' &= \gamma I  \tag{1c}\label{sys:KMK_dR}
 \end{align}
@@ -127,7 +133,7 @@ so $N$ is constant and dynamics of $R$ can deduced from that of $R=N-(S+I)$
 So now consider
 $$
 \begin{align}
-S' &= -\beta SI \qquad\qquad\qquad \tag{2a}\\
+S' &= -\beta SI \tag{2a}\\
 I' &= (\beta S-\gamma)I  \tag{2b}
 \end{align}
 $$
@@ -140,7 +146,7 @@ $$
 Consider the equilibia of
 $$
 \begin{align}
-S' &= -\beta SI \qquad\qquad\qquad \tag{2a}\label{sys:KMK_2d_dS} \\
+S' &= -\beta SI \tag{2a}\label{sys:KMK_2d_dS} \\
 I' &= (\beta S-\gamma)I  \tag{2b}\label{sys:KMK_2d_dI}
 \end{align}
 $$
@@ -153,7 +159,7 @@ Substitute into $\eqref{sys:KMK_2d_dS}$
 - in the first case, $(\bar S,\bar I)=(\gamma/\beta,0)$
 - in the second case, any $\bar S\geq 0$ is an equilibrium (*continuum* of EP)
 
-Second case is a **problem**: usual linearisation does not work as EP are not isolated!
+Second case is a **problem**: usual linearisation does not work as EP are not isolated! (See [Practicum 02](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html))
 
 
 ---
@@ -162,6 +168,7 @@ Second case is a **problem**: usual linearisation does not work as EP are not is
 
 What is the dynamics of $dI/dS$? We have
 $$
+\tag{3}\label{eq:KMK_dI_over_dS}
 \frac{dI}{dS}
 =\frac{dI}{dt}\frac{dt}{dS}
 =\frac{I'}{S'}
@@ -170,11 +177,11 @@ $$
 $$
 provided $S\neq 0$
 
-**Careful!** Remember that $S$ and $I$ are $S(t)$ and $I(t)$.. the equation above thus describes the relationship between $S$ and $I$ along solutions to the original ODE $\eqref{sys:KMK_2d_dS}$-$\eqref{sys:KMK_2d_dI}$
+**Careful!** Remember that $S$ and $I$ are $S(t)$ and $I(t)$.. equation $\eqref{eq:KMK_dI_over_dS}$ thus describes the relationship between $S$ and $I$ along solutions to the original ODE $\eqref{sys:KMK_2d_dS}$-$\eqref{sys:KMK_2d_dI}$
 
 ---
 
-So we can integrate this equation, giving trajectories in phase space
+We can integrate equation $\eqref{eq:KMK_dI_over_dS}$, giving trajectories in phase space
 $$
 I(S)=\frac\gamma\beta \ln S-S+C
 $$
@@ -202,7 +209,7 @@ Suppose total population $N$ is normalised, i.e., $N=1$. Then $R=1-(S+I)$
 
 Define
 $$
-\begin{equation}\label{eq:R0_KMK}\tag{3}
+\begin{equation}\label{eq:R0_KMK}\tag{4}
 \mathcal{R}_0=\frac{\beta}{\gamma}
 \end{equation}
 $$
@@ -291,6 +298,215 @@ $$
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Incidence functions
+
+---
+
+Before proceeding further, worth spending some time discussing **incidence functions**, which describe how contacts between individuals take place and lead to new cases
+
+See in particular McCallum, Barlow & Hone, [How should pathogen transmission be modelled?](https://doi.org/10.1016/S0169-5347(01)02144-9), Trends in Ecology & Evolution **16** (2001)
+
+---
+
+# <!--fit-->Remark - Incidence function versus force of infection
+
+Two different forms for the rate of movement of $S$ individuals from $S$ to whatever infected compartment they end up in:
+
+- $S'=-f(S,I,N)$ is an **incidence function**
+- $S'=-\lambda(S,I,N)S$ is a **force of infection**
+
+The two are of course essentially equivalent, the context tends to drive the form used. Advanced PDE models that consider for instance an age-of-infection structure need to integrate over $I(t,a)$ and thus often use force of infection, others are somewhat random..
+
+---
+
+# Interactions - Infection
+
+- Rate at which new cases appear per unit time is the *incidence function*
+$$
+\tag{7}
+f(S,I,N)
+$$
+- Depends of the number $S$ of susceptible individuals, $I$ of infectious individuals and, sometimes, of the total population $N$
+- Incidence includes two main components:
+  - a denumeration of the number of contacts taking place
+  - a description of the probability that such a contact, when it takes place, results in the transmission of the pathogen
+- Choosing an appropriate function is hard and probably one of the flunkiest part of epidemic modelling
+
+---
+
+# Two most frequently used functions
+
+The two most frequently used incidence functions are  **mass action incidence**
+$$\tag{8}
+f(S,I)=\beta SI
+$$
+and **standard** (or **proportional**) **incidence**
+$$\tag{9}
+f(S,I)=\beta\frac{SI}{S+I}
+$$
+
+In both cases, $\beta$ is the *disease transmission coefficient*
+
+---
+
+# Units of $\beta$
+
+Recall that if $X(t)$ is the population in compartment $X$ at time $t$, then $X'$ has units $\text{number}/\text{time}$
+
+In a differential equation, left and right hand side must have same units, so..
+
+### Mass action incidence
+
+$$
+\beta SI \propto 
+\beta\times\text{number}\times\text{number}
+$$
+has units number/time if $\beta$ has units $1/(\text{number}\times\text{time})$
+
+### Standard incidence
+
+$$
+\beta SI/N \propto 
+\beta\times\text{number}\times\text{number}/\text{number} \propto \beta \text{number}
+$$
+has units number/time if $\beta$ has units $1/\text{time}$
+
+---
+
+# Mass action incidence
+
+$$
+\begin{equation}
+\tag{8}\label{eq:incidence_mass_action}
+f(S,I)=\beta SI
+\end{equation}
+ $$
+
+- There is homogenous mixing of susceptible and infectious individuals 
+- Strong hypothesis: each individual potentially meets every other individual
+
+In this case, one of the most widely accepted interpretations is that all susceptible individuals can come across all infectious individuals (hence the name, by analogy with gas dynamics in chemistry/physics) 
+
+When population is large, the hypothesis becomes unrealistic
+
+---
+
+# Standard (proportional) incidence 
+
+The other form used frequently:
+$$
+\begin{equation}
+\tag{9}\label{eq:incidence_proportional}
+f(S,I,N)=\beta\frac{SI}{N}
+\end{equation}
+$$
+
+Each susceptible individual meets a fraction of the infectious individuals
+
+Or vice-versa! See, e.g., Hethcote, [Qualitative analyses of communicable disease models](https://doi-org.uml.idm.oclc.org/10.1016/0025-5564(76)90132-2), *Mathematical Biosciences* (1976)
+
+Case of a larger population
+
+---
+
+# Constant population $\implies$ $\eqref{eq:incidence_mass_action}$ $\equiv$ $\eqref{eq:incidence_proportional}$
+
+When the total population is constant, a lot of incidence function are equivalent (to units)
+
+Suppose $N(t)\equiv N_0$, then
+$$
+\beta SI = \tilde\beta\frac{SI}{N}
+\iff \tilde\beta=N_0\beta
+$$
+and if the right hand side is satisfied, then $\eqref{eq:incidence_mass_action}$ and $\eqref{eq:incidence_proportional}$ identical
+
+Keep in mind units are different, though
+
+---
+
+# General incidence
+
+$$
+\tag{10}
+f(S,I,N)=\beta S^q I^p
+$$
+These functions were introduced with data fitting in mind: fitting to data, find the $p,q$ best matching the available data
+
+---
+
+# Incidence with refuge
+
+The following implements a refuge effect; it assumes that a proportion $0<q<1$ of the population is truly susceptible, because of, e.g., spatial heterogenities
+
+$$
+\tag{11}
+f(S,I,N)=
+\begin{cases}
+\beta I\left(N-\dfrac Iq\right),&\textrm{si }I<qN \\
+0,&\textrm{si }I\geq qN
+\end{cases}
+\qquad\qquad
+$$
+
+
+---
+
+# Negative binomial incidence
+
+$$
+\tag{12}
+f(S,I,N)=kS\ln\left(1+\beta\frac Ik\right)
+$$
+For small values of $k$, this function describes a very concentrated infection process, while when $k\to\infty$, this function reduces to a mass action incidence
+
+---
+
+# Asymptotic contact
+
+$$
+\tag{13}
+f(S,I,N)
+=\frac{N}{1-\varepsilon+\varepsilon N}
+\frac{F(S,I)}{N}
+$$
+where $F$ is one of the functions we just described
+
+When $\varepsilon=0$, contacts are proportionnal to $N$, whereas when $\varepsilon=1$, contacts are independent from $N$
+
+---
+
+# Asymptomatic transmission
+
+$$
+\tag{14}
+f(S,I,N)
+=\beta\frac{SI}{c+S+I}
+$$
+where $c$ is a constant. E.g., 
+$$
+\frac{C(N)}N F(S,I)
+$$
+with $C(N)=N/(1-\varepsilon+\varepsilon N)$ the function describing the contact rate and $F(S,I)$ the function describing disease spread, assumed here to be of negative binomial incidence-type
+
+---
+
+# Switching incidence
+
+Arino & McCluskey, [Effect of a sharp change of the incidence function on the dynamics of a simple disease](https://doi.org/10.1080/17513751003793017), *Journal of Biological Dynamics* (2010)
+
+Scale population so switch occurs at $N=1$ and suppose
+$$
+\tag{15}
+F(S,I,N) = 
+\begin{cases}
+\beta SI & \textrm{if }N\leq 1 \\
+\beta \dfrac{SI}{N} & \textrm{if }N> 1
+\end{cases}
+$$
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit--> The SIS model
 
 ---
@@ -330,80 +546,7 @@ We also assume infection has limited duration for each individual
 
 ---
 
-# Interactions - Infection
-
-When a contact takes place between an infectious and a susceptible individual, the pathogen can be transmitted. The  function $f(S,I,N)$ of $S$, $I$ and $N$ that describes the rate at which this process happens is the *incidence function*
-
-Incidence includes two main components:
-- a denumeration of the number of contacts taking place
-- a description of the probability that such a contact, when it takes place, results in the transmission of the pathogen
-
----
-
-The two most frequently used incidence functions are  *mass action incidence*
-$$\tag{7}
-f(S,I)=\beta SI
-$$
-and *standard* (or *proportional*) incidence
-$$\tag{8}
-f(S,I)=\beta\frac{SI}{S+I}
-$$
-
-In both cases, $\beta$ is the *disease transmission coefficient*. Note that units of $\beta$ change depending on the functional form used
-
----
-
-# Units of $\beta$
-
-Recall that if $X(t)$ is the population in compartment $X$ at time $t$, then $X'$ has units $\text{number}/\text{time}$
-
-In a differential equation, left and right hand side must have same units, so..
-
-### Mass action incidence
-
-$$
-\beta SI \propto 
-\beta\times\text{number}\times\text{number}
-$$
-has units number/time if $\beta$ has units $1/(\text{number}\times\text{time})$
-
-### Standard incidence
-
-$$
-\beta SI/N \propto 
-\beta\times\text{number}\times\text{number}/\text{number} \propto \beta \text{number}
-$$
-has units number/time if $\beta$ has units $1/\text{time}$
-
----
-
-# Mass action incidence
-
-$$
-f(S,I,N)=\beta SI
-$$
-
-In this case, one of the most widely accepted interpretations is that all susceptible individuals can come across all infectious individuals (hence the name, by analogy with gas dynamics in chemistry/physics) 
-
-When population is large, the hypothesis becomes unrealistic
-
----
-
-# Standard (or proportional) incidence
-
-$$
-f(S,I)=\beta\frac{SI}{N}
-$$
-
-Case of a larger population
-
-Each infectious individual meets a proportion of the susceptibles
-
-Remark that the interpretation and units of $\beta$ varies depending on the case
-
----
-
-# Back to the model
+# Model flow diagram
 
 ![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIS.png)
 
@@ -417,10 +560,12 @@ $$
 S' &= \underbrace{bN}_\textrm{birth}
 -\underbrace{dS}_\textrm{death} 
 -\underbrace{\beta\frac{SI}{N}}_\textrm{infection}
-+\underbrace{\gamma I}_\textrm{recovery} \qquad\qquad \tag{9a}\label{sys:SIS_base_dS}\\
++\underbrace{\gamma I}_\textrm{recovery}
+\tag{16a}\label{sys:SIS_base_dS}\\
 I' &= \underbrace{\beta\frac{SI}{N}}_\textrm{infection}
 -\underbrace{dI}_\textrm{death} 
--\underbrace{\gamma I}_\textrm{recovery} \tag{9b}\label{sys:SIS_base_dI}
+-\underbrace{\gamma I}_\textrm{recovery} 
+\tag{16b}\label{sys:SIS_base_dI}
 \end{align}
 $$
 
@@ -503,8 +648,9 @@ $$
 Since $s+i=1$, we can use $s=1-i$ in the latter equation, giving $i'=\beta(1-i)i-(d+\gamma)i$. As a consequence, the *system in proportion* is
 $$
 \begin{align}
-s &= 1-i \tag{10a}\label{sys:SIS_proportion_ds} \\
-i' &= \beta(1-i)i-(d+\gamma)i \tag{10b}\label{sys:SIS_proportion_di}\qquad\qquad
+s &= 1-i \tag{17a}\label{sys:SIS_proportion_ds} \\
+i' &= \beta(1-i)i-(d+\gamma)i 
+\tag{17b}\label{sys:SIS_proportion_di}
 \end{align}
 $$
 
@@ -514,8 +660,9 @@ Since $N$ constant, solutions of $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_
 
 Rewrite $\eqref{sys:SIS_proportion_di}$ as
 $$
-\begin{equation} \tag{11}\label{eq:SIS_i_as_Bernoulli}
-i'-(\beta-(d+\gamma))i=-\beta i^2\qquad\qquad
+\begin{equation} 
+\tag{18}\label{eq:SIS_i_as_Bernoulli}
+i'-(\beta-(d+\gamma))i=-\beta i^2
 \end{equation}
 $$
 This is a Bernoulli equation and the change of variables $u=i^{-1}$ gives the linear equation
@@ -524,8 +671,9 @@ $$
 $$
 so that finally
 $$
-\begin{equation}\tag{12}\label{eq:SIS_true_Bernoulli}
-u'+(\beta-(d+\gamma))u=\beta\qquad\qquad
+\begin{equation}
+\tag{19}\label{eq:SIS_true_Bernoulli}
+u'+(\beta-(d+\gamma))u=\beta
 \end{equation}
 $$
 
@@ -694,7 +842,7 @@ LAS of the DFE is determined by the sign of $\beta-(d+\gamma)$. We find the same
 
 Diekmann and Heesterbeek, characterised in ODE case by PvdD & Watmough (2002)
 
-Consider only compartments $x$ with infected individuals and write
+Consider only compartments $x$ with *infected individuals* and write
 $$
 x'=\mathcal{F}-\mathcal{V}
 $$
@@ -726,7 +874,7 @@ with matrices $F$ and $V$ obtained as indicated. Assume conditions (A1) through 
 - if $\mathcal{R}_0>1$, the DFE is unstable
 </div>
 
-(We make conditions (A1)-(A5) explicit in [Practicum 02](2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html))
+(We make conditions (A1)-(A5) explicit in [Practicum 02](2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html) and discuss why it can be important to check they do hold true in [Lecture 09](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_L09_RecentMathematicalModels.html))
 
 ---
 
@@ -776,164 +924,27 @@ with matrices $F$ and $V$ obtained as indicated. Assume conditions (A1) through 
 The model takes the form
 $$
 \begin{align}
-S' &= d(N-S)-f(S,I,N)+\nu R\qquad\qquad \tag{13a}\label{sys:SLIR_dS}\\
-L' &= f(S,I,N) -(d+\varepsilon)L \tag{13b}\label{sys:SLIR_dL} \\
-I' &= \varepsilon L -(d+\gamma)I \tag{13c}\label{sys:SLIR_dI} \\
-R' &= \gamma I-(d+\nu)R \tag{13d}\label{sys:SLIR_dR}
+S' &= d(N-S)-f(S,I,N)+\nu R
+\tag{20a}\label{sys:SLIR_dS}\\
+L' &= f(S,I,N) -(d+\varepsilon)L 
+\tag{20b}\label{sys:SLIR_dL} \\
+I' &= \varepsilon L -(d+\gamma)I 
+\tag{20c}\label{sys:SLIR_dI} \\
+R' &= \gamma I-(d+\nu)R 
+\tag{20d}\label{sys:SLIR_dR}
 \end{align}
 $$
 
-$1/\varepsilon$ average duration of the incubation period
+- $1/\varepsilon$ average duration of the incubation period
 
-$1/\gamma$ average time until recovery
+- $1/\gamma$ average time until recovery
 
-$1/\nu$ average duration of immunity
-
-
----
-
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->Incidence functions
-
----
-
-# Incidence functions
-
-Assume transmission takes place at the rate
-$$
-f(S,I,N)
-$$
- 
-- $f$ is the rate at which new cases appear per unit time, the *incidence* (or *incidence function*)
-- Depends of the number $S$ of susceptible individuals, $I$ of infectious individuals and, sometimes, of the total population $N$
-- Choosing an appropriate function is hard and probably one of the flunkiest part of epidemic modelling
-
----
-
-# Mass action incidence
-
-$$
-\begin{equation}
-f(S,I)=\beta SI\qquad\qquad
-\end{equation}
- $$
-
-- There is homogenous mixing of susceptible and infectious individuals 
-- Strong hypothesis: each individual potentially meets every other individual
-
----
-
-# Standard (proportional) incidence 
-
-The other form used frequently:
-$$
-\begin{equation}
-f(S,I,N)=\beta\frac{SI}{N}\qquad\qquad
-\end{equation}
-$$
-
-Each susceptible individual meets a fraction of the infectious individuals
-
-Or vice-versa! See, e.g., Hethcote, [Qualitative analyses of communicable disease models](https://doi-org.uml.idm.oclc.org/10.1016/0025-5564(76)90132-2), *Mathematical Biosciences* (1976)
-
-
----
-
-# When all is good, all is good
-
-When the total population is constant, a lot of incidence function are equivalent (to units)
-
-Suppose $N(t)\equiv N_0$, then
-$$
-\beta SI = \tilde\beta\frac{SI}{N}
-\iff \tilde\beta=N_0\beta
-$$
-and if the right hand side is satisfied, then the two functions are identical
-
----
-
-# General incidence
-
-$$
-f(S,I,N)=\beta S^q I^p
-$$
-These functions were introduced with data fitting in mind: fitting to data, find the $p,q$ best matching the available data
-
----
-
-# Incidence with refuge
-
-The following implements a refuge effect; it assumes that a proportion $0<q<1$ of the population is truly susceptible, because of, e.g., spatial heterogenities
-
-$$
-f(S,I,N)=
-\begin{cases}
-\beta I\left(N-\dfrac Iq\right),&\textrm{si }I<qN \\
-0,&\textrm{si }I\geq qN
-\end{cases}
-\qquad\qquad
-$$
-
-
----
-
-# Negative binomial incidence
-
-$$
-f(S,I,N)=kS\ln\left(1+\beta\frac Ik\right)
-$$
-For small values of $k$, this function describes a very concentrated infection process, while when $k\to\infty$, this function reduces to a mass action incidence
-
----
-
-# Asymptotic contact
-
-$$
-f(S,I,N)
-=\frac{N}{1-\varepsilon+\varepsilon N}
-\frac{F(S,I)}{N}
-$$
-where $F$ is one of the functions we just described
-
-When $\varepsilon=0$, contacts are proportionnal to $N$, whereas when $\varepsilon=1$, contacts are independent from $N$
-
----
-
-# Asymptomatic transmission
-
-$$
-f(S,I,N)
-=\beta\frac{SI}{c+S+I}
-$$
-where $c$ is a constant. E.g., 
-$$
-\frac{C(N)}N F(S,I)
-$$
-with $C(N)=N/(1-\varepsilon+\varepsilon N)$ the function describing the contact rate and $F(S,I)$ the function describing disease spread, assumed here to be of negative binomial incide-type
-
----
-
-# Switching incidence
-
-Arino & McCluskey, [Effect of a sharp change of the incidence function on the dynamics of a simple disease](https://doi.org/10.1080/17513751003793017), *Journal of Biological Dynamics* (2010)
-
-Scale population so switch occurs at $N=1$ and suppose
-$$
-F(S,I,N) = 
-\begin{cases}
-\beta SI & \textrm{if }N\leq 1 \\
-\beta \dfrac{SI}{N} & \textrm{if }N> 1
-\end{cases}
-$$
+- $1/\nu$ average duration of immunity
 
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# Computation of $\mathcal{R}_0$
-
-# Computation of $\mathcal{R}_0$ using the next generation operator method
-
-# Example of the SLIRS model
+# Classic computation of $\mathcal{R}_0$
 
 ---
 
@@ -957,6 +968,11 @@ Mathematically
 
 - Obtained by considering the linearisation of the system at the DFE
 - Quickly becomes unmanageable (matrix size) and we get a non unique form
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# Computation of $\mathcal{R}_0$ using the next generation matrix method
 
 ---
 
@@ -1157,9 +1173,9 @@ Take the simple case of an SIR model but assume the following
 
 $$
 \begin{align}
-S' &= d((1-p)N-S)-\beta SI  \qquad\qquad\\
-I' &= \beta SI -(d+\gamma)I\\
-R' &= dpN+\gamma I-dR
+S' &= d((1-p)N-S)-\beta SI \tag{21a} \\
+I' &= \beta SI -(d+\gamma)I \tag{21b} \\
+R' &= dpN+\gamma I-dR \tag{21c}
 \end{align}
 $$
 
@@ -1195,6 +1211,7 @@ Therefore
 - $\mathcal{R}_0^\textrm{v}<\mathcal{R}_0$ if $p>0$
 - To control the disease, $\mathcal{R}_0^\text{v}$ must take a value less than 1, i.e.,
 $$
+\tag{22}
 \mathcal{R}_0^\text{v}<1 \iff p> 1-\frac{1}{\mathcal{R}_0}
 $$
 
@@ -1215,14 +1232,18 @@ Andrei Korobeinikov. Considers an SLIR with constant population normalised to 1 
 
 $$
 \begin{align}
-S' &= d-\beta SI -pdI-qdL-dS \\
-L' &= \beta SI +pdI-(\varepsilon+d-qd)L \qquad\qquad\\
-I' &= \varepsilon L-(\gamma+d)I
+S' &= d-\beta SI -pdI-qdL-dS 
+\tag{23a}\label{sys:SEIR_vert_transmission_dS} \\
+L' &= \beta SI +pdI-(\varepsilon+d-qd)L 
+\tag{23b}\label{sys:SEIR_vert_transmission_dL} \\
+I' &= \varepsilon L-(\gamma+d)I 
+\tag{23c}\label{sys:SEIR_vert_transmission_dI}
 \end{align}
 $$
-$p$ proportion of newborns from $I$ who are $I$ at birth
-$q$ proportion of newborns from $E$ who are $E$ at birth
-$R$ does not influence the dynamics of the system, so not shown
+
+- $p$ proportion of newborns from $I$ who are $I$ at birth
+- $q$ proportion of newborns from $L$ who are $L$ at birth
+- $R$ does not influence the dynamics of the system, so not shown
 
 ---
 
@@ -1240,6 +1261,7 @@ $$
 
 where
 $$
+\tag{24}
 \mathcal{R}_0^v=\frac{\beta\varepsilon}
 {(\gamma+d)(\varepsilon+d)-qd(\varepsilon+d)-pd\varepsilon}
 $$
@@ -1252,30 +1274,36 @@ $E^\star$ is biologically relevant only when $\mathcal{R}_0^v>1$
 
 Use the function
 $$
+\tag{25}
 V=\sum a_i(x_i-x_i^\star  \ln x_i)
 $$
 
 <div class="theorem">
  
-- If $\mathcal{R}_0>1$, then system \eqref{sys:SEIR_vert_transmission} has the globally asymptotically stable equilibrium $E^\star$
-- If $\mathcal{R}_0\leq 1$, then system \eqref{sys:SEIR_vert_transmission} has the globally asymptotically stable DFE $E_0$ and $E^\star$ is not biologically relevant
+- If $\mathcal{R}_0>1$, then system $\eqref{sys:SEIR_vert_transmission_dS}$-$\eqref{sys:SEIR_vert_transmission_dI}$ has the globally asymptotically stable equilibrium $E^\star$
+- If $\mathcal{R}_0\leq 1$, then system $\eqref{sys:SEIR_vert_transmission_dS}$-$\eqref{sys:SEIR_vert_transmission_dI}$ has the globally asymptotically stable DFE $E_0$ and $E^\star$ is not biologically relevant
 </div>
 
 
 ---
 
-# SEIRS - Mukherjee et al
+# SEIRS - Mukherjee, Chattopadhyay & Tapaswi
 
-Mukherjee, Chattopadhyay and Tapaswi consider system an SEIRS with an incidence function taking the form
+SEIRS with constant birth rate $d$, *per capita* death rate $d$ and incidence function
 $$
 f(S,I,N)=\beta S^q I^p
 $$
 
-After establishing uniform boundedness of the system, they define the following function
+After establishing uniform boundedness of the system, they define 
 $$
 V(S,E,I)=\frac 12\left(
 (S-S^\star )^2+(E-E^\star )^2+(I-I^\star )^2\right)
 $$
+
+<div style = "text-align: justify; position: relative; bottom: -25%; font-size:18px;">
+
+Mukherjee, Chattopadhyay & Tapaswi. [Global stability results of epidemiological models with nonlinear incidence rates](https://doi.org/10.1016/0895-7177(93)90009-N). *Mathematical and Computer Modelling* **18** (1993)
+</div>
 
 ---
 
@@ -1309,13 +1337,30 @@ Clearly, this is hard to use in practice so the system was studied in other ways
 
 ---
 
-# Li, Muldowney and PvdD
+# [Li & Muldowney (1995)](https://doi.org/10.1016/0025-5564(95)92756-5)
 
-Li, Muldowney and van den Driessche study an SEIRS with incidence
+$$
+\begin{align}
+S' &= d-\beta S^qI^p-dS 
+\tag{26a}\label{sys:SLIR_LiMuldowney_dS} \\
+L' &= \beta S^qI^p -(\varepsilon+d)L
+\tag{26b}\label{sys:SLIR_LiMuldowney_dL} \\
+I' &= \varepsilon L-(\gamma+d)I 
+\tag{26c}\label{sys:SLIR_LiMuldowney_dI} \\
+R' &= \gamma I-dR
+\tag{26d}\label{sys:SLIR_LiMuldowney_dR} 
+\end{align}
+$$
+
+---
+
+# Li, Muldowney and PvdD - CAMQ (1999)
+
+SEIRS with incidence
 $$
 f(S,I,N)=\beta g(I)S
 $$
-wheere $g$ is s.t. $g(0)=0$, $g(I)>0$ for $I\in(0,1]$ and $g\in
+where $g$ is s.t. $g(0)=0$, $g(I)>0$ for $I\in(0,1]$ and $g\in
 C^1(0,1]$
 
 They normalise the total population, so $S+E+I+R=1$. They make an additional hypothesis about $g$:
@@ -1376,4 +1421,4 @@ $$
 and $\epsilon_0$ defined by (\ref{eq:SEIRS_persist}). Then there is no closed rectifiable curve that is invariant with respect to SEIRS. Furthermore, each semi-trajectory of SEIRS in $\Gamma$ converges to an equilibrium
 </div>
 
-The proof uses compound matrices
+The proof uses compound matrices (see [Practicum 02](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html))
