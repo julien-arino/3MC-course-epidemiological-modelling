@@ -1224,64 +1224,8 @@ This is *herd immunity*
 
 ---
 
-# Lyapunov function for SLIR and SLIS
-
-Andrei Korobeinikov. Considers an SLIR with constant population normalised to 1 and vertical transmission
-
-$$
-\begin{align}
-S' &= d-\beta SI -pdI-qdL-dS 
-\tag{23a}\label{sys:SEIR_vert_transmission_dS} \\
-L' &= \beta SI +pdI-(\varepsilon+d-qd)L 
-\tag{23b}\label{sys:SEIR_vert_transmission_dL} \\
-I' &= \varepsilon L-(\gamma+d)I 
-\tag{23c}\label{sys:SEIR_vert_transmission_dI}
-\end{align}
-$$
-
-- $p$ proportion of newborns from $I$ who are $I$ at birth
-- $q$ proportion of newborns from $L$ who are $L$ at birth
-- $R$ does not influence the dynamics of the system, so not shown
-
----
-
-# Equilibria
- 
-- DFE: $E_0=(1,0,0)$
-- EEP: $E^\star =(S^\star,L^\star,I^\star)$ with
-$$
-S^\star =\frac 1{\mathcal{R}_0^v}\quad L^\star =\frac{d}{\varepsilon+d}\left(1-\frac
-  1{\mathcal{R}_0^v}\right) 
-\quad
-I^\star =\frac{d\varepsilon}{(\varepsilon+d)(\gamma+d)}\left(1-\frac
-  1{\mathcal{R}_0^v}\right) 
-$$
-
-where
-$$
-\tag{24}
-\mathcal{R}_0^v=\frac{\beta\varepsilon}
-{(\gamma+d)(\varepsilon+d)-qd(\varepsilon+d)-pd\varepsilon}
-$$
-is the basic reproduction number with vertical transmission. We have $\mathcal{R}_0=\mathcal{R}_0^v \iff p=q=0$. On the other hand, $\mathcal{R}_0^v=1$ when $\mathcal{R}_0=1$
-
-$E^\star$ is biologically relevant only when $\mathcal{R}_0^v>1$
-
----
-
-
-Use the function
-$$
-\tag{25}
-V=\sum a_i(x_i-x_i^\star  \ln x_i)
-$$
-
-<div class="theorem">
- 
-- If $\mathcal{R}_0>1$, then system $\eqref{sys:SEIR_vert_transmission_dS}$-$\eqref{sys:SEIR_vert_transmission_dI}$ has the globally asymptotically stable equilibrium $E^\star$
-- If $\mathcal{R}_0\leq 1$, then system $\eqref{sys:SEIR_vert_transmission_dS}$-$\eqref{sys:SEIR_vert_transmission_dI}$ has the globally asymptotically stable DFE $E_0$ and $E^\star$ is not biologically relevant
-</div>
-
+- As already mentioned, global stability properties are important in a mathematical context, less so in public health
+- Understading that a DFE or an EEP are GAS is however important: this precludes the existence of other types of behaviours
 
 ---
 
@@ -1340,19 +1284,24 @@ Clearly, this is hard to use in practice so the system was studied in other ways
 $$
 \begin{align}
 S' &= d-\beta S^qI^p-dS 
-\tag{26a}\label{sys:SLIR_LiMuldowney_dS} \\
+\tag{23a}\label{sys:SLIR_LiMuldowney_dS} \\
 L' &= \beta S^qI^p -(\varepsilon+d)L
-\tag{26b}\label{sys:SLIR_LiMuldowney_dL} \\
+\tag{23b}\label{sys:SLIR_LiMuldowney_dL} \\
 I' &= \varepsilon L-(\gamma+d)I 
-\tag{26c}\label{sys:SLIR_LiMuldowney_dI} \\
+\tag{23c}\label{sys:SLIR_LiMuldowney_dI} \\
 R' &= \gamma I-dR
-\tag{26d}\label{sys:SLIR_LiMuldowney_dR} 
+\tag{23d}\label{sys:SLIR_LiMuldowney_dR} 
 \end{align}
 $$
 
+<div style = "text-align: justify; position: relative; bottom: -25%; font-size:18px;">
+
+Li & Muldowney. [Global stability for the SEIR model in epidemiology](https://doi.org/10.1016/0895-7177(93)90009-N). *Mathematical Biosciences* **125** (1995)
+</div>
+
 ---
 
-# Li, Muldowney and PvdD - CAMQ (1999)
+# Li, Muldowney & PvdD - CAMQ (1999)
 
 SEIRS with incidence
 $$
@@ -1364,6 +1313,11 @@ C^1(0,1]$
 They normalise the total population, so $S+E+I+R=1$. They make an additional hypothesis about $g$:
 
 - **(H)** $c=\lim_{I\to 0^+} \frac{g(I)}{I}\leq +\infty$; when $0<c<+\infty$, $g(I)\leq cI$ for sufficiently small $I$
+
+<div style = "text-align: justify; position: relative; bottom: -15%; font-size:18px;">
+
+Li, Muldowney & van den Driessche. [Global stability of SEIRS models in epidemiology](https://www.researchgate.net/publication/265334017_Global_stability_of_SEIRS_models_in_epidemiology). *CAMQ* **7** (1999)
+</div>
 
 ---
 
@@ -1382,10 +1336,7 @@ The local stability results already established are valid here, since $g$ is a p
 
 ---
 
-<div class="theorem">
-
-If $g(I)$ satisfies hypothesis **(H)**, then system $f(S,I,N)=\beta S^q I^p$ with incidence $f(S,I,N)=\beta S^q I^p$ is uniformly persistent if and only if $\mathcal{R}_0>1$
-</div>
+<div class="definition">
 
 The system is **uniformly persistent** if there exists $0<\epsilon_0<1$ s.t. any solution $(S(t),E(t),I(t),R(t))$ of SEIRS with initial condition $(S(0),E(0),I(0),R(0))\in \overset{\circ}{\Gamma}$ satisfies
 $$
@@ -1396,6 +1347,12 @@ $$
 \liminf_{t\to\infty} R(t)\geq \epsilon_0
 \end{array}
 $$
+</div>
+
+<div class="theorem">
+
+If $g(I)$ satisfies hypothesis **(H)**, then system $f(S,I,N)=\beta S^q I^p$ with incidence $f(S,I,N)=\beta S^q I^p$ is uniformly persistent if and only if $\mathcal{R}_0>1$
+</div>
 
 ---
 
@@ -1420,3 +1377,68 @@ and $\epsilon_0$ defined by (\ref{eq:SEIRS_persist}). Then there is no closed re
 </div>
 
 The proof uses compound matrices (see [Practicum 02](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html))
+
+---
+
+# Lyapunov function for SLIR and SLIS
+
+Consider an SLIR with constant population normalised to 1 and vertical transmission
+
+$$
+\begin{align}
+S' &= d-\beta SI -pdI-qdL-dS 
+\tag{23a}\label{sys:SEIR_vert_transmission_dS} \\
+L' &= \beta SI +pdI-(\varepsilon+d-qd)L 
+\tag{23b}\label{sys:SEIR_vert_transmission_dL} \\
+I' &= \varepsilon L-(\gamma+d)I 
+\tag{23c}\label{sys:SEIR_vert_transmission_dI}
+\end{align}
+$$
+
+- $p$ proportion of newborns from $I$ who are $I$ at birth
+- $q$ proportion of newborns from $L$ who are $L$ at birth
+- $R$ does not influence the dynamics of the system, so not shown
+
+<div style = "text-align: justify; position: relative; bottom: -15%; font-size:18px;">
+
+Korobeinikov. [Lyapunov functions and global properties for SEIR and SEIS epidemic models](https://doi.org/10.1093/imammb/21.2.75). *Mathematical Medicine and Biology* **21** (2004)
+</div>
+
+---
+
+# Equilibria
+ 
+- DFE: $E_0=(1,0,0)$
+- EEP: $E^\star =(S^\star,L^\star,I^\star)$ with
+$$
+S^\star =\frac 1{\mathcal{R}_0^v}\quad L^\star =\frac{d}{\varepsilon+d}\left(1-\frac
+  1{\mathcal{R}_0^v}\right) 
+\quad
+I^\star =\frac{d\varepsilon}{(\varepsilon+d)(\gamma+d)}\left(1-\frac
+  1{\mathcal{R}_0^v}\right) 
+$$
+
+where
+$$
+\tag{24}
+\mathcal{R}_0^v=\frac{\beta\varepsilon}
+{(\gamma+d)(\varepsilon+d)-qd(\varepsilon+d)-pd\varepsilon}
+$$
+is the basic reproduction number with vertical transmission. We have $\mathcal{R}_0=\mathcal{R}_0^v \iff p=q=0$. On the other hand, $\mathcal{R}_0^v=1$ when $\mathcal{R}_0=1$
+
+$E^\star$ is biologically relevant only when $\mathcal{R}_0^v>1$
+
+---
+
+
+Use the function
+$$
+\tag{25}
+V=\sum a_i(x_i-x_i^\star  \ln x_i)
+$$
+
+<div class="theorem">
+ 
+- If $\mathcal{R}_0>1$, then system $\eqref{sys:SEIR_vert_transmission_dS}$-$\eqref{sys:SEIR_vert_transmission_dI}$ has the globally asymptotically stable equilibrium $E^\star$
+- If $\mathcal{R}_0\leq 1$, then system $\eqref{sys:SEIR_vert_transmission_dS}$-$\eqref{sys:SEIR_vert_transmission_dI}$ has the globally asymptotically stable DFE $E_0$ and $E^\star$ is not biologically relevant
+</div>
