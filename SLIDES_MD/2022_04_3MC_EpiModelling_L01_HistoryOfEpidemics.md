@@ -70,8 +70,7 @@ Fred passed away 2021-10-17. This course is dedicated to his memory!
 
 # Getting in touch
 
-- Happy to answer questions during the class and after
-- Otherwise, just email me
+- Just email me (email is on the title page)
 - Do add something like [3MC] in your subject line, I get (too) many emails
 
 ---
@@ -100,6 +99,14 @@ One remark: I sometimes refer to Wikipedia. For the younger students here: this 
 - Figure sources are added as html comments which appear as "speakers notes" in the presentation version
 
 - For convenience, `pdf` versions of the slides are available in the GitHub repo; the `pdf` versions embed image files. However, movies and Shiny code do not function in the `pdf` version of the slides
+
+---
+
+# Videos
+
+- Videos will be recorded shortly for the course
+- They will be posted on YouTube
+- When they are ready, I will add a link here
 
 ---
 
@@ -155,6 +162,7 @@ It is important to do the 4 interactively
 
 - Used to be the sole purpose of most papers
 - Judge your audience: global stability is cool, but is it really required if you want to present work to a public health person?
+- Do as much as possible (for instance, knowing the value of $\mathcal{R}_0$ can be useful to set parameters), do not hesitate to move to an appendix 
 
 ---
 

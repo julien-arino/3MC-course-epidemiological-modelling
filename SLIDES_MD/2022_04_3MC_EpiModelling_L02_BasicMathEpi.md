@@ -67,7 +67,6 @@ img[alt~="center"] {
 - SLIRS model with non constant population
 - Other ODE models
   - Role of vaccination
-  - Bistability
   - Logistic demography
 
 ---
