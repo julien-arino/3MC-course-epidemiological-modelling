@@ -403,7 +403,7 @@ Here, we have $N'=0$ everywhere except at $t=\omega$, where it is undefined
 
 ---
 
-![bg 80% right:40%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIS_general_P.png)
+![bg 80% right:40%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_no_demography_general_recovery_vertical.png)
 
 # <!--fit-->An SIS with tweaked recovery
 

@@ -1225,7 +1225,7 @@ This is *herd immunity*
 ---
 
 - As already mentioned, global stability properties are important in a mathematical context, less so in public health
-- Understading that a DFE or an EEP are GAS is however important: this precludes the existence of other types of behaviours
+- Understanding that a DFE or an EEP are GAS is however important: this precludes the existence of other types of behaviours
 
 ---
 

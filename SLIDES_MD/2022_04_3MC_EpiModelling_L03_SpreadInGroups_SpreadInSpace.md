@@ -58,12 +58,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# Heterogeneity of spread within a location
-
----
-
-<!-- _backgroundImage: "radial-gradient(white, 80%, #156C26)" -->
-# Heterogeneity of spread within a location
+# <!--fit-->Heterogeneity of spread within a location
 - Age structure
 - Social structure
 - Pathogen heterogeneity

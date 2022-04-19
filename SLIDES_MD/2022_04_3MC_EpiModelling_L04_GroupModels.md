@@ -54,9 +54,10 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 # Outline
 
 - Formulating group models
-    - Age-structured models
-    - Models incorporating social structure
-    - Model with pathogen heterogeity
+  - Age-structured models
+  - Models incorporating social structure
+  - Models with pathogen heterogeneity
+  - Models with immunological component
 - Analysing group models
 - Simulating group models
 
@@ -64,6 +65,11 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Formulating group models
+
+- Age-structured models
+- Models incorporating social structure
+- Models with pathogen heterogeneity
+- Models with immunological component
 
 ---
 
@@ -180,7 +186,7 @@ Preventing tuberculosis in the foreign-born population of Canada: a mathematical
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# Models with pathogen heterogeity
+# Models with pathogen heterogeneity
 
 ---
 
@@ -238,6 +244,8 @@ $$
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # Models with immunological component
+
+---
 
 Global dynamics of a general class of multistage models for infectious diseases. Guo, Li & Shuai. [SIAM Journal on Applied Mathematics](https://doi.org/10.1137/110827028) **72** (2012)
 
