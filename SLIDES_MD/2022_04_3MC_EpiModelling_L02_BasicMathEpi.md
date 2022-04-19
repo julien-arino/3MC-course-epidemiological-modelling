@@ -60,14 +60,13 @@ img[alt~="center"] {
 <!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
 # Outline
 
-- The Kermack and McKendrick SIR model
-- KMK-type epidemic models and epidemic final size
-- SIS endemic model
+- The (epidemic) Kermack and McKendrick SIR model
+- SLIAR extension of the KMK model
+- Incidence functions
+- The (endemic) SIS model
 - SLIRS model with constant population
-- SLIRS model with non constant population
-- Other ODE models
-  - Role of vaccination
-  - Logistic demography
+- Effect of vaccination - Herd immunity
+- SLIRS model - Global properties
 
 ---
 
@@ -80,7 +79,7 @@ img[alt~="center"] {
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->The Kermack and McKendrick SIR model
+# <!--fit-->The (epidemic) Kermack and McKendrick SIR model
 
 ---
 
@@ -506,7 +505,7 @@ $$
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit--> The SIS model
+# <!--fit--> The (endemic) SIS model
 
 ---
  
@@ -547,7 +546,7 @@ We also assume infection has limited duration for each individual
 
 # Model flow diagram
 
-![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIS.png)
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_prop_incidence_birthdN.png)
 
 ---
 
@@ -942,7 +941,7 @@ $$
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # Classic computation of $\mathcal{R}_0$
 
 ---
@@ -970,7 +969,7 @@ Mathematically
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # Computation of $\mathcal{R}_0$ using the next generation matrix method
 
 ---
