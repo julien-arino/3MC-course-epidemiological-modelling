@@ -53,8 +53,8 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 <!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
 # Outline
 - Why stochastic systems? 
-- What types of stochastic systems?
 - More on sojourn times
+- What types of stochastic systems?
 
 ---
 
@@ -76,70 +76,20 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!-- fit -->What types of stochastic systems?
-
----
-
-# Chain binomial models
-
-- Reed-Frost model from circa 1920
-  - Infection spread from I individuals to others after adequate contact
-  - Any S individual, after contact with an I individual in a given period, develops the infection and is infectious to others only within the following time period; in subsequent time periods, become R
-  - Each individual has a fixed probability of coming into adequate contact with any other specified individual in the group within one time interval, and this probability is the same for every member of the group
-  - Closed population
-- Many variations since
-
----
-
-# Discrete time Markov chains (DTMC)
-
-- Will discuss later
-- Equivalent of discrete time system but includes stochasticity
-- Jump to next state depends only on current state(*memoryless property*)
-- Easy to study using linear algebra
-
----
-
-# Continuous time Markov chains (CTMC)
-
-- Almost exact stochastic equivalent to ODE
-- Conversion from ODE to CTMC and vice-versa is very easy for compartmental models
-- Harder to study than DTMC but still quite amenable to analysis
-
----
-
-# Branching processes
-
-- Special case of CTMC .. or are CTMC special cases of BP?
-
----
-
-# Stochastic differential equations
-
-- Will confess some bias against these: "ODEs with noise added"
-
----
-
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->More on sojourn times
 
 ## <!--fit-->Deterministic models incorporate stochasticity, they just hide it
-
----
-
-- Contrary to common claim, ODEs and the like do incorporate stochasticity, they simply do so in a way that makes it not apparent
-- Most models considered in this course (ODE or CTMC) assume exponential sojourn times in compartments
-
----
-
-<!-- _backgroundImage: "radial-gradient(white,80%,#156C26)" -->
-# More on sojourn times - Outline
 
 - Some (simple) probability theory
 - The exponential distribution
 - A cohort model
 - Sojourn times in an SIS disease transmission model
 - An $SL_1L_2I_1I_2A_1A_2R$ COVID-19 model : "making Erlangs"
+
+---
+
+- Contrary to common claim, ODEs and the like do incorporate stochasticity, they simply do so in a way that makes it not apparent
+- Most models considered in this course (ODE or CTMC) assume exponential sojourn times in compartments
 
 ---
 
@@ -175,7 +125,7 @@ For example, we make light bulbs and would like to tell our customers that on av
 
 For this, we conduct an **infinite** number of experiments, and observe the time that it takes, in every experiment, to switch between $S_1$ and $S_2$
 
-From this, deduce a model, which in this context is called a **probability distribution**
+From this, deduce a *model*, which in this context is called a **probability distribution**
 
 ---
 
@@ -216,7 +166,7 @@ Assume $T$ continuous; it has a continuous **probability density function** $f$
 
 - $f\geq 0$
 - $\int_{-\infty}^{+\infty}f(s)ds=1$
-- $\mathbb{P}{a\leq T\leq b}=\int_a^bf(t)dt$
+- $\mathbb{P}(a\leq T\leq b)=\int_a^bf(t)dt$
 
 ![width:450px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/distrib_a_b.png)
 
@@ -226,7 +176,7 @@ Assume $T$ continuous; it has a continuous **probability density function** $f$
 
 The cumulative distribution function (c.d.f.) is a function $F(t)$ that characterizes the distribution of $T$, and defined by
 $$
-F(s)=\mathbb{P}{T\leq s}=\int_{-\infty}^sf(x)dx
+F(s)=\mathbb{P}(T\leq s)=\int_{-\infty}^sf(x)dx
 $$
 
 ![width:500px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/cdf_auc.png)
@@ -246,6 +196,7 @@ $$
 
 For a continuous random variable $T$ with probability density function $f$, the **mean** value of $T$, denoted $\bar T$ or $E(T)$, is given by
 $$
+\tag{1}\label{eq:mean_value}
 E(T)=\int_{-\infty}^{+\infty} tf(t)dt
 $$
 
@@ -258,9 +209,8 @@ Another characterization of the distribution of the random variable $T$ is throu
 
 The survival function of state $S_1$ is given by
 $$
-\begin{equation}
-  \mathcal{S}(t)=1-F(t)=\mathbb{P}{T>t}
-  \label{eq:survival}
+\begin{equation}\tag{2}\label{eq:survival}
+  \mathcal{S}(t)=1-F(t)=\mathbb{P}(T>t)
 \end{equation}
 $$
 This gives a description of the **sojourn time** of a system in a particular state (the time spent in the state)
@@ -269,13 +219,41 @@ $\mathcal{S}$ is a nonincreasing function (since $\mathcal{S}=1-F$ with $F$ a c.
 
 ---
 
-The **average sojourn time** $\tau$ in state $S_1$ is given by
+The **average sojourn time** $\tau$ is
 $$
 \tau=E(T)=\int_0^\infty tf(t)dt
 $$
-Assuming that $\lim_{t\to\infty}t\mathcal{S}(t)=0$ (which is verified for most probability distributions), 
+Since $\lim_{t\to\infty}t\mathcal{S}(t)=0$,
 $$
+\tag{3}\label{eq:mean_sojourn_time}
 \tau=\int_0^\infty \mathcal{S}(t)dt
+$$
+
+**Expected future lifetime**
+$$
+\tag{4}\label{eq:expected_future_lifetime}
+\frac{1}{\mathcal{S}(t_0)} \int_0^{\infty} t\,f(t+t_0)\,dt 
+$$
+
+---
+
+# Hazard (or failure) rate
+
+The **hazard rate** (or **failure rate**) is
+$$
+\begin{align*}
+h(t) &= \lim_{\Delta t\to 0}\frac{\mathcal{S}(t)-\mathcal{S}(t+\Delta t)}{\Delta t} \\
+& = \lim_{\Delta t\to 0} \frac{\mathbb{P}( T<t+\Delta t | T\geq t)}{\Delta t} \\
+&= \frac{f(t)}{\mathcal{S}(t)}
+\end{align*}
+$$
+
+Gives probability of failure between $t$ and $\Delta t$, given survival to $t$
+
+We have
+$$
+\tag{5}\label{eq:hazard_rate}
+h(t)=-\frac{d}{dt}\ln\mathcal{S}(t)
 $$
 
 ---
@@ -287,10 +265,10 @@ $$
 
 # The exponential distribution
 
-The random variable $T$ has an \textbf{exponential} distribution if its probability density function takes the form
+The random variable $T$ has an **exponential** distribution if its probability density function takes the form
 
 $$
-\begin{equation}\label{eq:exp_distrib}
+\begin{equation}\label{eq:exp_distrib}\tag{6}
 f(t)=\begin{cases}0&\textrm{if }t<0,\\
 \theta e^{-\theta t}&\textrm{if }t\geq 0,
 \end{cases}
@@ -303,8 +281,10 @@ $$
 
 ---
 
+# The Dirac distribution
+
 If on the other hand, for some constant $\omega>0$,
-$$
+$$\tag{7}\label{eq:diract_distribution}
 \mathcal{S}(t)=
 \left\{
 \begin{array}{ll}
@@ -343,7 +323,7 @@ We suppose
 Denote $N(t)$ the population at time $t\geq 0$. Then
 
 $$
-\begin{equation}\label{eq:N_general}
+\begin{equation}\label{eq:N_general}\tag{8}
 N(t)=N_0P(t)
 \end{equation}
 $$
@@ -354,10 +334,10 @@ $N_0P(t)$ gives the proportion of $N_0$, the initial population, that is still a
 
 # Case where $T$ is exponentially distributed
 
-Suppose that $T$ has an exponential distribution with mean $1/d$ (or parameter $d$), $f(t)=de^{-dt}$. Then the survival function is $P(t)=e^{-dt}$, and \eqref{eq:N_general} takes the form
+Suppose that $T$ has an exponential distribution with mean $1/d$ (or parameter $d$), $f(t)=de^{-dt}$. Then the survival function is $P(t)=e^{-dt}$ and $\eqref{eq:N_general}$ takes the form
 
 $$
-\begin{equation}\label{eq:N}
+\begin{equation}\label{eq:N}\tag{9}
 N(t)=N_0e^{-dt}
 \end{equation}
 $$
@@ -383,7 +363,7 @@ P(t)=\begin{cases}
 0, & t>\omega
 \end{cases}
 $$
-Then \eqref{eq:N_general} takes the form
+Then $\eqref{eq:N_general}$ takes the form
 $$
 \begin{equation}\label{eq:N2}
 N(t)=\begin{cases}
@@ -432,7 +412,7 @@ Integral equation for the number of infective individuals:
 $$
 \begin{equation}
 I(t) = I_0(t)+ \int_0^t\beta\frac{(N-I(u))I(u)}{N} P(t-u) du
-\label{eq:SIS_I} 
+\label{eq:SIS_I}\tag{10} 
 \end{equation}
 $$
 
@@ -466,25 +446,25 @@ Summing over $[0,t]$ gives the number of infective individuals at time $t$
 
 ---
 
-# Case of an exponentially distributed time to recovery
+# <!--fit-->Case of an exponentially distributed time to recovery
 Suppose that $P(t)$ is such that the sojourn time in the infective state has an exponential distribution with mean $1/\gamma$, i.e., $P(t)=e^{-\gamma t}$
 
 Then the initial condition function $I_0(t)$ takes the form
 $$
 I_0(t)=I_0(0)e^{-\gamma t}
 $$
-with $I_0(0)$ the number of infective individuals at time $t=0$. This is obtained by considering the cohort of initially infectious individuals, giving a model such as \eqref{eq:N_general}
+with $I_0(0)$ the number of infective individuals at time $t=0$. This is obtained by considering the cohort of initially infectious individuals, giving a model such as $\eqref{eq:N_general}$
 
-Equation (\ref{eq:SIS_I}) becomes
+Equation $\eqref{eq:SIS_I}$ becomes
 $$
-\begin{equation}\label{eq:I_ODE}
+\begin{equation}\label{eq:I_ODE}\tag{11}
 I(t)=I_0(0)e^{-\gamma t}+\int_0^t \beta\frac{(N-I(u))I(u)}{N} e^{-\gamma (t-u)}du
 \end{equation}
 $$
 
 ---
 
-Taking the time derivative of \eqref{eq:I_ODE} yields
+Taking the time derivative of $\eqref{eq:I_ODE}$ yields
 $$
 \begin{align*}
 I'(t) &= -\gamma I_0(0)e^{-\gamma t}-\gamma\int_0^t \beta\frac{(N-I(u))I(u)}{N}e^{-\gamma(t-u)}du \\
@@ -510,9 +490,9 @@ P(t)=\begin{cases}
 $$
 i.e., the sojourn time in the infective state is a constant $\omega>0$
  
-In this case (\ref{eq:SIS_I}) becomes
+In this case $\eqref{eq:SIS_I}$ becomes
 $$
-\begin{equation}\label{eq:I_DDE}
+\begin{equation}\label{eq:I_DDE}\tag{12}
 I(t)=I_0(t)+\int_{t-\omega}^t \beta\frac{(N-I(u))I(u)}{N} du
 \end{equation}
 $$
@@ -520,7 +500,7 @@ Here, it is more difficult to obtain an expression for $I_0(t)$. It is however a
 
 ---
 
-When differentiated, \eqref{eq:I_DDE} gives, for $t\geq\omega$
+When differentiated, $\eqref{eq:I_DDE}$ gives, for $t\geq\omega$
 $$
 I'(t)=I_0'(t)+\beta\frac{(N-I(t))I(t)}{N}
 -\beta\frac{\left(N-I(t-\omega)\right)I(t-\omega)}{N}
@@ -643,9 +623,51 @@ $$
 
 ---
 
-# Back to the model
+![bg contain drop-shadow](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flow_diagram_SLLIIAARRD.png)
+
 
 ---
 
-![bg contain drop-shadow](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flow_diagram_SLLIIAARRD.png)
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!-- fit -->What types of stochastic systems?
+
+---
+
+# Chain binomial models
+
+- Reed-Frost model from circa 1920
+  - Infection spread from I individuals to others after adequate contact
+  - Any S individual, after contact with an I individual in a given period, develops the infection and is infectious to others only within the following time period; in subsequent time periods, become R
+  - Each individual has a fixed probability of coming into adequate contact with any other specified individual in the group within one time interval, and this probability is the same for every member of the group
+  - Closed population
+- Many variations since
+
+---
+
+# Discrete time Markov chains (DTMC)
+
+- Will discuss later
+- Equivalent of discrete time system but includes stochasticity
+- Jump to next state depends only on current state(*memoryless property*)
+- Easy to study using linear algebra
+
+---
+
+# Continuous time Markov chains (CTMC)
+
+- Almost exact stochastic equivalent to ODE
+- Conversion from ODE to CTMC and vice-versa is very easy for compartmental models
+- Harder to study than DTMC but still quite amenable to analysis
+
+---
+
+# Branching processes
+
+- Special case of CTMC .. or are CTMC special cases of BP?
+
+---
+
+# Stochastic differential equations
+
+- Will confess some bias against these: "ODEs with noise added"
 
