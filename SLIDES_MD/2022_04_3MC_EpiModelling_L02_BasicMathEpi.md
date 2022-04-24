@@ -99,10 +99,14 @@ Really worth taking a look at this series of papers!
 - Individuals in the population can be susceptible ($S$) or infected and infectious with the disease ($I$). Upon recovery or death, they are *removed* from the infectious compartment ($R$)
 - Incidence is mass action $\beta SI$
 
+![width:600px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIR_KMK_ODE.png)
+
 
 ---
 
-Consider the following model, usually called the Kermack-McKendrick model
+![bg left:30%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIR_KMK_ODE_vertical.png)
+
+# <!--fit-->The Kermack-McKendrick SIR model
 $$
 \begin{align}
 S' &= -\beta SI \tag{1a}\label{sys:KMK_dS} \\
