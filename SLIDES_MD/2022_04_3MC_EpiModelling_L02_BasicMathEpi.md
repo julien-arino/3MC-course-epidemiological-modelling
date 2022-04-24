@@ -70,14 +70,6 @@ img[alt~="center"] {
 
 ---
 
-# Foreword
-
-- These slides contain much more material than is needed for the first course
-- We will only cover some of that material
-- Use the remaining slides to learn about aspects not explained *viva voce*
-
----
-
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->The (epidemic) Kermack and McKendrick SIR model
 
@@ -106,6 +98,9 @@ Really worth taking a look at this series of papers!
 - The time interval under consideration is sufficiently small that demography can be omitted (we say there is *no vital dynamics*)
 - Individuals in the population can be susceptible ($S$) or infected and infectious with the disease ($I$). Upon recovery or death, they are *removed* from the infectious compartment ($R$)
 - Incidence is mass action $\beta SI$
+
+
+---
 
 Consider the following model, usually called the Kermack-McKendrick model
 $$
@@ -215,11 +210,7 @@ $$
 
 ---
 
-<div align=justify 
-style="background-color:#16a085;
-border-radius:20px;
-padding:10px 20px 10px 20px;
-box-shadow: 0px 1px 5px #999;">
+<div class="theorem">
 
 Let $(S(t),I(t))$ be a solution to $\eqref{sys:KMK_dS}$-$\eqref{sys:KMK_dR}$ in proportions and $\mathcal{R}_0$ be defined as in $\eqref{eq:R0_KMK}$. If $\mathcal{R}_0
 S_0\leq 1$, then $I(t)$ tends to 0 when $t\to\infty.$ If $\mathcal{R}_0
@@ -560,7 +551,7 @@ We also assume infection has limited duration for each individual
 
 # The model
 
-![bg right:33%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_prop_incidence_birthdN.png)
+![bg right:35%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_prop_incidence_birthdN_vertical.png)
 
 $$
 \begin{align}
