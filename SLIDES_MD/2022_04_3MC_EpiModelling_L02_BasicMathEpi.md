@@ -104,7 +104,7 @@ Really worth taking a look at this series of papers!
 
 ---
 
-![bg left:30%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIR_KMK_ODE_vertical.png)
+![bg left:25% height:600px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIR_KMK_ODE_vertical.png)
 
 # <!--fit-->The Kermack-McKendrick SIR model
 $$
@@ -555,7 +555,7 @@ We also assume infection has limited duration for each individual
 
 # The model
 
-![bg right:35%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_prop_incidence_birthdN_vertical.png)
+![bg right:35% width:400px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_prop_incidence_birthdN_vertical.png)
 
 $$
 \begin{align}
@@ -793,7 +793,7 @@ For system $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$, the following al
 
 # Case $\mathcal{R}_0>1$
 
-Remark that the higher $\mathcal{R}_0$, the higher the proportion of infectious individuals in the population
+The higher $\mathcal{R}_0$, the higher the proportion of infectious individuals in the population
 
 Thus, $\mathcal{R}_0$ is also an indicator of the infectiousness of a pathogen
 
