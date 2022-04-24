@@ -1,7 +1,7 @@
 ---
 marp: true
 title: Practicum 03 - Analysis, studying stochastic models in R. Simulating agent-based models
-description: 3MC Course on Epidemiological Modelling - Julien Arino - Practicum 03 - Analysis, studying stochastic models in R. Simulating agent-based models
+description: Julien Arino - 3MC Course on Epidemiological Modelling - Practicum 03 - Analysis, studying stochastic models in R. Simulating agent-based models
 theme: default
 paginate: false
 math: mathjax

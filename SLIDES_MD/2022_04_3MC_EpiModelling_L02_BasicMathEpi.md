@@ -1,7 +1,7 @@
 ---
 marp: true
 title: Basic concepts of mathematical epidemiology. Models in one population and their basic properties
-description: 3MC Course Epidemiological Modelling - Julien Arino - Course 02 - Basic concepts of mathematical epidemiology. Models in one population and their basic properties
+description: Julien Arino - 3MC Course Epidemiological Modelling - Course 02 - Basic concepts of mathematical epidemiology. Models in one population and their basic properties
 theme: default
 paginate: false
 size: 4K
@@ -501,6 +501,14 @@ F(S,I,N) =
 \beta \dfrac{SI}{N} & \textrm{if }N> 1
 \end{cases}
 $$
+In SIS with non-constant population
+$$
+\begin{align}
+S' &= bN-dS-F(S,I,N)+\gamma I \\
+I' &= F(S,I,N)-(d+\delta+\gamma)I
+\end{align}
+$$
+$b\neq d$ and $\delta$ disease-induced death rate, periodic solutions found
 
 ---
 
@@ -546,13 +554,14 @@ We also assume infection has limited duration for each individual
 
 # Model flow diagram
 
-![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_prop_incidence_birthdN.png)
+![width:600px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_prop_incidence_birthdN.png)
 
 ---
 
 # The model
 
-Using standard incidence 
+![bg right:33%](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_prop_incidence_birthdN.png)
+
 $$
 \begin{align}
 S' &= \underbrace{bN}_\textrm{birth}
@@ -567,7 +576,7 @@ I' &= \underbrace{\beta\frac{SI}{N}}_\textrm{infection}
 \end{align}
 $$
 
-Consider the initial value problem (IVP) consisting of this system together with the initial conditions $S(0)=S_0\geq 0$ and $I(0)=I_0\geq 0$
+Consider initial value problem (IVP) consisting of this system together with initial conditions $S(0)=S_0\geq 0$ and $I(0)=I_0\geq 0$
 
 ---
 

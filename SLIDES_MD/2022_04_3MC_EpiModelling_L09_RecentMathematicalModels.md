@@ -1,7 +1,7 @@
 ---
 marp: true
 title: Some recent mathematical models for Covid-19, HIV/AIDS, TB, Hepatitis, Malaria
-description: 3MC Course Epidemiological Modelling - Julien Arino - Course 09 - Some (recent?) mathematical models for HIV/AIDS, TB, Hepatitis, Malaria
+description: Julien Arino - 3MC Course Epidemiological Modelling - Course 09 - Some (recent?) mathematical models for HIV/AIDS, TB, Hepatitis, Malaria
 theme: default
 paginate: false
 math: mathjax

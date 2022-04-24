@@ -1,7 +1,7 @@
 ---
 marp: true
 title: Stochastic aspects in the spread of epidemics
-description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 06 - Stochastic aspects in the spread of epidemics
+description: Lecture 06 - 3MC Course Epidemiological Modelling - Julien Arino - Stochastic aspects in the spread of epidemics
 theme: default
 math: mathjax
 paginate: false
@@ -52,7 +52,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 <!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
 # Outline
-- Why stochastic systems? 
+- Why stochastic systems?
 - More on sojourn times
 - What types of stochastic systems?
 

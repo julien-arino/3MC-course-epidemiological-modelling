@@ -1,7 +1,7 @@
 ---
 marp: true
 title: Group models
-description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 04 - Group models
+description: Julien Arino - 3MC Course Epidemiological Modelling - Lecture 04 - Group models
 theme: default
 paginate: false
 math: mathjax

@@ -1,7 +1,7 @@
 ---
 marp: true
 title: Metapopulation epidemic models
-description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 05 - Metapopulation models
+description: Julien Arino - 3MC Course Epidemiological Modelling - Lecture 05 - Metapopulation models
 theme: default
 paginate: false
 math: mathjax

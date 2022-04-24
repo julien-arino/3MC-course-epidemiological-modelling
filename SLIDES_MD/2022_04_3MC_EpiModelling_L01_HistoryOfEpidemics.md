@@ -1,7 +1,7 @@
 ---
 marp: true
 title: History of epidemics and Historical epidemics
-description: 3MC Course Epidemiological Modelling - Julien Arino - Lecture 01 - History of epidemics and Historical epidemics
+description: Julien Arino - 3MC Course Epidemiological Modelling - Lecture 01 - History of epidemics and Historical epidemics
 theme: default
 math: mathjax
 paginate: false
@@ -112,7 +112,7 @@ One remark: I sometimes refer to Wikipedia. For the younger students here: this 
 
 # Code
 
-- I use `R`
+- I use `R` - `Python` would be a good choice as well but I prefer `R`
 - Instructions on setting up `R` for the course can be found in the GitHub repo
 - Some code is in the repo
 - For the epi side of things, a very useful open reference: [R for applied epidemiology and public health](https://epirhandbook.com/en/index.html)

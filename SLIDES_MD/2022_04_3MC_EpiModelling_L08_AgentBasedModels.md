@@ -1,7 +1,7 @@
 ---
 marp: true
 title: Agent-based models
-description: 3MC Course Epidemiological Modelling - Julien Arino - Course 08 - Agent-based models
+description: Julien Arino - 3MC Course Epidemiological Modelling - Course 08 - Agent-based models
 theme: default
 paginate: false
 math: mathjax
