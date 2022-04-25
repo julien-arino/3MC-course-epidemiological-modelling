@@ -30,7 +30,7 @@ size: 4K
   }
 </style>
 
-<!-- _backgroundImage: "linear-gradient(to top, #85110d, 3%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to top, #85110d, 1%, white)" -->
 # Lecture 06 - Stochastic aspects in the spread of epidemics
 
 6 April 2022 

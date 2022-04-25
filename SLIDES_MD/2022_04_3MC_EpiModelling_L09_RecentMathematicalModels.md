@@ -30,7 +30,7 @@ size: 4K
   }
 </style>
 
-<!-- _backgroundImage: "linear-gradient(to top, #85110d, 3%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to top, #85110d, 1%, white)" -->
 # Some (recent?) mathematical models for HIV/AIDS, TB, Hepatitis, Malaria, etc.
 
 7 April 2022 
@@ -58,7 +58,7 @@ img[alt~="center"] {
 
 ---
 
-<!-- _backgroundImage: "radial-gradient(white,80%,#85110d)" -->
+<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
 # Outline
 
 - Additional considerations and a few oddities
@@ -67,13 +67,8 @@ img[alt~="center"] {
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Additional considerations and a few oddities
-
----
-
-<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
-# Outline
 
 - An "issue" with the next generation method for $\mathcal{R}_0$
 - Tuberculosis (TB) model with non-trivial behaviour at the origin
@@ -82,7 +77,7 @@ img[alt~="center"] {
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->An "issue" with the next generation method for $\mathcal{R}_0$
 
 # (Malaria model with transgenic vectors)
@@ -181,7 +176,7 @@ Problem is with (A5): compute Jacobian of $(S,T)$ system and evaluate at $\bar E
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # Non-trivial behaviour at the origin
 
 
@@ -304,7 +299,7 @@ In the case $\mathcal{R}_0,\mathcal{R}_2>1$, global stability of $X_*$ is establ
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->SLIRS with non-constant population
 
 # (Some periodic solutions)
@@ -367,12 +362,12 @@ $$
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->Bistable states
 
 # Undesired effect of vaccination
 
-<div style = "position: relative; bottom: -35%; font-size:20px;">
+<div style = "position: relative; bottom: -30%; font-size:20px;">
 
 Arino, McCluskey & PvdD. [Global results for an epidemic model with vaccination that exhibits backward bifurcation](http://dx.doi.org/10.1137/S0036139902413829). SIAM J Applied Math (2003)
 
@@ -573,12 +568,7 @@ limit to a unique equilibrium point
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
-# <!--fit-->A few (recent?) models
-
----
-
-<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # A few (recent?) models
 
 - HIV: Sex, drugs and matrices
@@ -592,7 +582,7 @@ limit to a unique equilibrium point
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->HIV: Sex, drugs and matrices
 
 <div style = "position: relative; bottom: -40%; font-size:20px;">
@@ -620,7 +610,7 @@ Study is only numerical
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->HIV: An early complex model
 
 <div style = "position: relative; bottom: -40%; font-size:20px;">
@@ -638,7 +628,7 @@ Hethcote [A Model for HIV Transmission and AIDS](https://doi.org/10.1007/978-3-6
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->HIV: Universal HIV testing followed by ART
 
 <div style = "position: relative; bottom: -40%; font-size:20px;">
@@ -656,7 +646,7 @@ N represents population aged 15 years and above. People enter into the susceptib
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->HIV: viral load monitoring and patient tracing in Malawi
 
 <div style = "position: relative; bottom: -40%; font-size:20px;">
@@ -678,7 +668,7 @@ Estill, Kerr, Blaser, Salazar-Vizcaya, Tenthani, Wilson, Keiser. [The Effect of 
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->Malaria: A super classic model
 
 <div style = "position: relative; bottom: -40%; font-size:20px;">
@@ -704,7 +694,7 @@ Dietz, Molineaux & Thomas. [A malaria model tested in the African savannah](http
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->Malaria: A classic model
 
 <div style = "position: relative; bottom: -40%; font-size:20px;">
@@ -722,7 +712,7 @@ Ngwa & Shu. [A mathematical model for endemic malaria with variable human and mo
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->Malaria: Sensitivity analysis
 
 <div style = "position: relative; bottom: -40%; font-size:20px;">
@@ -747,7 +737,7 @@ Chitnis, Hyman & Cushing. [Determining Important Parameters in the Spread of Mal
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # <!--fit-->Malaria and COVID-19: Optimal control
 
 <div style = "position: relative; bottom: -40%; font-size:20px;">
@@ -783,7 +773,7 @@ where
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Quick overview of missing topics
 
 ---

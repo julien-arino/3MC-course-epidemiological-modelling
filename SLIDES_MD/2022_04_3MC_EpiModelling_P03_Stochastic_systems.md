@@ -30,7 +30,7 @@ size: 4K
   }
 </style>
 
-<!-- _backgroundImage: "linear-gradient(to top, #85110d, 3%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to top, #85110d, 1%, white)" -->
 # Practicum 03 - Analysis, studying stochastic models in R. Simulating agent-based models
 
 6 April 2022 
@@ -62,10 +62,6 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Analysing stochastic models
 
----
-
-<!-- _backgroundImage: "radial-gradient(white, 80%, #156C26)" -->
-# <!--fit-->Analysing stochastic models
 - Asymptotic behaviour of a DTMC
 - Regular DTMC
 - Absorbing DTMC

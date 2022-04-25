@@ -30,7 +30,7 @@ size: 4K
   }
 </style>
 
-<!-- _backgroundImage: "linear-gradient(to top, #85110d, 3%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to top, #85110d, 1%, white)" -->
 # Lecture 05 - Metapopulation epidemic models
 
 5 April 2022 
