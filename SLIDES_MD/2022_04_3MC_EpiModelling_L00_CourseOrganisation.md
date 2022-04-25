@@ -63,7 +63,7 @@ Fred passed away 2021-10-17. This course is dedicated to his memory!
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #85110d, 20%, white)" -->
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->About the course
 
 ---
@@ -187,6 +187,7 @@ It is important to do the 4 interactively
 
 ---
 
+<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
 # Organisation of the course
 
 L1: History of epidemics and Historical epidemics
