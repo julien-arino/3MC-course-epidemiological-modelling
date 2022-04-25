@@ -30,6 +30,7 @@ size: 4K
   }
 </style>
 
+<!-- _backgroundImage: "linear-gradient(to top, #85110d, 3%, white)" -->
 # Practicum 03 - Analysis, studying stochastic models in R. Simulating agent-based models
 
 6 April 2022 

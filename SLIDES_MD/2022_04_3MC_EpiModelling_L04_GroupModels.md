@@ -30,6 +30,7 @@ size: 4K
   }
 </style>
 
+<!-- _backgroundImage: "linear-gradient(to top, #85110d, 3%, white)" -->
 # Lecture 04 - Group models
 
 5 April 2022 

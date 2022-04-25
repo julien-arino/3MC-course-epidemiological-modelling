@@ -30,6 +30,7 @@ size: 4K
   }
 </style>
 
+<!-- _backgroundImage: "linear-gradient(to top, #85110d, 3%, white)" -->
 # Practicum 01 - Introduction to R. Collecting data. Solving ODEs in R
 
 4 April 2022

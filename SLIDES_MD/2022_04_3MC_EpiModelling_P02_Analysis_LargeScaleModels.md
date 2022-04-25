@@ -30,6 +30,7 @@ size: 4K
   }
 </style>
 
+<!-- _backgroundImage: "linear-gradient(to top, #85110d, 3%, white)" -->
 # Practicum 02 - Model analysis, studying large-scale models in R
 
 5 April 2022 

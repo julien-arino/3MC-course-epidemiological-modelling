@@ -30,6 +30,7 @@ math: mathjax
   }
 </style>
 
+<!-- _backgroundImage: "linear-gradient(to top, #85110d, 3%, white)" -->
 # Basic concepts of mathematical epidemiology. Models in one population and their basic properties
 
 4 April 2022 
