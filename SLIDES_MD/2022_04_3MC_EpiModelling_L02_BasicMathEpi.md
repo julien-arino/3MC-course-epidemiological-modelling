@@ -781,6 +781,14 @@ For system $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$, the following al
 </div>
 
 ---
+
+# $I^*$ as a function of $\mathcal{R}_0$
+
+The higher $\mathcal{R}_0$, the higher the proportion of infectious individuals in the population
+
+![width:550px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/R0.png)
+
+---
  
  # Further remarks about $\mathcal{R}_0$
 
@@ -791,13 +799,14 @@ For system $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$, the following al
 
 ---
 
-# Case $\mathcal{R}_0>1$
+# The basic reproduction number $\mathcal{R}_0$
 
-The higher $\mathcal{R}_0$, the higher the proportion of infectious individuals in the population
+Indicator often used in epidemiology. Verbally
 
-Thus, $\mathcal{R}_0$ is also an indicator of the infectiousness of a pathogen
-
-![width:550px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/R0.png)
+> average number of new cases generated when an infectious individual is introduced in a completely susceptible population
+ 
+- If $\mathcal{R}_0<1$, then each infectious individual infects on average less than 1 person and the epidemic is quite likely to go extinct
+- If $\mathcal{R}_0>1$, then each infectious individual infects on average more than 1 person and an epidemic is quite likely to occur
 
 ---
 
@@ -835,8 +844,10 @@ J_{DFE}=\begin{pmatrix}
 \end{pmatrix}
 $$
 When eigenvalues $-d$ and $\beta-(d+\gamma)$
-$\Rightarrow$
-LAS of the DFE is determined by the sign of $\beta-(d+\gamma)$. We find the same $\mathcal{R}_0$ we had found before
+
+$\Rightarrow$ LAS of the DFE is determined by the sign of $\beta-(d+\gamma)$
+
+Find same $\mathcal{R}_0$ as before
 
 ---
 
@@ -921,12 +932,13 @@ with matrices $F$ and $V$ obtained as indicated. Assume conditions (A1) through 
 
 ---
 
+![bg right:35% width:300px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIRS_ODE_vertical.png)
+
 # SLIRS model
 
-The model takes the form
 $$
 \begin{align}
-S' &= d(N-S)-f(S,I,N)+\nu R
+S' &= b-f(S,I,N)-dS+\nu R
 \tag{20a}\label{sys:SLIR_dS}\\
 L' &= f(S,I,N) -(d+\varepsilon)L 
 \tag{20b}\label{sys:SLIR_dL} \\
@@ -945,20 +957,38 @@ $$
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# Classic computation of $\mathcal{R}_0$
+# Behaviour of the total population
+
+$N=S+L+I+R$ has dynamics
+
+$$
+N' = b-dN
+$$
+
+We can either solve explicitly or "study" qualitatively; either way, $\lim_{t\to\infty}N(t)=\dfrac{b}{d}$
+
+$\implies$ total population asymptotically constant
 
 ---
 
-# The basic reproduction number $\mathcal{R}_0$
+# DFE
 
-Indicator often used in epidemiology. Verbally
+Assume $I=0$
 
-> average number of new cases generated when an infectious individual is introduced in a completely susceptible population
- 
-- If $\mathcal{R}_0<1$, then each infectious individual infects on average less than 1 person and the epidemic is quite likely to go extinct
-- If $\mathcal{R}_0>1$, then each infectious individual infects on average more than 1 person and an epidemic is quite likely to occur
+Then $f(S,0,N)=0$ (always a reasonable assumption)
 
+From this, $L=R=0$
+
+$\implies$ DFE has $L=I=R=0$ and $S=N$, denoted
+
+$$
+E_0:=(S,L,I,R)=(N,0,0,0)
+$$
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Classic computation of $\mathcal{R}_0$
 
 ---
 
@@ -966,15 +996,74 @@ Indicator often used in epidemiology. Verbally
 
 Mathematically
 
-> bifurcation parameter aggregating system parameters, such that the DFE loses it *local* asymptotic stability as $\mathcal{R}_0$ crosses 1 from left to right
+> bifurcation parameter aggregating system parameters, such that the DFE loses *local* asymptotic stability as $\mathcal{R}_0$ crosses 1 from left to right
 
 - Obtained by considering the linearisation of the system at the DFE
 - Quickly becomes unmanageable (matrix size) and we get a non unique form
 
 ---
 
+Jacobian matrix of $\eqref{sys:SLIR_dS}$-$\eqref{sys:SLIR_dR}$ at an arbitrary point
+$$
+J=
+\begin{pmatrix}
+-f_S-d & -f_L & -f_I & -f_R+\nu \\
+f_S & f_L-(d+\varepsilon) & f_I & f_R \\
+0 & \varepsilon & -(d+\gamma) & 0 \\
+0 & 0 & \gamma & -(d+\nu)
+\end{pmatrix}
+$$
+where $f_X = \partial f/\partial X$. Since $N$ (asymptotically) constant, $f_L=f_R=0$, so
+$$
+J=
+\begin{pmatrix}
+-f_S-d & 0 & -f_I & \nu \\
+f_S & -(d+\varepsilon) & f_I & 0 \\
+0 & \varepsilon & -(d+\gamma) & 0 \\
+0 & 0 & \gamma & -(d+\nu)
+\end{pmatrix}
+$$
+
+---
+
+At the DFE, $f_S=f_S(E_0)=0$ (in most cases) and $f_I=f_I(E_0)$, so
+$$
+J_{DFE}=
+\begin{pmatrix}
+-d & 0 & -f_I(E_0) & \nu \\
+0 & -(d+\varepsilon) & f_I(E_0) & 0 \\
+0 & \varepsilon & -(d+\gamma) & 0 \\
+0 & 0 & \gamma & -(d+\nu)
+\end{pmatrix}
+$$
+Eigenvalues are $-d<0$, $-(d+\nu)<0$ and those of
+$$
+\begin{pmatrix}
+-(d+\varepsilon) & f_I(E_0) \\
+\varepsilon & -(d+\gamma)
+\end{pmatrix}
+$$
+
+---
+
+$$
+\begin{align}
+\left|\begin{matrix}
+-(d+\varepsilon+\lambda) & f_I(E_0) \\
+\varepsilon & -(d+\gamma+\lambda)
+\end{matrix}\right|
+&= (d+\varepsilon+\lambda)(d+\gamma+\lambda)
+-\varepsilon f_I(E_0) \\
+&= \lambda^2+(2d+\varepsilon+\gamma)\lambda
+-\varepsilon f_I(E_0)
+\end{align}
+$$
+If $f_I(E_0)>0$, then there is a single positive real root, while if $f_I(E_0)<0$, either both roots are real and negative or they are complex conjugate
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# Computation of $\mathcal{R}_0$ using the next generation matrix method
+# <!--fit-->Computing $\mathcal{R}_0$ using the next generation matrix method
 
 ---
 
@@ -1016,8 +1105,7 @@ Then compute the Jacobian matrices of vectors $\mathcal{F}$ and $\mathcal{V}$
 $$
 F=\left(
 \begin{matrix}
-\dfrac{\partial\overline{f}}{\partial L}
-& \dfrac{\partial\overline{f}}{\partial I} \\
+f_L(E_0) & f_I(E_0) \\
 0 & 0
 \end{matrix}
 \right),\quad
@@ -1028,17 +1116,6 @@ V=\left(
 \end{matrix}
 \right)
 $$
-where
-$$
-\dfrac{\partial\overline{f}}{\partial I}:=
-\dfrac{\partial f}{\partial I}(\bar
-S,\bar I,\bar N)\quad\quad 
-\dfrac{\partial\overline{f}}{\partial L}:=
-\dfrac{\partial f}{\partial L}(\bar
-S,\bar I,\bar N)
-$$
-
----
 
 We have
 $$
@@ -1051,10 +1128,9 @@ d+\gamma & 0 \\
 \right)
 $$
 
-Also, when $N$ constant, $\partial f/\partial
-L=0$, then
+Also, when $N$ constant, $f_L(E_0)=0$, then
 $$
-FV^{-1}=\frac{{\partial\overline{f}}/{\partial I}}
+FV^{-1}=\frac{f_I(E_0)}
 {(d+\varepsilon)(d+\gamma)}
 \left(
 \begin{matrix}
@@ -1067,7 +1143,7 @@ $$
 and thus,
 $$
 \mathcal{R}_0=\varepsilon
-\frac{{\partial\overline{f}}/{\partial I}}
+\frac{f_I(E_0)}
 {(d+\varepsilon)(d+\gamma)}
 $$
 
@@ -1078,7 +1154,7 @@ $$
 Let
 $$
 \mathcal{R}_0=
-\dfrac{\varepsilon\dfrac{\partial\overline{f}}{\partial I}}
+\dfrac{\varepsilon f_I(E_0)}
 {(d+\varepsilon)(d+\gamma)}
 $$
 
@@ -1091,21 +1167,16 @@ Important to stress *local* nature of stability that is deduced from this result
 
 ---
 
-# Application
+# <!--fit-->Application : most frequently used incidence functions
 
-The DFE takes the form
-$$
-(\bar S,\bar L,\bar I,\bar R)=(N,0,0,0)
-$$
- 
 - Frequency-dependent contacts (mass action incidence)
 $$
-\frac{\partial\overline{f}}{\partial I}=\beta\bar S \Rightarrow\mathcal{R}_0 =
+f_I(E_0)=\beta N \Rightarrow\mathcal{R}_0 =
 \frac{\varepsilon\beta N}{(\varepsilon+d)(\gamma+d)} 
 $$
 - Proportion-dependent contacts (standard incidence)
 $$
-\frac{\partial\overline{f}}{\partial I}=\frac{\beta\bar S}{N}
+f_I(E_0)=\frac{\beta N}{N}
 \Rightarrow\mathcal{R}_0 = \frac{\varepsilon\beta}{(\varepsilon+d)(\gamma+d)}
 $$
 
@@ -1168,16 +1239,17 @@ $(\bar S,\bar I)$ the DFE, denote $\overline{f}_I=\partial f/\partial I(\bar S,\
 
 ---
 
-Take the simple case of an SIR model but assume the following
+Take SIR model and assume the following
 - Vaccination takes susceptible individuals and moves them directly into the recovered compartment, without them ever becoming infected/infectious
+- Birth = death
 - A fraction $p$ is vaccinated at birth
 - $f(S,I,N)=\beta SI$
 
 $$
 \begin{align}
-S' &= d((1-p)N-S)-\beta SI \tag{21a} \\
+S' &= (1-p)dN-dS-\beta SI \tag{21a} \\
 I' &= \beta SI -(d+\gamma)I \tag{21b} \\
-R' &= dpN+\gamma I-dR \tag{21c}
+R' &= pdN+\gamma I-dR \tag{21c}
 \end{align}
 $$
 
@@ -1187,11 +1259,11 @@ $$
  
 - DFE, SIR: 
 $$
-(\bar S,\bar I,\bar R)=(N,0,0)
+E_0:=(S,I,R)=(N,0,0)
 $$
 - DFE, SIR with vaccination
 $$
-(\bar S,\bar I,\bar R)=
+E_0^v:=(S,I,R)=
 \left((1-p)N,0,pN\right)
 $$
 
@@ -1230,20 +1302,21 @@ This is *herd immunity*
 
 - As already mentioned, global stability properties are important in a mathematical context, less so in public health
 - Understanding that a DFE or an EEP are GAS is however important: this precludes the existence of other types of behaviours
+- In the following: models were SEIRS originally, I just wrote as SLIRS
 
 ---
 
-# SEIRS - Mukherjee, Chattopadhyay & Tapaswi
+# SLIRS - Mukherjee, Chattopadhyay & Tapaswi
 
-SEIRS with constant birth rate $d$, *per capita* death rate $d$ and incidence function
+SLIRS with constant birth rate $d$, *per capita* death rate $d$ and incidence function
 $$
 f(S,I,N)=\beta S^q I^p
 $$
 
 After establishing uniform boundedness of the system, they define 
 $$
-V(S,E,I)=\frac 12\left(
-(S-S^\star )^2+(E-E^\star )^2+(I-I^\star )^2\right)
+V(S,L,I)=\frac 12\left(
+(S-S^\star )^2+(L-L^\star )^2+(I-I^\star )^2\right)
 $$
 
 <div style = "text-align: justify; position: relative; bottom: -25%; font-size:18px;">
@@ -1283,7 +1356,7 @@ Clearly, this is hard to use in practice so the system was studied in other ways
 
 ---
 
-# [Li & Muldowney (1995)](https://doi.org/10.1016/0025-5564(95)92756-5)
+# [Li & Muldowney (1995)](https://doi.org/10.1016/0025-5564(95)92756-5) - SLIR model
 
 $$
 \begin{align}
@@ -1297,6 +1370,7 @@ R' &= \gamma I-dR
 \tag{23d}\label{sys:SLIR_LiMuldowney_dR} 
 \end{align}
 $$
+with $0<p\leq 1$
 
 <div style = "text-align: justify; position: relative; bottom: -25%; font-size:18px;">
 
@@ -1305,7 +1379,34 @@ Li & Muldowney. [Global stability for the SEIR model in epidemiology](https://do
 
 ---
 
-# Li, Muldowney & PvdD - CAMQ (1999)
+Since 
+$$
+(S+L+I+R)' = d-d(S+L+I+R)
+$$
+the 3-dim. simplex 
+$$
+\Gamma = \{(S,L,I,R)\in\mathbb{R}_+^4;
+S+L+I+R=1\}
+$$
+is positively invariant, $\eqref{sys:SLIR_LiMuldowney_dS}$-$\eqref{sys:SLIR_LiMuldowney_dR}$ dissipative and the global attractor is contained in $\Gamma$
+
+So they work on the simplex
+
+---
+
+<div class="theorem">
+
+If $0<p<1$ or $p=1$ and $\sigma>1$, the endemic equilibrium $P^\star$ is globally asymptotically stable in the interior of 
+$$
+T=\{(S,L,I) :O\leq S,E,I\leq 1, S + E + I\leq 1\}
+$$
+</div>
+
+Proof uses compound matrix results
+
+---
+
+# Li, Muldowney & PvdD - SLIRS model
 
 SEIRS with incidence
 $$
@@ -1330,7 +1431,7 @@ $$
 \frac{\partial\overline{f}}{\partial I}=\beta\frac{\partial\overline{g}}{\partial I}
 $$
 Since $\dfrac{\partial\overline{g}}{\partial I}=\lim_{I\to 0^+}
-\dfrac{g(I)}{I}=c$, 
+\dfrac{g(I)}{I}=c$
 $$
 \mathcal{R}_0=\frac{c\beta\varepsilon}
 {(d+\varepsilon)(d+\gamma)}
@@ -1344,12 +1445,14 @@ The local stability results already established are valid here, since $g$ is a p
 
 The system is **uniformly persistent** if there exists $0<\epsilon_0<1$ s.t. any solution $(S(t),E(t),I(t),R(t))$ of SEIRS with initial condition $(S(0),E(0),I(0),R(0))\in \overset{\circ}{\Gamma}$ satisfies
 $$
+\begin{equation}\label{eq:SEIRS_persist}\tag{24}
 \begin{array}{c}
 \liminf_{t\to\infty} S(t)\geq \epsilon_0,\quad 
 \liminf_{t\to\infty} E(t)\geq \epsilon_0 \\
 \liminf_{t\to\infty} I(t)\geq \epsilon_0,\quad 
 \liminf_{t\to\infty} R(t)\geq \epsilon_0
 \end{array}
+\end{equation}
 $$
 </div>
 
@@ -1377,7 +1480,7 @@ is satisfied, where
 $$
 \eta_0=\min_{I\in[\epsilon_0,1]}g(I)>0
 $$
-and $\epsilon_0$ defined by (\ref{eq:SEIRS_persist}). Then there is no closed rectifiable curve that is invariant with respect to SEIRS. Furthermore, each semi-trajectory of SEIRS in $\Gamma$ converges to an equilibrium
+and $\epsilon_0$ defined by $\eqref{eq:SEIRS_persist}$. Then there is no closed rectifiable curve that is invariant with respect to SEIRS. Furthermore, each semi-trajectory of SEIRS in $\Gamma$ converges to an equilibrium
 </div>
 
 The proof uses compound matrices (see [Practicum 02](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html))
@@ -1391,11 +1494,11 @@ Consider an SLIR with constant population normalised to 1 and vertical transmiss
 $$
 \begin{align}
 S' &= d-\beta SI -pdI-qdL-dS 
-\tag{23a}\label{sys:SEIR_vert_transmission_dS} \\
+\tag{25a}\label{sys:SEIR_vert_transmission_dS} \\
 L' &= \beta SI +pdI-(\varepsilon+d-qd)L 
-\tag{23b}\label{sys:SEIR_vert_transmission_dL} \\
+\tag{25b}\label{sys:SEIR_vert_transmission_dL} \\
 I' &= \varepsilon L-(\gamma+d)I 
-\tag{23c}\label{sys:SEIR_vert_transmission_dI}
+\tag{25c}\label{sys:SEIR_vert_transmission_dI}
 \end{align}
 $$
 
@@ -1424,7 +1527,7 @@ $$
 
 where
 $$
-\tag{24}
+\tag{26}
 \mathcal{R}_0^v=\frac{\beta\varepsilon}
 {(\gamma+d)(\varepsilon+d)-qd(\varepsilon+d)-pd\varepsilon}
 $$
@@ -1437,7 +1540,7 @@ $E^\star$ is biologically relevant only when $\mathcal{R}_0^v>1$
 
 Use the function
 $$
-\tag{25}
+\tag{27}
 V=\sum a_i(x_i-x_i^\star  \ln x_i)
 $$
 
