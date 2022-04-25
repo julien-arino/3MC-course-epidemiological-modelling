@@ -384,6 +384,9 @@ Studied by [John Snow](https://en.wikipedia.org/wiki/John_Snow)
 
 </div>
 
+---
+
+![bg](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/World_Health_Organisation_regional_offices.svg/1280px-World_Health_Organisation_regional_offices.svg.png)
 
 ---
 
