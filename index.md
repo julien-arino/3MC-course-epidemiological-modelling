@@ -6,7 +6,7 @@ This is the web version of the course pages for the [3MC course on Epidemiologic
 
 ### Monday 4 April 2022
 
-- Lecture 00: [Course organisation](2022_04_3MC_EpiModelling_L00_CourseOrganisation.html)
+- Lecture 00: [Course organisation](2022_04_3MC_EpiModelling_L00_CourseOrganisation.html) ([video](https://youtu.be/MYBSTv1dWRA))
 - Lecture 01: [History of epidemics and Historical epidemics](2022_04_3MC_EpiModelling_L01_HistoryOfEpidemics.html)
 - Lecture 02: [Basic mathematical epidemiology](2022_04_3MC_EpiModelling_L02_BasicMathEpi.html)
 - Practicum 01: [Introduction to R. Collecting data. Solving ODEs in R](2022_04_3MC_EpiModelling_P01_IntroR_Data_SolvingODE.html)
