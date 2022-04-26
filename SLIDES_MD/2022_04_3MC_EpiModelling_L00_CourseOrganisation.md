@@ -31,7 +31,7 @@ size: 4K
 </style>
 
 <!-- _backgroundImage: "linear-gradient(to top, #85110d, 1%, white)" -->
-# Course organisation
+# 3MC Math Epi course organisation
 
 4 April 2022 
 
@@ -98,8 +98,6 @@ One remark: I sometimes refer to Wikipedia. For the younger students here: this 
 - As much as possible, I have indicated provenance (by linking the file on the original website); when not possible, the file is saved with the name of the source indicated
 
 - Figure sources are added as html comments which appear as "speakers notes" in the presentation version
-
-- For convenience, `pdf` versions of the slides are available in the GitHub repo; the `pdf` versions embed image files. However, movies and Shiny code do not function in the `pdf` version of the slides
 
 ---
 
