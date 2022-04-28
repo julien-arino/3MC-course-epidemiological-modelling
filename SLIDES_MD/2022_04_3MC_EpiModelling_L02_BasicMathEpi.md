@@ -31,7 +31,8 @@ math: mathjax
 </style>
 
 <!-- _backgroundImage: "linear-gradient(to top, #85110d, 1%, white)" -->
-# Basic concepts of mathematical epidemiology. Models in one population and their basic properties
+# Basic concepts of math epi
+## Models in one population and their basic properties
 
 4 April 2022 
 
@@ -110,11 +111,29 @@ Really worth taking a look at this series of papers!
 # <!--fit-->The Kermack-McKendrick SIR model
 $$
 \begin{align}
+\frac{d}{dt}S(t) &= -\beta S(t)I(t) \tag{1a} \\
+\frac{d}{dt}I(t) &= (\beta S(t)-\gamma)I(t)  \tag{1b} \\
+\frac{d}{dt}R(t) &= \gamma I(t)  \tag{1c}
+\end{align}
+$$
+
+Considered with initial conditions (IC) $S(0)=S_0$, $I(0)=I_0$ and $R(0)=R_0$ (often the latter is zero)
+
+---
+
+![bg left:25% height:600px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIR_KMK_ODE_vertical.png)
+
+# <!--fit-->The Kermack-McKendrick SIR model
+As often with ODE, write $dX(t)/dt=X'(t)$ and omit time-dependence of state variables:
+$$
+\begin{align}
 S' &= -\beta SI \tag{1a}\label{sys:KMK_dS} \\
 I' &= (\beta S-\gamma)I  \tag{1b}\label{sys:KMK_dI} \\
 R' &= \gamma I  \tag{1c}\label{sys:KMK_dR}
 \end{align}
 $$
+
+Considered with initial conditions (IC) $S(0)=S_0$, $I(0)=I_0$ and $R(0)=R_0$ (often the latter is zero)
 
 ---
 
@@ -195,9 +214,11 @@ $$
 
 ---
 
-Trajectories in phase plane $(S,I)$ corresponding to IC $(S_0,1-S_0)$ and $\beta/\gamma=2.5$
 
 ![width:1200px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/KMK_planar_trajectories.png)
+
+Trajectories in phase plane $(S,I)$ corresponding to IC $(S_0,1-S_0)$ and $\beta/\gamma=2.5$
+
 
 ---
 
@@ -556,7 +577,7 @@ We also assume infection has limited duration for each individual
 
 # The model
 
-![bg right:35% width:400px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_prop_incidence_birthdN_vertical.png)
+![bg right:34% width:400px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_base_prop_incidence_birthdN_vertical.png)
 
 $$
 \begin{align}
