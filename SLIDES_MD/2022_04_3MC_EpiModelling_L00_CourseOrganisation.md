@@ -103,9 +103,9 @@ One remark: I sometimes refer to Wikipedia. For the younger students here: this 
 
 # Videos
 
-- Videos will be recorded shortly for the course
-- They will be posted on YouTube
-- When they are ready, I will add a link here
+- Videos are being recorded for the course
+- They are posted on YouTube
+- You can access the playlist [here](https://youtube.com/playlist?list=PLfRaznSpWo2sHwiQ04IT5STYdwarcMtRA). Links to individual videos are also available on the [webpage](https://julien-arino.github.io/3MC-course-epidemiological-modelling/)
 
 ---
 

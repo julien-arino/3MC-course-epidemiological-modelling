@@ -17,7 +17,7 @@ There were issues recording the live lectures, so I am re-recording the lectures
 
 - Lecture 03: [Spread of infections in groups / in space](2022_04_3MC_EpiModelling_L03_SpreadInGroups_SpreadInSpace.html) ([video](https://youtu.be/Jz317w81oZY) - 56:45)
 - Lecture 04: [Group models](2022_04_3MC_EpiModelling_L04_GroupModels.html) ([video](https://youtu.be/j63HwBbapHE) - 29:21)
-- Lecture 05: [Metapopulation epidemic models](2022_04_3MC_EpiModelling_L05_MetapopulationModels.html) ([video]())
+- Lecture 05: [Metapopulation epidemic models](2022_04_3MC_EpiModelling_L05_MetapopulationModels.html) ([video](https://youtu.be/wk64L-ZEOUM) - 1:43:34)
 - Practicum 02: [Model analysis, studying large-scale models in R](2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html) ([video]())
 
 ### Wednesday 6 April 2022
