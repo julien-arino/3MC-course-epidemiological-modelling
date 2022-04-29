@@ -4,29 +4,31 @@ This is the web version of the course pages for the [3MC course on Epidemiologic
 
 ## List of lectures
 
+When videos on YouTube are available, the link is shown as well as the running time - beware, a few of the videos are long!
+
 ### Monday 4 April 2022
 
-- Lecture 00: [Course organisation](2022_04_3MC_EpiModelling_L00_CourseOrganisation.html) ([video](https://youtu.be/MYBSTv1dWRA))
-- Lecture 01: [History of epidemics and Historical epidemics](2022_04_3MC_EpiModelling_L01_HistoryOfEpidemics.html)
-- Lecture 02: [Basic mathematical epidemiology](2022_04_3MC_EpiModelling_L02_BasicMathEpi.html)
-- Practicum 01: [Introduction to R. Collecting data. Solving ODEs in R](2022_04_3MC_EpiModelling_P01_IntroR_Data_SolvingODE.html)
+- Lecture 00: [Course organisation](2022_04_3MC_EpiModelling_L00_CourseOrganisation.html) ([video](https://youtu.be/MYBSTv1dWRA), 21:16)
+- Lecture 01: [History of epidemics and Historical epidemics](2022_04_3MC_EpiModelling_L01_HistoryOfEpidemics.html) ([video](https://youtu.be/StIRQIT0WSo), 47:13)
+- Lecture 02: [Basic mathematical epidemiology](2022_04_3MC_EpiModelling_L02_BasicMathEpi.html) ([video](https://youtu.be/tMHwnrN3dXk), 2:14:34)
+- Practicum 01: [Introduction to R. Collecting data. Solving ODEs in R](2022_04_3MC_EpiModelling_P01_IntroR_Data_SolvingODE.html) ([video]())
 
 ### Tuesday 5 April 2022:
 
-- Lecture 03: [Spread of infections in groups / in space](2022_04_3MC_EpiModelling_L03_SpreadInGroups_SpreadInSpace.html)
-- Lecture 04: [Group models](2022_04_3MC_EpiModelling_L04_GroupModels.html)
-- Lecture 05: [Metapopulation epidemic models](2022_04_3MC_EpiModelling_L05_MetapopulationModels.html)
-- Practicum 02: [Model analysis, studying large-scale models in R](2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html)
+- Lecture 03: [Spread of infections in groups / in space](2022_04_3MC_EpiModelling_L03_SpreadInGroups_SpreadInSpace.html) ([video]())
+- Lecture 04: [Group models](2022_04_3MC_EpiModelling_L04_GroupModels.html) ([video]())
+- Lecture 05: [Metapopulation epidemic models](2022_04_3MC_EpiModelling_L05_MetapopulationModels.html) ([video]())
+- Practicum 02: [Model analysis, studying large-scale models in R](2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html) ([video]())
 
 ### Wednesday 6 April 2022
 
-- Lecture 06: [Stochastic aspects in the spread of epidemics](2022_04_3MC_EpiModelling_L06_StochasticAspectsInSpread.html)
-- Lecture 07: [Stochastic epidemic models](2022_04_3MC_EpiModelling_L07_StochasticEpidemicModels.html)
-- Lecture 08: [Agent-based models](2022_04_3MC_EpiModelling_L08_AgentBasedModels.html)
-- Practicum 03: [Analysis, studying stochastic models in R. Simulating agent-based models](2022_04_3MC_EpiModelling_P03_Stochastic_systems.html)
+- Lecture 06: [Stochastic aspects in the spread of epidemics](2022_04_3MC_EpiModelling_L06_StochasticAspectsInSpread.html) ([video]())
+- Lecture 07: [Stochastic epidemic models](2022_04_3MC_EpiModelling_L07_StochasticEpidemicModels.html) ([video]())
+- Lecture 08: [Agent-based models](2022_04_3MC_EpiModelling_L08_AgentBasedModels.html) ([video]())
+- Practicum 03: [Analysis, studying stochastic models in R. Simulating agent-based models](2022_04_3MC_EpiModelling_P03_Stochastic_systems.html) ([video]())
 
 ### Thursday 7 April 2022
 
-- Lecture 09: [Some recent mathematical models for Covid-19, HIV/AIDS, TB, Hepatitis, Malaria](2022_04_3MC_EpiModelling_L09_RecentMathematicalModels.html)
+- Lecture 09: [Some recent mathematical models for Covid-19, HIV/AIDS, TB, Hepatitis, Malaria](2022_04_3MC_EpiModelling_L09_RecentMathematicalModels.html) ([video]())
 
 <!--- Image credit: Malaria parasite entering a red blood cell. https://flic.kr/p/V8qaYt. National Institute of Allergy and Infectious Diseases, NIH. CC BY NC 2.0 --->

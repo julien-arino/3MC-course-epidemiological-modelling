@@ -457,8 +457,8 @@ $$
 \tag{11}
 f(S,I,N)=
 \begin{cases}
-\beta I\left(N-\dfrac Iq\right),&\textrm{si }I<qN \\
-0,&\textrm{si }I\geq qN
+\beta I\left(N-\dfrac Iq\right),&\textrm{if }I<qN \\
+0,&\textrm{if }I\geq qN
 \end{cases}
 \qquad\qquad
 $$
@@ -1266,6 +1266,12 @@ Take SIR model and assume the following
 - Birth = death
 - A fraction $p$ is vaccinated at birth
 - $f(S,I,N)=\beta SI$
+
+![width:600px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIR_simple_vacc.png)
+
+---
+
+![width:800px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SIR_simple_vacc.png)
 
 $$
 \begin{align}
