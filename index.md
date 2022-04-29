@@ -4,19 +4,19 @@ This is the web version of the course pages for the [3MC course on Epidemiologic
 
 ## List of lectures
 
-When videos on YouTube are available, the link is shown as well as the running time - beware, a few of the videos are long!
+There were issues recording the live lectures, so I am re-recording the lectures and posting them on YouTube. See the [playlist](https://youtube.com/playlist?list=PLfRaznSpWo2sHwiQ04IT5STYdwarcMtRA). Links to the individual videos are also shown next to the list of lecture slides below, as well as the running time - beware, a few of the videos are long!
 
 ### Monday 4 April 2022
 
-- Lecture 00: [Course organisation](2022_04_3MC_EpiModelling_L00_CourseOrganisation.html) ([video](https://youtu.be/MYBSTv1dWRA), 21:16)
-- Lecture 01: [History of epidemics and Historical epidemics](2022_04_3MC_EpiModelling_L01_HistoryOfEpidemics.html) ([video](https://youtu.be/StIRQIT0WSo), 47:13)
-- Lecture 02: [Basic mathematical epidemiology](2022_04_3MC_EpiModelling_L02_BasicMathEpi.html) ([video](https://youtu.be/tMHwnrN3dXk), 2:14:34)
+- Lecture 00: [Course organisation](2022_04_3MC_EpiModelling_L00_CourseOrganisation.html) ([video](https://youtu.be/MYBSTv1dWRA) - 21:16)
+- Lecture 01: [History of epidemics and Historical epidemics](2022_04_3MC_EpiModelling_L01_HistoryOfEpidemics.html) ([video](https://youtu.be/StIRQIT0WSo) - 47:13)
+- Lecture 02: [Basic mathematical epidemiology](2022_04_3MC_EpiModelling_L02_BasicMathEpi.html) ([video](https://youtu.be/tMHwnrN3dXk) - 2:14:34)
 - Practicum 01: [Introduction to R. Collecting data. Solving ODEs in R](2022_04_3MC_EpiModelling_P01_IntroR_Data_SolvingODE.html) ([video]())
 
 ### Tuesday 5 April 2022:
 
-- Lecture 03: [Spread of infections in groups / in space](2022_04_3MC_EpiModelling_L03_SpreadInGroups_SpreadInSpace.html) ([video]())
-- Lecture 04: [Group models](2022_04_3MC_EpiModelling_L04_GroupModels.html) ([video]())
+- Lecture 03: [Spread of infections in groups / in space](2022_04_3MC_EpiModelling_L03_SpreadInGroups_SpreadInSpace.html) ([video](https://youtu.be/Jz317w81oZY) - 56:45)
+- Lecture 04: [Group models](2022_04_3MC_EpiModelling_L04_GroupModels.html) ([video](https://youtu.be/j63HwBbapHE) - 29:21)
 - Lecture 05: [Metapopulation epidemic models](2022_04_3MC_EpiModelling_L05_MetapopulationModels.html) ([video]())
 - Practicum 02: [Model analysis, studying large-scale models in R](2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html) ([video]())
 
