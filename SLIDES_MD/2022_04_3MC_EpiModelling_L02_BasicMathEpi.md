@@ -31,8 +31,7 @@ math: mathjax
 </style>
 
 <!-- _backgroundImage: "linear-gradient(to top, #85110d, 1%, white)" -->
-# Basic concepts of math epi
-## Models in one population and their basic properties
+# Basic concepts of math epi - Models in one population and their basic properties
 
 4 April 2022 
 
@@ -353,11 +352,11 @@ $$
 
 The two most frequently used incidence functions are  **mass action incidence**
 $$\tag{8}
-f(S,I)=\beta SI
+f(S,I, N)=\beta SI
 $$
 and **standard** (or **proportional**) **incidence**
 $$\tag{9}
-f(S,I)=\beta\frac{SI}{S+I}
+f(S,I, N)=\beta\frac{SI}{N}
 $$
 
 In both cases, $\beta$ is the *disease transmission coefficient*
@@ -382,7 +381,7 @@ has units number/time if $\beta$ has units $1/(\text{number}\times\text{time})$
 
 $$
 \beta SI/N \propto 
-\beta\times\text{number}\times\text{number}/\text{number} \propto \beta \text{number}
+\beta\times\text{number}\times\text{number}/\text{number} \propto \beta \times\text{number}
 $$
 has units number/time if $\beta$ has units $1/\text{time}$
 
@@ -393,7 +392,7 @@ has units number/time if $\beta$ has units $1/\text{time}$
 $$
 \begin{equation}
 \tag{8}\label{eq:incidence_mass_action}
-f(S,I)=\beta SI
+f(S,I, N)=\beta SI
 \end{equation}
  $$
 
@@ -557,7 +556,7 @@ We also assume infection has limited duration for each individual
 
 ## Susceptible individuals
 
-- Are born at a *per capita* rate $d$ proportional to the total population $N$
+- Are born at a *per capita* rate $b$ proportional to the total population $N$
 - Die at the *per capita* rate $d$, proportional to the susceptible population $S$
 - Newborns are susceptible (*vertical transmission* is ignored)
 
@@ -660,7 +659,7 @@ Since $N'=0$,
 $$
 i'=\frac{I'}{N}
 $$
-Substite the right hand term of \eqref{sysI} in this equation given
+Substite the right hand term of $\eqref{sys:SIS_base_dI}$ in this equation, giving
 $$
 i'=\beta\frac{SI}{N^2}-d\frac{I}{N}-\gamma\frac{I}{N}=\beta si-(d+\gamma)i
 $$
@@ -816,7 +815,7 @@ The higher $\mathcal{R}_0$, the higher the proportion of infectious individuals 
 
 - $\mathcal{R}_0$ determines the propensity of a disease to become established in a population
 - The aim of control policies is therefore to reduce $\mathcal{R}_0$ to values less than 1
-- The "verbal" definition of $\mathcal{R}_0$ is *the average number of secondary infections produced by the introduction of an infectious individual in a completely naive population 
+- The "verbal" definition of $\mathcal{R}_0$ is *the average number of secondary infections produced by the introduction of an infectious individual in a completely naive population*
 - Remark that for our basic model, $1/(d+\gamma)$ is the average time of sojourn in the $I$ compartment before death or recovery and $\beta$ is the probability of infection 
 
 ---
@@ -945,7 +944,7 @@ with matrices $F$ and $V$ obtained as indicated. Assume conditions (A1) through 
 
 # Hypotheses
 
-- Suppose there is demography. New individuals are born at a rate proportional to the total population
+- Suppose there is demography. New individuals are born at a constant rate independent of the population
 - Disease is not transmitted to newborns (no *vertical transmission*): all births are to the S compartment
 - Disease does not cause additional mortality
 - New infections occur at the rate $f(S,I,N)$
@@ -990,6 +989,8 @@ $$
 We can either solve explicitly or "study" qualitatively; either way, $\lim_{t\to\infty}N(t)=\dfrac{b}{d}$
 
 $\implies$ total population asymptotically constant
+
+Note that this is an easy way to set the total population to what you may want it to be: $d$ is known (average lifetime), so set $b$ so $b/d$ equals what you want..
 
 ---
 
