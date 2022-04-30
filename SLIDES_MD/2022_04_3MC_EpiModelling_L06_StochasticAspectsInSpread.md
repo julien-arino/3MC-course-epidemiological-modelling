@@ -83,6 +83,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 - Some (simple) probability theory
 - The exponential distribution
+- The Dirac distribution
 - A cohort model
 - Sojourn times in an SIS disease transmission model
 - An $SL_1L_2I_1I_2A_1A_2R$ COVID-19 model : "making Erlangs"
@@ -282,6 +283,11 @@ $$
 
 ---
 
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# The Dirac distribution
+
+---
+
 # The Dirac distribution
 
 If on the other hand, for some constant $\omega>0$,
@@ -294,11 +300,10 @@ $$\tag{7}\label{eq:diract_distribution}
 \end{array}
 \right.
 $$
-which means that $T$ has a Dirac delta distribution $\delta_\omega(t)$, then the average sojourn time is a constant, namely
+which means that $T$ has a Dirac delta distribution $\delta_\omega(t)$, then the average sojourn time is
 $$
 \tau=\int_0^\omega dt=\omega
 $$
-These two distributions can be regarded as extremes
 
 ---
 
