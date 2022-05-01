@@ -684,12 +684,20 @@ EpiCurve(SARS_selected,
 
 ---
 
-![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/pairs_postproc_zoom.png)
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SARS-CoV-1_cases_CAN.png)
 
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Solving ODE numerically
+
+- The deSolve library
+- Example - Fitting data
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# The deSolve library
 
 ---
 
@@ -761,7 +769,12 @@ ode(y, times, func, parms,
 
 ---
 
-# Example - Fitting to data
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Example - Fitting data
+
+---
+
+# Example - Fitting data
 
 - Note that this is a super simplified version of what to do
 - Much more elaborate procedures exist
