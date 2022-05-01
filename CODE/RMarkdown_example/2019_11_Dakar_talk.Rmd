@@ -32,7 +32,7 @@ library(wbstats)
 library(maps)
 library(mapdata)
 library(countrycode)
-source("useful_functions.R")
+source("../useful_functions.R")
 opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
 def.chunk.hook  <- knitr::knit_hooks$get("chunk")
 knitr::knit_hooks$set(chunk = function(x, options) {
