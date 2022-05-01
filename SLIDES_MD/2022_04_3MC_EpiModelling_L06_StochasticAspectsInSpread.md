@@ -629,6 +629,13 @@ $$
 
 ---
 
+<div style="width:100%; height:100%">
+  <iframe src="https://daytah-or-dahtah.ovh:3838/Erlang_shiny/" style="position:absolute; top:0px; left:0px; 
+  width:100%; height:100%; border: none; overflow: hidden;"></iframe>
+</div>
+
+---
+
 ![bg contain drop-shadow](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flow_diagram_SLLIIAARRD.png)
 
 
