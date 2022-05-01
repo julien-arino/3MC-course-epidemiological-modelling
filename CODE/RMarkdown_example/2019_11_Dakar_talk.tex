@@ -1,0 +1,772 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{Shanghai}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{multimedia}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{multimedia}
+
+\def\II{\mathbb{I}}
+\def\IN{\mathbb{N}}
+\def\IP{\mathbb{P}}
+\def\IR{\mathbb{R}}
+\def\IZ{\mathbb{Z}}
+
+
+\def\A{\mathcal{A}}
+\def\B{\mathcal{B}}
+\def\C{\mathcal{C}}
+\def\D{\mathcal{D}}
+\def\E{\mathcal{E}}
+\def\F{\mathcal{F}}
+\def\G{\mathcal{G}}
+\def\I{\mathcal{I}}
+\def\M{\mathcal{M}}
+\def\P{\mathcal{P}}
+\def\R{\mathcal{R}}
+\def\S{\mathcal{S}}
+\def\U{\mathcal{U}}
+\def\V{\mathcal{V}}
+
+\def\b0{\mathbf{0}}
+\def\bA{\mathbf{A}}
+\def\bB{\mathbf{B}}
+\def\bC{\mathbf{C}}
+\def\bD{\mathbf{D}}
+\def\bE{\mathbf{E}}
+\def\bF{\mathbf{F}}
+\def\bG{\mathbf{G}}
+\def\bI{\mathbf{I}}
+\def\bL{\mathbf{L}}
+\def\bM{\mathbf{M}}
+\def\bN{\mathbf{N}}
+\def\bP{\mathbf{P}}
+\def\bR{\mathbf{R}}
+\def\bS{\mathbf{S}}
+\def\bU{\mathbf{U}}
+\def\bV{\mathbf{V}}
+
+
+\def\Rzero{\mathcal{R}_0}
+\def\Rc{\mathcal{R}_C}
+\def\Rt{\mathcal{R}}
+\def\human{\textrm{\Gentsroom}}
+\def\fit{\mathbb{F}}
+\def\birth{\mathcal{B}}
+\def\dsum{\mathop{\displaystyle \sum }}%
+\def\diag{\mathsf{diag }}
+\def\Sp{\textrm{Sp }}
+
+\def\dss{\displaystyle}
+
+
+\def\nbOne{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning}
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=0.87cm,
+minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+\usetikzlibrary{shapes.symbols,shapes.callouts,patterns}
+\usetikzlibrary{calc}
+
+
+%\usepackage{comicsans}
+%\renewcommand{\sfdefault}{comic}
+%\usepackage{arevmath}
+
+
+%%%%
+%%%%
+%% BEAMER STUFF %%
+%%%%
+%%%%
+
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+
+%\usetheme{AnnArbor}
+%\usecolortheme{crane}
+
+\usetheme{Shanghai}
+\usecolortheme{seagull}
+
+%\usetheme{Shanghai}
+%\usetheme{rochester}
+%\usecolortheme{seagull}
+%\useinnertheme[shadow=true]{rounded}
+%\useoutertheme{shadow}
+
+%\useoutertheme{smoothbars}
+%\usetheme{Trondheim}
+%\useoutertheme{shadow}
+%\usecolortheme{beetle}
+
+\pgfdeclareimage[height=0.5cm]{logo}{../FigsLogos/UM_l_clr_horz_png}
+\pgfdeclareimage[height=2.5cm]{titlelogo}{../FigsLogos/UM_l_clr_horz_png}
+%\logo{\pgfuseimage{titlelogo}}
+
+\setbeamertemplate{theorems}[numbered]
+
+\def\red{\color[rgb]{1,0,0}}
+\def\blue{\color[rgb]{0,0,1}}
+\def\green{\color[rgb]{0,1,0}}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{navigation symbols}[vertical]
+
+
+\newenvironment{changemargin}[2]{%
+\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{#1}%
+\setlength{\rightmargin}{#2}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{\parskip}%
+}%
+\item[]}{\end{list}}
+
+
+% Make one image take up the entire slide content area in beamer,.:
+% centered/centred full-screen image, with title:
+% This uses the whole screen except for the 1cm border around it
+% all. 128x96mm
+\newcommand{\titledFrameImage}[2]{
+\begin{frame}{#1}
+%\begin{changemargin}{-1cm}{-1cm}
+\begin{center}
+\includegraphics[width=108mm,height=\textheight,keepaspectratio]{#2}
+\end{center}
+%\end{changemargin}
+\end{frame}
+}
+
+% Make one image take up the entire slide content area in beamer.:
+% centered/centred full-screen image, no title:
+% This uses the whole screen except for the 1cm border around it
+% all. 128x96mm
+\newcommand{\plainFrameImage}[1]{
+\begin{frame}[plain]
+%\begin{changemargin}{-1cm}{-1cm}
+\begin{center}
+\includegraphics[width=108mm,height=76mm,keepaspectratio]{#1}
+\end{center}
+%\end{changemargin}
+\end{frame}
+}
+
+% Make one image take up the entire slide area, including borders, in beamer.:
+% centered/centred full-screen image, no title:
+% This uses the entire whole screen
+\newcommand{\maxFrameImage}[1]{
+\begin{frame}[plain]
+\begin{changemargin}{-1cm}{-1cm}
+\begin{center}
+\includegraphics[width=\paperwidth,height=0.99\paperheight,keepaspectratio]
+{#1}
+\end{center}
+\end{changemargin}
+\end{frame}
+}
+
+% This uses the entire whole screen (to include in frame)
+\newcommand{\maxFrameImageNoFrame}[1]{
+\begin{changemargin}{-1cm}{-1cm}
+\begin{center}
+\includegraphics[width=\paperwidth,height=0.99\paperheight,keepaspectratio]
+{#1}
+\end{center}
+\end{changemargin}
+}
+
+
+% Make one image take up the entire slide area, including borders, in beamer.:
+% centered/centred full-screen image, no title:
+% This uses the entire whole screen
+\newcommand{\maxFrameImageColor}[2]{
+\begin{frame}[plain]
+\setbeamercolor{normal text}{bg=#2!20}
+\begin{changemargin}{-1cm}{-1cm}
+\begin{center}
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]
+{#1}
+\end{center}
+\end{changemargin}
+\end{frame}
+}
+
+
+%% Alternative way for full page
+\newcommand{\maxFrameImageNew}[1]{
+\begin{tikzpicture}[overlay, remember picture]
+\node[minimum width=\paperwidth-\pgflinewidth,minimum height=\paperheight-\pgflinewidth] (engauge) at (current page.north west) [anchor=north west]
+    {\includegraphics[width=\paperwidth,keepaspectratio]{#1}};
+\end{tikzpicture}
+}
+
+
+\AtBeginSubsection[]
+{
+\begin{frame}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+}
+
+\AtBeginSection[]
+{
+\begin{frame}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+}
+
+
+%% CITY INFORMATION (name, etc.) for later use
+\def\IATA{BJS}
+\def\IATAs{BJS\ }
+
+\def\FIGURES{..}
+
+
+
+\setbeamercolor{normal text}{bg=gray!5}
+
+\makeatletter
+\newlength\beamerleftmargin
+\setlength\beamerleftmargin{\Gm@lmargin}
+\makeatother
+
+\setbeamerfont{title}{size={\fontsize{15}{15}}}
+\setbeamerfont{subtitle}{size={\fontsize{15}{15}}}
+\setbeamerfont{author}{size={\fontsize{10}{20}}}
+\setbeamerfont{institute}{size={\fontsize{8}{10}}}
+\setbeamerfont{date}{size={\fontsize{10}{10}}}
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Epidémiologie mathématique},
+  pdfauthor={Julien Arino},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Epidémiologie mathématique}
+\subtitle{à l'heure du ``Open Data'\,'}
+\author{Julien Arino}
+\date{26 novembre 2019}
+\institute{Department of Mathematics\\
+Data Science Nexus\\
+Visual and Automatic Disease Analytics training program\\
+Centre for Disease Modelling (West)\\
+\strut \\
+University of Manitoba\\
+\strut \\
+\texttt{Julien.Arino@umanitoba.ca}}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}[fragile]{Remarques sur ce document}
+\protect\hypertarget{remarques-sur-ce-document}{}
+Tous les liens devraient être clickables \vfill Le code sera fourni (sur
+demande) \vfill Le code est en \texttt{R} .. j'aurais pu utiliser Python
+mais je hais ce language :) \vfill Une partie de ces transparents est
+dynamique: ils sont produits avec
+\href{https://rmarkdown.rstudio.com/index.html}{Rmarkdown} en utilisant
+des données extraites du web et à jour au jour de compilation de ce
+document (2022-05-01)
+\end{frame}
+
+\begin{frame}[fragile]{Pour générer ces transparents}
+\protect\hypertarget{pour-guxe9nuxe9rer-ces-transparents}{}
+Il vous faudra les programmes (gratuits) suivants
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{R} (une version réecente \(\geq 3.5\))
+  (\href{https://www.r-project.org/}{lien})
+\item
+  \texttt{RStudio}
+  (\href{https://www.rstudio.com/products/rstudio/download/}{lien})
+\item
+  Une distribution de \LaTeX (\href{https://miktex.org/}{MiKTeX} sous
+  Windows, TeX Live sous Linux \& Mac)
+\item
+  Plusieurs librairies \texttt{R}
+\item
+  Accès au web (une copie des pages/fichiers est fournie, quand même)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Principes directeurs}
+\protect\hypertarget{principes-directeurs}{}
+Nous vivons dans un monde où les données (data) sont devenues une
+ressource très prisée \vfill Beaucoup de données sont accessibles
+librement \vfill   Un modélisateur n'est pas \emph{obligé} d'utiliser
+des données, mais quand des données sont disponibles, vous devriez au
+moins essayer de voir de quoi il retourne \vfill Si vous voulez ``avoir
+un impact'\,' (pouvoir influencer une politique de santé publique),
+oubliez la stabilité globale!
+\end{frame}
+
+\hypertarget{les-donnuxe9es-sont-partout}{%
+\section{Les données sont partout}\label{les-donnuxe9es-sont-partout}}
+
+\begin{frame}{Données propriétaires versus données libres (open data)}
+\protect\hypertarget{donnuxe9es-propriuxe9taires-versus-donnuxe9es-libres-open-data}{}
+\textbf{Données propriétaires}
+
+\begin{itemize}
+\tightlist
+\item
+  souvent générées par des compagnies, gouvernements ou laboratoires de
+  recherche
+\item
+  quand elles sont disponibles, viennent avec multiples restrictions
+  \vfill
+\end{itemize}
+
+\textbf{Open data}
+
+\begin{itemize}
+\tightlist
+\item
+  souvent générées par les mêmes entités (compagnies, labos) mais
+  \emph{libérées} après une certaine période
+\item
+  de plus en plus fréquent pour les gouvernements/entités publiques
+\item
+  grande variété de licenses, donc attention
+\item
+  grande variété de qualités, donc attention
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Initiatives Open Data}
+\protect\hypertarget{initiatives-open-data}{}
+Mouvement récent (5-10 ans): governments (locaux ou plus haut) créent
+des portails où les données sont centralisées et publiées
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://data.winnipeg.ca/}
+\item
+  \url{https://open.alberta.ca/opendata}
+\item
+  \url{https://open.canada.ca/en/open-data}
+\item
+  \url{https://data.europa.eu/euodp/data/}
+\item
+  \url{http://data.un.org/}
+\item
+  \url{https://data.worldbank.org/}
+\item
+  \url{https://www.who.int/gho/database/en/}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Méthodes de récupération des données}
+\protect\hypertarget{muxe9thodes-de-ruxe9cupuxe9ration-des-donnuxe9es}{}
+\begin{itemize}
+\tightlist
+\item
+  A la main
+\item
+  En utilisant des programmes comme
+  \href{http://markummitchell.github.io/engauge-digitizer/}{Engauge
+  Digitizer} ou \href{https://github.com/pn2200/g3data}{g3data}
+\item
+  En utilisant des API
+\item
+  En utilisant des processeurs de langage naturel (web scraping)
+\item
+  En utilisant des packages (\texttt{R}, \texttt{Python} principalement)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Exemple: la population du Sénégal}
+\protect\hypertarget{exemple-la-population-du-suxe9nuxe9gal}{}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\ConstantTok{FALSE}\NormalTok{) \{}
+\NormalTok{    pop\_data\_CTRY }\OtherTok{\textless{}{-}} \FunctionTok{wb}\NormalTok{(}\AttributeTok{country =} \FunctionTok{c}\NormalTok{(}\StringTok{"SEN"}\NormalTok{), }\AttributeTok{indicator =} \StringTok{"SP.POP.TOTL"}\NormalTok{,}
+        \AttributeTok{mrv =} \DecValTok{100}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{    pop\_data\_CTRY }\OtherTok{=} \FunctionTok{readRDS}\NormalTok{(}\StringTok{"pop\_data\_CTRY\_downloaded.Rds"}\NormalTok{)}
+\NormalTok{\}}
+\NormalTok{y\_range }\OtherTok{=} \FunctionTok{range}\NormalTok{(pop\_data\_CTRY}\SpecialCharTok{$}\NormalTok{value)}
+\NormalTok{y\_axis }\OtherTok{\textless{}{-}} \FunctionTok{make\_y\_axis}\NormalTok{(y\_range)}
+\FunctionTok{pdf}\NormalTok{(}\AttributeTok{file =} \StringTok{"pop\_SEN.pdf"}\NormalTok{, }\AttributeTok{width =} \DecValTok{11}\NormalTok{, }\AttributeTok{height =} \FloatTok{8.5}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(pop\_data\_CTRY}\SpecialCharTok{$}\NormalTok{date, pop\_data\_CTRY}\SpecialCharTok{$}\NormalTok{value }\SpecialCharTok{*}\NormalTok{ y\_axis}\SpecialCharTok{$}\NormalTok{factor,}
+    \AttributeTok{xlab =} \StringTok{"Année"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Population"}\NormalTok{, }\AttributeTok{type =} \StringTok{"b"}\NormalTok{, }\AttributeTok{lwd =} \DecValTok{2}\NormalTok{,}
+    \AttributeTok{yaxt =} \StringTok{"n"}\NormalTok{)}
+\FunctionTok{axis}\NormalTok{(}\DecValTok{2}\NormalTok{, }\AttributeTok{at =}\NormalTok{ y\_axis}\SpecialCharTok{$}\NormalTok{ticks, }\AttributeTok{labels =}\NormalTok{ y\_axis}\SpecialCharTok{$}\NormalTok{labels, }\AttributeTok{las =} \DecValTok{1}\NormalTok{, }\AttributeTok{cex.axis =} \FloatTok{0.8}\NormalTok{)}
+\NormalTok{dave }\OtherTok{\textless{}{-}} \FunctionTok{dev.off}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section}{}
+\maxFrameImageNoFrame{pop_SEN.pdf}
+\end{frame}
+
+\hypertarget{exemple-graphiose-de-lorme}{%
+\section{Exemple -- Graphiose de
+l'orme}\label{exemple-graphiose-de-lorme}}
+
+\begin{frame}{Graphiose de l'orme}
+\protect\hypertarget{graphiose-de-lorme}{}
+\begin{itemize}
+\tightlist
+\item
+  Maladie fongique de l'orme \vfill
+\item
+  Causée par le champignon \emph{Ophiostoma ulmi} \vfill
+\item
+  Transmise par le scolyte de l'orme (Scolytus scolytus) (coléoptère)
+  \vfill
+\item
+  A décimé les forêts urbaines en amérique du nord
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+\maxFrameImageNoFrame{../../FIGS/WinnipegOpenDataPortal}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-2}{}
+\maxFrameImageNoFrame{../../FIGS/WODTreeMap}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-3}{}
+\maxFrameImageNoFrame{../../FIGS/WODTreeMapZoom}
+\end{frame}
+
+\begin{frame}[fragile]{Recuperation des données des arbres}
+\protect\hypertarget{recuperation-des-donnuxe9es-des-arbres}{}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{allTrees }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"https://data.winnipeg.ca/api/views/hfwk{-}jp4h/rows.csv?accessType=DOWNLOAD"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+
+Voilà ce que cela retourne:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(allTrees)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 291683     17
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{On nettoie un peu}
+\protect\hypertarget{on-nettoie-un-peu}{}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{elms\_idx }\OtherTok{=} \FunctionTok{grep}\NormalTok{(}\StringTok{"American Elm"}\NormalTok{, allTrees}\SpecialCharTok{$}\NormalTok{Common.Name, }\AttributeTok{ignore.case =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{elms }\OtherTok{=}\NormalTok{ allTrees[elms\_idx, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize ce qui nous laisse 47307 ormes américains
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-4}{}
+\maxFrameImageNoFrame{../../FIGS/Recap_Diagram}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-5}{}
+\maxFrameImageNoFrame{../../FIGS/temperature_phase}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-6}{}
+\maxFrameImageNoFrame{../../FIGS/flow_diagram_DED_beetles}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-7}{}
+\maxFrameImageNoFrame{../../FIGS/flow_diagram_DED_trees}
+\end{frame}
+
+\begin{frame}{Calcul des interactions racinaires}
+\protect\hypertarget{calcul-des-interactions-racinaires}{}
+(Pas en temps réel ici, on a besoin d'une machine assez grosse --
+environ 50GB de RAM) \vfill - Si les racines d'un arbre infecté touchent
+les racines d'un arbre sain, le champignon est transmis \vfill - Etendue
+système racinaire dépend de la hauteur de l'arbre (on a DBH) \vfill - La
+façon dont les routes sont construites empêche les contacts racinaires
+d'un côté de la route à l'autre
+\end{frame}
+
+\begin{frame}[fragile]{Distances entre tous les ormes}
+\protect\hypertarget{distances-entre-tous-les-ormes}{}
+\begin{verbatim}
+elms_xy = cbind(elms$X, elms$Y)
+D = dist(elms_xy)
+idx_D = which(D<50)
+\end{verbatim}
+
+\texttt{indices\_LT} est une grosse (\(N(N-1)/2\times 2\)) matrice avec
+les indices \((orig,dest)\) des arbres dans les paires d'ormes, donc
+\texttt{indices\_LT{[}idx\_D{]}} sont les paires considérées \vfill On
+garde un peu plus..
+
+\begin{verbatim}
+indices_LT_kept = as.data.frame(cbind(indices_LT[idx_D,],
+                                D[idx_D]))
+colnames(indices_LT_kept) = c("i","j","dist")
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{On crée des segments pour toutes les paires}
+\protect\hypertarget{on-cruxe9e-des-segments-pour-toutes-les-paires}{}
+\begin{verbatim}
+tree_locs_orig = cbind(elms_latlon$lon[indices_LT_kept$i],
+                       elms_latlon$lat[indices_LT_kept$i])
+tree_locs_dest = cbind(elms_latlon$lon[indices_LT_kept$j],
+                       elms_latlon$lat[indices_LT_kept$j])
+tree_pairs = do.call(sf::st_sfc,
+                     lapply(
+                       1:nrow(tree_locs_orig),
+                       function(i){
+                         sf::st_linestring(
+                           matrix(
+                             c(tree_locs_orig[i,],
+                               tree_locs_dest[i,]), 
+                             ncol=2,
+                             byrow=TRUE)
+                         )
+                       }
+                     )
+)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Un peu de cartographie}
+\protect\hypertarget{un-peu-de-cartographie}{}
+\begin{verbatim}
+library("tidyverse")
+# Get bounding polygon for Winnipeg
+bb_poly = osmdata::getbb(place_name = "winnipeg", 
+                         format_out = "polygon")
+# Get roads
+roads <- osmdata::opq(bbox = bb_poly) %>%
+  osmdata::add_osm_feature(key = 'highway', 
+                           value = 'residential') %>%
+  osmdata::osmdata_sf () %>%
+  osmdata::trim_osmdata (bb_poly)
+# Get rivers
+rivers <- osmdata::opq(bbox = bb_poly) %>%
+  osmdata::add_osm_feature(key = 'waterway', 
+                           value = "river") %>%
+  osmdata::osmdata_sf () %>%
+  osmdata::trim_osmdata (bb_poly)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Et on termine tranquille}
+\protect\hypertarget{et-on-termine-tranquille}{}
+\begin{itemize}
+\tightlist
+\item
+  On a les paires d'arbres potentiellement en contact
+\item
+  On a les routes et les rivieres de la ville (collection de segments de
+  droite) \vfill
+\item
+  Si il y a une intersection entre une paire et une route/riviere, on
+  oublie cette paire \vfill
+\end{itemize}
+
+\begin{verbatim}
+st_crs(tree_pairs) = sf::st_crs(roads$osm_lines$geometry)
+iroads = sf::st_intersects(x = roads$osm_lines$geometry,
+                           y = tree_pairs)
+irivers = sf::st_intersects(x = rivers$osm_lines$geometry,
+                            y = tree_pairs)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{}
+\protect\hypertarget{section-8}{}
+\begin{verbatim}
+tree_pairs_roads_intersect = c()
+for (i in 1:length(iroads)) {
+  if (length(iroads[[i]])>0) {
+    tree_pairs_roads_intersect = c(tree_pairs_roads_intersect,
+                                   iroads[[i]])
+  }
+}
+tree_pairs_roads_intersect = sort(tree_pairs_roads_intersect)
+to_keep = 1:dim(tree_locs_orig)[1]
+to_keep = setdiff(to_keep,tree_pairs_roads_intersect)
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-9}{}
+\maxFrameImageNoFrame{../../FIGS/pairs_postproc}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-10}{}
+\maxFrameImageNoFrame{../../FIGS/pairs_postproc_zoom}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-11}{}
+\maxFrameImageNoFrame{../../FIGS/selected_trees}
+\end{frame}
+
+\end{document}

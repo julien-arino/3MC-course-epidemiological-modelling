@@ -1,0 +1,248 @@
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{multimedia}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{multimedia}
+
+\def\II{\mathbb{I}}
+\def\IN{\mathbb{N}}
+\def\IP{\mathbb{P}}
+\def\IR{\mathbb{R}}
+\def\IZ{\mathbb{Z}}
+
+
+\def\A{\mathcal{A}}
+\def\B{\mathcal{B}}
+\def\C{\mathcal{C}}
+\def\D{\mathcal{D}}
+\def\E{\mathcal{E}}
+\def\F{\mathcal{F}}
+\def\G{\mathcal{G}}
+\def\I{\mathcal{I}}
+\def\M{\mathcal{M}}
+\def\P{\mathcal{P}}
+\def\R{\mathcal{R}}
+\def\S{\mathcal{S}}
+\def\U{\mathcal{U}}
+\def\V{\mathcal{V}}
+
+\def\b0{\mathbf{0}}
+\def\bA{\mathbf{A}}
+\def\bB{\mathbf{B}}
+\def\bC{\mathbf{C}}
+\def\bD{\mathbf{D}}
+\def\bE{\mathbf{E}}
+\def\bF{\mathbf{F}}
+\def\bG{\mathbf{G}}
+\def\bI{\mathbf{I}}
+\def\bL{\mathbf{L}}
+\def\bM{\mathbf{M}}
+\def\bN{\mathbf{N}}
+\def\bP{\mathbf{P}}
+\def\bR{\mathbf{R}}
+\def\bS{\mathbf{S}}
+\def\bU{\mathbf{U}}
+\def\bV{\mathbf{V}}
+
+
+\def\Rzero{\mathcal{R}_0}
+\def\Rc{\mathcal{R}_C}
+\def\Rt{\mathcal{R}}
+\def\human{\textrm{\Gentsroom}}
+\def\fit{\mathbb{F}}
+\def\birth{\mathcal{B}}
+\def\dsum{\mathop{\displaystyle \sum }}%
+\def\diag{\mathsf{diag }}
+\def\Sp{\textrm{Sp }}
+
+\def\dss{\displaystyle}
+
+
+\def\nbOne{{\mathchoice {\rm 1\mskip-4mu l} {\rm 1\mskip-4mu l}
+{\rm 1\mskip-4.5mu l} {\rm 1\mskip-5mu l}}}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning}
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=0.87cm,
+minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+\usetikzlibrary{shapes.symbols,shapes.callouts,patterns}
+\usetikzlibrary{calc}
+
+
+%\usepackage{comicsans}
+%\renewcommand{\sfdefault}{comic}
+%\usepackage{arevmath}
+
+
+%%%%
+%%%%
+%% BEAMER STUFF %%
+%%%%
+%%%%
+
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+
+%\usetheme{AnnArbor}
+%\usecolortheme{crane}
+
+\usetheme{Shanghai}
+\usecolortheme{seagull}
+
+%\usetheme{Shanghai}
+%\usetheme{rochester}
+%\usecolortheme{seagull}
+%\useinnertheme[shadow=true]{rounded}
+%\useoutertheme{shadow}
+
+%\useoutertheme{smoothbars}
+%\usetheme{Trondheim}
+%\useoutertheme{shadow}
+%\usecolortheme{beetle}
+
+\pgfdeclareimage[height=0.5cm]{logo}{../../FIGS/UM_l_clr_horz_png}
+\pgfdeclareimage[height=2.5cm]{titlelogo}{../../FIGS/UM_l_clr_horz_png}
+%\logo{\pgfuseimage{titlelogo}}
+
+\setbeamertemplate{theorems}[numbered]
+
+\def\red{\color[rgb]{1,0,0}}
+\def\blue{\color[rgb]{0,0,1}}
+\def\green{\color[rgb]{0,1,0}}
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{navigation symbols}[vertical]
+
+
+\newenvironment{changemargin}[2]{%
+\begin{list}{}{%
+\setlength{\topsep}{0pt}%
+\setlength{\leftmargin}{#1}%
+\setlength{\rightmargin}{#2}%
+\setlength{\listparindent}{\parindent}%
+\setlength{\itemindent}{\parindent}%
+\setlength{\parsep}{\parskip}%
+}%
+\item[]}{\end{list}}
+
+
+% Make one image take up the entire slide content area in beamer,.:
+% centered/centred full-screen image, with title:
+% This uses the whole screen except for the 1cm border around it
+% all. 128x96mm
+\newcommand{\titledFrameImage}[2]{
+\begin{frame}{#1}
+%\begin{changemargin}{-1cm}{-1cm}
+\begin{center}
+\includegraphics[width=108mm,height=\textheight,keepaspectratio]{#2}
+\end{center}
+%\end{changemargin}
+\end{frame}
+}
+
+% Make one image take up the entire slide content area in beamer.:
+% centered/centred full-screen image, no title:
+% This uses the whole screen except for the 1cm border around it
+% all. 128x96mm
+\newcommand{\plainFrameImage}[1]{
+\begin{frame}[plain]
+%\begin{changemargin}{-1cm}{-1cm}
+\begin{center}
+\includegraphics[width=108mm,height=76mm,keepaspectratio]{#1}
+\end{center}
+%\end{changemargin}
+\end{frame}
+}
+
+% Make one image take up the entire slide area, including borders, in beamer.:
+% centered/centred full-screen image, no title:
+% This uses the entire whole screen
+\newcommand{\maxFrameImage}[1]{
+\begin{frame}[plain]
+\begin{changemargin}{-1cm}{-1cm}
+\begin{center}
+\includegraphics[width=\paperwidth,height=0.99\paperheight,keepaspectratio]
+{#1}
+\end{center}
+\end{changemargin}
+\end{frame}
+}
+
+% This uses the entire whole screen (to include in frame)
+\newcommand{\maxFrameImageNoFrame}[1]{
+\begin{changemargin}{-1cm}{-1cm}
+\begin{center}
+\includegraphics[width=\paperwidth,height=0.99\paperheight,keepaspectratio]
+{#1}
+\end{center}
+\end{changemargin}
+}
+
+
+% Make one image take up the entire slide area, including borders, in beamer.:
+% centered/centred full-screen image, no title:
+% This uses the entire whole screen
+\newcommand{\maxFrameImageColor}[2]{
+\begin{frame}[plain]
+\setbeamercolor{normal text}{bg=#2!20}
+\begin{changemargin}{-1cm}{-1cm}
+\begin{center}
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]
+{#1}
+\end{center}
+\end{changemargin}
+\end{frame}
+}
+
+
+%% Alternative way for full page
+\newcommand{\maxFrameImageNew}[1]{
+\begin{tikzpicture}[overlay, remember picture]
+\node[minimum width=\paperwidth-\pgflinewidth,minimum height=\paperheight-\pgflinewidth] (engauge) at (current page.north west) [anchor=north west]
+    {\includegraphics[width=\paperwidth,keepaspectratio]{#1}};
+\end{tikzpicture}
+}
+
+
+\AtBeginSubsection[]
+{
+\begin{frame}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+}
+
+\AtBeginSection[]
+{
+\begin{frame}
+\tableofcontents[currentsection,currentsubsection]
+\end{frame}
+}
+
+
+%% CITY INFORMATION (name, etc.) for later use
+\def\IATA{BJS}
+\def\IATAs{BJS\ }
+
+\def\FIGURES{..}
+
+
+
+\setbeamercolor{normal text}{bg=gray!5}
+
+\makeatletter
+\newlength\beamerleftmargin
+\setlength\beamerleftmargin{\Gm@lmargin}
+\makeatother
+
+\setbeamerfont{title}{size={\fontsize{15}{15}}}
+\setbeamerfont{subtitle}{size={\fontsize{15}{15}}}
+\setbeamerfont{author}{size={\fontsize{10}{20}}}
+\setbeamerfont{institute}{size={\fontsize{8}{10}}}
+\setbeamerfont{date}{size={\fontsize{10}{10}}}
+
