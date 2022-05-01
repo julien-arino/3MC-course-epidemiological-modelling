@@ -676,11 +676,20 @@ $$
 
 # Branching processes
 
-- Special case of CTMC .. or are CTMC special cases of BP?
+- Special case of CTMC
+- Simplest type is Galton-Watson process: $\{X_n\}$ evolves following $X_0=1$ and
+$$
+X_{n+1} = \sum_{j=1}^{X_n}\xi_j^n
+$$
+where $\{\xi_j^n\}$ are i.i.d. nonnegative integer-valued r.v.
+- Can also be continuous-time (not all "reproductions" happen at the same time)
 
 ---
 
 # Stochastic differential equations
 
-- Will confess some bias against these: "ODEs with noise added"
-
+- Typically, something of the form
+$$
+dX_t = f(X_t,t)\ dt+g(X_t,t)\ dB_t
+$$
+where $B$ is a **Wiener process** (a Brownian motion)
