@@ -367,8 +367,12 @@ There is still a loop, but you can split this list, use it on different machines
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Dealing with data
 
+- Example: population of South Africa
+- Example - Dutch Elm Disease
+- Data wrangling
 
-<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+<div style = "position: relative; bottom: -25%; font-size:20px;">
 
 - JA. [Mathematical epidemiology in a data-rich world](http://dx.doi.org/10.1016/j.idm.2019.12.008). *Infectious Disease Modelling* **5**:161-188 (2020)
 - See also [GitHub repo](https://github.com/julien-arino/modelling-with-data) for that paper
@@ -426,7 +430,10 @@ Recent movement (5-10 years): governments (local or higher) create portals where
 
 ---
 
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
 # Example: population of South Africa
+
+---
 
 ```
 library(wbstats)
@@ -434,13 +441,14 @@ pop_data_CTRY <- wb_data(country = "ZAF", indicator = "SP.POP.TOTL",
                          mrv = 100, return_wide = FALSE)
 y_range = range(pop_data_CTRY$value)
 y_axis <- make_y_axis(y_range)
-png(file = "https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//pop_ZAF.png", width = 800, height = 400)
+png(file = "pop_ZAF.png", 
+    width = 800, height = 400)
 plot(pop_data_CTRY$date, pop_data_CTRY$value * y_axis$factor,
      xlab = "Year", ylab = "Population", type = "b", lwd = 2,
      yaxt = "n")
 axis(2, at = y_axis$ticks, labels = y_axis$labels, las = 1)
 dev.off()
-crop_figure("https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS//pop_ZAF.png")
+crop_figure("pop_ZAF.png")
 ```
 
 ---
@@ -449,6 +457,10 @@ crop_figure("https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiol
 
 ---
 
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Example - Dutch Elm Disease
+
+---
 # Dutch Elm Disease
 
 - Fungal disease that affects Elms
@@ -502,14 +514,6 @@ We are left with 54,036 American elms
 ---
 
 ![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/temperature_phase.png)
-
----
-
-![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flow_diagram_DED_beetles.png)
-
----
-
-![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/flow_diagram_DED_trees.png)
 
 ---
 
@@ -627,7 +631,8 @@ to_keep = setdiff(to_keep,tree_pairs_roads_intersect)
 
 ---
 
-![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/selected_trees.png)
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Data wrangling
 
 ---
 
