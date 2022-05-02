@@ -804,7 +804,18 @@ $$
 # What are $y_i$ and $x(t_i)$ here?
 
 - In epi data for infectious diseases, we typically have incidence, i.e., number of new cases per unit time
-- In SIR model, this is $\beta SI$, so, if using incidence and Euclidean norm
+- In SIR model, this is $\beta SI$ or $\beta SI/N$, so, if using mass action incidence and Euclidean norm
 $$
 E(p)=\sum_{i=1}^N(\beta S(t_i)I(t_i)-y_i)^2
 $$
+or, if using standard incidence
+$$
+E(p)=\sum_{i=1}^N
+\left(\beta \frac{S(t_i)I(t_i)}{N}-y_i\right)^2
+$$
+
+---
+
+# Implementing in practice
+
+See the code [practicum_01_fitting.R](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/CODE/practicum_01_fitting.R), which we will go over now
