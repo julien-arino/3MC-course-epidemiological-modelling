@@ -165,7 +165,7 @@ Since $S=P^\star-I$, consider only the infected. To simulate as DTMC, consider a
 
 Denote $\lambda_I = \beta (P^\star-I)I\Delta t$, $\mu_I = \gamma I\Delta t$ and $\sigma_I=1-(\lambda_I+\mu_I)\Delta t$
 
-![width:1200px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/stochastic/figure_SIS_random_walk.png)
+![width:1200px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_random_walk.png)
 
 ---
 
