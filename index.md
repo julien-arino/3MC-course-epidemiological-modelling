@@ -11,7 +11,7 @@ There were issues recording the live lectures, so I am re-recording the lectures
 - Lecture 00: [Course organisation](2022_04_3MC_EpiModelling_L00_CourseOrganisation.html) ([video](https://youtu.be/MYBSTv1dWRA) - 21:16)
 - Lecture 01: [History of epidemics and Historical epidemics](2022_04_3MC_EpiModelling_L01_HistoryOfEpidemics.html) ([video](https://youtu.be/StIRQIT0WSo) - 47:13)
 - Lecture 02: [Basic mathematical epidemiology](2022_04_3MC_EpiModelling_L02_BasicMathEpi.html) ([video](https://youtu.be/tMHwnrN3dXk) - 2:14:34)
-- Practicum 01: [Introduction to R. Collecting data. Solving ODEs in R](2022_04_3MC_EpiModelling_P01_IntroR_Data_SolvingODE.html) ([video]())
+- Practicum 01: [Introduction to R. Collecting data. Solving ODEs in R](2022_04_3MC_EpiModelling_P01_IntroR_Data_SolvingODE.html) ([video](https://youtu.be/nzzugOQuaro) - 1:59:56)
 
 ### Tuesday 5 April 2022:
 
