@@ -926,7 +926,7 @@ SLIAR_metapop_rhs <- function(t, x, p) {
   R = x[p$idx_R]
   N = S + L + I + A + R
   Phi = p$beta * S * (I + p$eta * A) / N
-  dS = S - Phi + p$M %*% S
+  dS = - Phi + p$M %*% S
   dL = Phi - p$epsilon * L + p$M %*% L
   dI = (1 - p$pi) * p$epsilon * L - p$gammaI * I + p$M %*% I
   dA = p$pi * p$epsilon * L - p$gammaA * A + p$M %*% A
