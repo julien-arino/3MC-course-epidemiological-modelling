@@ -57,6 +57,8 @@ This is a *user-oriented* course: I barely, if at all, touch on the algorithms; 
 Code is available in [this Github repo](https://github.com/julien-arino/3MC-course-epidemiological-modelling) in the CODE directory
 
 Some of the slides are inspired from slides given to me by Linda Allen (Texas Tech). I recommend books and articles by Linda for more detail
+- [An Introduction to Stochastic Processes with Applications to Biology](https://www.routledge.com/An-Introduction-to-Stochastic-Processes-with-Applications-to-Biology/author/p/book/9781439894682)
+- [A primer on stochastic epidemic models: Formulation, numerical simulation, and analysis](https://doi.org/10.1016/j.idm.2017.03.001)
 
 ---
 
@@ -163,7 +165,7 @@ Since $S=P^\star-I$, consider only the infected. To simulate as DTMC, consider a
 
 Denote $\lambda_I = \beta (P^\star-I)I\Delta t$, $\mu_I = \gamma I\Delta t$ and $\sigma_I=1-(\lambda_I+\mu_I)\Delta t$
 
-![width:1200px](figure_SIS_random_walk.png)
+![width:1200px](https://raw.githubusercontent.com/julien-arino/presentations/main/FIGS/stochastic/figure_SIS_random_walk.png)
 
 ---
 
