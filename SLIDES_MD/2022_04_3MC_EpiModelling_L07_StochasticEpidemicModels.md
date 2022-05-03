@@ -50,6 +50,13 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
+<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
+# Outline
+
+- 
+
+---
+
 # Remarks / Resources
 
 This is a *user-oriented* course: I barely, if at all, touch on the algorithms; instead, I focus on how to use them

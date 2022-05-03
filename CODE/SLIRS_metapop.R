@@ -18,24 +18,22 @@ library(deSolve)
 
 # The vector field
 SLIRS_metapop_rhs <- function (t, x, p) {
-  with(as.list(x), {
-    # First, we make the vector x easier to use by translating back
-    # into variables with the names we want
-    S = x[1:p$P]
-    L = x[(p$P+1):(2*p$P)]
-    I = x[(2*p$P+1):(3*p$P)]
-    R = x[(3*p$P+1):(4*p$P)]
-    # We need N as well for the incidence function
-    N = S+L+I+R
-    # For simplicity, we pre-fill the vector of incidence functions.
-    Phi = p$beta*S*I/(N^p$eta)
-    # Now we set the values of the derivatives. 
-    dS = p$b+p$nu*R-p$d*S-Phi+p$MS%*%S
-    dL = Phi-(p$epsilon+p$d)*L+p$ML%*%L
-    dI = p$epsilon*L-(p$gamma+p$d)*I+p$MI%*%I
-    dR = p$gamma*I-(p$nu+p$d)*R+p$MR%*%R
-    list(c(dS, dL, dI, dR))
-  })
+  # We don't use with(as.list(x)) because we need to name the vectors anyway
+  S = x[p$idx_S]
+  L = x[p$idx_L]
+  I = x[p$idx_I]
+  R = x[p$idx_R]
+  # We need N as well for the incidence function
+  N = S+L+I+R
+  # For simplicity, we pre-fill the vector of incidence functions.
+  Phi = p$beta*S*I/(N^p$eta)
+  # Now we set the values of the derivatives. 
+  dS = p$b+p$nu*R-p$d*S-Phi+p$MS%*%S
+  dL = Phi-(p$epsilon+p$d)*L+p$ML%*%L
+  dI = p$epsilon*L-(p$gamma+p$d)*I+p$MI%*%I
+  dR = p$gamma*I-(p$nu+p$d)*R+p$MR%*%R
+  dx = list(c(dS, dL, dI, dR))
+  return(dx)
 }
 
 # Function for computing R0 given we know the 21 entry in V inverse
@@ -45,7 +43,8 @@ R0_fct = function(p) {
   #F12 = diag(as.vector(p$beta*Sstar))
   # Case of proportional incidence
   F12 = diag(as.vector(p$beta*(Sstar^(1-p$eta))))
-  Vinv21 = solve(diag(p$epsilon+p$d)-p$ML) %*% diag(p$epsilon) %*% solve(diag(p$gamma+p$d)-p$MI)
+  Vinv21 = solve(diag(p$epsilon+p$d)-p$ML) %*% 
+    diag(p$epsilon) %*% solve(diag(p$gamma+p$d)-p$MI)
   FVinv = F12 %*% Vinv21
   ev = eigen(FVinv)
   Rzero = max(abs(ev$values))
@@ -99,6 +98,12 @@ p$eta = rep(1,p$P)
 # equilibrium value.
 p$b = (diag(p$d)-p$MS) %*% pop
 
+# Save index of state variable types in state variables vector (we have to use 
+# a vector and thus, for instance, the name "S" needs to be defined)
+p$idx_S = 1:p$P
+p$idx_L = (p$P+1):(2*p$P)
+p$idx_I = (2*p$P+1):(3*p$P)
+p$idx_R = (3*p$P+1):(4*p$P)
 # Set initial conditions. For example, we start with 2 infectious
 # individuals in Canada.
 L0 = mat.or.vec(p$P,1)
@@ -107,7 +112,7 @@ I0[1] = 2
 R0 = mat.or.vec(p$P,1)
 S0 = pop-(L0+I0+R0)
 # Vector of initial conditions to be passed to ODE solver.
-IC = c(S=S0,L=L0,I=I0,R=R0)
+IC = c(S = S0, L = L0, I = I0, R = R0)
 # Time span of the simulation (5 years here).
 tspan = seq(from = 0, to = 5*365.25, by = 0.1)
 
@@ -116,10 +121,10 @@ sol <- ode(y = IC, times = tspan, func = SLIRS_metapop_rhs, parms = p)
 
 # Put solution in an easier to use form.
 times = sol[,"time"]
-S = sol[,1:p$P]
-L = sol[,(p$P+1):(2*p$P)]
-I = sol[,(2*p$P+1):(3*p$P)]
-R = sol[,(3*p$P+1):(4*p$P)]
+S = sol[,p$idx_S]
+L = sol[,p$idx_L]
+I = sol[,p$idx_I]
+R = sol[,p$idx_R]
 N = S+L+I+R
 
 # A sample (and simple) plot: number infected per 100,000 inhabitants.
