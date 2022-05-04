@@ -6,7 +6,7 @@
 #
 #    http://shiny.rstudio.com/
 #
-# CTMC SIS
+# 
 
 library(shiny)
 

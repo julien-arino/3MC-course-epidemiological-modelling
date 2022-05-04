@@ -70,7 +70,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 - Open source version of S
 - Appeared in 1993
-- Now version 4.1
+- Now version 4.2
 - One major advantage in my view: uses a lot of C and Fortran code. E.g., `deSolve`:
 > The functions provide an interface to the FORTRAN functions 'lsoda', 'lsodar', 'lsode', 'lsodes' of the 'ODEPACK' collection, to the FORTRAN functions 'dvode', 'zvode' and 'daspk' and a C-implementation of solvers of the 'Runge-Kutta' family with fixed or variable time steps
 - Very active community on the web, easy to find solutions (same true of Python, I just prefer R)

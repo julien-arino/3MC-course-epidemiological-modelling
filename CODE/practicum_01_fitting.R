@@ -3,6 +3,7 @@ library(dplyr)
 library(wbstats)
 library(deSolve)
 library(GA)
+library(parallel)
 
 # The RHS function for KMK
 RHS_KMK_SIR <- function(t, x, p) {
@@ -41,7 +42,6 @@ error_incidence <- function(p_vary,
   sol = ode(IC, times, RHS_KMK_SIR, params, method = method)
   # Error checking
   if (sol[dim(sol)[1],"time"] < times[length(times)]) {
-    #writeLines("Cut short")
     return(Inf)
   }
   # Values required to compute the error
@@ -65,9 +65,10 @@ colnames(data)[1] = "yyyyww"
 data$year = substr(data$yyyyww, 1, 4)
 data$week = substr(data$yyyyww, 5, 6)
 # It will be easier to work with days as days, so we convert dates
-data$date = lubridate::parse_date_time(paste(data$year, data$week, 1, sep="/"),'Y/W/w')
+data$date = lubridate::parse_date_time(paste(data$year, data$week, 1, sep="/"),
+                                       'Y/W/w')
 # There are some issues, let us fix without thinking: if something went wrong, it 
-# is typically bcause of a week numbered 53. We make that day 31 December of 
+# is typically because of a week numbered 53. We make that day 31 December of 
 # that year
 idx = which(is.na(data$date))
 data$date[idx] = ymd(paste0(data$year[idx],"-12-31"))
@@ -120,7 +121,7 @@ GA = ga(
                                          incidence_data = data_subset,
                                          which_incidence = which_incidence,
                                          method = "rk4"),
-  parallel = TRUE,
+  parallel = 120,
   lower = c(0.1, 1/20),
   upper = c(1, 1/2),
   pcrossover = 0.7,
