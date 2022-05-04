@@ -53,7 +53,9 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 <!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
 # Outline
 
-- 
+- Why stochasticity matters
+- Discrete time Markov chains
+- Continuous time Markov chains
 
 ---
 
@@ -66,6 +68,11 @@ Code is available in [this Github repo](https://github.com/julien-arino/3MC-cour
 Some of the slides are inspired from slides given to me by Linda Allen (Texas Tech). I recommend books and articles by Linda for more detail
 - [An Introduction to Stochastic Processes with Applications to Biology](https://www.routledge.com/An-Introduction-to-Stochastic-Processes-with-Applications-to-Biology/author/p/book/9781439894682)
 - [A primer on stochastic epidemic models: Formulation, numerical simulation, and analysis](https://doi.org/10.1016/j.idm.2017.03.001)
+
+--- 
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!-- fit -->Why stochasticity matters
 
 ---
 

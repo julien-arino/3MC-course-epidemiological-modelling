@@ -55,7 +55,7 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 # Outline
 
 - Steps of the analysis
-- The basic stuff (well-posedness)
+- The basic stuff (well-posedness, DFE)
 - Epidemic models
 - Endemic models
 - Compound matrices
@@ -131,7 +131,96 @@ If there is a continuum of equilibria, then $x^\star\in\mathcal{C}$, some curve 
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->The basic stuff
+# <!--fit-->The basic stuff (well-posedness, DFE)
+
+---
+
+# Existence and uniqueness
+
+- Is your vector field $C^1$?
+  - If so, you are done
+  - If not, might be worth checking. Some of the models in particular have issues if the total population is variable and $N\to 0$ under circumstances
+- Probably not worth more than "solutions exist and are unique" in most instances...
+
+---
+
+# Invariance of the nonnegative cone under the flow
+
+- Study of this can be warranted
+- What can be important is invariance of some subsets of the nonnegative cone under the flow of the system.. this can really help in some cases
+
+---
+
+# Example: SIS system
+
+$$
+\begin{align}
+S' &= b-dS -\beta SI +\gamma I \tag{1a}\label{sys:SIS_base_dS}\\
+I' &= \beta SI-dI-\gamma I \tag{1b}\label{sys:SIS_base_dI}
+\end{align}
+$$
+
+First, remark that $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$ is $C^1$, giving existence and uniqueness of solutions
+
+---
+
+# Invariance of $\mathbb{R}_+^2$ under the flow of $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$
+
+If $S=0$, then $\eqref{sys:SIS_base_dS}$ becomes
+$$
+S' = b+\gamma I >0
+$$
+$\implies$ $S$ cannot ever become zero: if $S(0)>0$, then $S(t)>0$ for all $t$. If $S(0)=0$, then $S(t)>0$ for $t>0$ small and by the preceding argument, this is also true for all $t>0$
+
+---
+
+For $I$, remark that if $I=0$, then $I'=0$ $\implies$ $\{I=0\}$ is positively invariant: if $I(0)=0$, then $I(t)=0$ for all $t>0$
+
+In practice, values of $S(t)$ for any solution in $\{I=0\}$ are "carried" by one of the following 4 solutions:
+1. $S(0)=0$: remains identically zero
+2. $S(0)\in(0,b/d)$: increases to $S=b/d$
+3. $S(0)=b/d$: remains equal to $b/d$
+4. $S(0)>b/d$: decreases to $S=b/d$
+
+As a consequence, no solution with $I(0)>0$ can enter $\{I=0\}$. Suppose $I(0)>0$ and $\exists t_*>0$ s.t. $I(t_*)=0$; denote $S(t_*)$ the value of $S$ when $I$ becomes zero
+
+Existence of $t_*$ contradicts uniqueness of solutions, since at $(S(t_*),I(t_*))$, there are then two solutions: that initiated in $\{I=0\}$ and that initiated with $I(0)>0$
+
+---
+
+# Boundedness
+
+$\implies$ positive quadrant $\mathbb{R}_+^2$ (positively) invariant under flow of $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$
+
+We could detail more precisely (positive IC $\implies$..) but this suffices here
+
+From the invariance dans the boundedness of the total population $N$, we deduce that solutions to $\eqref{sys:SIS_base_dS}$-$\eqref{sys:SIS_base_dI}$ are bounded
+
+---
+
+# Where things can become complicated...
+
+$$
+\begin{align}
+S' &= bN-dS
+-\beta \frac{SI}N
++\gamma I
+\tag{1a}\label{sys:SIS_bad_dS}\\
+I' &= \beta\frac{SI}{N}-dI-\gamma I
+\tag{2b}\label{sys:SIS_bad_dI}
+\end{align}
+$$
+
+- If $N\to 0$, e.g., $d>b$, what happens to the incidence?
+- If $N\to\infty$, e.g., $b>d$, solutions are unbounded
+
+---
+
+# Computing the DFE
+
+- Set all infected variables to zero, see what happens...
+- Personnally: I prefer to set *some* infected variables to zero and see if I recuperate the DFE that way
+
 
 ---
 
@@ -259,7 +348,7 @@ $$
 ---
 
 At this point, similarly to [PvdD & Watmough (2002)](https://doi.org/10.1016/S0025-5564(02)00108-6), we cannot proceed much further in terms of the expression for $\mathcal{R}_0$. 
-Indeed, in \cite{ArinoBrauerVdDWatmoughWu2007}, the matrix $\mathbf{f}|_{\mathbf{E}_0}$ has rank 1, which allows to much improve the expression for the spectral radius.
+Indeed, in [Arino, Brauer, PvdD, Watmough & Wu (2007)](https://julien-arino.github.io/assets/pdf/papers/ArinoBrauerVdDWatmoughWu-2007-MBE4.pdf) , the matrix $\mathbf{f}|_{\mathbf{E}_0}$ has rank 1, which allows to much improve the expression for the spectral radius.
 Here, in general, the matrix $\mathbf{D}\beta(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)\mathsf{diag}(\mathbf{S}_0)$ has full rank $m$ and in general, $\mathbf{f}|_{\mathbf{E}_0}$ has full rank $n$.
 
 <div class="theorem">
@@ -584,6 +673,168 @@ Important to stress *local* nature of stability that is deduced from this result
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!-- fit -->Numerical investigations of large-scale systems
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+- JA. [Spatio-temporal spread of infectious pathogens of humans](https://doi.org/10.1016/j.idm.2017.05.001). *Infectious Disease Modelling* **2**(2):218-228 (2017)
+- JA. [Mathematical epidemiology in a data-rich world](https://doi.org/10.1016/j.idm.2019.12.008). *Infectious Disease Modelling* **5**:161-188 (2020)
+- github repo [modelling-with-data](https://github.com/julien-arino/modelling-with-data)
+
+</div>
+
+---
+
+# Not very difficult
+
+- As for the mathematical analysis: if you do things carefully and think about things a bit, numerics are not hard. Well: not harder than numerics in low-D
+- Exploit vector structure
+
+---
+
+# Set up parameters
+
+```
+pop = c(34.017, 1348.932, 1224.614, 173.593, 93.261) * 1e+06
+countries = c("Canada", "China", "India", "Pakistan", "Philippines")
+T = matrix(data = 
+             c(0, 1268, 900, 489, 200, 
+               1274, 0, 678, 859, 150, 
+               985, 703, 0, 148, 58, 
+               515, 893, 144, 0, 9, 
+               209, 174, 90, 2, 0), 
+           nrow = 5, ncol = 5, byrow = TRUE)
+```
+
+---
+
+# Work out movement matrix
+
+```
+p = list()
+# Use the approximation explained in Arino & Portet (JMB 2015)
+p$M = mat.or.vec(nr = dim(T)[1], nc = dim(T)[2])
+for (from in 1:5) {
+  for (to in 1:5) {
+    p$M[to, from] = -log(1 - T[from, to]/pop[from])
+  }
+  p$M[from, from] = 0
+}
+p$M = p$M - diag(colSums(p$M))
+```
+
+---
+
+```
+p$P = dim(p$M)[1]
+p$eta = rep(0.3, p$P)
+p$epsilon = rep((1/1.5), p$P)
+p$pi = rep(0.7, p$P)
+p$gammaI = rep((1/5), p$P)
+p$gammaA = rep((1/3), p$P)
+# The desired values for R_0. Here we take something simple
+R_0 = rep(1.5, p$P)
+```
+
+---
+
+# <!--fit-->Write down indices of the different state variable types
+
+Save index of state variable types in state variables vector (we have to use a vector and thus, for instance, the name "S" needs to be defined)
+
+```
+p$idx_S = 1:p$P
+p$idx_L = (p$P+1):(2*p$P)
+p$idx_I = (2*p$P+1):(3*p$P)
+p$idx_A = (3*p$P+1):(4*p$P)
+p$idx_R = (4*p$P+1):(5*p$P)
+```
+
+---
+
+# Set up IC and time
+
+```
+# Set initial conditions. For example, we start with 2
+# infectious individuals in Canada.
+L0 = mat.or.vec(p$P, 1)
+I0 = mat.or.vec(p$P, 1)
+A0 = mat.or.vec(p$P, 1)
+R0 = mat.or.vec(p$P, 1)
+I0[1] = 2
+S0 = pop - (L0 + I0 + A0 + R0)
+# Vector of initial conditions to be passed to ODE solver.
+IC = c(S = S0, L = L0, I = I0, A = A0, R = R0)
+# Time span of the simulation (5 years here)
+tspan = seq(from = 0, to = 5 * 365.25, by = 0.1)
+```
+
+---
+
+# Set up $\beta$ to avoid blow up
+
+Let us take $\mathcal{R}_0=1.5$ for patches in isolation. Solve $\mathcal{R}_0$ for $\beta$ 
+$$
+\beta=\frac{\mathcal{R}_0}{S(0)}
+\left(
+\frac{1-\pi_p}{\gamma_{Ip}}
++\frac{\pi_p\eta_p}{\gamma_{Ap}}
+\right)^{-1}
+$$ 
+
+<p style="margin-bottom:2cm;"></p> 
+
+```
+for (i in 1:p$P) {
+  p$beta[i] = 
+    R_0[i] / S0[i] * 1/((1 - p$pi[i])/p$gammaI[i] + p$pi[i] * p$eta[i]/p$gammaA[i])
+}
+```
+
+---
+
+# Define the vector field
+
+```
+SLIAR_metapop_rhs <- function(t, x, p) {
+  S = x[p$idx_S]
+  L = x[p$idx_L]
+  I = x[p$idx_I]
+  A = x[p$idx_A]
+  R = x[p$idx_R]
+  N = S + L + I + A + R
+  Phi = p$beta * S * (I + p$eta * A) / N
+  dS = - Phi + p$M %*% S
+  dL = Phi - p$epsilon * L + p$M %*% L
+  dI = (1 - p$pi) * p$epsilon * L - p$gammaI * I + p$M %*% I
+  dA = p$pi * p$epsilon * L - p$gammaA * A + p$M %*% A
+  dR = p$gammaI * I + p$gammaA * A + p$M %*% R
+  list(c(dS, dL, dI, dA, dR))
+}
+```
+
+---
+
+# And now the problems begin :)
+
+```
+# Call the ODE solver
+sol <- deSolve::ode(y = IC, times = tspan, 
+                    func = SLIAR_metapop_rhs, parms = p)
+## DLSODA- At current T (=R1), MXSTEP (=I1) steps
+## taken on this call before reaching TOUT
+## In above message, I1 = 5000
+##
+## In above message, R1 = 117.498
+```
+
+The output I copy above means the integration went wrong. The problem is the sie difference between countries, in particular China and Canada..
+
+Need to play with movement rates and initial conditions. Will not explain here
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Compound matrices
 
 ---
@@ -597,11 +848,11 @@ Important to stress *local* nature of stability that is deduced from this result
 
 ---
 
-Refer for example to Fiedler, 1998 for details
+Refer for example to [Fiedler](https://store.doverpublications.com/0486783480.html) for details
 
 Let $A=(a_{ij})$, $i=1,\ldots,m$, $j=1,\ldots,n$ an $m\times n$-matrix and $k$ an integer, $1\leq k\leq\min(m,n)$
 
-Let $M=\{1,\ldots,m\}$ and $N=\{1,\ldots,n\}$, $M^{(k)}$ and $N^{(k)}$) the lexicographically ordered sets of ordered $k$-tuples of elements of $M$ and $N$, respecti
+Let $M=\{1,\ldots,m\}$ and $N=\{1,\ldots,n\}$, $M^{(k)}$ and $N^{(k)}$ the lexicographically ordered sets of ordered $k$-tuples of elements of $M$ and $N$, respectively
 
 ---
 
@@ -783,7 +1034,6 @@ $$
 
 <div class="theorem">
 
-[Li \& Muldowney, 1995]
 A sufficient condition for a periodic orbit $\gamma=\{p(t):0\leq t\leq\omega\}$ of $\eqref{sys:diff_general}$ be asymptotically orbitally stable with asymptotic phase is that the linear system
 $$
 z'(t)=\left(\frac{\partial f^{[2]}}{\partial x}
@@ -792,165 +1042,12 @@ $$
 be asymptotically stable
 </div>
 
----
+<div style = "position: relative; bottom: -12%; font-size:20px;">
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!-- fit -->Numerical investigations of large-scale systems
-
-<div style = "position: relative; bottom: -40%; font-size:20px;">
-
-- JA. [Spatio-temporal spread of infectious pathogens of humans](https://doi.org/10.1016/j.idm.2017.05.001). *Infectious Disease Modelling* **2**(2):218-228 (2017)
-- JA. [Mathematical epidemiology in a data-rich world](https://doi.org/10.1016/j.idm.2019.12.008). *Infectious Disease Modelling* **5**:161-188 (2020)
-- github repo [modelling-with-data](https://github.com/julien-arino/modelling-with-data)
+- Li & Muldowney. [Global stability for the SEIR model in epidemiology](https://doi.org/10.1016/0025-5564(95)92756-5). *Mathematical Biosciences* **125**(2):155-164 (1995)
+- Li & Muldowney. [On R.A. Smith's autonomous convergence theorem](https://www.jstor.org/stable/44237890). *Rocky Mountain J. of Mathematics* **25**(1): 365-379
+- Li & Muldowney. [A Geometric Approach to Global-Stability Problems](https://doi.org/10.1137/S0036141094266449). *SIAM J. on Mathematical Analysis* **27**(4): 1070-1083
 
 </div>
 
----
-
-# Not very difficult
-
-- As for the mathematical analysis: if you do things carefully and think about things a bit, numerics are not hard. Well: not harder than numerics in low-D
-- Exploit vector structure
-
----
-
-# Set up parameters
-
-```
-pop = c(34.017, 1348.932, 1224.614, 173.593, 93.261) * 1e+06
-countries = c("Canada", "China", "India", "Pakistan", "Philippines")
-T = matrix(data = 
-             c(0, 1268, 900, 489, 200, 
-               1274, 0, 678, 859, 150, 
-               985, 703, 0, 148, 58, 
-               515, 893, 144, 0, 9, 
-               209, 174, 90, 2, 0), 
-           nrow = 5, ncol = 5, byrow = TRUE)
-```
-
----
-
-# Work out movement matrix
-
-```
-p = list()
-# Use the approximation explained in Arino & Portet (JMB 2015)
-p$M = mat.or.vec(nr = dim(T)[1], nc = dim(T)[2])
-for (from in 1:5) {
-  for (to in 1:5) {
-    p$M[to, from] = -log(1 - T[from, to]/pop[from])
-  }
-  p$M[from, from] = 0
-}
-p$M = p$M - diag(colSums(p$M))
-```
-
----
-
-```
-p$P = dim(p$M)[1]
-p$eta = rep(0.3, p$P)
-p$epsilon = rep((1/1.5), p$P)
-p$pi = rep(0.7, p$P)
-p$gammaI = rep((1/5), p$P)
-p$gammaA = rep((1/3), p$P)
-# The desired values for R_0. Here we take something simple
-R_0 = rep(1.5, p$P)
-```
-
----
-
-# <!--fit-->Write down indices of the different state variable types
-
-Save index of state variable types in state variables vector (we have to use a vector and thus, for instance, the name "S" needs to be defined)
-
-```
-p$idx_S = 1:p$P
-p$idx_L = (p$P+1):(2*p$P)
-p$idx_I = (2*p$P+1):(3*p$P)
-p$idx_A = (3*p$P+1):(4*p$P)
-p$idx_R = (4*p$P+1):(5*p$P)
-```
-
----
-
-# Set up IC and time
-
-```
-# Set initial conditions. For example, we start with 2
-# infectious individuals in Canada.
-L0 = mat.or.vec(p$P, 1)
-I0 = mat.or.vec(p$P, 1)
-A0 = mat.or.vec(p$P, 1)
-R0 = mat.or.vec(p$P, 1)
-I0[1] = 2
-S0 = pop - (L0 + I0 + A0 + R0)
-# Vector of initial conditions to be passed to ODE solver.
-IC = c(S = S0, L = L0, I = I0, A = A0, R = R0)
-# Time span of the simulation (5 years here)
-tspan = seq(from = 0, to = 5 * 365.25, by = 0.1)
-```
-
----
-
-# Set up $\beta$ to avoid blow up
-
-Let us take $\mathcal{R}_0=1.5$ for patches in isolation. Solve $\mathcal{R}_0$ for $\beta$ 
-$$
-\beta=\frac{\mathcal{R}_0}{S(0)}
-\left(
-\frac{1-\pi_p}{\gamma_{Ip}}
-+\frac{\pi_p\eta_p}{\gamma_{Ap}}
-\right)^{-1}
-$$ 
-
-<p style="margin-bottom:2cm;"></p> 
-
-```
-for (i in 1:p$P) {
-  p$beta[i] = 
-    R_0[i] / S0[i] * 1/((1 - p$pi[i])/p$gammaI[i] + p$pi[i] * p$eta[i]/p$gammaA[i])
-}
-```
-
----
-
-# Define the vector field
-
-```
-SLIAR_metapop_rhs <- function(t, x, p) {
-  S = x[p$idx_S]
-  L = x[p$idx_L]
-  I = x[p$idx_I]
-  A = x[p$idx_A]
-  R = x[p$idx_R]
-  N = S + L + I + A + R
-  Phi = p$beta * S * (I + p$eta * A) / N
-  dS = - Phi + p$M %*% S
-  dL = Phi - p$epsilon * L + p$M %*% L
-  dI = (1 - p$pi) * p$epsilon * L - p$gammaI * I + p$M %*% I
-  dA = p$pi * p$epsilon * L - p$gammaA * A + p$M %*% A
-  dR = p$gammaI * I + p$gammaA * A + p$M %*% R
-  list(c(dS, dL, dI, dA, dR))
-}
-```
-
----
-
-# And now the problems begin :)
-
-```
-# Call the ODE solver
-sol <- deSolve::ode(y = IC, times = tspan, 
-                    func = SLIAR_metapop_rhs, parms = p)
-## DLSODA- At current T (=R1), MXSTEP (=I1) steps
-## taken on this call before reaching TOUT
-## In above message, I1 = 5000
-##
-## In above message, R1 = 117.498
-```
-
-The output I copy above means the integration went wrong. The problem is the sie difference between countries, in particular China and Canada..
-
-Need to play with movement rates and initial conditions. Will not explain here
 
