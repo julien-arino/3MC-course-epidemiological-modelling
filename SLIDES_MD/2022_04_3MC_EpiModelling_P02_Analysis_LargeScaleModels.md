@@ -51,8 +51,33 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 ---
 
+<!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
+# Outline
+
+- Steps of the analysis
+- The basic stuff (well-posedness)
+- Epidemic models
+- Endemic models
+- Compound matrices
+- Numerical investigations of large-scale systems
+
+---
+
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Steps of the analysis
+
+---
+
+# Step 0 - Well-posedness
+
+- Do solutions exist?
+- Are they unique?
+- Are they bounded?
+- Invariance of the nonnegative cone under the flow..?
+
+For "classic" models, all of these properties are more or less a given, so good to bear in mind, worth mentioning in a paper, but not necessarily worth showing unless this is a MSc or PhD manuscript
+
+When you start considering nonstandard models, or PDE/DDE, then often required
 
 ---
 
@@ -106,11 +131,21 @@ If there is a continuum of equilibria, then $x^\star\in\mathcal{C}$, some curve 
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->The basic stuff
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Epidemic models
 
-# Computation of $\mathcal{R}_0$
+- Computation of $\mathcal{R}_0$
+- Final size relation
+- Examples
 
-# Final size relation
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# <!--fit-->Computation of $\mathcal{R}_0$
 
 ---
 
@@ -241,6 +276,11 @@ If $\mathcal{R}_0<1$, the DFE $\mathbf{E}_0$ is locally asymptotically stable; i
 
 ---
 
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# <!--fit-->Final size relations
+
+---
+
 # Final size relations
 
 - Still use the same method
@@ -268,6 +308,11 @@ $$
 +\sigma_i\beta(K)\mathbf{h}\mathbf{V}^{-1}\mathbf{I}(0)
 $$
 where $K$ is the initial total population
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# <!--fit-->Examples
 
 --- 
 
@@ -309,9 +354,13 @@ $$
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Endemic models
 
-# Computation of $\mathcal{R}_0$
+- Computation of $\mathcal{R}_0$ using the next generation matrix method
+- Examples
 
-# Global stability considerations
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# Computation of $\mathcal{R}_0$ using the next generation matrix method
 
 ---
 
@@ -413,6 +462,11 @@ with matrices $F$ and $V$ obtained as indicated. Assume conditions (A1) through 
 - if $\mathcal{R}_0<1$, then the DFE is LAS
 - if $\mathcal{R}_0>1$, the DFE is unstable
 </div>
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# <!--fit-->Examples
 
 ---
 
@@ -729,7 +783,7 @@ $$
 
 <div class="theorem">
 
-[Li \& Muldowney, 1995]\label{th:LM1}
+[Li \& Muldowney, 1995]
 A sufficient condition for a periodic orbit $\gamma=\{p(t):0\leq t\leq\omega\}$ of $\eqref{sys:diff_general}$ be asymptotically orbitally stable with asymptotic phase is that the linear system
 $$
 z'(t)=\left(\frac{\partial f^{[2]}}{\partial x}
@@ -757,30 +811,6 @@ be asymptotically stable
 
 - As for the mathematical analysis: if you do things carefully and think about things a bit, numerics are not hard. Well: not harder than numerics in low-D
 - Exploit vector structure
-
----
-
-# Define the vector field
-
-```
-SLIAR_metapop_rhs <- function(t, x, p) {
-  with(as.list(x), {
-    S = x[p$idx_S]
-    L = x[p$idx_L]
-    I = x[p$idx_I]
-    A = x[p$idx_A]
-    R = x[p$idx_R]
-    N = S + L + I + A + R
-    Phi = p$beta * S * (I + p$eta * A)
-    dS = S - Phi + p$M %*% S
-    dL = Phi - p$epsilon * L + p$M %*% L
-    dI = (1 - p$pi) * p$epsilon * L - p$gammaI * I + p$M %*% I
-    dA = p$pi * p$epsilon * L - p$gammaA * A + p$M %*% A
-    dR = p$gammaI * I + p$gammaA * A + p$M %*% R
-    list(c(dS, dL, dI, dA, dR))
-  })
-}
-```
 
 ---
 
@@ -819,11 +849,6 @@ p$M = p$M - diag(colSums(p$M))
 
 ```
 p$P = dim(p$M)[1]
-p$idx_S = 1:p$P
-p$idx_L = (p$P + 1):(2 * p$P)
-p$idx_I = (2 * p$P + 1):(3 * p$P)
-p$idx_A = (3 * p$P + 1):(4 * p$P)
-p$idx_R = (4 * p$P + 1):(5 * p$P)
 p$eta = rep(0.3, p$P)
 p$epsilon = rep((1/1.5), p$P)
 p$pi = rep(0.7, p$P)
@@ -831,6 +856,20 @@ p$gammaI = rep((1/5), p$P)
 p$gammaA = rep((1/3), p$P)
 # The desired values for R_0. Here we take something simple
 R_0 = rep(1.5, p$P)
+```
+
+---
+
+# <!--fit-->Write down indices of the different state variable types
+
+Save index of state variable types in state variables vector (we have to use a vector and thus, for instance, the name "S" needs to be defined)
+
+```
+p$idx_S = 1:p$P
+p$idx_L = (p$P+1):(2*p$P)
+p$idx_I = (2*p$P+1):(3*p$P)
+p$idx_A = (3*p$P+1):(4*p$P)
+p$idx_R = (4*p$P+1):(5*p$P)
 ```
 
 ---
@@ -871,6 +910,28 @@ $$
 for (i in 1:p$P) {
   p$beta[i] = 
     R_0[i] / S0[i] * 1/((1 - p$pi[i])/p$gammaI[i] + p$pi[i] * p$eta[i]/p$gammaA[i])
+}
+```
+
+---
+
+# Define the vector field
+
+```
+SLIAR_metapop_rhs <- function(t, x, p) {
+  S = x[p$idx_S]
+  L = x[p$idx_L]
+  I = x[p$idx_I]
+  A = x[p$idx_A]
+  R = x[p$idx_R]
+  N = S + L + I + A + R
+  Phi = p$beta * S * (I + p$eta * A) / N
+  dS = - Phi + p$M %*% S
+  dL = Phi - p$epsilon * L + p$M %*% L
+  dI = (1 - p$pi) * p$epsilon * L - p$gammaI * I + p$M %*% I
+  dA = p$pi * p$epsilon * L - p$gammaA * A + p$M %*% A
+  dR = p$gammaI * I + p$gammaA * A + p$M %*% R
+  list(c(dS, dL, dI, dA, dR))
 }
 ```
 

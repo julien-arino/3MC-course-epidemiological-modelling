@@ -1,11 +1,5 @@
-# SLIRS_metapop
+# SLIAR_metapop
 #
-# R script that runs integration of the sample p-SLIRS metapopulation
-# model in the paper by Arino (2017).
-#
-# Julien Arino
-# February 2017
-
 # Note that without further adaptation, the results provided by this
 # script can be expected to be completely unrealistic, the intent is only 
 # to provide a workable canvas.
@@ -17,38 +11,23 @@ library(deSolve)
 
 
 # The vector field
-SLIRS_metapop_rhs <- function (t, x, p) {
-  # We don't use with(as.list(x)) because we need to name the vectors anyway
-  S = x[p$idx_S]
-  L = x[p$idx_L]
-  I = x[p$idx_I]
-  R = x[p$idx_R]
-  # We need N as well for the incidence function
-  N = S+L+I+R
-  # For simplicity, we pre-fill the vector of incidence functions.
-  Phi = p$beta*S*I/(N^p$eta)
-  # Now we set the values of the derivatives. 
-  dS = p$b+p$nu*R-p$d*S-Phi+p$MS%*%S
-  dL = Phi-(p$epsilon+p$d)*L+p$ML%*%L
-  dI = p$epsilon*L-(p$gamma+p$d)*I+p$MI%*%I
-  dR = p$gamma*I-(p$nu+p$d)*R+p$MR%*%R
-  dx = list(c(dS, dL, dI, dR))
-  return(dx)
-}
-
-# Function for computing R0 given we know the 21 entry in V inverse
-R0_fct = function(p) {
-  Sstar = solve(diag(p$d)-p$MS) %*% p$b
-  # Case of mass action incidence
-  #F12 = diag(as.vector(p$beta*Sstar))
-  # Case of proportional incidence
-  F12 = diag(as.vector(p$beta*(Sstar^(1-p$eta))))
-  Vinv21 = solve(diag(p$epsilon+p$d)-p$ML) %*% 
-    diag(p$epsilon) %*% solve(diag(p$gamma+p$d)-p$MI)
-  FVinv = F12 %*% Vinv21
-  ev = eigen(FVinv)
-  Rzero = max(abs(ev$values))
-  return(Rzero)
+SLIAR_metapop_rhs <- function(t, x, p) {
+  with(as.list(p), {
+    S = x[idx_S]
+    L = x[idx_L]
+    I = x[idx_I]
+    A = x[idx_A]
+    R = x[idx_R]
+    N = S + L + I + A + R
+    Phi = beta * S * (I + eta * A) / N
+    dS = - Phi + MS %*% S
+    dL = Phi - epsilon * L + p$ML %*% L
+    dI = (1 - pi) * epsilon * L - gammaI * I + MI %*% I
+    dA = pi * epsilon * L - gammaA * A + MA %*% A
+    dR = gammaI * I + gammaA * A + MR %*% R
+    dx = list(c(dS, dL, dI, dA, dR))
+    return(dx)
+  })
 }
 
 # The following data originates from Bluedot.global and shows the average
@@ -80,63 +59,77 @@ p$MS = p$M-diag(colSums(p$M))
 # Assume movement is equal for all compartments.
 p$ML = p$MS
 p$MI = p$MS
+p$MA = p$MS
 p$MR = p$MS
 # Number of patches. (MS should be square.)
 p$P = dim(p$MS)[1]
 
 # Set other parameters. Values are chosen mostly arbitrarily.
-p$beta = rep(0.1,p$P)
 p$nu = rep(0.1,p$P)
 p$epsilon = rep(0.01,p$P)
 p$d = rep(1/(70*365.25),p$P) # Could be taken based on World Bank data to be more accurate
-p$gamma = rep(0.05,p$P)
+p$gammaI = rep(0.05,p$P)
+p$gammaA = rep(0.06,p$P)
 p$eta = rep(1,p$P)
-# We use the numerical trick explained in Arino & Portet, JMB 2015, in
-# order to work with a constant total population. Note that this can lead
-# to negative birth rates and should only be used if one intends to start
-# with an initial condition with the total population equal to its
-# equilibrium value.
-p$b = (diag(p$d)-p$MS) %*% pop
+p$pi = runif(p$P, min = 0.2, max = 0.8)
+# Set beta by assuming R0=1.5 in all patches in isolation
+p$beta = 1.5 * p$gammaI * 2
 
 # Save index of state variable types in state variables vector (we have to use 
 # a vector and thus, for instance, the name "S" needs to be defined)
 p$idx_S = 1:p$P
 p$idx_L = (p$P+1):(2*p$P)
 p$idx_I = (2*p$P+1):(3*p$P)
-p$idx_R = (3*p$P+1):(4*p$P)
+p$idx_A = (3*p$P+1):(4*p$P)
+p$idx_R = (4*p$P+1):(5*p$P)
 # Set initial conditions. For example, we start with 2 infectious
 # individuals in Canada.
 L0 = mat.or.vec(p$P,1)
 I0 = mat.or.vec(p$P,1)
 I0[1] = 2
+A0 = mat.or.vec(p$P,1)
 R0 = mat.or.vec(p$P,1)
-S0 = pop-(L0+I0+R0)
+S0 = pop-(L0+I0+A0+R0)
 # Vector of initial conditions to be passed to ODE solver.
-IC = c(S = S0, L = L0, I = I0, R = R0)
+IC = c(S = S0, L = L0, I = I0, A = A0, R = R0)
 # Time span of the simulation (5 years here).
 tspan = seq(from = 0, to = 5*365.25, by = 0.1)
 
 # Call of the ODE solver.
-sol <- ode(y = IC, times = tspan, func = SLIRS_metapop_rhs, parms = p)
+sol <- ode(y = IC, 
+           times = tspan, 
+           func = SLIAR_metapop_rhs, 
+           parms = p,
+           method = "ode45")
 
 # Put solution in an easier to use form.
 times = sol[,"time"]
 S = sol[,p$idx_S]
 L = sol[,p$idx_L]
 I = sol[,p$idx_I]
+A = sol[,p$idx_A]
 R = sol[,p$idx_R]
-N = S+L+I+R
+N = S+L+I+A+R
 
 # A sample (and simple) plot: number infected per 100,000 inhabitants.
 xlim = range(times)
 ylim = c(0,max(I/N*1e5))
-plot(0,
+plot(times,I[,1]/N[,1]*1e5, 
+     col = 1, type = "l",
      xlim = xlim, ylim = ylim,
      xlab = "Time (days)", ylab = "Number infectious per 100,000")
-for (i in 1:p$P) {
+for (i in 2:p$P) {
   lines(times,I[,i]/N[,i]*1e5, col = i)
 }
 legend("topleft",legend = countries,col = 1:p$P, lty = 1)
 
-# Finally, compute the value of R0
-R0_fct(p)
+# The (potential) issue with not having death (and birth to counterbalance it)
+ylim = c(0,max(N))
+plot(times, N[,1], 
+     col = 1, type = "l",
+     ylim = ylim,
+     xlab = "Time (days)", ylab = "Total population")
+for (i in 2:p$P) {
+  lines(times,N[,i], col = i)
+}
+legend("left",legend = countries,col = 1:p$P, lty = 1)
