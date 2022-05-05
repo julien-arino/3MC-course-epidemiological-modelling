@@ -29,6 +29,6 @@ There were issues recording the live lectures, so I am re-recording the lectures
 
 ### Thursday 7 April 2022
 
-- Lecture 09: [Some oddities and some recent mathematical models for Covid-19, HIV/AIDS, TB, Hepatitis, Malaria](2022_04_3MC_EpiModelling_L09_RecentMathematicalModels.html) ([video]())
+- Lecture 09: [Some oddities and some recent mathematical models for Covid-19, HIV/AIDS, Malaria](2022_04_3MC_EpiModelling_L09_RecentMathematicalModels.html) ([video](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_L09_RecentMathematicalModels.html) - 1:05:36)
 
 <!--- Image credit: Malaria parasite entering a red blood cell. https://flic.kr/p/V8qaYt. National Institute of Allergy and Infectious Diseases, NIH. CC BY NC 2.0 --->

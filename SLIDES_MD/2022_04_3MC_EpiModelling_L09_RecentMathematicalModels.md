@@ -1,7 +1,7 @@
 ---
 marp: true
-title: Some oddities and some recent mathematical models for Covid-19, HIV/AIDS, TB, Hepatitis, Malaria
-description: Julien Arino - 3MC Course Epidemiological Modelling - Course 09 - Some oddities and some (recent?) mathematical models for HIV/AIDS, TB, Hepatitis, Malaria
+title: Some oddities and some recent mathematical models for HIV/AIDS, Malaria, COVID-19
+description: Julien Arino - 3MC Course Epidemiological Modelling - Course 09 - Some oddities and some (recent?) mathematical models for HIV/AIDS, Malaria, COVID-19
 theme: default
 paginate: false
 math: mathjax
@@ -31,7 +31,7 @@ size: 4K
 </style>
 
 <!-- _backgroundImage: "linear-gradient(to top, #85110d, 1%, white)" -->
-# Some oddities and some (recent?) mathematical models for HIV/AIDS, TB, Hepatitis, Malaria, etc.
+# Some oddities and some (recent?) mathematical models for HIV/AIDS, Malaria, COVID-19
 
 7 April 2022 
 
