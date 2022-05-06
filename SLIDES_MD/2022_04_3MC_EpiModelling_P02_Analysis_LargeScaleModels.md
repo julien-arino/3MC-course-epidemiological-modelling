@@ -205,7 +205,7 @@ $$
 S' &= bN-dS
 -\beta \frac{SI}N
 +\gamma I
-\tag{1a}\label{sys:SIS_bad_dS}\\
+\tag{2a}\label{sys:SIS_bad_dS}\\
 I' &= \beta\frac{SI}{N}-dI-\gamma I
 \tag{2b}\label{sys:SIS_bad_dI}
 \end{align}
@@ -251,11 +251,14 @@ $$
 Suppose system can be written in the form
 
 $$
-\begin{align*}
-\mathbf{S}' &= \mathbf{b}(\mathbf{S},\mathbf{I},\mathbf{R})-\mathbf{D}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathsf{diag}(\mathbf{S})\mathbf{h}\mathbf{I} \\
-\mathbf{I}' &= \mathbf{\Pi}\mathbf{D}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathsf{diag}(\mathbf{S})\mathbf{h}\mathbf{I}-\mathbf{V}\mathbf{I} \\
+\begin{align}
+\mathbf{S}' &= \mathbf{b}(\mathbf{S},\mathbf{I},\mathbf{R})-\mathbf{D}\mathbf{S}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathbf{h}\mathbf{I} 
+\tag{3a}\label{sys:SIR_general_dS} \\
+\mathbf{I}' &= \mathbf{\Pi}\mathbf{D}\mathbf{S}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathbf{h}\mathbf{I}-\mathbf{V}\mathbf{I} 
+\tag{3b}\label{sys:SIR_general_dI} \\
 \mathbf{R}' &= \mathbf{f}(\mathbf{S},\mathbf{I},\mathbf{R})+\mathbf{W}\mathbf{I}
-\end{align*}
+\tag{3c}\label{sys:SIR_general_dR}
+\end{align}
 $$
 
 where $\mathbf{S}\in\mathbb{R}^m$, $\mathbf{I}\in\mathbb{R}^n$ and $\mathbf{R}\in\mathbb{R}^k$ are susceptible, infected and removed compartments, respectively
@@ -265,31 +268,31 @@ IC are $\geq 0$ with at least one of the components of $\mathbf{I}(0)$ positive
 ---
 
 $$
-\mathbf{S}' = \mathbf{b}(\mathbf{S},\mathbf{I},\mathbf{R})-\mathbf{D}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathsf{diag}(\mathbf{S})\mathbf{h}\mathbf{I}
+\tag{3a}
+\mathbf{S}' = \mathbf{b}(\mathbf{S},\mathbf{I},\mathbf{R})-\mathbf{D}\mathbf{S}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathbf{h}\mathbf{I}
 $$
 - $\mathbf{b}:\mathbb{R}_+^m\times\mathbb{R}_+^n\times\mathbb{R}_+^k\to\mathbb{R}^m$ continuous function encoding recruitment and death of uninfected individuals
 - $\mathbf{D}\in\mathbb{R}^{m\times m}$ diagonal with diagonal entries $\sigma_i>0$ the relative susceptibilities of susceptible compartments, with convention that $\sigma_1=1$
-- Matrix valued function $\beta:\mathbb{R}_+^m\times\mathbb{R}_+^n\times\mathbb{R}_+^k\to\mathbb{R}_+^{m\times m}$ represents infectivity, with $\beta_i$ scalar-valued and
-$$
-\beta(\mathbf{S},\mathbf{I},\mathbf{R})=\mathsf{diag}(
-\beta_1(\mathbf{S},\mathbf{I},\mathbf{R}),\ldots,
-\beta_m(\mathbf{S},\mathbf{I},\mathbf{R}))
-$$
-- $\mathsf{diag}(\mathbf{S})=\mathsf{diag}(S_1,\ldots,S_m)$
-- $\mathbf{h}\in\mathbb{R}^{m\times n}$ has $i$th row the relative horizontal transmissions involved in $\beta_i$
+- Scalar valued function $\beta:\mathbb{R}_+^m\times\mathbb{R}_+^n\times\mathbb{R}_+^k\to\mathbb{R}_+$ represents infectivity, with, e.g., $\beta(\mathbf{S},\mathbf{I},\mathbf{R})=\beta$ for mass action
+- $\mathbf{h}\in\mathbb{R}^{m\times n}$ row vector of relative horizontal transmissions
 
 ---
 
 $$
-\mathbf{I}' = \mathbf{\Pi}\mathbf{D}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathsf{diag}(\mathbf{S})\mathbf{h}\mathbf{I}-\mathbf{V}\mathbf{I} \\
+\tag{3b}
+\mathbf{I}' = \mathbf{\Pi}\mathbf{D}\mathbf{S}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathbf{h}\mathbf{I}-\mathbf{V}\mathbf{I} \\
 $$
 
 - $\mathbf{\Pi}\in\mathbb{R}^{n\times m}$ has $(i,j)$ entry the fraction of individuals in $j^{\textrm{th}}$ susceptible compartment that enter $i^{\textrm{th}}$ infected compartment upon infection
+- $\mathbf{D}\in\mathbb{R}^{m\times m}$ diagonal with diagonal entries $\sigma_i>0$ the relative susceptibilities of susceptible compartments, with convention that $\sigma_1=1$
+- Scalar valued function $\beta:\mathbb{R}_+^m\times\mathbb{R}_+^n\times\mathbb{R}_+^k\to\mathbb{R}_+$ represents infectivity, with, e.g., $\beta(\mathbf{S},\mathbf{I},\mathbf{R})=\beta$ for mass action
+- $\mathbf{h}\in\mathbb{R}^{m\times n}$ row vector of relative horizontal transmissions
 - $\mathbf{V}\in\mathbb{R}^{n\times n}$ describes transitions between infected states and removals from these states due to recovery or death
 
 ---
 
 $$
+\tag{3c}
 \mathbf{R}' = \mathbf{f}(\mathbf{S},\mathbf{I},\mathbf{R})+\mathbf{W}\mathbf{I}
 $$
 
@@ -298,68 +301,24 @@ $$
 
 ---
 
-Suppose that $\mathbf{I}=\mathbf{0}$. The set $\{(\mathbf{S},\mathbf{0},\mathbf{R}), \mathbf{S}\in\mathbb{R}_+^m,\mathbf{R}\in\mathbb{R}_+^k\}$ is invariant under the flow of the system and defines the system without disease,
-
+Suppose $\mathbf{E}_0$ is a locally stable disease-free equilibrium (DFE) of the system without disease, i.e., an EP of
 $$
 \begin{align*}
 \mathbf{S}' &= \mathbf{b}(\mathbf{S},\mathbf{0},\mathbf{R}) \\
-\mathbf{R}' &= \mathbf{f}(\mathbf{S},\mathbf{0},\mathbf{R})
+\mathbf{R}' &= \mathbf{f}(\mathbf{S},\mathbf{0},\mathbf{R}) \\
 \end{align*}
 $$
-
-Let us suppose that $\mathbf{E}_0:=(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)$ is a locally stable equilibrium of the system without disease, i.e., one at which the Jacobian matrix
-$$
-J^\textrm{no dis}(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0) =
-\begin{pmatrix}
-\frac{\partial}{\partial\mathbf{S}}\mathbf{b}(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0) & \frac{\partial}{\partial\mathbf{R}}\mathbf{b}(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0) \\
-\frac{\partial}{\partial\mathbf{S}}\mathbf{f}(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0) & \frac{\partial}{\partial\mathbf{R}}\mathbf{f}(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)
-\end{pmatrix}
-$$
-has all its eigenvalues with nonpositive real parts
-
----
-
-As $(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)$ is an equilibrium of the system without disease, it is such that $\mathbf{b}(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)=\mathbf{0}$ and $\mathbf{f}(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)=\mathbf{0}$; as a consequence, $(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)$ is also an equilibrium of the general system.
-Let 
-$$
-\mathbf{f} = \mathbf{\Pi}\mathbf{D}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathsf{diag}(\mathbf{S})\mathbf{h}
-$$
-Then $\mathbf{I}'$ eq. in the general system takes the form $\mathbf{I}' = (\mathbf{f}-\mathbf{V})\mathbf{I}$ and it follows that $(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)$ is locally stable if $\mathbf{f}|_{\mathbf{E}_0}-\mathbf{V}$ has all its eigenvalues with negative real parts and locally asymptotically stable if $J(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)$ has all its eigenvalues with negative real parts
-
----
-
-Indeed, the Jacobian matrix of the original system with equations and variables presented in the order $\mathbf{I},\mathbf{S},\mathbf{R}$ takes the form of the block matrix
-$$
-J(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)
-=
-\begin{pmatrix}
-\mathbf{f}|_{\mathbf{E}_0}-\mathbf{V} & \mathbf{0}  \\
-\mathbf{*} & J^\textrm{no dis}(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)
-\end{pmatrix}
-$$
-
-Let $A$ be a square matrix and $\sigma(A)$ is its spectrum; denote $\rho(A)=\max_{\lambda\in\sigma(A)}\{|\lambda|\}$ and $s(A)=\max_{\lambda\in\sigma(A)}\{\Re(\lambda)\}$ its spectral radius and spectral abscissa, respectively
-
-It is shown in [PvdD & Watmough (2002)](https://doi.org/10.1016/S0025-5564(02)00108-6) that when $\mathbf{f}|_{\mathbf{E}_0}$ is a nonnegative matrix and $\mathbf{V}$ is a nonsingular M-matrix, then 
-$$
-s(\mathbf{f}|_{\mathbf{E}_0}-\mathbf{V})<\iff \rho(\mathbf{f}|_{\mathbf{E}_0}\mathbf{V}^{-1})<1
-$$
-
----
-
-At this point, similarly to [PvdD & Watmough (2002)](https://doi.org/10.1016/S0025-5564(02)00108-6), we cannot proceed much further in terms of the expression for $\mathcal{R}_0$. 
-Indeed, in [Arino, Brauer, PvdD, Watmough & Wu (2007)](https://julien-arino.github.io/assets/pdf/papers/ArinoBrauerVdDWatmoughWu-2007-MBE4.pdf) , the matrix $\mathbf{f}|_{\mathbf{E}_0}$ has rank 1, which allows to much improve the expression for the spectral radius.
-Here, in general, the matrix $\mathbf{D}\beta(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)\mathsf{diag}(\mathbf{S}_0)$ has full rank $m$ and in general, $\mathbf{f}|_{\mathbf{E}_0}$ has full rank $n$.
 
 <div class="theorem">
 
 Let
 $$
-\mathcal{R}_0 = \rho\left(
-\mathbf{\Pi}\mathbf{D}\beta(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)\mathsf{diag}(\mathbf{S}_0)\mathbf{h}\mathbf{V}^{-1}
-\right)
+\mathcal{R}_0 = 
+\beta(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)
+\mathbf{h}\mathbf{V}^{-1}
+\mathbf{\Pi}\mathbf{D}\mathbf{S}_0
 $$
-If $\mathcal{R}_0<1$, the DFE $\mathbf{E}_0$ is locally asymptotically stable; if $\mathcal{R}_0>1$, the DFE $\mathbf{E}_0$ is unstable
+If $\mathcal{R}_0<1$, the DFE $\mathbf{E}_0$ is a locally (asymptotically) stable EP of $\eqref{sys:SIR_general_dS}$-$\eqref{sys:SIR_general_dR}$; if $\mathcal{R}_0>1$, the DFE $\mathbf{E}_0$ is unstable
 
 </div>
 
@@ -372,22 +331,73 @@ If $\mathcal{R}_0<1$, the DFE $\mathbf{E}_0$ is locally asymptotically stable; i
 
 # Final size relations
 
-- Still use the same method
-- But now need to assume that there is no demography, i.e., $\mathbf{b}(\mathbf{S},\mathbf{I},\mathbf{R})=\mathbf{0}_m$ and $\mathbf{f}(\mathbf{S},\mathbf{I},\mathbf{R})=\mathbf{0}_k$
+Assume no demography, then system should be writeable as
+$$
+\begin{align}
+\mathbf{S}' &= -\mathbf{D}\mathbf{S}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathbf{h}\mathbf{I} 
+\tag{4a}\label{sys:SIR_epi_dS} \\
+\mathbf{I}' &= \mathbf{\Pi}\mathbf{D}\mathbf{S}\beta(\mathbf{S},\mathbf{I},\mathbf{R})\mathbf{h}\mathbf{I}-\mathbf{V}\mathbf{I} 
+\tag{4b}\label{sys:SIR_epi_dI} \\
+\mathbf{R}' &= \mathbf{W}\mathbf{I}
+\tag{4c}\label{sys:SIR_epi_dR} 
+\end{align}
+$$
+For $w(t)\in\mathbb{R}_+^n$ continuous, define
+$$
+w_\infty = \lim_{t\to\infty}w(t)\quad\text{and}\quad
+\hat{w}=\int_0^\infty w(t)\ dt
+$$
 
 ---
 
-Define the row vector $\mathbb{R}^m\ni\mathbf{\Gamma}=(\Gamma_1,\ldots,\Gamma_m)=\beta(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)\mathbf{h}\mathbf{V}^{-1}\mathbf{\Pi}\mathbf{D}$, then $\mathcal{R}_0=\mathbf{\Gamma}\mathbf{S}(0)$
+Define the row vector 
+$$
+\mathbb{R}^m\ni\mathbf{\Gamma}
+=(\Gamma_1,\ldots,\Gamma_m)=\beta(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)\mathbf{h}\mathbf{V}^{-1}\mathbf{\Pi}\mathbf{D}
+$$
+then 
+$$
+\mathcal{R}_0=\mathbf{\Gamma}\mathbf{S}(0)
+$$
 
-If incidence is mass action, i.e., $\beta(\mathbf{S},\mathbf{I},\mathbf{R})=\beta$, then for $i=1,\ldots,m$,
+---
+
+Suppose incidence is mass action, i.e., $\beta(\mathbf{S},\mathbf{I},\mathbf{R})=\beta$ and $m>1$
+
+Then for $i=1,\ldots,m$, express $\mathbf{S}_i(\infty)$ as a function of $\mathbf{S}_1(\infty)$ using
+$$
+\mathbf{S}_i(\infty)  = 
+\mathbf{S}_i(0) \left(
+\frac{\mathbf{S}_1(\infty)}{\mathbf{S}_1(0)}
+\right)^{\sigma_i/\sigma_1}
+$$
+then substitute into 
 $$
 \frac{1}{\sigma_i}
 \ln\left(\frac{\mathbf{S}_i(0)}{\mathbf{S}_i(\infty)}\right)
 =
 \mathbf{\Gamma}\mathbf{D}^{-1}\left(\mathbf{S}(0)-\mathbf{S}(\infty)\right)
-+\beta(\mathbf{S}_0,\mathbf{0},\mathbf{R}_0)\mathbf{h}\mathbf{V}^{-1}\mathbf{I}(0),
++\beta\mathbf{h}\mathbf{V}^{-1}\mathbf{I}(0)
+= 
+\frac{1}{\sigma_1}
+\ln\left(\frac{\mathbf{S}_1(0)}{\mathbf{S}_1(\infty)}\right)
+
 $$
-which is a final size relation for the general system when $\mathbf{I}_i(0)>0$. Note that this is an equality only when incidence is mass action
+which is a final size relation for the general system when $\mathbf{S}_i(0)>0$
+
+---
+
+If incidence is mass action and $m=1$ (only one susceptible compartment), reduces to the KMK form
+$$
+\tag{5}
+\ln\left(
+\frac{S_0}{S_\infty}
+\right)
+=\frac{\mathcal{R}_0}{S_0}
+(S_0-S_\infty)+\beta\mathbf{h}\mathbf{V}^{-1}\mathbf{I}_0
+$$
+
+---
 
 In the case of more general incidence functions, the final size relations are inequalities of the form, for $i=1,\ldots,m$,
 $$
@@ -410,6 +420,10 @@ where $K$ is the initial total population
 Paper we have already seen:
 - Arino, Brauer, PvdD, Watmough & Wu. [Simple models for containment of a pandemic](http://dx.doi.org/10.1098/rsif.2006.0112) (2006)
 
+
+---
+
+![width:1200px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIAR.png)
 
 --- 
 
