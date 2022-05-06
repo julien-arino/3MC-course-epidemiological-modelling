@@ -231,6 +231,13 @@ $$
 - Final size relation
 - Examples
 
+<div style = "position: relative; bottom: -25%; font-size:20px;">
+
+Arino, Brauer, PvdD, Watmough & Wu. [A final size relation for epidemic models](https://julien-arino.github.io/assets/pdf/papers/ArinoBrauerVdDWatmoughWu-2007-MBE4.pdf). *Mathematical Biosciences and Engineering* **4**(2):159-175 (2007)
+</div>
+
+
+
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
@@ -240,7 +247,6 @@ $$
 
 # A method for computing $\mathcal{R}_0$ in epidemic models
 
-- Arino, Brauer, PvdD, Watmough & Wu. [A final size relation for epidemic models](https://julien-arino.github.io/assets/pdf/papers/ArinoBrauerVdDWatmoughWu-2007-MBE4.pdf) (2007)
 - This method is not universal! It works in a relatively large class of models, but not everywhere. If it doesn't work, the next generation matrix method (see later) does work, **but** should be considered only for obtaining the reproduction number, not to deduce LAS (cf. my remark earler)
 - Here, I change the notation in the paper, for convenience
 
@@ -318,7 +324,8 @@ $$
 \mathbf{h}\mathbf{V}^{-1}
 \mathbf{\Pi}\mathbf{D}\mathbf{S}_0
 $$
-If $\mathcal{R}_0<1$, the DFE $\mathbf{E}_0$ is a locally (asymptotically) stable EP of $\eqref{sys:SIR_general_dS}$-$\eqref{sys:SIR_general_dR}$; if $\mathcal{R}_0>1$, the DFE $\mathbf{E}_0$ is unstable
+- If $\mathcal{R}_0<1$, the DFE $\mathbf{E}_0$ is a locally asymptotically stable EP of $\eqref{sys:SIR_general_dS}$-$\eqref{sys:SIR_general_dR}$
+- If $\mathcal{R}_0>1$, the DFE $\mathbf{E}_0$ of $\eqref{sys:SIR_general_dS}$-$\eqref{sys:SIR_general_dR}$ is unstable
 
 </div>
 
@@ -389,7 +396,7 @@ which is a final size relation for the general system when $\mathbf{S}_i(0)>0$
 
 If incidence is mass action and $m=1$ (only one susceptible compartment), reduces to the KMK form
 $$
-\tag{5}
+\tag{5}\label{eq:final_size_m1}
 \ln\left(
 \frac{S_0}{S_\infty}
 \right)
@@ -415,21 +422,103 @@ where $K$ is the initial total population
 
 --- 
 
-# Example - $SLIAR$ model
+# The SLIAR model
 
-Paper we have already seen:
-- Arino, Brauer, PvdD, Watmough & Wu. [Simple models for containment of a pandemic](http://dx.doi.org/10.1098/rsif.2006.0112) (2006)
+- Paper we have already seen:
+  - Arino, Brauer, PvdD, Watmough & Wu. [Simple models for containment of a pandemic](http://dx.doi.org/10.1098/rsif.2006.0112) (2006)
+- However, suppose additionally that $L$ are also infectious
+
+---
+
+![width:1200px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIAR_infectiousL.png)
+
+---
+
+Here, $\mathbf{S}=S$, $\mathbf{I}=(L,I,A)^T$ and $\mathbf{R}=R$, so $m=1$, $n=3$ and 
+$$
+\mathbf{h}=[\varepsilon\; 1\; \delta],
+\quad
+\mathbf{D}=1,
+\quad 
+\mathbf{\Pi}
+=\begin{pmatrix}
+1 \\ 0 \\0
+\end{pmatrix}
+\quad\text{and}\quad
+\mathbf{V}=
+\begin{pmatrix}
+\kappa & 0 & 0 \\
+-p\kappa & \alpha & 0 \\
+-(1-p)\kappa & 0 & \eta
+\end{pmatrix}
+$$
+Incidence is mass action so $\beta(\mathbf{E}_0)=\beta$ and thus
+$$
+\begin{align}
+\mathcal{R}_0
+&=
+\beta\mathbf{h}\mathbf{V}^{-1}\mathbf{\Pi}\mathbf{D}\mathbf{S}_0 \\
+&=
+\beta\;
+[\varepsilon\; 1\; \delta]
+\begin{pmatrix}
+1/\kappa & 0 & 0 \\
+p/\alpha & 1/\alpha & 0 \\
+(1-p)/\eta & 0 & 1/\eta
+\end{pmatrix}
+\begin{pmatrix}
+1 \\ 0 \\0
+\end{pmatrix}
+S_0 \\
+&=
+\beta S_0\left(
+\frac{\varepsilon}{\kappa}
++\frac{p}{\alpha}
++\frac{\delta(1-p)}{\eta}
+\right)
+\end{align}
+$$
+
+---
+
+For final size, since $m=1$, we can use $\eqref{eq:final_size_m1}$:
+$$
+\ln\left(
+\frac{S_0}{S_\infty}
+\right)
+=\frac{\mathcal{R}_0}{S_0}
+(S_0-S_\infty)+\beta\mathbf{h}\mathbf{V}^{-1}\mathbf{I}_0
+$$
+Suppose $\mathbf{I}_0=(0,I_0,0)$, then
+$$
+\ln\left(
+\frac{S_0}{S_\infty}
+\right)
+=\mathcal{R}_0\frac{S_0-S_\infty}{S_0}
++\frac{\beta}{\alpha}I_0
+$$
+If $\mathbf{I}_0=(L_0,I_0,A_0)$, then
+$$
+\ln\left(
+\frac{S_0}{S_\infty}
+\right)
+=\mathcal{R}_0\frac{S_0-S_\infty}{S_0}
++\beta\left(
+\frac{\varepsilon}{\kappa}
++\frac{p}{\alpha}
++\frac{\delta(1-p)}{\eta}
+\right)L_0
++\frac{\beta\delta}{\eta}A_0
++\frac{\beta}{\alpha}I_0
+$$
 
 
 ---
 
-![width:1200px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIAR.png)
+# <!--fit-->A model with vaccination
 
---- 
+Fraction $\gamma$ of $S_0$ are vaccinated before the epidemic; vaccination reduces probability and duration of infection and reduces mortality
 
-# <!--fit-->Example - $SL_1L_2I_1I_2A_1A_2R$ "simple" COVID-19 model
-
-- Arino & Portet. [A simple model for COVID-19](http://dx.doi.org/10.1016/j.idm.2020.04.002) (2020)
 
 ---
 
