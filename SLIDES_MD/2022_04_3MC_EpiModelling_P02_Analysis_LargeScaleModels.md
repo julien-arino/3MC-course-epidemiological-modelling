@@ -892,10 +892,204 @@ $$
 
 ---
 
+# A tuberculosis model incorporating treatment
+
+- While undergoing treatment, individuals can be infected
+
 <div style = "position: relative; bottom: -40%; font-size:20px;">
 
 C$^3$ & Feng. [To treat or not to treat: the case of tuberculosis](https://doi.org/10.1007/s002850050069). *Journal of Mathematical Biology* **35**: 629-656 (1997).
 </div>
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIT.png)
+
+---
+
+$$
+\begin{align}
+S' &= b(N)-dS-\beta_1\frac{SI}{N}
+\tag{9a}\label{sys:SLIT_dS} \\
+L' &= \beta_1\frac{SI}{N}
++\beta_2\frac{TI}{N}-(d+\nu+r_1)L+pr_2I 
+\tag{9b}\label{sys:SLIT_dL} \\
+I' &= \nu L-(d+r_2)I
+\tag{9c}\label{sys:SLIT_dI} \\
+T' &= r_1L+qr_2I-dT-\beta_2\frac{TI}{N}
+\tag{9d}\label{sys:SLIT_dT} 
+\end{align}
+$$
+with $p=1-q$
+
+DFE is $x_0=(S^\star,0,0,0)$ with $S^\star$ solution to $b(S^\star)=dS^\star$ (so there must hold that $b'(S^\star)<d$)
+
+Assume without loss of generality that $S^\star=1$
+
+---
+
+$$
+\mathcal{F}=\begin{pmatrix}
+0 \\
+\beta_1\frac{SI}{N}+\beta_2\frac{TI}{N} \\
+0 \\ 0 
+\end{pmatrix}
+\quad\text{and}\quad
+\mathcal{V}=\begin{pmatrix}
+-b(N)+dS+\beta_1\frac{SI}{N} \\
+(d+\nu+r_1)L-pr_2 I \\
+-\nu L+(d+r_2)I \\
+dT-r_1L-qr_2I+\beta_2\frac{TI}{N}
+\end{pmatrix}
+$$
+So
+$$
+F=\begin{pmatrix}
+0 & \beta_1 \\
+0 & 0
+\end{pmatrix}
+\quad\text{and}\quad
+V=\begin{pmatrix}
+d+\nu+r_1 & -pr_2 \\
+-\nu & d+r_2
+\end{pmatrix}
+$$
+and
+$$
+\mathcal{R}_0
+=\frac{\beta_1\nu}
+{(d+\nu+r_1)(d+r_2)-\nu pr_2}
+$$
+
+---
+
+# Effect of another choice of $\mathcal{F}$ (1)
+
+$$
+\mathcal{F}=\begin{pmatrix}
+0 \\
+\beta_1\frac{SI}{N}+\beta_2\frac{TI}{N} +pr_2I \\
+0 \\ 0 
+\end{pmatrix}
+\quad\text{and}\quad
+\mathcal{V}=\begin{pmatrix}
+-b(N)+dS+\beta_1\frac{SI}{N} \\
+(d+\nu+r_1)L \\
+-\nu L+(d+r_2)I \\
+dT-r_1L-qr_2I+\beta_2\frac{TI}{N}
+\end{pmatrix}
+$$
+So
+$$
+F=\begin{pmatrix}
+0 & \beta_1+pr_2 \\
+0 & 0
+\end{pmatrix}
+\quad\text{and}\quad
+V=\begin{pmatrix}
+d+\nu+r_1 & -pr_2 \\
+-\nu & d+r_2
+\end{pmatrix}
+$$
+and
+$$
+\mathcal{R}_0
+=\frac{\beta_1\nu+pr_2\nu}
+{(d+\nu+r_1)(d+r_2)}
+$$
+
+---
+
+# Effect of another choice of $\mathcal{F}$ (2)
+
+$$
+\mathcal{F}=\begin{pmatrix}
+0 \\
+\beta_1\frac{SI}{N}+\beta_2\frac{TI}{N}+pr_2I \\
+\nu L \\ 0 
+\end{pmatrix}
+\quad\text{and}\quad
+\mathcal{V}=\begin{pmatrix}
+-b(N)+dS+\beta_1\frac{SI}{N} \\
+(d+\nu+r_1)L \\
+(d+r_2)I \\
+dT-r_1L-qr_2I+\beta_2\frac{TI}{N}
+\end{pmatrix}
+$$
+So
+$$
+F=\begin{pmatrix}
+0 & \beta_1+pr_2 \\
+\nu & 0
+\end{pmatrix}
+\quad\text{and}\quad
+V=\begin{pmatrix}
+d+\nu+r_1 & 0 \\
+0 & d+r_2
+\end{pmatrix}
+$$
+and
+$$
+\mathcal{R}_0
+=
+\sqrt{\frac{\beta_1\nu+pr_2\nu}
+{(d+\nu+r_1)(d+r_2)}}
+$$
+
+---
+
+$J_1$ has a simple zero eigenvalue when $\mathcal{R}_0=1$. All second derivatives of $f$ are zero at the DFE except
+$$
+\frac{\partial^2 f_1}{\partial L\partial I}
+=-\beta_1,
+\quad
+\frac{\partial^2 f_1}{\partial I^2}
+=-2\beta_1,
+\quad
+\frac{\partial^2 f_1}{\partial I\partial T}
+=\beta_2-\beta_1,
+$$
+So
+$$
+a=-\beta_1v_1w_2(w_1+w_2+(1-\beta_2/\beta_1)w_4)
+$$
+where the eigenvectors $v$ and $w$ can be chosen so that $w\gg 0$ and $v_1>0$
+
+Typically, $\beta_2<\beta_1$ so $a<0$ $\implies$ bifurcation is forward
+
+---
+
+# A slight change to the model
+
+$$
+\begin{align}
+S' &= b(N)-dS-\beta_1\frac{SI}{N}
+\tag{10a}\label{sys:SLIT2_dS} \\
+L' &= \beta_1\frac{SI}{N}
++\beta_2\frac{TI}{N}-\beta_3\frac{LI}{N}-(d+\nu+r_1)L+pr_2I 
+\tag{10b}\label{sys:SLIT2_dL} \\
+I' &= \beta_3\frac{LI}{N}+\nu L-(d+r_2)I
+\tag{10c}\label{sys:SLIT2_dI} \\
+T' &= r_1L+qr_2I-dT-\beta_2\frac{TI}{N}
+\tag{10d}\label{sys:SLIT2_dT} 
+\end{align}
+$$
+
+<div style = "position: relative; bottom: -40%; font-size:20px;">
+
+Feng, C$^3$ & Capurro. [A Model for Tuberculosis with Exogenous Reinfection](https://doi-org.uml.idm.oclc.org/10.1006/tpbi.2000.1451). *Theoretical Population Biology* **57**(3): 235-247 (2000)
+</div>
+
+---
+
+With this change
+$$
+a=-\beta_1v_1w_2(w_1+w_2+(1-\beta_2/\beta_1)w_4)
++\beta_3w_1w_2(v_2-v_1)
+$$
+where it can be shown that $v_2-v_1>0$
+
+Therefore, there are situations when $a>0$, i.e., there can be backward bifurcations
 
 ---
 
@@ -1253,7 +1447,7 @@ Let $A$ be a real $m\times m$-mix. For $A$ to have all its eigenvalues with nega
 
 Consider the differential equation
 $$
-\begin{equation}\tag{1}\label{sys:diff_general}
+\begin{equation}\tag{11}\label{sys:diff_general}
 x'=f(x)
 \end{equation}
 $$
