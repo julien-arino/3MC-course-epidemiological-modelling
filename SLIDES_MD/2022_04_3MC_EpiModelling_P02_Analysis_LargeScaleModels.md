@@ -1338,7 +1338,7 @@ a_{ij}=\left\{
 \begin{array}{ll}
 a_{i_1i_1}+a_{i_2i_2} & \textrm{if } (j)=(i) \\
 (-1)^{r+s}a_{i_rj_s} & \textrm{if exactly one element  } i_r\textrm{ of }(i)\textrm{ does not appear}\\
-&\textrm{in }(j)\textrm{ and }j_s \textrm{ does not appear in }(i) \\
+&\textrm{if }(j)\textrm{ and }j_s \textrm{ does not appear in }(i) \\
 0 & \textrm{if no element of }(i)
 \textrm{ appears in }(j) 
 \end{array}

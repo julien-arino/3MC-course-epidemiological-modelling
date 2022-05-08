@@ -1,7 +1,7 @@
 ---
 marp: true
-title: Practicum 03 - Analysis, studying stochastic models in R. Simulating agent-based models
-description: Julien Arino - 3MC Course on Epidemiological Modelling - Practicum 03 - Analysis, studying stochastic models in R. Simulating agent-based models
+title: Practicum 03 - Analysis and study of stochastic models in R
+description: Julien Arino - 3MC Course on Epidemiological Modelling - Practicum 03 - Analysis and study of stochastic models in R
 theme: default
 paginate: false
 math: mathjax
@@ -31,7 +31,7 @@ size: 4K
 </style>
 
 <!-- _backgroundImage: "linear-gradient(to top, #85110d, 1%, white)" -->
-# Practicum 03 - Analysis, studying stochastic models in R. Simulating agent-based models
+# Practicum 03 - Analysis and study of stochastic models in R
 
 6 April 2022 
 
@@ -53,20 +53,19 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 
 <!-- _backgroundImage: "radial-gradient(white,80%,#f1c40f)" -->
 # Outline
-- Analysing stochastic models
+- Analysing discrete time Markov chains
+- Continuous time Markov chains
 - More on stochastic models in R
-- Simulating agent-based models
 
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# <!--fit-->Analysing stochastic models
+# <!--fit-->Analysing DTMC
 
 - Asymptotic behaviour of a DTMC
 - Regular DTMC
 - Absorbing DTMC
 - Random walks
-- CTMC
 
 ---
 
@@ -295,6 +294,25 @@ $$
 
 ---
 
+# Linking matrix and graph theory
+
+<div class="definition">
+
+A digraph $\mathcal{G}$ is **strongly connected** if there is a path between all pairs of vertices
+</div>
+
+<div class="definition">
+
+A matrix $M\in\mathcal{M}_n$ is **irreducible** if there does not exist a matrix $P\in\mathcal{M}_n$ s.t. $P^{-1}AP$ be block triangular 
+</div>
+
+<div class="theorem">
+
+$A\in\mathcal{M}_n$ irreducible $\iff$ $\mathcal{G}(A)$ strongly connected
+</div>
+
+---
+
 # Another way to check regularity
 <div class="theorem">
 
@@ -302,7 +320,9 @@ A matrix $M$ is primitive if the associated connection graph is strongly connect
 </div>
 
 This is checked directly on the transition graph
-![width:100% center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/graphe_hybride.png)
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_regular.png)
+
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_absorbing.png)
 
 ---
 
@@ -334,7 +354,7 @@ In an absorbing Markov chain, a state that is not absorbing is called **transien
 
 Suppose we have a chain like the following
 
-![width:100% center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/graphe_absorbant.png)
+![width:500px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/graphe_absorbant.png)
 
 1. Does the process eventually reach an absorbing state?
 2. Average number of times spent in a transient state, if starting in a transient state?
@@ -398,7 +418,7 @@ Answers to our remaining questions:
 - if in state $S_1$, probability 1 of going to $S_2$
 - if in state $S_p$, probability 1 of going to $S_{p-1}$
 
-![width:100% center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_regular.png)
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_regular.png)
 
 ---
 
@@ -501,7 +521,7 @@ $$
 - if in state $S_1$, probability 1 of going to $S_1$
 - if in state $S_p$, probability 1 of going to $S_p$
 
-![width:100% center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_absorbing.png)
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_absorbing.png)
 
 ---
 
@@ -748,8 +768,8 @@ $$
 
 ---
 
-<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# CTMC
+<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
+# <!--fit-->Continuous time Markov chains
 
 ---
 
@@ -847,7 +867,7 @@ $$
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# More on stochastic models in R
+# <!--fit-->More on stochastic models in R
 
 ---
 
@@ -889,16 +909,3 @@ SIMS = lapply(X = 1:params$number_sims,
 tictoc::toc()
 ```
 which gives `318.141 sec elapsed` on a 6C/12T Intel(R) Core(TM) i9-8950HK CPU @ 2.90GHz (4.75$\times$ faster) or `12.067 sec elapsed` versus `258.985 sec elapsed` on a 32C/64T AMD Ryzen Threadripper 3970X 32-Core Processor (21.46$\times$ faster !)
-
----
-
-<!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
-# Simulating agent-based models
-
-
----
-
-# Some simulation systems
-
-- [AnyLogic](https://www.anylogic.com/). Free (limited) personal edition, not open source
-- [NetLogo](http://ccl.northwestern.edu/netlogo/). GPL
