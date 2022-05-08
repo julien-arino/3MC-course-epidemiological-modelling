@@ -326,8 +326,9 @@ $$
 $$
 - If $\mathcal{R}_0<1$, the DFE $\mathbf{E}_0$ is a locally asymptotically stable EP of $\eqref{sys:SIR_general_dS}$-$\eqref{sys:SIR_general_dR}$
 - If $\mathcal{R}_0>1$, the DFE $\mathbf{E}_0$ of $\eqref{sys:SIR_general_dS}$-$\eqref{sys:SIR_general_dR}$ is unstable
-
 </div>
+
+If no demopgraphy (epidemic model), then just $\mathcal{R}_0$, of course
 
 ---
 
@@ -517,8 +518,70 @@ $$
 
 # <!--fit-->A model with vaccination
 
-Fraction $\gamma$ of $S_0$ are vaccinated before the epidemic; vaccination reduces probability and duration of infection and reduces mortality
+Fraction $\gamma$ of $S_0$ are vaccinated before the epidemic; vaccination reduces probability and duration of infection, infectiousness and reduces mortality
 
+$$
+\begin{align}
+S_U' &= -\beta S_U[I_U+\sigma_II_V] \\
+S_V' &= -\sigma_S\beta S_V[I_U+\sigma_II_V] \\
+L_U' &= \beta S_U[I_U+\sigma_II_V]-\kappa_UL_U\\
+L_V' &= \sigma_S\beta S_V[I_U+\sigma_II_V]-\kappa_VL_V \\
+I_U' &= \kappa_UL_U-\alpha_UI_U \\
+I_V' &= \kappa_VL_V-\alpha_VI_V \\
+R' &= f_U\alpha_UI_I+f_V\alpha_VI_V
+\end{align}
+$$
+with $S_U(0)=(1-\gamma)S_0$ and $S_V(0)=\gamma S_0$
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIR_epidemic_with_vaccination.png)
+
+---
+
+Here, $m=2$, $n=4$,
+$$
+\mathbf{h} = [0\;0\;1\;\sigma_I],\quad
+\mathbf{D}=\begin{pmatrix}
+1 & 0 \\ 0 & \sigma_S
+\end{pmatrix},\quad
+\mathbf{\Pi}=
+\begin{pmatrix}
+1 & 0 \\ 0 & 1 \\ 0 & 0 \\ 0 & 0
+\end{pmatrix}
+\quad\text{and}\quad
+\mathbf{V}=
+\begin{pmatrix}
+\kappa_U & 0 & 0 & 0 \\
+0 & \kappa_V & 0 & 0 \\
+-\kappa_U & 0 & \alpha_U & 0 \\
+0 & -\kappa_V & 0 & \alpha_V
+\end{pmatrix}
+$$
+So
+$$
+\mathbf{\Gamma}=\left[
+\frac{\beta}{\alpha_U}\; \frac{\sigma_I\sigma_S\beta}{\alpha_V}
+\right],
+\quad
+\mathcal{R}_c = S_0\beta\left(
+\frac{1-\gamma}{\alpha_U}+\frac{\sigma_I\sigma_S\gamma}{\alpha_V}
+\right)
+$$
+and the final size relation is
+$$
+\begin{align}
+\ln\left(
+\frac{(1-\gamma)S_U(0)}{S_U(\infty)}
+\right)
+&= 
+\frac{\beta}{\alpha_U}[(1-\gamma)S_U(0)-S_U(\infty)]
++\frac{\sigma_I\beta}{\alpha_V}[\gamma S_V(0)-S_V(\infty)]+\frac{\beta}{\alpha_U}I_0 \\
+S_V(\infty) &= \gamma S_U(0)\left(
+\frac{S_U(\infty)}{(1-\gamma)S_0}
+\right)^{\sigma_S}
+\end{align}
+$$
 
 ---
 
@@ -637,7 +700,7 @@ Note: if the method ever fails to work, it is usually with (A5) that lies the pr
 
 ---
 
-# A result of van den Driessche and Watmough
+# Stability of the DFE as function of $\mathcal{R}_0$ 
 
 
 <div align=justify 
@@ -653,6 +716,78 @@ $$
 with matrices $F$ and $V$ obtained as indicated. Assume conditions (A1) through (A5) hold. Then
 - if $\mathcal{R}_0<1$, then the DFE is LAS
 - if $\mathcal{R}_0>1$, the DFE is unstable
+</div>
+
+Important to stress *local* nature of stability that is deduced from this result. We will see later that even when $\mathcal{R}_0<1$, there can be several positive equilibria
+
+---
+
+# Direction of the bifurcation at $\mathcal{R}_0=1$
+
+$\mu$ bifurcation parameter s.t. $\mathcal{R}_0<1$ for $\mu<0$ and $\mathcal{R}_0>1$ for $\mu>0$ and $x_0$ DFE for all values of $\mu$ and consider the system
+$$
+\tag{6}\label{eq:sys_PvdDW}
+x'=f(x,\mu)
+$$
+
+Write 
+$$
+D_xf(x_0,0)=
+\left. 
+  D(\mathcal{F}(x_0)-\mathcal{V}(x_0))
+\right|_{\mathcal{R}_0=1}
+$$
+as block matrix
+$$
+D\mathcal{F}(x_0)
+=\begin{pmatrix}
+F & 0 \\ 0 & 0
+\end{pmatrix},
+\quad
+D\mathcal{V}(x_0)
+=\begin{pmatrix}
+V & 0 \\ J_3 & J_4
+\end{pmatrix}
+$$
+
+---
+
+Write $[\alpha_{\ell k}]$, $\ell=m+1,\ldots,n$, $k=1,\ldots,m$ the $(\ell-m,k)$ entry of $-J_4^{-1}J_3$ and let $v$ and $w$ be left and right eigenvectors of $D_xf(x_0,0)$ s.t. $vw=1$
+
+Let
+$$
+\tag{7}\label{eq:PvdDW_a}
+a =\sum_{i,j,k=1}^m
+v_iw_jw_k
+\left(
+\frac 12 
+\frac{\partial^2f_i}{\partial x_j\partial x_k}(x_0,0)
++\sum_{\ell=m+1}^n
+\alpha_{\ell k}
+\frac{\partial^2f_i}{\partial x_j\partial x_\ell}(x_0,0)
+\right)
+$$
+
+$$
+\tag{8}\label{eq:PvdDW_b}
+b
+=vD_{x\mu}f(x_0,0)w
+=\sum_{i,j=1}^n v_iw_j
+\frac{\partial^2f_i}{\partial x_j\partial\mu}
+(x_0,0)
+$$
+
+---
+
+<div class="theorem">
+
+Consider model $\eqref{eq:sys_PvdDW}$ with $f(x,\mu)$ satisfying conditions (A1)–(A5) and $\mu$ as described above
+
+Assume that the zero eigenvalue of $D_xf(x_0,0)$ is simple
+
+Define $a$ and $b$ by $\eqref{eq:PvdDW_a}$ and $\eqref{eq:PvdDW_b}$; assume that $b\neq 0$. Then $\exists\delta > 0$ s.t.
+- if $a < 0$, then there are LAS endemic equilibria near $x_0$ for $0 < \mu < \delta$
+- if $a > 0$, then there are unstable endemic equilibria near $x_0$ for $-\delta < \mu < 0$
 </div>
 
 ---
@@ -757,21 +892,10 @@ $$
 
 ---
 
-<div class="theorem">
+<div style = "position: relative; bottom: -40%; font-size:20px;">
 
-Let
-$$
-\mathcal{R}_0=
-\dfrac{\varepsilon\dfrac{\partial\overline{f}}{\partial I}}
-{(d+\varepsilon)(d+\gamma)}
-$$
-
-Then 
-- if $\mathcal{R}_0<1$, the DFE is LAS
-- if $\mathcal{R}_0>1$, the DFE is unstable
+C$^3$ & Feng. [To treat or not to treat: the case of tuberculosis](https://doi.org/10.1007/s002850050069). *Journal of Mathematical Biology* **35**: 629-656 (1997).
 </div>
-
-Important to stress *local* nature of stability that is deduced from this result. We will see later that even when $\mathcal{R}_0<1$, there can be several positive equilibria
 
 ---
 
@@ -783,7 +907,6 @@ Important to stress *local* nature of stability that is deduced from this result
 - JA. [Spatio-temporal spread of infectious pathogens of humans](https://doi.org/10.1016/j.idm.2017.05.001). *Infectious Disease Modelling* **2**(2):218-228 (2017)
 - JA. [Mathematical epidemiology in a data-rich world](https://doi.org/10.1016/j.idm.2019.12.008). *Infectious Disease Modelling* **5**:161-188 (2020)
 - github repo [modelling-with-data](https://github.com/julien-arino/modelling-with-data)
-
 </div>
 
 ---
@@ -835,7 +958,7 @@ p$epsilon = rep((1/1.5), p$P)
 p$pi = rep(0.7, p$P)
 p$gammaI = rep((1/5), p$P)
 p$gammaA = rep((1/3), p$P)
-# The desired values for R_0. Here we take something simple
+# The desired values for R_0
 R_0 = rep(1.5, p$P)
 ```
 
