@@ -303,13 +303,17 @@ A digraph $\mathcal{G}$ is **strongly connected** if there is a path between all
 
 <div class="definition">
 
-A matrix $M\in\mathcal{M}_n$ is **irreducible** if there does not exist a matrix $P\in\mathcal{M}_n$ s.t. $P^{-1}AP$ be block triangular 
+A matrix $M\in\mathcal{M}_n$ is **irreducible** if there does not exist a matrix $P\in\mathcal{M}_n$ s.t. $P^{-1}AP$ block triangular 
 </div>
 
 <div class="theorem">
 
 $A\in\mathcal{M}_n$ irreducible $\iff$ $\mathcal{G}(A)$ strongly connected
 </div>
+
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_regular.png)
+
+![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_absorbing.png)
 
 ---
 
@@ -318,11 +322,6 @@ $A\in\mathcal{M}_n$ irreducible $\iff$ $\mathcal{G}(A)$ strongly connected
 
 A matrix $M$ is primitive if the associated connection graph is strongly connected, i.e., that there is a path between any pair $(i,j)$ of states, and that there is at least one positive entry on the diagonal of $M$
 </div>
-
-This is checked directly on the transition graph
-![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_regular.png)
-
-![width:1000px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/drunk_mans_walk_absorbing.png)
 
 ---
 

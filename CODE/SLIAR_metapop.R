@@ -121,7 +121,7 @@ plot(times,I[,1]/N[,1]*1e5,
 for (i in 2:p$P) {
   lines(times,I[,i]/N[,i]*1e5, col = i)
 }
-legend("topleft",legend = countries,col = 1:p$P, lty = 1)
+legend("topleft",legend = countries, col = 1:p$P, lty = 1)
 
 # The (potential) issue with not having death (and birth to counterbalance it)
 ylim = c(0,max(N))
@@ -133,3 +133,4 @@ for (i in 2:p$P) {
   lines(times,N[,i], col = i)
 }
 legend("left",legend = countries,col = 1:p$P, lty = 1)
+

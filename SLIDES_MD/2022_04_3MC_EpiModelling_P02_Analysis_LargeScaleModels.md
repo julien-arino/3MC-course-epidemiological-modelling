@@ -1217,40 +1217,72 @@ for (i in 1:p$P) {
 
 ```
 SLIAR_metapop_rhs <- function(t, x, p) {
-  S = x[p$idx_S]
-  L = x[p$idx_L]
-  I = x[p$idx_I]
-  A = x[p$idx_A]
-  R = x[p$idx_R]
-  N = S + L + I + A + R
-  Phi = p$beta * S * (I + p$eta * A) / N
-  dS = - Phi + p$M %*% S
-  dL = Phi - p$epsilon * L + p$M %*% L
-  dI = (1 - p$pi) * p$epsilon * L - p$gammaI * I + p$M %*% I
-  dA = p$pi * p$epsilon * L - p$gammaA * A + p$M %*% A
-  dR = p$gammaI * I + p$gammaA * A + p$M %*% R
-  list(c(dS, dL, dI, dA, dR))
+  with(as.list(p), {
+    S = x[idx_S]
+    L = x[idx_L]
+    I = x[idx_I]
+    A = x[idx_A]
+    R = x[idx_R]
+    N = S + L + I + A + R
+    Phi = beta * S * (I + eta * A) / N
+    dS = - Phi + MS %*% S
+    dL = Phi - epsilon * L + p$ML %*% L
+    dI = (1 - pi) * epsilon * L - gammaI * I + MI %*% I
+    dA = pi * epsilon * L - gammaA * A + MA %*% A
+    dR = gammaI * I + gammaA * A + MR %*% R
+    dx = list(c(dS, dL, dI, dA, dR))
+    return(dx)
+  })
 }
 ```
 
 ---
 
-# And now the problems begin :)
+# And now call the solver
 
 ```
 # Call the ODE solver
-sol <- deSolve::ode(y = IC, times = tspan, 
-                    func = SLIAR_metapop_rhs, parms = p)
-## DLSODA- At current T (=R1), MXSTEP (=I1) steps
-## taken on this call before reaching TOUT
-## In above message, I1 = 5000
-##
-## In above message, R1 = 117.498
+sol <- ode(y = IC, 
+           times = tspan, 
+           func = SLIAR_metapop_rhs, 
+           parms = p,
+           method = "ode45")
 ```
 
-The output I copy above means the integration went wrong. The problem is the sie difference between countries, in particular China and Canada..
+---
 
-Need to play with movement rates and initial conditions. Will not explain here
+# One little trick (case with demography)
+
+Suppose demographic EP is $\mathbf{N}^\star=(\mathbf{d}-\mathcal{M})^{-1}\mathbf{b}$
+
+Want to maintain $\mathbf{N}(t)=\mathbf{N}^\star$ for all $t$ to ignore convergence to demographic EP. Think in terms of $\mathbf{b}$:
+
+$$
+\mathbf{N}'=0\iff \mathbf{b}-\mathbf{d}\mathbf{N}+\mathcal{M}\mathbf{N}=0 \iff \mathbf{b} = (\mathbf{d}-\mathcal{M})\mathbf{N}
+$$
+
+So take $\mathbf{b}=(\mathbf{d}-\mathcal{M})\mathbf{N}^\star$
+
+Then
+$$
+\mathbf{N}' = (\mathbf{d}-\mathcal{M})\mathbf{N}^\star
+-\mathbf{d}\mathbf{N}+\mathcal{M}\mathbf{N}
+$$
+and thus if $\mathbf{N}(0)=\mathbf{N}^\star$, then $\mathbf{N}'(0)=0$ and thus $\mathbf{N}'=0$ for all $t\geq 0$, i.e., $\mathbf{N}(t)=\mathbf{N}^\star$ for all $t\geq 0$
+
+---
+
+# Word of warning about that trick, though..
+
+$$
+\mathbf{b}=(\mathbf{d}-\mathcal{M})\mathbf{N}^\star
+$$
+
+$\mathbf{d}-\mathcal{M}$ has nonnegative (typically positive) diagonal entries and nonpositive off-diagonal entries
+
+Easy to think of situations where the diagonal will be dominated by the off-diagonal, so $\mathbf{b}$ could have negative entries
+
+$\implies$ use this for numerics, not for the mathematical analysis
 
 ---
 
