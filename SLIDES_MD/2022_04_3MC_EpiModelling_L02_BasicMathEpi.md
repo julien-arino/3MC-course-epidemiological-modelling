@@ -881,7 +881,7 @@ $$
 x'=\mathcal{F}-\mathcal{V}
 $$
  
-- $\mathcal{F}$ flows within infected compartments
+- $\mathcal{F}$ flows into infected compartments because of new infections
 - $\mathcal{V}$ other flows (with $-$ sign)
 
 Compute the (Frechet) derivatives $F=D\mathcal{F}$ and $V=D\mathcal{V}$ with respect to the infected variables $x$ and evaluate at the DFE

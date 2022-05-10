@@ -18,13 +18,13 @@ There were issues recording the live lectures, so I am re-recording the lectures
 - Lecture 03: [Spread of infections in groups / in space](2022_04_3MC_EpiModelling_L03_SpreadInGroups_SpreadInSpace.html) ([video](https://youtu.be/Jz317w81oZY) - 56:45)
 - Lecture 04: [Group models](2022_04_3MC_EpiModelling_L04_GroupModels.html) ([video](https://youtu.be/j63HwBbapHE) - 29:21)
 - Lecture 05: [Metapopulation epidemic models](2022_04_3MC_EpiModelling_L05_MetapopulationModels.html) ([video](https://youtu.be/wk64L-ZEOUM) - 1:43:34)
-- Practicum 02: [Model analysis, studying large-scale models in R](2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html) ([video]())
+- Practicum 02: [Model analysis, studying large-scale models in R](2022_04_3MC_EpiModelling_P02_Analysis_LargeScaleModels.html) ([video](https://youtu.be/KHm7KIt1_ys) - 1:40:09)
 
 ### Wednesday 6 April 2022
 
 - Lecture 06: [Stochastic aspects in the spread of epidemics](2022_04_3MC_EpiModelling_L06_StochasticAspectsInSpread.html) ([video](https://youtu.be/ApPSTJfQN74) 1:01:19)
 - Lecture 07: [Stochastic epidemic models](2022_04_3MC_EpiModelling_L07_StochasticEpidemicModels.html) ([video](https://youtu.be/J4w5gCdReAI) - 1:00:53)
-- Lecture 08: [Agent-based models](2022_04_3MC_EpiModelling_L08_AgentBasedModels.html) ([video]())
+- Lecture 08: [Agent-based models](2022_04_3MC_EpiModelling_L08_AgentBasedModels.html) ([video](https://youtu.be/UpSv8JcNecg) - 30:41)
 - Practicum 03: [Analysis and study of stochastic models in R](2022_04_3MC_EpiModelling_P03_Stochastic_systems.html) ([video]())
 
 ### Thursday 7 April 2022

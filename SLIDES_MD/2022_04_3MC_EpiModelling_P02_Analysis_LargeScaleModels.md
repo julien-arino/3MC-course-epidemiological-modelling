@@ -58,8 +58,8 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 - The basic stuff (well-posedness, DFE)
 - Epidemic models
 - Endemic models
-- Compound matrices
 - Numerical investigations of large-scale systems
+- Compound matrices
 
 ---
 
@@ -126,7 +126,7 @@ $x^\star$ is an **equilibrium point** if $f(x^\star)=0$
 
 $x^\star$ is locally asymptotically stable (LAS) if $\exists\mathcal{S}\ni x^\star$ open in the domain of $f$ s.t. for all $x_0\in\mathcal{S}$, $x(t,x_0)\in\mathcal{S}$ for all $t\geq 0$ and furthermore, $\lim_{t\to\infty}x(t,x_0)=x^\star$
 
-If there is a continuum of equilibria, then $x^\star\in\mathcal{C}$, some curve in the domain of $f$, s.t. $f(y^\star)=0$ for all $y^\star\in\mathcal{C}$. We say $x^\star$ is **not isolated**. But then any open neighbourhood of $x^\star$ contains elements of $\mathcal{C}$ and taking $x_0\in\mathcal{C}$, $x_0\neq x^\star$, implies that $\lim_{t\to\infty}x(t,x_0)=x_0\neq x^\star$. $x^\star$ is *locally stable* but not *locally asymptotically stable*!
+If there is a continuum of equilibria, then $x^\star\in\mathcal{C}$, where $\mathcal{C}$ is some curve in the domain of $f$, s.t. $f(y^\star)=0$ for all $y^\star\in\mathcal{C}$. We say $x^\star$ is **not isolated**. But then any open neighbourhood of $x^\star$ contains elements of $\mathcal{C}$ and taking $x_0\in\mathcal{C}$, $x_0\neq x^\star$, implies that $\lim_{t\to\infty}x(t,x_0)=x_0\neq x^\star$. $x^\star$ is *locally stable* but not *locally asymptotically stable*!
 
 ---
 
@@ -176,11 +176,10 @@ $\implies$ $S$ cannot ever become zero: if $S(0)>0$, then $S(t)>0$ for all $t$. 
 
 For $I$, remark that if $I=0$, then $I'=0$ $\implies$ $\{I=0\}$ is positively invariant: if $I(0)=0$, then $I(t)=0$ for all $t>0$
 
-In practice, values of $S(t)$ for any solution in $\{I=0\}$ are "carried" by one of the following 4 solutions:
-1. $S(0)=0$: remains identically zero
-2. $S(0)\in(0,b/d)$: increases to $S=b/d$
-3. $S(0)=b/d$: remains equal to $b/d$
-4. $S(0)>b/d$: decreases to $S=b/d$
+In practice, values of $S(t)$ for any solution in $\{I=0\}$ are "carried" by one of the following 3 solutions:
+1. $S(0)\in[0,b/d)$: increases to $S=b/d$
+2. $S(0)=b/d$: remains equal to $b/d$
+3. $S(0)>b/d$: decreases to $S=b/d$
 
 As a consequence, no solution with $I(0)>0$ can enter $\{I=0\}$. Suppose $I(0)>0$ and $\exists t_*>0$ s.t. $I(t_*)=0$; denote $S(t_*)$ the value of $S$ when $I$ becomes zero
 
@@ -280,7 +279,7 @@ $$
 - $\mathbf{b}:\mathbb{R}_+^m\times\mathbb{R}_+^n\times\mathbb{R}_+^k\to\mathbb{R}^m$ continuous function encoding recruitment and death of uninfected individuals
 - $\mathbf{D}\in\mathbb{R}^{m\times m}$ diagonal with diagonal entries $\sigma_i>0$ the relative susceptibilities of susceptible compartments, with convention that $\sigma_1=1$
 - Scalar valued function $\beta:\mathbb{R}_+^m\times\mathbb{R}_+^n\times\mathbb{R}_+^k\to\mathbb{R}_+$ represents infectivity, with, e.g., $\beta(\mathbf{S},\mathbf{I},\mathbf{R})=\beta$ for mass action
-- $\mathbf{h}\in\mathbb{R}^{m\times n}$ row vector of relative horizontal transmissions
+- $\mathbf{h}\in\mathbb{R}^{n}$ row vector of relative horizontal transmissions
 
 ---
 
@@ -292,7 +291,7 @@ $$
 - $\mathbf{\Pi}\in\mathbb{R}^{n\times m}$ has $(i,j)$ entry the fraction of individuals in $j^{\textrm{th}}$ susceptible compartment that enter $i^{\textrm{th}}$ infected compartment upon infection
 - $\mathbf{D}\in\mathbb{R}^{m\times m}$ diagonal with diagonal entries $\sigma_i>0$ the relative susceptibilities of susceptible compartments, with convention that $\sigma_1=1$
 - Scalar valued function $\beta:\mathbb{R}_+^m\times\mathbb{R}_+^n\times\mathbb{R}_+^k\to\mathbb{R}_+$ represents infectivity, with, e.g., $\beta(\mathbf{S},\mathbf{I},\mathbf{R})=\beta$ for mass action
-- $\mathbf{h}\in\mathbb{R}^{m\times n}$ row vector of relative horizontal transmissions
+- $\mathbf{h}\in\mathbb{R}^{n}$ row vector of relative horizontal transmissions
 - $\mathbf{V}\in\mathbb{R}^{n\times n}$ describes transitions between infected states and removals from these states due to recovery or death
 
 ---
@@ -628,7 +627,7 @@ $$
 x'=\mathcal{F}-\mathcal{V}
 $$
  
-- $\mathcal{F}$ flows within infected compartments
+- $\mathcal{F}$ flows into infected compartments because of new infections
 - $\mathcal{V}$ other flows (with $-$ sign)
 
 Compute the (Frechet) derivatives $F=D\mathcal{F}$ and $V=D\mathcal{V}$ with respect to the infected variables $x$ and evaluate at the DFE
@@ -1079,6 +1078,10 @@ $$
 
 Feng, C$^3$ & Capurro. [A Model for Tuberculosis with Exogenous Reinfection](https://doi-org.uml.idm.oclc.org/10.1006/tpbi.2000.1451). *Theoretical Population Biology* **57**(3): 235-247 (2000)
 </div>
+
+---
+
+![bg contain](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/SLIT_reinfection.png)
 
 ---
 
