@@ -62,15 +62,19 @@ NSERC-PHAC EID Modelling Consortium (CANMOD, MfPH, OMNI/RÉUNIS)
 <!-- _backgroundImage: "linear-gradient(to bottom, #f1c40f, 20%, white)" -->
 # <!--fit-->Analysing DTMC
 
+- Formulating a DTMC
 - Asymptotic behaviour of a DTMC
 - Regular DTMC
+- Random walk v1.0 (regular case)
 - Absorbing DTMC
-- Random walks
+- Random walk v2.0 (absorbing case)
+- Example of the SIS DTMC
+
 
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# <!--fit-->Asymptotic behaviour of a DTMC
+# <!--fit-->Formulating a DTMC
 
 ---
 
@@ -162,7 +166,12 @@ The nonnegative $r\times r$ matrix $M$ is **stochastic** if $\sum_{j=1}^ra_{ij}=
 Let $M$ be a stochastic matrix $M$. Then all eigenvalues $\lambda$ of $M$ are such that $|\lambda|\leq 1$. Furthermore, $\lambda =1$ is an eigenvalue of $M$
 </div>
 
-To see that $1$ is an eigenvalue, write the definition of a stochastic matrix, i.e., $M$ has row sums 1. In vector form, $M\mathbf{1}=\mathbf{1}$. Now remember that $\lambda$ is an eigenvalue of $M$, with associated eigenvector $v$, iff $Mv=\lambda v$. So, in the expression $M\mathbf{1}=\mathbf{1}$, we read an eigenvector, $\mathbf{1}$, and an eigenvalue, $1$
+To see that $1$ is an eigenvalue, write the definition of a stochastic matrix, i.e., $M$ has row sums 1. In vector form, $M\mathbf{1}=\mathbf{1}.$ Now remember that $\lambda$ is an eigenvalue of $M$, with associated eigenvector $v\neq 0$, iff $Mv=\lambda v$. So, in the expression $M\mathbf{1}=\mathbf{1}$, we read an eigenvector, $\mathbf{1}$, and an eigenvalue, $1$
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# <!--fit-->Asymptotic behaviour of a DTMC
 
 ---
 
@@ -203,14 +212,14 @@ If $M$ is a stochastic matrix, then for any $k\in\mathbb{N}$, $M^k$ is a stochas
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# Regular DTMC
+# <!--fit-->Regular DTMC
 
 ---
 
 # Not much use in disease models
 
 - In disease models, the state $I=0$ is *absorbing*, so chains are not *regular*
-- Worth taking a quick look at, though
+- Worth taking a quick look at, though: regular DTMC come into play when looking at movement between locations, for instance
 
 ---
 
@@ -254,13 +263,13 @@ $$
 
 #  Left and right eigenvectors
 
-Let $M$ be an $r\times r$ matrix, $u,v$ be two column vectors, $\lambda\in\mathbb{R}$. Then, if  
+Let $M$ be an $r\times r$ matrix, $u,v$ be two column vectors, $\lambda\in\mathbb{R}.$ Then, if  
 $$
-Mu=\lambda u
+Mu=\lambda u, \quad u\neq 0
 $$
 $u$ is the (right) eigenvector corresponding to $\lambda$, and if
 $$
-v^TM=\lambda v^T
+v^TM=\lambda v^T, \quad v\neq 0
 $$
 then $v$ is the left eigenvector corresponding to $\lambda$. Note that to a given eigenvalue there corresponds one left and one right eigenvector
 
@@ -326,87 +335,7 @@ A matrix $M$ is primitive if the associated connection graph is strongly connect
 ---
 
 <!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# Absorbing DTMC
-
----
-
-#  Absorbing states, absorbing chains
-
-<div class="definition">
-
-A state $S_i$ in a Markov chain is **absorbing** if whenever it occurs on the $n^{th}$ generation of the experiment, it then occurs on every subsequent step. In other words, $S_i$ is absorbing if $p_{ii}=1$ and $p_{ij}=0$ for $i\neq j$
-</div>
-
-<div class="definition">
-
-A **Markov chain is absorbing** if it has at least one absorbing state, and if from every state it is possible to go to an absorbing state
-</div>
-
-<div class="definition">
-
-In an absorbing Markov chain, a state that is not absorbing is called **transient**
-</div>
-
----
-
-#  Some questions on absorbing chains
-
-Suppose we have a chain like the following
-
-![width:500px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/graphe_absorbant.png)
-
-1. Does the process eventually reach an absorbing state?
-2. Average number of times spent in a transient state, if starting in a transient state?
-3. Average number of steps before entering an absorbing state?
-4. Probability of being absorbed by a given absorbing state, when there are more than one, when starting in a given transient state?
-
----
-
-#  Reaching an absorbing state
-
-Answer to question 1:
-<div class="theorem">
-
-In an absorbing Markov chain, the probability of reaching an absorbing state is 1
-</div>
-
----
-
-#  Standard form of the transition matrix
-
-For an absorbing chain with $k$ absorbing states and $r-k$ transient states, the transition matrix can be written as
-$$
-P=\begin{pmatrix}
-\mathbb{I}_k & \mathbf{0} \\
-R & Q
-\end{pmatrix}
-$$
-
-|     | Absorbing states | Transient states |
-|:---:|:---:|:---:|
-| **Absorbing states** | $\mathbb{I}_k$ | $\mathbf{0}$ |
-| **Transient states** | $R$ | $Q$ |
-
-$\mathbb{I}_k$ the $k\times k$ identity, $\mathbf{0}\in\mathbb{R}^{k\times(r-k)}$, $R\in\mathbb{R}^{(r-k)\times k}$, $Q\in\mathbb{R}^{(r-k)\times(r-k)}$
-
----
-
-The matrix $\mathbb{I}_{r-k}-Q$ is invertible. Let
-
-- $N=(\mathbb{I}_{r-k}-Q)^{-1}$ be the **fundamental matrix** of the Markov chain
-- $T_i$ be the sum of the entries on row $i$ of $N$
-- $B=NR$
-
-Answers to our remaining questions:
-
-2. $N_{ij}$ is the average number of times the process is in the $j$th transient state if it starts in the $i$th transient state
-3. $T_i$ is the average number of steps before the process enters an absorbing state if it starts in the $i$th transient state
-4. $B_{ij}$ is the probability of eventually entering the $j$th absorbing state if the process starts in the $i$th transient state
-
----
-
-<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
-# Random walks
+# <!--fit-->Random walk v1.0 (regular case)
 
 ---
 
@@ -513,6 +442,225 @@ $$
 
 ---
 
+# Setting up the transition matrix
+
+```
+# Total population
+nb_states = 10 # Small so we can see output
+# Parameters
+proba_left = 0.5
+proba_right = 0.5
+proba_stay = 1-(proba_left+proba_right)
+# Make the transition matrix
+T = mat.or.vec(nr = nb_states, nc = nb_states)
+for (row in 2:(nb_states-1)) {
+  T[row,(row-1)] = proba_left
+  T[row,(row+1)] = proba_right
+  T[row, row] = proba_stay
+}
+# First row only has move right
+T[1,2] = 1
+# Last row only has move left
+T[nb_states, (nb_states-1)] = 1
+
+```
+
+---
+
+# Analysis using `markovchain` library
+
+Let us use `markovchain` to consider numerical aspects
+
+```
+library(markovchain)
+mcRW <- new("markovchain", 
+            states = sprintf("S_%d", 1:nb_states),
+            transitionMatrix = T,
+            name = "RW_reg")
+```
+
+---
+
+<span style="font-size:25px;">
+
+Function | Role
+--- | ---
+`absorbingStates` | absorbing states of the transition matrix, if any
+`steadyStates` | the vector(s) of steady state(s) in matrix form
+`meanFirstPassageTime` | matrix or vector of mean first passage times
+`meanRecurrenceTime` | vector of mean number of steps to return to each recurrent state
+`hittingProbabilities` | matrix of hitting probabilities for a Markov chain
+`meanAbsorptionTime` | expected number of steps for a transient state to be absorbed by any recurrent class
+`absorptionProbabilities` | $\mathbb{P}$ transient states being absorbed by each recurrent state
+`meanNumVisits` | mean number of visists to a state
+`canonicForm` | canonic form of transition matrix
+`period` | the period of an irreducible DTMC
+`summary` | DTMC summary
+
+</span>
+
+---
+
+```
+> summary(mcRW)
+RW_reg  Markov chain that is composed by: 
+Closed classes: 
+S_1 S_2 S_3 S_4 S_5 S_6 S_7 S_8 S_9 S_10 
+Recurrent classes: 
+{S_1,S_2,S_3,S_4,S_5,S_6,S_7,S_8,S_9,S_10}
+Transient classes: 
+NONE 
+The Markov chain is irreducible 
+The absorbing states are: NONE
+```
+
+---
+
+# Functions not useful in the regular case
+
+- `absorbingStates` returns no state (`character(0)`)
+- `meanAbsorptionTime` returns an empty vector (`named numeric(0)`)
+- `meanNumVisits` returns a matrix of `Inf`
+- `hittingProbabilities` is not useful (it is a matrix of 1's)
+- `canonicForm` is unhelpful (it is just $T$)
+
+---
+
+```
+> steadyStates(mcRW)
+            S_1       S_2       S_3       S_4       S_5       S_6       S_7       S_8       S_9
+[1,] 0.05555556 0.1111111 0.1111111 0.1111111 0.1111111 0.1111111 0.1111111 0.1111111 0.1111111
+           S_10
+[1,] 0.05555556
+```
+
+Jives with 
+$$
+w^T=\left(\frac{1}{2(p-1)},\frac{1}{p-1},\ldots,\frac{1}{p-1},\frac{1}{2(p-1)}\right)
+$$
+we had computed
+
+---
+
+> `meanRecurrenceTime`: outputs a named vector with the expected time to first return to a state when the chain starts there. States present in the vector are only the recurrent ones. If the matrix is ergodic (i.e. irreducible), then all states are present in the output and order is the same as states order for the Markov chain
+
+```
+> meanRecurrenceTime(mcRW)
+ S_1  S_2  S_3  S_4  S_5  S_6  S_7  S_8  S_9 S_10 
+  18    9    9    9    9    9    9    9    9   18 
+```
+
+> `period`: returns a integer number corresponding to the periodicity of the Markov chain (if it is irreducible)
+
+```
+> period(mcRW)
+[1] 2
+```
+(period of state $x\in\mathcal{S}$ is $\gcd\{n\in\mathbb{N}_+: T^n(x,x)>0\}$)
+
+---
+
+> `meanFirstPassageTime`: Given an irreducible (ergodic) `markovchain` object, this function calculates the expected number of steps to reach other states
+
+```
+> meanFirstPassageTime(mcRW)
+     S_1 S_2 S_3 S_4 S_5 S_6 S_7 S_8 S_9 S_10
+S_1    0   1   4   9  16  25  36  49  64   81
+S_2   17   0   3   8  15  24  35  48  63   80
+S_3   32  15   0   5  12  21  32  45  60   77
+S_4   45  28  13   0   7  16  27  40  55   72
+S_5   56  39  24  11   0   9  20  33  48   65
+S_6   65  48  33  20   9   0  11  24  39   56
+S_7   72  55  40  27  16   7   0  13  28   45
+S_8   77  60  45  32  21  12   5   0  15   32
+S_9   80  63  48  35  24  15   8   3   0   17
+S_10  81  64  49  36  25  16   9   4   1    0
+```
+
+---
+
+<!-- _backgroundImage: "linear-gradient(to bottom, #156C26, 20%, white)" -->
+# <!--fit-->Absorbing DTMC
+
+---
+
+#  Absorbing states, absorbing chains
+
+<div class="definition">
+
+A state $S_i$ in a Markov chain is **absorbing** if whenever it occurs on the $n^{th}$ generation of the experiment, it then occurs on every subsequent step. In other words, $S_i$ is absorbing if $p_{ii}=1$ and $p_{ij}=0$ for $i\neq j$
+</div>
+
+<div class="definition">
+
+A **Markov chain is absorbing** if it has at least one absorbing state, and if from every state it is possible to go to an absorbing state
+</div>
+
+<div class="definition">
+
+In an absorbing Markov chain, a state that is not absorbing is called **transient**
+</div>
+
+---
+
+#  Some questions on absorbing chains
+
+Suppose we have a chain like the following
+
+![width:500px center](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/graphe_absorbant.png)
+
+1. Does the process eventually reach an absorbing state?
+2. Average number of times spent in a transient state, if starting in a transient state?
+3. Average number of steps before entering an absorbing state?
+4. Probability of being absorbed by a given absorbing state, when there are more than one, when starting in a given transient state?
+
+---
+
+#  Reaching an absorbing state
+
+Answer to question 1:
+<div class="theorem">
+
+In an absorbing Markov chain, the probability of reaching an absorbing state is 1
+</div>
+
+---
+
+#  Standard form of the transition matrix
+
+For an absorbing chain with $k$ absorbing states and $r-k$ transient states, the transition matrix can be written as
+$$
+P=\begin{pmatrix}
+\mathbb{I}_k & \mathbf{0} \\
+R & Q
+\end{pmatrix}
+$$
+
+|     | Absorbing states | Transient states |
+|:---:|:---:|:---:|
+| **Absorbing states** | $\mathbb{I}_k$ | $\mathbf{0}$ |
+| **Transient states** | $R$ | $Q$ |
+
+$\mathbb{I}_k$ the $k\times k$ identity, $\mathbf{0}\in\mathbb{R}^{k\times(r-k)}$, $R\in\mathbb{R}^{(r-k)\times k}$, $Q\in\mathbb{R}^{(r-k)\times(r-k)}$
+
+---
+
+The matrix $\mathbb{I}_{r-k}-Q$ is invertible. Let
+
+- $N=(\mathbb{I}_{r-k}-Q)^{-1}$ be the **fundamental matrix** of the Markov chain
+- $T_i$ be the sum of the entries on row $i$ of $N$
+- $B=NR$
+
+Answers to our remaining questions:
+
+2. $N_{ij}$ is the average number of times the process is in the $j$th transient state if it starts in the $i$th transient state
+3. $T_i$ is the average number of steps before the process enters an absorbing state if it starts in the $i$th transient state
+4. $B_{ij}$ is the probability of eventually entering the $j$th absorbing state if the process starts in the $i$th transient state
+
+See for instance book of [Kemeny and Snell](https://www.amazon.com/Finite-Markov-Chains-Laurie-Kemeny/dp/B000KYES0O)
+
+---
+
 #  Drunk man's walk 2.0 (absorbing case)
 
 - chain of states $S_1,\ldots,S_p$
@@ -614,7 +762,7 @@ This is a **symmetric tridiagonal Toeplitz** matrix
 
 #  Inverting a symmetric tridiagonal matrix
 
-Gérard Meurant [A Review on the Inverse of Symmetric Tridiagonal and Block Tridiagonal Matrices](https://doi-org.uml.idm.oclc.org/10.1137/0613045) (1992): if 
+If 
 $$
 J_k=
 \begin{pmatrix}
@@ -636,6 +784,8 @@ then we have the result on the next slide
 ---
 
 #  Inverse of a symmetric tridiagonal matrix
+
+Gérard Meurant [A Review on the Inverse of Symmetric Tridiagonal and Block Tridiagonal Matrices](https://doi-org.uml.idm.oclc.org/10.1137/0613045) (1992)
 
 <div class="theorem">
 
@@ -764,6 +914,281 @@ $$
 &= \prod\limits_{j=1}^{k-i}\frac{j+1}{2j}\prod\limits_{j=i}^{k}\frac{2j}{j+1}
 \end{align*}
 $$
+
+---
+
+# Setting up the transition matrix
+
+```
+# Total population
+nb_states = 10 # Small so we see output
+# Parameters
+proba_left = 0.5
+proba_right = 0.5
+proba_stay = 1-(proba_left+proba_right)
+# Make the transition matrix
+T = mat.or.vec(nr = nb_states, nc = nb_states)
+for (row in 2:(nb_states-1)) {
+  T[row,(row-1)] = proba_left
+  T[row,(row+1)] = proba_right
+  T[row, row] = proba_stay
+}
+# First and last rows only have stay
+T[1,1] = 1
+T[nb_states, nb_states] = 1
+```
+
+---
+
+# Analysis using `markovchain` library
+
+Let us use `markovchain` to consider numerical aspects
+
+```
+library(markovchain)
+mcRW <- new("markovchain", 
+            states = sprintf("S_%d", 1:nb_states),
+            transitionMatrix = T,
+            name = "RW_abs")
+```
+
+---
+
+<span style="font-size:25px;">
+
+Function | Role
+--- | ---
+`absorbingStates` | absorbing states of the transition matrix, if any
+`steadyStates` | the vector(s) of steady state(s) in matrix form
+`meanFirstPassageTime` | matrix or vector of mean first passage times
+`meanRecurrenceTime` | vector of mean number of steps to return to each recurrent state
+`hittingProbabilities` | matrix of hitting probabilities for a Markov chain
+`meanAbsorptionTime` | expected number of steps for a transient state to be absorbed by any recurrent class
+`absorptionProbabilities` | $\mathbb{P}$ transient states being absorbed by each recurrent state
+`meanNumVisits` | mean number of visists to a state
+`canonicForm` | canonic form of transition matrix
+`period` | the period of an irreducible DTMC
+`summary` | DTMC summary
+
+</span>
+
+---
+
+```
+> summary(mcRW)
+RW_abs  Markov chain that is composed by: 
+Closed classes: 
+S_1 
+S_10 
+Recurrent classes: 
+{S_1},{S_10}
+Transient classes: 
+{S_2,S_3,S_4,S_5,S_6,S_7,S_8,S_9}
+The Markov chain is not irreducible 
+The absorbing states are: S_1 S_10
+```
+
+---
+
+# Functions not useful in the absorbing case
+
+- `steadyStates`
+- `meanRecurrenceTime`
+- `meanFirstPassageTime`
+- `period`
+
+---
+
+```
+> canonicForm(mcRW)
+RW_abs 
+ A  10 - dimensional discrete Markov Chain defined by the following states: 
+ S_1, S_10, S_2, S_3, S_4, S_5, S_6, S_7, S_8, S_9 
+ The transition matrix  (by rows)  is defined as follows: 
+     S_1 S_10 S_2 S_3 S_4 S_5 S_6 S_7 S_8 S_9
+S_1  1.0  0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+S_10 0.0  1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+S_2  0.5  0.0 0.0 0.5 0.0 0.0 0.0 0.0 0.0 0.0
+S_3  0.0  0.0 0.5 0.0 0.5 0.0 0.0 0.0 0.0 0.0
+S_4  0.0  0.0 0.0 0.5 0.0 0.5 0.0 0.0 0.0 0.0
+S_5  0.0  0.0 0.0 0.0 0.5 0.0 0.5 0.0 0.0 0.0
+S_6  0.0  0.0 0.0 0.0 0.0 0.5 0.0 0.5 0.0 0.0
+S_7  0.0  0.0 0.0 0.0 0.0 0.0 0.5 0.0 0.5 0.0
+S_8  0.0  0.0 0.0 0.0 0.0 0.0 0.0 0.5 0.0 0.5
+S_9  0.0  0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.5 0.0
+```
+
+---
+
+```
+> meanAbsorptionTime(mcRW)
+S_2 S_3 S_4 S_5 S_6 S_7 S_8 S_9 
+  8  14  18  20  20  18  14   8 
+> absorptionProbabilities(mcRW)
+          S_1      S_10
+S_2 0.8888889 0.1111111
+S_3 0.7777778 0.2222222
+S_4 0.6666667 0.3333333
+S_5 0.5555556 0.4444444
+S_6 0.4444444 0.5555556
+S_7 0.3333333 0.6666667
+S_8 0.2222222 0.7777778
+S_9 0.1111111 0.8888889
+```
+
+---
+
+> `hittingProbabilities`: given a `markovchain` object, this function calculates the probability of ever arriving from state i to j
+
+```
+> hittingProbabilities(mcRW)
+           S_1    S_2       S_3       S_4   S_5   S_6       S_7       S_8    S_9      S_10
+S_1  1.0000000 0.0000 0.0000000 0.0000000 0.000 0.000 0.0000000 0.0000000 0.0000 0.0000000
+S_2  0.8888889 0.4375 0.5000000 0.3333333 0.250 0.200 0.1666667 0.1428571 0.1250 0.1111111
+S_3  0.7777778 0.8750 0.6785714 0.6666667 0.500 0.400 0.3333333 0.2857143 0.2500 0.2222222
+S_4  0.6666667 0.7500 0.8571429 0.7500000 0.750 0.600 0.5000000 0.4285714 0.3750 0.3333333
+S_5  0.5555556 0.6250 0.7142857 0.8333333 0.775 0.800 0.6666667 0.5714286 0.5000 0.4444444
+S_6  0.4444444 0.5000 0.5714286 0.6666667 0.800 0.775 0.8333333 0.7142857 0.6250 0.5555556
+S_7  0.3333333 0.3750 0.4285714 0.5000000 0.600 0.750 0.7500000 0.8571429 0.7500 0.6666667
+S_8  0.2222222 0.2500 0.2857143 0.3333333 0.400 0.500 0.6666667 0.6785714 0.8750 0.7777778
+S_9  0.1111111 0.1250 0.1428571 0.1666667 0.200 0.250 0.3333333 0.5000000 0.4375 0.8888889
+S_10 0.0000000 0.0000 0.0000000 0.0000000 0.000 0.000 0.0000000 0.0000000 0.0000 1.0000000
+```
+
+---
+
+# DTMC SIS system
+
+Since $S=P^\star-I$, consider only the infected. To simulate as DTMC, consider a random walk on $I$ ($\simeq$ Gambler's ruin problem)
+
+Denote $\lambda_I = \beta (P^\star-I)I\Delta t$, $\mu_I = \gamma I\Delta t$ and $\sigma_I=1-(\lambda_I+\mu_I)\Delta t$
+
+![width:1200px](https://raw.githubusercontent.com/julien-arino/3MC-course-epidemiological-modelling/main/FIGS/figure_SIS_random_walk.png)
+
+---
+
+# Transition matrix
+
+$$
+A = 
+\begin{pmatrix}
+1 & 0 \\
+\mu_1 & \sigma_1 & \lambda_1 & 0 \\
+0 & \mu_2 & \sigma_2 & \lambda_2 & 0 \\
+\\
+& & & & & \ddots \\
+\\
+& & & & &  & 0 & \mu_{P^\star-1} & \mu_{P^\star-1} & \lambda_{P^\star-1} & 0 \\
+&&&&&&&& 0 & \mu_{P^\star} & \sigma_{P^\star}
+\end{pmatrix}
+$$
+
+---
+
+To make things easy to see: `Pop <- 5`
+
+```
+# Make the transition matrix
+T = mat.or.vec(nr = (Pop+1), nc = (Pop+1))
+for (row in 2:Pop) {
+  I = row-1
+  mv_right = gamma*I*Delta_t # Recoveries
+  mv_left = beta*I*(Pop-I)*Delta_t # Infections
+  T[row,(row-1)] = mv_right
+  T[row,(row+1)] = mv_left
+}
+# Last row only has move left
+T[(Pop+1),Pop] = gamma*(Pop)*Delta_t
+# Check that we don't have too large values
+if (max(rowSums(T))>1) {
+  T = T/max(rowSums(T))
+}
+diag(T) = 1-rowSums(T)
+```
+
+---
+
+# Analysis using `markovchain` library
+
+We saw in [Lecture 07](https://julien-arino.github.io/3MC-course-epidemiological-modelling/2022_04_3MC_EpiModelling_L07_StochasticEpidemicModels.html) how to simulate individual realisations using `DTMCPack`. Let us use `markovchain` to dig into the details
+
+```
+library(markovchain)
+mcSIS <- new("markovchain", 
+             states = sprintf("I_%d", 0:Pop),
+             transitionMatrix = T,
+             name = "SIS")
+```
+
+---
+
+```
+> summary(mcSIS)
+SIS  Markov chain that is composed by: 
+Closed classes: 
+I_0 
+Recurrent classes: 
+{I_0}
+Transient classes: 
+{I_1,I_2,I_3,I_4,I_5}
+The Markov chain is not irreducible 
+The absorbing states are: I_0
+```
+
+---
+
+```
+> canonicForm(mcSIS)
+SIS 
+ A  6 - dimensional discrete Markov Chain defined by the following states: 
+ I_0, I_1, I_2, I_3, I_4, I_5 
+ The transition matrix  (by rows)  is defined as follows: 
+          I_0       I_1       I_2       I_3       I_4       I_5
+I_0 1.0000000 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
+I_1 0.1666667 0.5000000 0.3333333 0.0000000 0.0000000 0.0000000
+I_2 0.0000000 0.3333333 0.1666667 0.5000000 0.0000000 0.0000000
+I_3 0.0000000 0.0000000 0.5000000 0.0000000 0.5000000 0.0000000
+I_4 0.0000000 0.0000000 0.0000000 0.6666667 0.0000000 0.3333333
+I_5 0.0000000 0.0000000 0.0000000 0.0000000 0.8333333 0.1666667
+```
+
+---
+
+```
+# The vector of steady states. Here, all mass should be in I_0
+> steadyStates(mcSIS)
+     I_0 I_1 I_2 I_3 I_4 I_5
+[1,]   1   0   0   0   0   0
+```
+
+---
+
+```
+> hittingProbabilities(mcSIS)
+    I_0       I_1       I_2       I_3       I_4       I_5
+I_0   1 0.0000000 0.0000000 0.0000000 0.0000000 0.0000000
+I_1   1 0.8333333 0.6666667 0.5454545 0.4615385 0.3529412
+I_2   1 1.0000000 0.8888889 0.8181818 0.6923077 0.5294118
+I_3   1 1.0000000 1.0000000 0.9090909 0.8461538 0.6470588
+I_4   1 1.0000000 1.0000000 1.0000000 0.8974359 0.7647059
+I_5   1 1.0000000 1.0000000 1.0000000 1.0000000 0.8039216
+```
+Read by row: if the process starts in $I_i$ (row $i-1$), what is the probability that state $I_j$ (column $j-1$) is visited
+
+---
+
+```
+> meanAbsorptionTime(mcSIS)
+  I_1   I_2   I_3   I_4   I_5 
+24.30 33.45 37.55 39.65 40.85 
+> absorptionProbabilities(mcSIS)
+    I_0
+I_1   1
+I_2   1
+I_3   1
+I_4   1
+I_5   1
+```
 
 ---
 

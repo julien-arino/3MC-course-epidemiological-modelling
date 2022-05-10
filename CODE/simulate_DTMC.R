@@ -2,7 +2,7 @@
 library(DTMCPack)
 
 # Source a file with a few helpful functions for plotting (nice axes labels, crop figure)
-source(sprintf("%s/../functions_useful.R", here::here()))
+source("useful_functions.R")
 
 # Recreate state from solution
 number_I = function(sol) {
