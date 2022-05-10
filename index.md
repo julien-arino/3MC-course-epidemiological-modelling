@@ -25,7 +25,7 @@ There were issues recording the live lectures, so I am re-recording the lectures
 - Lecture 06: [Stochastic aspects in the spread of epidemics](2022_04_3MC_EpiModelling_L06_StochasticAspectsInSpread.html) ([video](https://youtu.be/ApPSTJfQN74) 1:01:19)
 - Lecture 07: [Stochastic epidemic models](2022_04_3MC_EpiModelling_L07_StochasticEpidemicModels.html) ([video](https://youtu.be/J4w5gCdReAI) - 1:00:53)
 - Lecture 08: [Agent-based models](2022_04_3MC_EpiModelling_L08_AgentBasedModels.html) ([video](https://youtu.be/UpSv8JcNecg) - 30:41)
-- Practicum 03: [Analysis and study of stochastic models in R](2022_04_3MC_EpiModelling_P03_Stochastic_systems.html) ([video]())
+- Practicum 03: [Analysis and study of stochastic models in R](2022_04_3MC_EpiModelling_P03_Stochastic_systems.html) ([video](https://youtu.be/5b1RDIz03S0) - 1:13:41)
 
 ### Thursday 7 April 2022
 
