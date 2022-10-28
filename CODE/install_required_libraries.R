@@ -30,7 +30,7 @@ required_liraries = c(
 )
 
 for (l in required_liraries) {
-  installed = require(l)
+  installed = require(l, character.only = TRUE)
   if (!installed) {
     install.packages(l)
   }
