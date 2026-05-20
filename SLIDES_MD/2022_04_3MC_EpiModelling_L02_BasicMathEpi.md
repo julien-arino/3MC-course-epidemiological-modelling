@@ -1,7 +1,7 @@
 ---
 marp: true
-title: Basic concepts of mathematical epidemiology. Models in one population and their basic properties
-description: Julien Arino - 3MC Course Epidemiological Modelling - Course 02 - Basic concepts of mathematical epidemiology. Models in one population and their basic properties
+title: Basic Concepts of Math Epi & Models in 1 Pop | 3MC
+description: Julien Arino - 3MC Course Epidemiological Modelling - Course 02 - Basic Concepts of Math Epi & Models in 1 Pop | 3MC
 theme: default
 paginate: false
 size: 4K

@@ -192,7 +192,7 @@ It is important to do the 4 interactively
 L1: History of epidemics and Historical epidemics
 L2: Basic concepts of Mathematical Epidemiology. Models in one population
 P1: Introduction to R. Collecting data. Solving ODEs in R
-L3: Epidemics spreading among groups. Epidemics spreading in space and time                                     
+L3: Epidemics Spreading in Groups, Space, and Time | 3MC                                     
 L4: Group models
 L5: Metapopulation models
 P2: Model analysis, studying large-scale models in R

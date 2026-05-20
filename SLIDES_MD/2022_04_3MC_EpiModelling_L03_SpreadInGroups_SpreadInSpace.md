@@ -1,7 +1,7 @@
 ---
 marp: true
-title: Epidemics spreading among groups. Epidemics spreading in space and time
-description: Julien Arino - 3MC Course Epidemiological Modelling - Course 03 - Epidemics spreading among groups. Epidemics spreading in space and time
+title: Epidemics Spreading in Groups, Space, and Time | 3MC
+description: Julien Arino - 3MC Course Epidemiological Modelling - Course 03 - Epidemics Spreading in Groups, Space, and Time | 3MC
 theme: default
 paginate: false
 math: mathjax
@@ -31,7 +31,7 @@ size: 4K
 </style>
 
 <!-- _backgroundImage: "linear-gradient(to top, #85110d, 1%, white)" -->
-# Epidemics spreading among groups. Epidemics spreading in space and time
+# Epidemics Spreading in Groups, Space, and Time | 3MC
 
 5 April 2022 
 

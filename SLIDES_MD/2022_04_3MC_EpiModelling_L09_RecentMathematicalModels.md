@@ -1,6 +1,6 @@
 ---
 marp: true
-title: Some oddities and some recent mathematical models for HIV/AIDS, Malaria, COVID-19
+title: Recent Math Models: HIV, Malaria, COVID-19 | 3MC
 description: Julien Arino - 3MC Course Epidemiological Modelling - Course 09 - Some oddities and some (recent?) mathematical models for HIV/AIDS, Malaria, COVID-19
 theme: default
 paginate: false

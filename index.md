@@ -1,4 +1,4 @@
-# 3MC Epidemic Modelling Course
+# 3MC Course on Epidemiological Modelling
 
 This is the web version of the course pages for the [3MC course on Epidemiological Modelling](http://natural-sciences.nwu.ac.za/paa/3MC-Course-EM). It is used to access the presentation files in `html` format. To view files in other formats, to access the code, etc., click the *View on GitHub* button to access the repository content. You can also download the whole repository by clicking the buttons on the left. (You can of course clone the repo, but will have to do it from the GitHub version.)
 
@@ -29,6 +29,6 @@ There were issues recording the live lectures, so I am re-recording the lectures
 
 ### Thursday 7 April 2022
 
-- Lecture 09: [Some oddities and some recent mathematical models for HIV/AIDS, Malaria, COVID-19](2022_04_3MC_EpiModelling_L09_RecentMathematicalModels.html) ([video](https://youtu.be/tFjPug1f4Ms) - 1:05:36)
+- Lecture 09: [Recent Math Models: HIV, Malaria, COVID-19 | 3MC](2022_04_3MC_EpiModelling_L09_RecentMathematicalModels.html) ([video](https://youtu.be/tFjPug1f4Ms) - 1:05:36)
 
 <!--- Image credit: Malaria parasite entering a red blood cell. https://flic.kr/p/V8qaYt. National Institute of Allergy and Infectious Diseases, NIH. CC BY NC 2.0 --->
