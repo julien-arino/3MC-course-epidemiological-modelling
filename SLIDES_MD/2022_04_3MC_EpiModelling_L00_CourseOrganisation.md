@@ -1,6 +1,6 @@
 ---
 marp: true
-title: Course organisation
+title: "Course Organisation | 3MC Epidemiological Modelling"
 description: Julien Arino - 3MC Course Epidemiological Modelling - Lecture 00 - Course organisation
 theme: default
 math: mathjax
